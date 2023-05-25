@@ -49,6 +49,9 @@ require([
         profiles: [
             {
                 type: "ground"
+            },
+            {
+              type: "view"
             }
         ],
         visibleElements: {
