@@ -28,4 +28,20 @@ require([
     const webscene = new WebScene({
         portalItem: { id: "d6127f4244ba4c838e726a7c0c1efe40" }
     });
+
+    const view = new SceneView({
+        container: "view-div",
+        map: webscene,
+        camera: {
+            position: {
+                spatialReference: { latestWkid: 3857, wkid: 102100 },
+                x: -8238359,
+                y: 4967229,
+                z: 686
+            },
+            heading: 353,
+            tilt: 66
+        }
+    });
+    
 });
