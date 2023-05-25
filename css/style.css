@@ -4,3 +4,7 @@ html, body #view-div {
     height: 100%;
     width: 100%;
 }
+
+.esri-elevation-profile.esri-component.esri-widget--panel {
+  width: 350px !important;
+}
