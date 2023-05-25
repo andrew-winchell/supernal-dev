@@ -43,5 +43,18 @@ require([
             tilt: 66
         }
     });
-    
+
+    const elevationProfile = new ElevationProfile({
+        view: view,
+        profiles: [
+            {
+                type: "ground"
+            }
+        ],
+        visibleElements: {
+            selectButton: true
+        }
+    });
+
+    view.ui.add(elevationProfile, "top-right");
 });
