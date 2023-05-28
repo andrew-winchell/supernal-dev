@@ -5,8 +5,10 @@ require([
     "esri/portal/PortalQueryParams",
     "esri/WebScene",
     "esri/views/SceneView",
+    "esri/WebMap",
+    "esri/views/MapView",
     "esri/widgets/ElevationProfile"
-], (Portal, OAuthInfo, esriId, PortalQueryParams, WebScene, SceneView, ElevationProfile) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, WebScene, SceneView, WebMap, MapView, ElevationProfile) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -25,12 +27,23 @@ require([
             console.log("User not signed in.")
         });
 
+    const webmap = new WebMap ({
+        portalItem: { id: "" }
+    });
+
+    const mapview = new MapView ({
+        map: webmap,
+        container: "view-div"
+    });
+
+    
+
     const webscene = new WebScene({
         portalItem: { id: "d6127f4244ba4c838e726a7c0c1efe40" }
     });
 
     const view = new SceneView({
-        container: "view-div",
+        container: "",
         map: webscene,
         camera: {
             position: {
