@@ -28,7 +28,7 @@ require([
         });
 
     const webmap = new WebMap ({
-        portalItem: { id: "" }
+        portalItem: { id: "171dfe2e5be048fd920a0ece55cbd5b8" }
     });
 
     const mapview = new MapView ({
@@ -36,7 +36,7 @@ require([
         container: "view-div"
     });
 
-    
+
 
     const webscene = new WebScene({
         portalItem: { id: "d6127f4244ba4c838e726a7c0c1efe40" }
