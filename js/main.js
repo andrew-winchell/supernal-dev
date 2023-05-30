@@ -7,11 +7,10 @@ require([
     "esri/views/SceneView",
     "esri/WebMap",
     "esri/views/MapView",
-    "esri/views/view/Draw",
     "esri/Graphic",
     "esri/widgets/ElevationProfile"
-    
-], (Portal, OAuthInfo, esriId, PortalQueryParams, WebScene, SceneView, WebMap, MapView, Draw, Graphic, ElevationProfile) => {
+
+], (Portal, OAuthInfo, esriId, PortalQueryParams, WebScene, SceneView, WebMap, MapView, Graphic, ElevationProfile) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -48,8 +47,5 @@ require([
                 }
             });
     }
-
-
-
 
 });
