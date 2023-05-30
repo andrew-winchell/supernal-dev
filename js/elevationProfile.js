@@ -1,6 +1,6 @@
 require ([
-    "esri/Graphic"
-], (Graphic) => {
+    "esri/views/draw/Draw"
+], (Draw) => {
 
     console.log("Loaded")
 
