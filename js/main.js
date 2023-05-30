@@ -10,6 +10,7 @@ require([
     "esri/views/view/Draw",
     "esri/Graphic",
     "esri/widgets/ElevationProfile"
+    
 ], (Portal, OAuthInfo, esriId, PortalQueryParams, WebScene, SceneView, WebMap, MapView, Draw, Graphic, ElevationProfile) => {
 
     // Esri AGOL Authorization
