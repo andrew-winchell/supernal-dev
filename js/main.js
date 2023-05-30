@@ -38,7 +38,16 @@ require([
         container: "view-div"
     });
 
-    
+    view.on("pointer-down", getVertice);
+    function getVertice (event) {
+        view.hitTest(event)
+            .then((response) => {
+                if (response.results.length) {
+                    console.log(response.results);
+                }
+            });
+    }
+
 
 
 
