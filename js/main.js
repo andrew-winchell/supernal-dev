@@ -86,7 +86,6 @@ require([
             [
                 "vertex-add",
                 "vertex-remove",
-                "cursor-update",
                 "redo",
                 "undo",
                 "draw-complete"
