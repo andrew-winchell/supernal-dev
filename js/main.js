@@ -78,8 +78,38 @@ require([
     });
 
     $("#add-pt-btn").on("click", () => {
+        mapView.focus();
 
+        action.on(
+            [
+                "vertex-add",
+                "vertex-remove",
+                "cursor-update",
+                "redo",
+                "undo",
+                "draw-complete"
+            ]
+        );
 
+        function createRoute (evt) {
+            const vertices = evt.vertices;
+            mapView.graphics.removeAll();
+
+            const graphic = new Graphic ({
+                geometry: {
+                    type: "polyline",
+                    paths: vertices,
+                    spatialReference: mapView.spatialReference
+                },
+                symbol: {
+                    type: "simple-line",
+                    color: [0,0,0],
+                    width: 4,
+                    cap: "round",
+                    join: "round"
+                }
+            });
+        }
 
         mapView.when(() => {
             const elevation = new ElevationLayer ({
