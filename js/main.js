@@ -51,7 +51,8 @@ require([
                         }
                     ]
                 }
-            ]
+            ],
+            returnGeometry: true
         }
     });
     
@@ -87,19 +88,4 @@ require([
         container: "view-div"
     };
     appConfig.activeView = appConfig.mapView;
-
-    mapView.on("pointer-down", (evt) => {
-        const opts = {
-            include: [navaidsLyr,obstaclesLyr]
-        };
-        mapView.hitTest(evt, opts)
-            .then((response) => {
-                if (response.results.length = 1) {
-                    console.log(response)
-                    let oid = response.results[0].graphic.attributes.OBJECTID;
-                    //let lyr = response.results[0].graphic.layer
-                }
-            });
-    })
-
 });
