@@ -8,9 +8,10 @@ require([
     "esri/views/MapView",
     "esri/Graphic",
     "esri/layers/FeatureLayer",
-    "esri/layers/ElevationLayer"
+    "esri/layers/ElevationLayer",
+    "esri/views/draw/Draw"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, FeatureLayer, ElevationLayer) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, FeatureLayer, ElevationLayer, Draw) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -66,14 +67,20 @@ require([
     };
     appConfig.activeView = appConfig.mapView;
 
+    const draw = new Draw ({
+        view: mapView
+    });
 
     $("#create-route").on("click", () => {
-        console.log("Start Creating Route");
         console.log("Open Editing Toolbar");
         $("#route-toolbar").css("display", "block");
+        mapView.graphics.removeAll();
     });
 
     $("#add-pt-btn").on("click", () => {
+
+
+
         mapView.when(() => {
             const elevation = new ElevationLayer ({
                 url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
@@ -93,7 +100,6 @@ require([
                                     const values = sampler.queryElevation(mapPt);
                                     const vertice = [values.longitude, values.latitude, values.z];
                                     console.log(vertice);
-                                    return;
                                 }
                             })
                     })
