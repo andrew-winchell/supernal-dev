@@ -76,12 +76,15 @@ require([
         elevation.createElevationSampler(mapView.extent)
             .then((sampler) => {
                 mapView.on("pointer-down", (e) => {
-                    mapView.hitTest(e)
+                    const opts = {
+                        include: [navaidsLyr]
+                    };
+                    mapView.hitTest(e, opts)
                         .then((response) => {
                             if (response.results.length) {
                                 const pt = mapView.toMap(e);
                                 const values = sampler.queryElevation(pt);
-                                console.log(values.x, values.y, values.z)
+                                console.log(values.longitude, values.latitude, values.z)
                             }
                         })
                 })
