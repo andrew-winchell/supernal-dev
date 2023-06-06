@@ -112,6 +112,8 @@ require([
                     join: "round"
                 }
             });
+
+            mapView.graphics.add(graphic);
         }
 
         /*
