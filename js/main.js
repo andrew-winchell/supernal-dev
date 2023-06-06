@@ -43,7 +43,7 @@ require([
     const map = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
-        layers: [navaidsLyr]
+        layers: [navaidsLyr, obstaclesLyr]
     });
 
     const mapView = new MapView ({
@@ -65,14 +65,29 @@ require([
 
     mapView.on("pointer-down", (evt) => {
         const opts = {
-            include: navaidsLyr
+            include: [navaidsLyr,obstaclesLyr]
         };
         mapView.hitTest(evt, opts)
             .then((response) => {
-                if (response.results.length) {
-                    console.log(response.results[0]);
+                if (response.results.length = 1) {
+                    console.log(response)
+                    let oid = response.results[0].graphic.attributes.OBJECTID;
+                    //let lyr = response.results[0].graphic.layer
                 }
             });
     });
+
+    function mapPointQuery (oid, lyr) {
+        const oidQuery = {
+            where: "OBJECTID = '" + oid + "'",
+            outFields: ["*"],
+            returnGeometry: true
+        };
+
+        lyr.queryFeatures(oidQuery)
+            .then((results) => {
+                console.log(results)
+            });
+    }
 
 });
