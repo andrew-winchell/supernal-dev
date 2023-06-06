@@ -30,30 +30,7 @@ require([
 
     const navaidsLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0",
-        outFields: ["*"],
-        popupTemplate: {
-            title: "NAVAIDS",
-            lastEditInfoEnabled: true,
-            actions: [
-                {
-                    id: "add-to-path",
-                    image: "",
-                    title: "Add to Flight Path"
-                }
-            ],
-            content: [
-                {
-                    type: "fields",
-                    fieldInfos: [
-                        {
-                            fieldName: "IDENT",
-                            label: "Identifier"
-                        }
-                    ]
-                }
-            ],
-            returnGeometry: true
-        }
+        outFields: ["*"]
     });
     
     const obstaclesLyr = new FeatureLayer ({
@@ -88,4 +65,19 @@ require([
         container: "view-div"
     };
     appConfig.activeView = appConfig.mapView;
+
+    mapView.on("pointer-down", (evt) => {
+        const opts = {
+            include: [navaidsLyr,obstaclesLyr]
+        };
+        mapView.hitTest(evt, opts)
+            .then((response) => {
+                if (response.results.length) {
+                    console.log(response)
+                    let oid = response.results[0].graphic.attributes.OBJECTID;
+                    //let lyr = response.results[0].graphic.layer
+                }
+            });
+    })
+
 });
