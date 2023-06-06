@@ -29,3 +29,7 @@ html, body, #view-div {
   position: absolute;
   left: 137.44px
 }
+
+#route-toolbar {
+  display: none;
+}

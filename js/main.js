@@ -67,16 +67,17 @@ require([
     appConfig.activeView = appConfig.mapView;
 
 
-
-
-    
+    $("#create-route").on("click", () => {
+        console.log("Start Creating Route");
+        console.log("Open Editing Toolbar");
+        $("#route-toolbar").css("display", "block");
+    })
     mapView.when(() => {
         const elevation = new ElevationLayer ({
             url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
         });
         return elevation.load();
     }).then((elevation) => {
-        
         elevation.createElevationSampler(mapView.extent)
             .then((sampler) => {
                 mapView.on("pointer-down", (e) => {
@@ -93,6 +94,5 @@ require([
                         })
                 })
             })
-
     });
 });
