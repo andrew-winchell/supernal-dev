@@ -47,12 +47,12 @@ require([
     });
 
     const mapView = new MapView ({
-        map: map
+        map: map,
+        container: "view-div"
     });
 
     const sceneView = new SceneView ({
-        map: map,
-        container: "view-div"
+        map: map
     });
 
     const appConfig = {
@@ -63,27 +63,12 @@ require([
     };
     appConfig.activeView = appConfig.mapView;
 
-    sceneView.on("pointer-down", (evt) => {
-        const opts = {
-            include: [navaidsLyr]
-        };
-        sceneView.hitTest(evt, opts)
+    mapView.on("pointer-down", (evt) => {
+        mapView.hitTest(evt, opts)
             .then((response) => {
                 if (response.results.length) {
-                    let oid = response.results[0].graphic.attributes.OBJECTID;
-                    getNavGeom(oid);
+                    console.log(response.results);
                 }
             });
-    })
-
-    function getNavGeom (oid) {
-        let query = navaidsLyr.createQuery();
-        query.returnGeometry = true;
-        query.where = "OBJECTID = '" + oid + "'";
-        
-        navaidsLyr.queryFeatures(query)
-            .then((response) => {
-                console.log(response)
-            })
-    }
+    });
 });
