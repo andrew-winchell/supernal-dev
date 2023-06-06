@@ -3,14 +3,13 @@ require([
     "esri/identity/OAuthInfo",
     "esri/identity/IdentityManager",
     "esri/portal/PortalQueryParams",
-    "esri/WebScene",
     "esri/views/SceneView",
-    "esri/WebMap",
+    "esri/Map",
     "esri/views/MapView",
     "esri/Graphic",
     "esri/widgets/ElevationProfile"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, WebScene, SceneView, WebMap, MapView, Graphic, ElevationProfile) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, ElevationProfile) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -29,16 +28,30 @@ require([
             console.log("User not signed in.")
         });
 
-    const map = new WebMap ({
-        portalItem: { id: "171dfe2e5be048fd920a0ece55cbd5b8" }
+    const map = new Map ({
+        basemap: "topo-vector",
+        ground: "world-elevation",
+        layers: []
     });
 
-    const view = new MapView ({
+    const mapView = new MapView ({
         map: map,
         container: "view-div"
     });
 
-    view.on("pointer-down", getVertice);
+    const sceneView = new SceneView ({
+        map: map
+    });
+
+    const appConfig = {
+        mapView: mapView,
+        sceneView: sceneView,
+        activeView: null,
+        container: "view-div"
+    };
+    appConfig.activeView = appConfig.mapView;
+
+    mapView.on("pointer-down", getVertice);
     function getVertice (event) {
         view.hitTest(event)
             .then((response) => {
