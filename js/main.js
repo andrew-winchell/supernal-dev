@@ -70,7 +70,7 @@ require([
         mapView.hitTest(evt, opts)
             .then((response) => {
                 if (response.results.length) {
-                    console.log(response.results);
+                    console.log(response);
                 }
             });
     });
