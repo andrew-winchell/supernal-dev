@@ -30,17 +30,20 @@ require([
 
     const navaidsLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0",
-        outFields: ["*"]
+        outFields: ["*"],
+        returnZ: true
     });
     
     const obstaclesLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0",
-        outFields: ["*"]
+        outFields: ["*"],
+        returnZ: true
     });
 
     const classAirspaceLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0",
-        outFields: ["*"]
+        outFields: ["*"],
+        returnZ: true
     });
 
     const map = new Map ({
