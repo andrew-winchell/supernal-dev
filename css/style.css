@@ -33,6 +33,6 @@ html, body, #view-div {
 #route-toolbar {
   display: none;
   position: absolute;
-  left: calc(50% - 96px);
+  left: calc(50% - 120px);
   bottom: 35px;
 }
