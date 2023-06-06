@@ -31,7 +31,6 @@ require([
     const navaidsLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0"
     });
-    navaidsLyr.outFields = ["*"];
     
     const obstaclesLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0"
@@ -71,7 +70,7 @@ require([
         mapView.hitTest(evt, opts)
             .then((response) => {
                 if (response.results.length) {
-                    console.log(response);
+                    console.log(response.results[0]);
                 }
             });
     });
