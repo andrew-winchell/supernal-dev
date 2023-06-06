@@ -7,9 +7,9 @@ require([
     "esri/Map",
     "esri/views/MapView",
     "esri/Graphic",
-    "esri/widgets/ElevationProfile"
+    "esri/layers/FeatureLayer"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, ElevationProfile) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, FeatureLayer) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -28,10 +28,14 @@ require([
             console.log("User not signed in.")
         });
 
+    const navaidsLyr = new FeatureLayer ({
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0"
+    });
+    
     const map = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
-        layers: []
+        layers: [navaidsLyr]
     });
 
     const mapView = new MapView ({
