@@ -44,15 +44,13 @@
             <calcite-panel id="map-area">
                 <div id="view-div"></div>
                 <calcite-action-pad expand-disabled layout="horizontal" position="start" id="route-toolbar">
-                    <calcite-action text="Add" icon="vertex-plus"></calcite-action>
-                    <calcite-action text="Undo" icon="undo"></calcite-action>
-                    <calcite-action text="Redo" icon="redo"></calcite-action>
-                    <calcite-action text="Reset" icon="reset"></calcite-action>
-                    <calcite-action text="Complete" icon="check"></calcite-action>
-                    <calcite-tooltip slot="expand-tooltip">Toggle Action Bar</calcite-tooltip>
+                    <calcite-action text="Add" icon="vertex-plus" id="add-pt-btn"></calcite-action>
+                    <calcite-action text="Undo" icon="undo" id="undo-pt-btn"></calcite-action>
+                    <calcite-action text="Redo" icon="redo" id="redo-pt-btn"></calcite-action>
+                    <calcite-action text="Reset" icon="reset" id="reset-line-btn"></calcite-action>
+                    <calcite-action text="Complete" icon="check" id="finish-line-btn"></calcite-action>
                 </calcite-action-pad>
             </calcite-panel>
-*
         </calcite-shell>
 
         <script src="lib/jquery-3.6.4.js"></script>
