@@ -7,9 +7,10 @@ require([
     "esri/Map",
     "esri/views/MapView",
     "esri/Graphic",
-    "esri/layers/FeatureLayer"
+    "esri/layers/FeatureLayer",
+    "esri/layers/ElevationLayer"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, FeatureLayer) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, FeatureLayer, ElevationLayer) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -63,6 +64,28 @@ require([
     };
     appConfig.activeView = appConfig.mapView;
 
+    mapView.when(() => {
+        const elevation = new ElevationLayer ({
+            url: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
+        });
+        return elevation.load();
+    }).then((elevation) => {
+        
+        elevation.createSampler(mapView.extent)
+            .then((sampler) => {
+                mapView.on("pointer-down", (e) => {
+                    mapView.hitTest(hit)
+                        .then((response) => {
+                            if (response.results.length) {
+                                const pt = mapView.toMap(e);
+                                const values = sampler.queryElevation(pt);
+                                console.log(values.x, values.y, values.z)
+                            }
+                        })
+                })
+            })
+
+    });
     mapView.on("pointer-down", (evt) => {
         mapView.hitTest(evt)
             .then((response) => {
