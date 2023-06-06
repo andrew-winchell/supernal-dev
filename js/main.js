@@ -66,7 +66,7 @@ require([
 
     mapView.when(() => {
         const elevation = new ElevationLayer ({
-            url: "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
+            url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
         });
         return elevation.load();
     }).then((elevation) => {
