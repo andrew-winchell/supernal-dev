@@ -78,6 +78,8 @@ require([
     });
 
     $("#add-pt-btn").on("click", () => {
+        const action = draw.create("polyline");
+
         mapView.focus();
 
         action.on(
