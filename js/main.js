@@ -32,6 +32,14 @@ require([
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0"
     });
     
+    const obstaclesLyr = new FeatureLayer ({
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0"
+    });
+
+    const classAirspaceLyr = new FeatureLayer ({
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0"
+    });
+
     const map = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
