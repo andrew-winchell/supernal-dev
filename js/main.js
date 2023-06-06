@@ -71,28 +71,32 @@ require([
         console.log("Start Creating Route");
         console.log("Open Editing Toolbar");
         $("#route-toolbar").css("display", "block");
-    })
-    mapView.when(() => {
-        const elevation = new ElevationLayer ({
-            url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
-        });
-        return elevation.load();
-    }).then((elevation) => {
-        elevation.createElevationSampler(mapView.extent)
-            .then((sampler) => {
-                mapView.on("pointer-down", (e) => {
-                    const opts = {
-                        include: [navaidsLyr]
-                    };
-                    mapView.hitTest(e, opts)
-                        .then((response) => {
-                            if (response.results.length) {
-                                const pt = mapView.toMap(e);
-                                const values = sampler.queryElevation(pt);
-                                console.log(values.longitude, values.latitude, values.z)
-                            }
-                        })
+    });
+
+    $("#add-pt-btn").on("click", () => {
+        mapView.when(() => {
+            const elevation = new ElevationLayer ({
+                url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
+            });
+            return elevation.load();
+        }).then((elevation) => {
+            elevation.createElevationSampler(mapView.extent)
+                .then((sampler) => {
+                    mapView.on("pointer-down", (e) => {
+                        const opts = {
+                            include: [navaidsLyr]
+                        };
+                        mapView.hitTest(e, opts)
+                            .then((response) => {
+                                if (response.results.length) {
+                                    const pt = mapView.toMap(e);
+                                    const values = sampler.queryElevation(pt);
+                                    console.log(values.longitude, values.latitude, values.z)
+                                    return pt;
+                                }
+                            })
+                    })
                 })
-            })
+        });
     });
 });
