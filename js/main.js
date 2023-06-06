@@ -8,10 +8,11 @@ require([
     "esri/views/MapView",
     "esri/Graphic",
     "esri/layers/FeatureLayer",
+    "esri/layers/GeoJSONLayer",
     "esri/layers/ElevationLayer",
     "esri/views/draw/Draw"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, FeatureLayer, ElevationLayer, Draw) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -40,6 +41,15 @@ require([
 
     const classAirspaceLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0"
+    });
+
+    const route = new GeoJSONLayer ({
+        title: "Proposed Route",
+        id: "route",
+        hasZ: true,
+        elevationInfo: {
+            mode: "relative-to-ground"
+        }
     });
 
     const map = new Map ({
@@ -86,6 +96,7 @@ require([
             [
                 "vertex-add",
                 "vertex-remove",
+                "cursor-update",
                 "redo",
                 "undo",
                 "draw-complete"
