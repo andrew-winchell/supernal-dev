@@ -30,7 +30,29 @@ require([
 
     const navaidsLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0",
-        outFields: ["*"]
+        outFields: ["*"],
+        popupTemplate: {
+            title: "NAVAIDS",
+            lastEditInfoEnabled: true,
+            actions: [
+                {
+                    id: "add-to-path",
+                    image: "",
+                    title: "Add to Flight Path"
+                }
+            ],
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "IDENT",
+                            label: "Identifier"
+                        }
+                    ]
+                }
+            ]
+        }
     });
     
     const obstaclesLyr = new FeatureLayer ({
