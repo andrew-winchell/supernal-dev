@@ -47,12 +47,12 @@ require([
     });
 
     const mapView = new MapView ({
-        map: map,
-        container: "view-div"
+        map: MapView
     });
 
     const sceneView = new SceneView ({
-        map: map
+        map: map,
+        container: "view-div"
     });
 
     const appConfig = {
