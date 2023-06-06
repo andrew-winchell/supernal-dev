@@ -47,7 +47,7 @@ require([
     });
 
     const mapView = new MapView ({
-        map: MapView
+        map: map
     });
 
     const sceneView = new SceneView ({
