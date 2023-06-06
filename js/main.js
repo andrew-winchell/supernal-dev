@@ -93,6 +93,7 @@ require([
                                     const values = sampler.queryElevation(mapPt);
                                     const vertice = [values.longitude, values.latitude, values.z];
                                     console.log(vertice);
+                                    return;
                                 }
                             })
                     })
