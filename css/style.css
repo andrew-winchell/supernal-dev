@@ -32,4 +32,7 @@ html, body, #view-div {
 
 #route-toolbar {
   display: none;
+  position: absolute;
+  left: calc(50% - 96px);
+  bottom: 35px;
 }
