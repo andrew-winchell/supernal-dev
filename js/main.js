@@ -44,7 +44,7 @@ require([
     const map = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
-        layers: [navaidsLyr, obstaclesLyr]
+        layers: [navaidsLyr]
     });
 
     const mapView = new MapView ({
