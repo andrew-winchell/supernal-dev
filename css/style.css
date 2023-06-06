@@ -5,6 +5,16 @@ html, body, #view-div {
     width: 100%;
 }
 
-.esri-elevation-profile.esri-component.esri-widget--panel {
-  width: 350px !important;
+#header-title {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#header-title h2 {
+  display: inline-block;
+}
+
+#menu { 
+  float: right;
+  margin-top: 7px;
 }
