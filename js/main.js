@@ -90,7 +90,8 @@ require([
                 "redo",
                 "undo",
                 "draw-complete"
-            ]
+            ],
+            createRoute
         );
 
         function createRoute (evt) {
@@ -113,6 +114,7 @@ require([
             });
         }
 
+        /*
         mapView.when(() => {
             const elevation = new ElevationLayer ({
                 url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
@@ -137,5 +139,6 @@ require([
                     })
                 })
         });
+        */
     });
 });
