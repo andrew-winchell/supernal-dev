@@ -86,12 +86,4 @@ require([
             })
 
     });
-    mapView.on("pointer-down", (evt) => {
-        mapView.hitTest(evt)
-            .then((response) => {
-                if (response.results.length) {
-                    console.log(response.results);
-                }
-            });
-    });
 });
