@@ -53,7 +53,7 @@ require([
 
     mapView.on("pointer-down", getVertice);
     function getVertice (event) {
-        view.hitTest(event)
+        mapView.hitTest(event)
             .then((response) => {
                 if (response.results.length) {
                     console.log(response.results);
