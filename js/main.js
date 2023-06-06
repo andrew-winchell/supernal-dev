@@ -64,7 +64,7 @@ require([
     appConfig.activeView = appConfig.mapView;
 
     mapView.on("pointer-down", (evt) => {
-        mapView.hitTest(evt, opts)
+        mapView.hitTest(evt)
             .then((response) => {
                 if (response.results.length) {
                     console.log(response.results);
