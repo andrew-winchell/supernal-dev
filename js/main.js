@@ -7,9 +7,9 @@ require([
     "esri/Map",
     "esri/views/MapView",
     "esri/Graphic",
-    "esri/layers/GeoJSONLayer"
+    "esri/layers/FeatureLayer"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GeoJSONLayer) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, FeatureLayer) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -28,18 +28,18 @@ require([
             console.log("User not signed in.")
         });
 
-    const navaidsLyr = new GeoJSONLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson",
+    const navaidsLyr = new FeatureLayer ({
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0",
         outFields: ["*"]
     });
     
-    const obstaclesLyr = new GeoJSONLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson",
+    const obstaclesLyr = new FeatureLayer ({
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0",
         outFields: ["*"]
     });
 
-    const classAirspaceLyr = new GeoJSONLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson",
+    const classAirspaceLyr = new FeatureLayer ({
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0",
         outFields: ["*"]
     });
 
