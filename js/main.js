@@ -95,6 +95,7 @@ require([
         );
 
         function createRoute (evt) {
+            console.log(evt)
             const vertices = evt.vertices;
             mapView.graphics.removeAll();
 
