@@ -18,3 +18,14 @@ html, body, #view-div {
   float: right;
   margin-top: 7px;
 }
+
+#toolbar {
+  height: 100%;
+  position: absolute;
+}
+
+#map-area {
+  width: calc(100% - 137.44px);
+  position: absolute;
+  left: 137.44px
+}
