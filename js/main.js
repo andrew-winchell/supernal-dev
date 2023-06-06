@@ -89,10 +89,10 @@ require([
                         mapView.hitTest(e, opts)
                             .then((response) => {
                                 if (response.results.length) {
-                                    const pt = mapView.toMap(e);
-                                    const values = sampler.queryElevation(pt);
-                                    console.log(values.longitude, values.latitude, values.z)
-                                    return pt;
+                                    const mapPt = mapView.toMap(e);
+                                    const values = sampler.queryElevation(mapPt);
+                                    const vertice = [values.longitude, values.latitude, values.z];
+                                    console.log(vertice);
                                 }
                             })
                     })
