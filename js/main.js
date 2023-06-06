@@ -29,15 +29,18 @@ require([
         });
 
     const navaidsLyr = new FeatureLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0"
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0",
+        outFields: ["*"]
     });
     
     const obstaclesLyr = new FeatureLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0"
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0",
+        outFields: ["*"]
     });
 
     const classAirspaceLyr = new FeatureLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0"
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0",
+        outFields: ["*"]
     });
 
     const map = new Map ({
@@ -75,19 +78,6 @@ require([
                     //let lyr = response.results[0].graphic.layer
                 }
             });
-    });
-
-    function mapPointQuery (oid, lyr) {
-        const oidQuery = {
-            where: "OBJECTID = '" + oid + "'",
-            outFields: ["*"],
-            returnGeometry: true
-        };
-
-        lyr.queryFeatures(oidQuery)
-            .then((results) => {
-                console.log(results)
-            });
-    }
+    })
 
 });
