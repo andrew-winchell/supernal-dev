@@ -55,14 +55,16 @@ require([
     };
     appConfig.activeView = appConfig.mapView;
 
-    mapView.on("pointer-down", getVertice);
-    function getVertice (event) {
-        mapView.hitTest(event)
+    mapView.on("pointer-down", (evt) => {
+        const opts = {
+            include: navaidsLyr
+        };
+        mapView.hitTest(evt, opts)
             .then((response) => {
                 if (response.results.length) {
                     console.log(response.results);
                 }
             });
-    }
+    });
 
 });
