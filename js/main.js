@@ -74,7 +74,7 @@ require([
         elevation.createElevationSampler(mapView.extent)
             .then((sampler) => {
                 mapView.on("pointer-down", (e) => {
-                    mapView.hitTest(hit)
+                    mapView.hitTest(e)
                         .then((response) => {
                             if (response.results.length) {
                                 const pt = mapView.toMap(e);
