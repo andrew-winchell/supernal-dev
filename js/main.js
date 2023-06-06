@@ -63,11 +63,11 @@ require([
     };
     appConfig.activeView = appConfig.mapView;
 
-    mapView.on("pointer-down", (evt) => {
+    sceneView.on("pointer-down", (evt) => {
         const opts = {
             include: [navaidsLyr]
         };
-        mapView.hitTest(evt, opts)
+        sceneView.hitTest(evt, opts)
             .then((response) => {
                 if (response.results.length) {
                     let oid = response.results[0].graphic.attributes.OBJECTID;
