@@ -49,7 +49,9 @@ require([
 
     const mapView = new MapView ({
         map: map,
-        container: "view-div"
+        container: "view-div",
+        zoom: 4,
+        center: [-97, 39]
     });
 
     const sceneView = new SceneView ({
