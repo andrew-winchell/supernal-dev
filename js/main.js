@@ -32,16 +32,9 @@ require([
         });
 
     const navaidsLyr = new FeatureLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0"/*,
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0",
         popupTemplate: {
             title: "NAVAIDS",
-            actions: [
-                {
-                    id: "add-waypoint",
-                    image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAAAXNSR0IArs4c6QAABEhJREFUSEtjZCARzJ8/n4OXl1f5w79/z59cu/ahoaHhH7FGMBJSOHPmTFZ+YeF0fm4+RXZ2DqO///6Ks7KxsjL8Z/jz4+ePfwyMDPd//vi5+/OXr49iIsPW4zMPr2UrV28oFxTgDeYXEFBTlJfj5+HhYeDk5EAx78uXLwwvX71meP367Z2PHz+d+vTx046wsMDF2CzFatnixasdxMQFs8TFxFxUVZUFubi4CAUAWP7+/YcMT549vfn27fuJgf4+09E1YVi2YsU6HUEh/gVqaqrGCvKyRFmCrOjfv38Mp8+e+/z+/Yc5nu6uRchyKJaBfSQh1GtkoG8kIiJMskXIGm7dvvPh1q07G319PBNg4iiW7dy1d5WammooNh/dSHNkkEqrh5vHrW7AwMwrgNdB5y9efnzrxs3ciIjQjSCFcMtWrFpXoa6qUmZgoCuIzQSQZX8+f2D4dvMCXFosKI1ByCOS4dOZAwx8Jg5gjAx+/PjBcPL0mXNvX78KCg4Ofgi2DJS8FZVUjlpbWZjiSgwgy0CG4gIas/ZjWAZS+/Dho78XL14p9vf3ngi2bMWaNTmK8gotZibG/LgMI9cysO9OnTnx6O1rf7BlW7fv6jU1NiwSFRXB6XJyLQMZeO78hYe3b90LAlu2b9+h/RYWpg7oGRbZZkosu37jFsPla9d6GUFlnYyswjkXZwdNfEmLEstevX7DcPbcuVbGNWvWaIuISWywt7VWIcYyDnk1sLIfD2+hKMeVQECKnj57znDhwpVVjEu3bBGU5hU4Zm9nrUHIMlA+gyXvj8d2MLzZvJDh99sXDMy8ggyyhd0MHDLKWI149/49w6lTZ6YyNjQ0MFlY2Vx2d3XWIsUyUoqX+w8fMVy9fK0KnEB27N6zxdrC3BtUquNL+sg+I8Wy23fufjp/7kIM2LKNm7fm62hrTVBSVKCJZUePnbx17+kjD7BlS5avClRWVOyyMDfBmUhgZSN6kUTIhx8+fGQ4cfr0Tk83V4hl4KDcuXepuppKlIKCHFb95Fp27uKlF7dv3IqPiAjdBbds1ar1sRJSYtXWlhbqTExMGBaSYxmoBr9w4dJGD3eXAJCBKFXM+o1bMiUlxTvNTU140W0j1bJ37z4wXLp8+fLzZ6/CoqJCbmBYBhLYvnN3n5KiQqKaqgpKZfVkRgPWagRbmIMsunzl6o0Xz5/ng4IPpgZrG2Tzlm0LpGVknDTUVWU5OVAbOIQSxKtXrxmuXrt55dXLF8XIFmH1GcywFStW+0tKS9YqyMkZiImJMnMQsBSU6u4/ePDy1as3J969/VABCzpkx+Ftyq1du1aehYUjgF+AP4KXl0eSk5NTXlhYiOH3r98MnFwcDJ8+fWb49evXp9ev37749Pnz/Q+fPvdGhQXtxuV7go1UkMZF69aJsf36L8PIyhTFy8314/9/RlVmZsZXv3/+efbt29crPxn/XYkLC7tPKIgBsVLQKzeww5cAAAAASUVORK5CYII=",
-                    title: "Add Waypoint"
-                }
-            ],
             content: [
                 {
                     type: "fields",
@@ -69,7 +62,7 @@ require([
                     ]
                 }
             ]
-        }*/
+        }
     });
     
     const obstaclesLyr = new FeatureLayer ({
@@ -123,11 +116,16 @@ require([
 
     $("#add-pt-btn").on("click", () => {
         mapView.when(() => {
-            mapView.popup.watch("selectedFeature", (graphic) => {
-                if (graphic) {
-                    const graphicTemplate = graphic.getEffectivePopupTemplate();
-                    console.log(graphic)
-                }
+            mapView.on("pointer-down", (e) => {
+                const opts = {
+                    include: [navaidsLyr]
+                };
+                mapView.hitTest(e, opts)
+                    .then((response) => {
+                        if (response.results.length) {
+                            console.log(response);
+                        }
+                    })
             })
         });
     });
