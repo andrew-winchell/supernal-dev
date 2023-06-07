@@ -120,6 +120,15 @@ require([
         mapView.graphics.removeAll();
     });
 
+    mapView.when(() => {
+        mapView.popup.watch("selectedFeature", (graphic) => {
+            if (graphic) {
+                const graphicTemplate = graphic.getEffectivePopupTemplate();
+                console.log(graphic)
+            }
+        })
+    })
+
     /*
     const draw = new Draw ({
         view: mapView
