@@ -139,17 +139,16 @@ require([
                 mapView.hitTest(e, opts)
                     .then((response) => {
                         if (response.results.length == 1) {
-                            console.log(response.results[0]);
-                            const vertices = evt.vertices;
+                            const vertices = evt.vertices.slice(1);
+                            console.log(vertices)
                             let vertex = [response.results[0].graphic.geometry.longitude, response.results[0].graphic.geometry.latitude];
                             console.log(vertex)
                             vertices.push(vertex);
-                            console.log(vertices)
                             
                             const graphic = new Graphic ({
                                 geometry: {
                                     type: "polyline",
-                                    paths: vertices.slice(1),
+                                    paths: vertices,
                                     spatialReference: mapView.spatialReference
                                 },
                                 symbol: {
