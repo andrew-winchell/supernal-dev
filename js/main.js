@@ -141,7 +141,9 @@ require([
                         if (response.results.length == 1) {
                             const vertices = evt.vertices;
                             let vertex = [response.results[0].graphic.geometry.longitude, response.results[0].graphic.geometry.latitude];
-                        
+                            console.log(vertices)
+                            console.log(vertex)
+                            mapView.graphics.removeAll();
                             
                             const graphic = new Graphic ({
                                 geometry: {
