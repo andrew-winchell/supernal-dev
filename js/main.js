@@ -122,8 +122,8 @@ require([
                 };
                 mapView.hitTest(e, opts)
                     .then((response) => {
-                        if (response.results.length = 1) {
-                            console.log([response.results[0].graphic.latitude, response.results[0].graphic.latitude]);
+                        if (response.results.length == 1) {
+                            console.log(response.results[0]);
                         } else if (response.results.length > 1) {
                             console.log($("#hittest_many"))
                         } else {
