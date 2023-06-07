@@ -111,10 +111,26 @@ require([
         console.log("Open Waypoint List");
         $("#waypoint-list").css("display", "block");
         $("#route-toolbar").css("display", "block");
-        mapView.graphics.removeAll();
+        mapView.graphics.removeAll();        
+    });
+
+    const draw = new Draw ({
+        view: mapView
     });
 
     $("#add-pt-btn").on("click", () => {
+        mapView.focus();
+
+        const action = draw.create("polyline");
+        action.on (
+            [
+                "vertex-add"
+            ],
+            createVertice
+        )
+    });
+
+    function createVertice () {
         mapView.when(() => {
             mapView.on("pointer-down", (e) => {
                 const opts = {
@@ -130,29 +146,12 @@ require([
                             $("#hittest_zero")[0].open = true;
                         }
                     })
-                
             })
         });
-    });
-    
+    }
 
     /*
-    const draw = new Draw ({
-        view: mapView
-    });
-
-    
-    $("#create-route").on("click", () => {
-        console.log("Open Editing Toolbar");
-        $("#route-toolbar").css("display", "block");
-        mapView.graphics.removeAll();
-    });
-
     $("#add-pt-btn").on("click", () => {
-        const action = draw.create("polyline");
-
-        mapView.focus();
-
         action.on(
             [
                 "vertex-add",
