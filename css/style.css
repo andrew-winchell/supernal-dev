@@ -36,3 +36,13 @@ html, body, #view-div {
   left: calc(50% - 120px);
   bottom: 35px;
 }
+
+#waypoint-list {
+  position: absolute;
+  height: 40%;
+  width: 200px;
+  bottom: 35px;
+  left: 20px;
+  background-color: white;
+  border: 3px solid black;
+}
