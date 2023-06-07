@@ -37,6 +37,16 @@
                 </calcite-dropdown>
             </div>
 
+            <calcite-alert id="hitttest_zero" icon="exclamation-mark-triangle" auto-close-duration="medium" kind="danger" placement="top">
+                <div slot="title">Selection Error</div>
+                <div slot="message">Please select a predefined waypoint on the map to include in the propsoed route.</div>
+            </calcite-alert>
+
+            <calcite-alert id="hitttest_many" icon="exclamation-mark-triangle" auto-close-duration="medium" kind="danger" placement="top">
+                <div slot="title">Selection Error</div>
+                <div slot="message">Please select only 1 predefined waypoint on the map to include in the propsoed route.</div>
+            </calcite-alert>
+
             <calcite-action-bar id="toolbar" scale="m" expand-disabled expanded>
                 <calcite-action text="Create Route" icon="line" text-enabled alignment="center" appearance="transparent" scale="m" id="create-route"></calcite-button>
             </calcite-action-bar>
