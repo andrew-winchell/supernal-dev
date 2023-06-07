@@ -125,7 +125,7 @@ require([
                         if (response.results.length == 1) {
                             console.log(response.results[0]);
                         } else if (response.results.length > 1) {
-                            console.log($("#hittest_many")[0])
+                            console.log($("#hittest_many"))
                         } else {
                             $("#hittest_zero")
                         }
