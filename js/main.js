@@ -32,7 +32,7 @@ require([
         });
 
     const navaidsLyr = new FeatureLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0",
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0"/*,
         popupTemplate: {
             title: "NAVAIDS",
             actions: [
@@ -69,7 +69,7 @@ require([
                     ]
                 }
             ]
-        }
+        }*/
     });
     
     const obstaclesLyr = new FeatureLayer ({
@@ -127,11 +127,8 @@ require([
                 if (graphic) {
                     const graphicTemplate = graphic.getEffectivePopupTemplate();
                     console.log(graphic)
-                    return;
                 }
-                return;
             })
-            return;
         });
     });
 
