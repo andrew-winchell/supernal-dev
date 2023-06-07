@@ -125,7 +125,7 @@ require([
                         if (response.results.length = 1) {
                             console.log([response.results[0].graphic.latitude, response.results[0].graphic.latitude]);
                         } else if (response.results.length > 1) {
-                            $("#hittest_many").open
+                            console.log($("#hittest_many"))
                         } else {
                             $("#hittest_zero").open
                         }
