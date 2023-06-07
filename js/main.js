@@ -139,7 +139,8 @@ require([
                 mapView.hitTest(e, opts)
                     .then((response) => {
                         if (response.results.length == 1) {
-                            console.log(response.results[0]);
+                        
+                            console.log(response.results[0].graphic.geometry);
                         } else if (response.results.length > 1) {
                             $("#hittest_many")[0].open = true;
                         } else {
