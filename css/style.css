@@ -38,6 +38,7 @@ html, body, #view-div {
 }
 
 #waypoint-list {
+  display: none;
   position: absolute;
   height: 40%;
   width: 200px;
