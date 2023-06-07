@@ -130,7 +130,7 @@ require([
         )
     });
 
-    function createVertice () {
+    function createVertice (evt) {
         mapView.when(() => {
             mapView.on("pointer-down", (e) => {
                 const opts = {
@@ -139,8 +139,27 @@ require([
                 mapView.hitTest(e, opts)
                     .then((response) => {
                         if (response.results.length == 1) {
-                        
-                            console.log(response.results[0].graphic.geometry);
+                            console.log(evt);
+                            const vertices = evt.vertices;
+                            let vertex = [response.results[0].graphic.geometry.longitude, response.results[0].graphic.geometry.latitude];
+                            mapView.graphics.removeAll();
+                            
+                            const graphic = new Graphic ({
+                                geometry: {
+                                    type: "polyline",
+                                    paths: vertices,
+                                    spatialReference: mapView.spatialReference
+                                },
+                                symbol: {
+                                    type: "simple-line",
+                                    color: [0,0,0],
+                                    width: 4,
+                                    cap: "round",
+                                    join: "round"
+                                }
+                            })
+                            mapView.graphics.add(graphic);
+
                         } else if (response.results.length > 1) {
                             $("#hittest_many")[0].open = true;
                         } else {
