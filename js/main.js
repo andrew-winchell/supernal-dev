@@ -114,7 +114,11 @@ require([
     };
     appConfig.activeView = appConfig.mapView;
 
-
+    $("#create-route").on("click", () => {
+        console.log("Open Waypoint List");
+        $("#waypoint-list").css("display", "block");
+        mapView.graphics.removeAll();
+    });
 
     /*
     const draw = new Draw ({
