@@ -124,7 +124,12 @@ require([
         const action = draw.create("polyline");
         action.on (
             [
-                "vertex-add"
+                "vertex-add",
+                "vertex-remove",
+                "cursor-update",
+                "redo",
+                "undo",
+                "draw-complete"
             ],
             createVertice
         )
@@ -140,9 +145,7 @@ require([
                     .then((response) => {
                         if (response.results.length == 1) {
                             const vertices = evt.vertices.slice(1);
-                            console.log(vertices)
                             let vertex = [response.results[0].graphic.geometry.longitude, response.results[0].graphic.geometry.latitude];
-                            console.log(vertex)
                             vertices.push(vertex);
                             
                             const graphic = new Graphic ({
