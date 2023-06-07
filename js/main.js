@@ -117,8 +117,11 @@ require([
     $("#create-route").on("click", () => {
         console.log("Open Waypoint List");
         $("#waypoint-list").css("display", "block");
+        $("#route-toolbar").css("display", "block");
         mapView.graphics.removeAll();
+    });
 
+    $("#add-pt-btn").on("click", () => {
         mapView.when(() => {
             mapView.popup.watch("selectedFeature", (graphic) => {
                 if (graphic) {
