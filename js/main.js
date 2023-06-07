@@ -111,7 +111,7 @@ require([
         console.log("Open Waypoint List");
         $("#waypoint-list").css("display", "block");
         $("#route-toolbar").css("display", "block");
-        mapView.graphics.removeAll();        
+        mapView.graphics.removeAll();  
     });
 
     const draw = new Draw ({
@@ -139,7 +139,7 @@ require([
                 mapView.hitTest(e, opts)
                     .then((response) => {
                         if (response.results.length == 1) {
-                            console.log(evt);
+                            console.log(evt.vertices);
                             const vertices = evt.vertices;
                             let vertex = [response.results[0].graphic.geometry.longitude, response.results[0].graphic.geometry.latitude];
                             
