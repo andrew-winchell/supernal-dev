@@ -125,9 +125,9 @@ require([
                         if (response.results.length == 1) {
                             console.log(response.results[0]);
                         } else if (response.results.length > 1) {
-                            console.log($("#hittest_many"))
+                            $("#hittest_many")[0].open = true;
                         } else {
-                            $("#hittest_zero")
+                            $("#hittest_zero")[0].open = true;
                         }
                     })
                 
