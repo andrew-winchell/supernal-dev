@@ -123,7 +123,7 @@ require([
                 mapView.hitTest(e, opts)
                     .then((response) => {
                         if (response.results.length) {
-                            console.log(response);
+                            console.log([response.results[0].graphic.latitude, response.results[0].graphic.latitude]);
                         }
                     })
             })
