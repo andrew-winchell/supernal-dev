@@ -125,7 +125,7 @@ require([
                         if (response.results.length == 1) {
                             console.log(response.results[0]);
                         } else if (response.results.length > 1) {
-                            console.log($("#hittest_many"))
+                            console.log($("#hittest_many")[0])
                         } else {
                             $("#hittest_zero")
                         }
@@ -134,6 +134,7 @@ require([
             })
         });
     });
+    
 
     /*
     const draw = new Draw ({
