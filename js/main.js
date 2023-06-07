@@ -142,6 +142,7 @@ require([
                             console.log(evt.vertices);
                             const vertices = evt.vertices;
                             let vertex = [response.results[0].graphic.geometry.longitude, response.results[0].graphic.geometry.latitude];
+                            console.log(vertex)
                             vertices.push(vertex);
                             
                             const graphic = new Graphic ({
