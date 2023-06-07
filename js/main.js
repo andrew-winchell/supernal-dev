@@ -139,11 +139,11 @@ require([
                 mapView.hitTest(e, opts)
                     .then((response) => {
                         if (response.results.length == 1) {
-                            console.log(evt.vertices);
+                            console.log(response.results[0]);
                             const vertices = evt.vertices;
                             let vertex = [response.results[0].graphic.geometry.longitude, response.results[0].graphic.geometry.latitude];
-                            console.log(vertex)
-                            vertices.push(vertex);
+                            //console.log(vertex)
+                            //vertices.push(vertex);
                             
                             const graphic = new Graphic ({
                                 geometry: {
