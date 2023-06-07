@@ -127,8 +127,11 @@ require([
                 if (graphic) {
                     const graphicTemplate = graphic.getEffectivePopupTemplate();
                     console.log(graphic)
+                    return;
                 }
+                return;
             })
+            return;
         });
     });
 
