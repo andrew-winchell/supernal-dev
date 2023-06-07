@@ -127,7 +127,7 @@ require([
                         } else if (response.results.length > 1) {
                             console.log($("#hittest_many"))
                         } else {
-                            $("#hittest_zero").open
+                            $("#hittest_zero")
                         }
                     })
                 
