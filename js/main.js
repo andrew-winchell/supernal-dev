@@ -149,7 +149,7 @@ require([
                             const graphic = new Graphic ({
                                 geometry: {
                                     type: "polyline",
-                                    paths: vertices,
+                                    paths: vertices.slice(1),
                                     spatialReference: mapView.spatialReference
                                 },
                                 symbol: {
