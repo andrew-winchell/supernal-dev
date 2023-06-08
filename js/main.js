@@ -115,7 +115,11 @@ require([
     });
 
     const draw = new Draw ({
-        view: mapView
+        view: mapView,
+        snappingOptions: {
+          enabled: true,
+          featureSources: [{ layer: navaidsLyr, enabled: true }]
+        }
     });
 
     $("#add-pt-btn").on("click", () => {
