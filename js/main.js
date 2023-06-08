@@ -168,8 +168,10 @@ require([
     });
 
     sketch.on("create", (evt) => {
-        if (evt.toolEventInfo.type === "vertex-add") {
-            console.log(evt)
+        while (evt.state != "complete") {
+            if (evt.toolEventInfo.type === "vertex-add") {
+                console.log(evt)
+            }
         }
 
         if (evt.state === "complete") {
