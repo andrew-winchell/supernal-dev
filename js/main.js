@@ -76,6 +76,7 @@ require([
     });
     
     const graphicsLyr = new GraphicsLayer ({
+        title: "Proposed Route",
         graphics: [],
         snappingOptions: {
             enabled: true,
