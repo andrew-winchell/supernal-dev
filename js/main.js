@@ -11,9 +11,10 @@ require([
     "esri/layers/FeatureLayer",
     "esri/layers/GeoJSONLayer",
     "esri/layers/ElevationLayer",
-    "esri/views/draw/Draw"
+    "esri/views/draw/Draw",
+    "esri/widgets/LayerList"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -108,6 +109,12 @@ require([
     };
     appConfig.activeView = appConfig.mapView;
 
+    let layerlist = new LayerList ({
+        view: mapView
+    });
+
+    mapView.ui.add(layerlist, { position: "top-right" });
+    
     $("#create-route").on("click", () => {
         console.log("Open Waypoint List");
         $("#waypoint-list").css("display", "block");
