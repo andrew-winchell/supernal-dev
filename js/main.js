@@ -131,7 +131,7 @@ require([
     });
 
     function createVertice (evt) {
-        let vertex = []
+        vertex = []
 
         mapView.on("pointer-down", (hit) => {
             const opts = {
