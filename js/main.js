@@ -144,6 +144,7 @@ require([
         const sketch = new Sketch ({
             layer: graphicsLyr,
             view: mapView,
+            availableCreateTools: ["polyline"],
             snappingOptions: {
                 enabled: true,
                 featureSources: [
@@ -154,6 +155,8 @@ require([
                 ]
             }
         });
+
+        mapView.ui.add(sketch, "top-right");
 
 
 
