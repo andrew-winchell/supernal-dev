@@ -171,6 +171,7 @@ require([
         console.log(evt)
         if (evt.state === "complete") {
             console.log("Route Complete");
+            evt.state = "cancel";
             mapView.ui.remove(sketch);
             sketch.activeTool = null
         }
