@@ -124,7 +124,12 @@ require([
         const action = draw.create("polyline");
         action.on (
             [
-                "vertex-add"
+                "vertex-add",
+                "vertex-remove",
+                "cursor-update",
+                "redo",
+                "undo",
+                "draw-complete"
             ],
             updateVertices
         )
