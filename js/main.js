@@ -142,6 +142,7 @@ require([
     }
     function createVertices (evt) {
         const vertices = evt.vertices;
+        view.graphics.removeAll();
 
 
         const graphic = new Graphic ({
