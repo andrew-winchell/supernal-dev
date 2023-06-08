@@ -172,9 +172,21 @@ require([
             console.log("Route Complete");
             mapView.ui.remove(sketch);
         } else if (evt.toolEventInfo.type === "vertex-add") {
-            console.log(evt)
+            selectVertice(evt.graphic.geometry.paths[-1])
         }
     })
+
+    function selectVertice (geom) {
+        const query = {
+            geometry: geom,
+            outFields: ["*"]
+        };
+
+        navaidsLyr.queryFeatures(query)
+            .then((results) => {
+                console.log(results)
+            })
+    }
 
     $("#add-pt-btn").on("click", () => {
 
