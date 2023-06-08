@@ -178,6 +178,7 @@ require([
 
     function selectVertice (geom) {
         const query = {
+            where: "1=1"
             geometry: geom,
             spatialRelationship: "intersects",
             returnGeometry: true,
