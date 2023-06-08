@@ -173,7 +173,6 @@ require([
             evt.state = "cancel";
             mapView.ui.remove(sketch);
             sketch.activeTool = null;
-            selectFeatures(evt.graphic.geometry)
         }
     })
 
