@@ -74,6 +74,14 @@ require([
     const classAirspaceLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0"
     });
+    
+    const graphicsLyr = new GraphicsLayer ({
+        graphics: [],
+        snappingOptions: {
+            enabled: true,
+            featureSources: [{ layer: navaidsLyr, enabled: true }]
+        }
+    });
 
     const route = new GeoJSONLayer ({
         title: "Proposed Route",
@@ -87,7 +95,7 @@ require([
     const map = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
-        layers: [navaidsLyr]
+        layers: [navaidsLyr, graphicsLyr]
     });
 
     const mapView = new MapView ({
@@ -114,7 +122,7 @@ require([
     });
 
     mapView.ui.add(layerlist, { position: "top-right" });
-    
+
     $("#create-route").on("click", () => {
         console.log("Open Waypoint List");
         $("#waypoint-list").css("display", "block");
@@ -152,15 +160,6 @@ require([
             const result = createVertices(evt);
         }
     }
-
-    const graphicsLyr = new GraphicsLayer ({
-        graphics: [],
-        snappingOptions: {
-            enabled: true,
-            featureSources: [{ layer: navaidsLyr, enabled: true }]
-        }
-    })
-
     function createVertices (evt) {
         const vertices = evt.vertices;
         graphicsLyr.graphics.removeAll();
