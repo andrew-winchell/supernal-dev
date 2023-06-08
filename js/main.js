@@ -148,7 +148,7 @@ require([
                 });
         });
 
-        return;
+        $("#add-pt-btn").off("click");
 
                             /*const vertices = evt.vertices;
                             console.log(vertices)
