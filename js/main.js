@@ -141,8 +141,8 @@ require([
             mapView.hitTest(hit, opts)
                 .then((hitResponse) => {
                     if (hitResponse.results.length == 1) {
-                        vertex.push(response.results[0].graphic.geometry.longitude);
-                        vertex.push(response.results[0].graphic.geometry.latitude);
+                        vertex.push(hitResponse.results[0].graphic.geometry.longitude);
+                        vertex.push(hitResponse.results[0].graphic.geometry.latitude);
                     }
                 });
         });
