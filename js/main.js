@@ -131,16 +131,25 @@ require([
     });
 
     function createVertice (evt) {
-        mapView.when(() => {
-            mapView.on("pointer-down", (e) => {
-                const opts = {
-                    include: [navaidsLyr]
-                };
-                mapView.hitTest(e, opts)
-                    .then((response) => {
-                        if (response.results.length == 1) {
-                            const vertices = evt.vertices;
-                            let vertex = [response.results[0].graphic.geometry.longitude, response.results[0].graphic.geometry.latitude];
+        let vertex = []
+
+        mapView.on("pointer-down", (hit) => {
+            const opts = {
+                include: [navaidsLyr]
+            };
+
+            mapView.hitTest(hit, opts)
+                .then((hitResponse) => {
+                    if (hitResponse.results.length == 1) {
+                        vertex.push(response.results[0].graphic.geometry.longitude);
+                        vertex.push(response.results[0].graphic.geometry.latitude);
+                    }
+                });
+        });
+
+        console.log(vertex)
+
+                            /*const vertices = evt.vertices;
                             console.log(vertices)
                             console.log(vertex)
                             mapView.graphics.removeAll();
@@ -168,7 +177,7 @@ require([
                         }
                     })
             })
-        });
+        });*/
     }
 
     /*
