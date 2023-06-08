@@ -173,7 +173,7 @@ require([
             mapView.ui.remove(sketch);
         } else if (evt.toolEventInfo.type === "vertex-add") {
             let mapPt = evt.graphic.geometry.paths[0].slice(-1);
-            selectVertice(mapView.toMap(evt.graphic.geometry.paths[0].slice(-1)))
+            selectVertice(mapView.toMap(mapPt))
             console.log(mapPt)
             //console.log(evt.graphic.geometry.paths[0],evt.graphic.geometry.paths[0].slice(-1))
         }
@@ -192,94 +192,7 @@ require([
                 //console.log(results)
             })
     }
-
-    $("#add-pt-btn").on("click", () => {
-
-
-
-
-
-        /*mapView.focus();
-
-        const action = draw.create("polyline");
-        action.on (
-            [
-                "vertex-add",
-                "vertex-remove",
-                "cursor-update",
-                "redo",
-                "undo",
-                "draw-complete"
-            ],
-            updateVertices
-        )*/
-    });
-
-    function updateVertices (evt) {
-        if (evt.vertices.length > 1) {
-            const result = createVertices(evt);
-        }
-    }
-    function createVertices (evt) {
-        const vertices = evt.vertices;
-        graphicsLyr.graphics.removeAll();
-
-
-        const graphic = new Graphic ({
-            geometry: {
-                type: "polyline",
-                paths: vertices,
-                spatialReference: mapView.spatialReference
-            },
-            symbol: {
-                type: "simple-line", 
-                color: [0,0,0],
-                width: 3,
-                cap: "round",
-                join: "round"
-            }
-        });
-        graphicsLyr.graphics.add(graphic);
-    }
-
     /*
-    $("#add-pt-btn").on("click", () => {
-        action.on(
-            [
-                "vertex-add",
-                "vertex-remove",
-                "cursor-update",
-                "redo",
-                "undo",
-                "draw-complete"
-            ],
-            createRoute
-        );
-
-        function createRoute (evt) {
-            console.log(evt)
-            const vertices = evt.vertices;
-            mapView.graphics.removeAll();
-
-            const graphic = new Graphic ({
-                geometry: {
-                    type: "polyline",
-                    paths: vertices,
-                    spatialReference: mapView.spatialReference
-                },
-                symbol: {
-                    type: "simple-line",
-                    color: [0,0,0],
-                    width: 4,
-                    cap: "round",
-                    join: "round"
-                }
-            });
-
-            mapView.graphics.add(graphic);
-        }
-
-        
         mapView.when(() => {
             const elevation = new ElevationLayer ({
                 url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
