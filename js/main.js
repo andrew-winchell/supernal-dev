@@ -154,7 +154,7 @@ require([
     });
     sketch.viewModel.polylineSymbol = {
         type: "simple-line",
-        color: [0, 255, 255],
+        color: [0, 200, 200],
         width: 3,
         cap: "round",
         join: "round"
