@@ -168,13 +168,11 @@ require([
     });
 
     sketch.on("create", (evt) => {
-        if (evt.toolEventInfo.type === "vertex-add") {
-            console.log(evt)
-        }
-        
         if (evt.state === "complete") {
             console.log("Route Complete");
             mapView.ui.remove(sketch);
+        } else if (evt.toolEventInfo.type === "vertex-add") {
+            console.log(evt)
         }
     })
 
