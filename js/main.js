@@ -142,7 +142,7 @@ require([
     }
     function createVertices (evt) {
         const vertices = evt.vertices;
-        view.graphics.removeAll();
+        mapView.graphics.removeAll();
 
 
         const graphic = new Graphic ({
