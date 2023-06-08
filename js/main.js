@@ -131,9 +131,9 @@ require([
     });
 
     function createVertice (evt) {
-        var vertex = []
-
-        mapView.on("pointer-down", (hit) => {
+        let vertex = [];
+        
+            mapView.on("pointer-down", (hit) => {
             const opts = {
                 include: [navaidsLyr]
             };
@@ -143,6 +143,7 @@ require([
                     if (hitResponse.results.length == 1) {
                         vertex.push(hitResponse.results[0].graphic.geometry.longitude);
                         vertex.push(hitResponse.results[0].graphic.geometry.latitude);
+                        console.log(vertex)
                     }
                 });
         });
