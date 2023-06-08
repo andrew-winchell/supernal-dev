@@ -149,7 +149,7 @@ require([
                 enabled: true,
                 featureSources: [
                     {
-                        layer: graphicsLyr,
+                        layer: navaidsLyr,
                         enabled: true
                     }
                 ]
