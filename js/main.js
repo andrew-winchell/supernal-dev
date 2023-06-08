@@ -132,7 +132,7 @@ require([
 
     function createVertice (evt) {
         let vertex = [];
-        
+
             mapView.on("pointer-down", (hit) => {
             const opts = {
                 include: [navaidsLyr]
@@ -148,7 +148,7 @@ require([
                 });
         });
 
-        console.log(vertex)
+        return;
 
                             /*const vertices = evt.vertices;
                             console.log(vertices)
