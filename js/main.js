@@ -179,6 +179,7 @@ require([
         if (evt.state === "complete") {
             console.log("Route Complete");
             mapView.ui.remove(sketch);
+            sketch.activeTool = null
         }
     })
 
