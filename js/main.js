@@ -12,9 +12,10 @@ require([
     "esri/layers/GeoJSONLayer",
     "esri/layers/ElevationLayer",
     "esri/views/draw/Draw",
-    "esri/widgets/LayerList"
+    "esri/widgets/LayerList",
+    "esri/widgets/Sketch"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -140,7 +141,25 @@ require([
     });
 
     $("#add-pt-btn").on("click", () => {
-        mapView.focus();
+        const sketch = new Sketch ({
+            layer: graphicsLyr,
+            view: mapView,
+            snappingOptions: {
+                enabled: true,
+                featureSources: [
+                    {
+                        layer: graphicsLyr,
+                        enabled: true
+                    }
+                ]
+            }
+        });
+
+
+
+
+
+        /*mapView.focus();
 
         const action = draw.create("polyline");
         action.on (
@@ -153,7 +172,7 @@ require([
                 "draw-complete"
             ],
             updateVertices
-        )
+        )*/
     });
 
     function updateVertices (evt) {
