@@ -179,6 +179,8 @@ require([
     function selectVertice (geom) {
         const query = {
             geometry: geom,
+            spatialRelationship: "intersects",
+            returnGeometry: true,
             outFields: ["*"]
         };
 
