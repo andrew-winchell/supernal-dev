@@ -173,7 +173,7 @@ require([
             console.log("Route Complete");
             evt.state = "cancel";
             mapView.ui.remove(sketch);
-            sketch.activeTool = null
+            sketch.activeTool = null;
         }
     })
 
