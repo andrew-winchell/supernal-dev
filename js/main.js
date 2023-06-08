@@ -172,9 +172,10 @@ require([
             console.log("Route Complete");
             mapView.ui.remove(sketch);
         } else if (evt.toolEventInfo.type === "vertex-add") {
-            selectVertice(mapView.toMap(evt))
-            console.log(mapView.toMap(evt.graphic.geometry.paths[0].slice(-1)))
-            console.log(evt.graphic.geometry.paths[0],evt.graphic.geometry.paths[0].slice(-1))
+            let mapPt = evt;
+            selectVertice(mapView.toMap(evt.graphic.geometry.paths[0].slice(-1)))
+            console.log(mapPt)
+            //console.log(evt.graphic.geometry.paths[0],evt.graphic.geometry.paths[0].slice(-1))
         }
     })
 
