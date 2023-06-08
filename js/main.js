@@ -143,12 +143,11 @@ require([
                     if (hitResponse.results.length == 1) {
                         vertex.push(hitResponse.results[0].graphic.geometry.longitude);
                         vertex.push(hitResponse.results[0].graphic.geometry.latitude);
-                        console.log(vertex)
+                        console.log(hitResponse.results[0].graphic)
+                        
                     }
                 });
         });
-
-        $("#add-pt-btn").off("click");
 
                             /*const vertices = evt.vertices;
                             console.log(vertices)
