@@ -125,48 +125,57 @@ require([
 
     mapView.ui.add(layerlist, { position: "top-right" });
 
-    $("#create-route").on("click", () => {
-        console.log("Open Waypoint List");
-        $("#waypoint-list").css("display", "block");
-        
-        const sketch = new Sketch ({
-            layer: graphicsLyr,
-            view: mapView,
-            availableCreateTools: ["polyline"],
-            snappingOptions: {
-                enabled: true,
-                featureSources: [
-                    {
-                        layer: navaidsLyr,
-                        enabled: true
-                    }
-                ]
-            }
-        });
-
-        sketch.visibleElements = {
+    const sketch = new Sketch ({
+        layer: graphicsLyr,
+        view: mapView,
+        availableCreateTools: ["polyline"],
+        snappingOptions: {
+            enabled: true,
+            featureSources: [
+                {
+                    layer: navaidsLyr,
+                    enabled: true
+                }
+            ]
+        },
+        visibleElements: {
             createTools: {
-              point: false,
-              circle: false,
-              polygon: false,
-              rectangle: false
+                point: false,
+                circle: false,
+                polygon: false,
+                rectangle: false
             },
-            selectionTools:{
-              "lasso-selection": false,
-              "rectangle-selection": false
+            selectionTools: {
+                "lasso-selection": false,
+                "rectangle-selection": false
             },
             settingsMenu: false
-          }
+        }
+    });
+    /*
+    sketch.visibleElements = {
+        createTools: {
+          point: false,
+          circle: false,
+          polygon: false,
+          rectangle: false
+        },
+        selectionTools:{
+          "lasso-selection": false,
+          "rectangle-selection": false
+        },
+        settingsMenu: false
+      }
+      */
+
+    $("#create-route").on("click", () => {
+        //console.log("Open Waypoint List");
+        //$("#waypoint-list").css("display", "block");
 
         mapView.ui.add(sketch, "top-right");
-    });
+        
 
-    const draw = new Draw ({
-        view: mapView,
-        snappingOptions: {
-          enabled: true,
-          featureSources: [{ layer: navaidsLyr, enabled: true }]
-        }
+
     });
 
     $("#add-pt-btn").on("click", () => {
