@@ -7,12 +7,13 @@ require([
     "esri/Map",
     "esri/views/MapView",
     "esri/Graphic",
+    "esri/layers/GraphicsLayer",
     "esri/layers/FeatureLayer",
     "esri/layers/GeoJSONLayer",
     "esri/layers/ElevationLayer",
     "esri/views/draw/Draw"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -144,9 +145,18 @@ require([
             const result = createVertices(evt);
         }
     }
+
+    const graphicsLyr = new GraphicsLayer ({
+        graphics: [],
+        snappingOptions: {
+            enabled: true,
+            featureSources: [{ layer: navaidsLyr, enabled: true }]
+        }
+    })
+
     function createVertices (evt) {
         const vertices = evt.vertices;
-        mapView.graphics.removeAll();
+        graphicsLyr.graphics.removeAll();
 
 
         const graphic = new Graphic ({
@@ -163,8 +173,7 @@ require([
                 join: "round"
             }
         });
-
-        mapView.graphics.add(graphic);
+        graphicsLyr.graphics.add(graphic);
     }
 
     /*
