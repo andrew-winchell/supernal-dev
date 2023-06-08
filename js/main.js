@@ -137,12 +137,12 @@ require([
     }
     function createVertices (evt) {
         const vertices = evt.vertices;
-        mapView.graphics.removeAll();
+
 
         const graphic = new Graphic ({
             geometry: {
                 type: "polyline",
-                paths: "vertices",
+                paths: vertices,
                 spatialReference: mapView.spatialReference
             },
             symbol: {
@@ -153,7 +153,7 @@ require([
                 join: "round"
             }
         });
-        
+
         mapView.graphics.add(graphic);
     }
 
