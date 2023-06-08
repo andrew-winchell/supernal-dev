@@ -168,6 +168,7 @@ require([
     });
 
     sketch.on("create", (evt) => {
+        console.log(evt)
         if (evt.state === "complete") {
             console.log("Route Complete");
             mapView.ui.remove(sketch);
