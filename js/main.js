@@ -172,7 +172,7 @@ require([
             console.log("Route Complete");
             mapView.ui.remove(sketch);
         } else if (evt.toolEventInfo.type === "vertex-add") {
-            let mapPt = evt;
+            let mapPt = evt.graphic.geometry.paths[0].slice(-1);
             selectVertice(mapView.toMap(evt.graphic.geometry.paths[0].slice(-1)))
             console.log(mapPt)
             //console.log(evt.graphic.geometry.paths[0],evt.graphic.geometry.paths[0].slice(-1))
@@ -189,7 +189,7 @@ require([
 
         navaidsLyr.queryFeatures(query)
             .then((results) => {
-                console.log(results)
+                //console.log(results)
             })
     }
 
