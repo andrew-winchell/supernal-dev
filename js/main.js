@@ -152,21 +152,13 @@ require([
             settingsMenu: false
         }
     });
-    /*
-    sketch.visibleElements = {
-        createTools: {
-          point: false,
-          circle: false,
-          polygon: false,
-          rectangle: false
-        },
-        selectionTools:{
-          "lasso-selection": false,
-          "rectangle-selection": false
-        },
-        settingsMenu: false
+    sketch.viewModel.polylineSymbol = {
+        type: "simple-line",
+        color: [0, 100, 100],
+        width: 3,
+        cap: "round",
+        join: "round"
       }
-      */
 
     $("#create-route").on("click", () => {
         //console.log("Open Waypoint List");
