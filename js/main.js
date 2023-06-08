@@ -173,10 +173,14 @@ require([
         //$("#waypoint-list").css("display", "block");
 
         mapView.ui.add(sketch, "top-right");
-        
-
-
     });
+
+    sketch.on("create", (evt) => {
+        if (evt.state === "complete") {
+            console.log("Route Complete");
+            mapView.ui.remove(sketch);
+        }
+    })
 
     $("#add-pt-btn").on("click", () => {
 
