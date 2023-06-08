@@ -126,58 +126,35 @@ require([
             [
                 "vertex-add"
             ],
-            createVertice
+            updateVertices
         )
     });
 
-    function createVertice (evt) {
-        let vertex = [];
+    function updateVertices (evt) {
+        if (evt.vertices.length > 1) {
+            const result = createVertices(evt);
+        }
+    }
+    function createVertices (evt) {
+        const vertices = evt.vertices;
+        mapView.graphics.removeAll();
 
-            mapView.on("pointer-down", (hit) => {
-            const opts = {
-                include: [navaidsLyr]
-            };
-
-            mapView.hitTest(hit, opts)
-                .then((hitResponse) => {
-                    if (hitResponse.results.length == 1) {
-                        vertex.push(hitResponse.results[0].graphic.geometry.longitude);
-                        vertex.push(hitResponse.results[0].graphic.geometry.latitude);
-                        console.log(hitResponse.results[0].graphic)
-                        
-                    }
-                });
+        const graphic = new Graphic ({
+            geometry: {
+                type: "polyline",
+                paths: "vertices",
+                spatialReference: mapView.spatialReference
+            },
+            symbol: {
+                type: "simple-line", 
+                color: [0,0,0],
+                width: 3,
+                cap: "round",
+                join: "round"
+            }
         });
-
-                            /*const vertices = evt.vertices;
-                            console.log(vertices)
-                            console.log(vertex)
-                            mapView.graphics.removeAll();
-                            
-                            const graphic = new Graphic ({
-                                geometry: {
-                                    type: "polyline",
-                                    paths: vertices,
-                                    spatialReference: mapView.spatialReference
-                                },
-                                symbol: {
-                                    type: "simple-line",
-                                    color: [0,0,0],
-                                    width: 4,
-                                    cap: "round",
-                                    join: "round"
-                                }
-                            })
-                            mapView.graphics.add(graphic);
-
-                        } else if (response.results.length > 1) {
-                            $("#hittest_many")[0].open = true;
-                        } else {
-                            $("#hittest_zero")[0].open = true;
-                        }
-                    })
-            })
-        });*/
+        
+        mapView.graphics.add(graphic);
     }
 
     /*
