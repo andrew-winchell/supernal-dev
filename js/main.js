@@ -168,12 +168,12 @@ require([
     });
 
     sketch.on("create", (evt) => {
-        console.log(evt)
         if (evt.state === "complete") {
             console.log("Route Complete");
             evt.state = "cancel";
             mapView.ui.remove(sketch);
             sketch.activeTool = null;
+            selectFeatures(evt.graphic.geometry)
         }
     })
 
