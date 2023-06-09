@@ -68,20 +68,36 @@ require([
             ]
         }
     });
-    
-    const obstaclesSymbol = {
-        type: "simple",
-        symbol: {
-            type: "picture-marker",
-            url: "media/obstacle.png",
-            contentType: "image/png",
-            width: "12px",
-            height: "18.33px"
-        }
-    }
+
     const obstaclesLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0",
         title: "OBSTACLES",
+        popupTemplate: {
+            title: "OBSTACLES",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "Type_Code",
+                            label: "Type"
+                        },
+                        {
+                            fieldName: "OAS_Number",
+                            label: "OAS Number"
+                        },
+                        {
+                            fieldName: "Quantity",
+                            label: "Quantity"
+                        },
+                        {
+                            fieldName: "AMSL",
+                            label: "AMSL"
+                        }
+                    ]
+                }
+            ]
+        },
         renderer: {
             type: "simple",
             symbol: {
@@ -90,6 +106,21 @@ require([
                 contentType: "image/png",
                 width: "12px",
                 height: "18.33px"
+            }
+        },
+        labelingInfo: {
+            symbol: {
+                type: "text",
+                color: "black",
+                font: {
+                    family: "Playfair Display",
+                    size: 10,
+                    weight: "normal"
+                }
+            },
+            labelPlacement: "above-center",
+            labelExpressionInfo: {
+                expression: "$feature.AMSL"
             }
         },
         minScale: 500000 
