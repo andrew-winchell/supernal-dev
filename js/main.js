@@ -248,21 +248,28 @@ require([
         }
     });
 
-    const map = new Map ({
+    const map2D = new Map ({
+        basemap: "topo-vector",
+        ground: "world-elevation",
+        layers: [navaidsLyr, obstaclesLyr, desPointsLyr, graphicsLyr]
+    });
+
+    const map3D = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
         layers: [navaidsLyr, obstaclesLyr, desPointsLyr, graphicsLyr]
     });
 
     const mapView = new MapView ({
-        map: map,
+        map: map2D,
         container: "view-div",
         zoom: 4,
         center: [-97, 39]
     });
 
     const sceneView = new SceneView ({
-        map: map
+        map: map3D,
+        container: "inset-div"
     });
 
     const appConfig = {
