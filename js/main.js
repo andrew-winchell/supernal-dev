@@ -230,6 +230,79 @@ require([
         minScale: 1500000
     });
 
+    const airportsLyr = new FeatureLayer ({
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/US_Airport/FeatureServer/0",
+        title: "Airports",
+        renderer: {
+            type: "unique-value",
+            field: "TYPE_CODE",
+            defaultSymbol: { type: "simple-fill" },
+            uniqueValueInfos: [
+                {
+                    value: "AD",
+                    symbol: {
+                        type: "picture-marker",
+                        url: "",
+                        contentType: "image/png",
+                        width: "10px",
+                        height: "10px"
+                    }
+                },
+                {
+                    value: "HP",
+                    symbol: {
+                        type: "picture-marker",
+                        url: "media/heliport.png",
+                        contentType: "image/png",
+                        width: "10px",
+                        height: "10px"
+                    }
+                },
+                {
+                    value: "SP",
+                    symbol: {
+                        type: "picture-marker",
+                        url: "",
+                        contentType: "image/png",
+                        width: "10px",
+                        height: "10px"
+                    }
+                },
+                {
+                    value: "UL",
+                    symbol: {
+                        type: "picture-marker",
+                        url: "",
+                        contentType: "image/png",
+                        width: "10px",
+                        height: "10px"
+                    }
+                },
+                {
+                    value: "GL",
+                    symbol: {
+                        type: "picture-marker",
+                        url: "",
+                        contentType: "image/png",
+                        width: "10px",
+                        height: "10px"
+                    }
+                },
+                {
+                    value: "BP",
+                    symbol: {
+                        type: "picture-marker",
+                        url: "",
+                        contentType: "image/png",
+                        width: "10px",
+                        height: "10px"
+                    }
+                }
+            ]
+        },
+        minScale: 2500000
+    })
+
     const classAirspaceLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0"
     });
@@ -251,7 +324,7 @@ require([
     const map2D = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
-        layers: [navaidsLyr, obstaclesLyr, desPointsLyr, graphicsLyr]
+        layers: [navaidsLyr, obstaclesLyr, desPointsLyr, airportsLyr, graphicsLyr]
     });
 
     /*
