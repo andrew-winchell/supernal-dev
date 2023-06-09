@@ -36,6 +36,7 @@ require([
 
     const navaidsLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0",
+        title: "NAVAIDS",
         popupTemplate: {
             title: "NAVAIDS",
             content: [
@@ -69,7 +70,14 @@ require([
     });
     
     const obstaclesLyr = new FeatureLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0"
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0",
+        title: "OBSTACLES",
+        renderer: {
+            type: "picture-marker",
+            url: "media/obstacle.png",
+            width: "24px",
+            height: "36.66px"
+        }
     });
 
     const classAirspaceLyr = new FeatureLayer ({
@@ -97,7 +105,7 @@ require([
     const map = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
-        layers: [navaidsLyr, graphicsLyr]
+        layers: [navaidsLyr, obstaclesLyr, graphicsLyr]
     });
 
     const mapView = new MapView ({
