@@ -244,8 +244,8 @@ require([
                         type: "picture-marker",
                         url: "media/aerodrome_civil.png",
                         contentType: "image/png",
-                        width: "12px",
-                        height: "12px"
+                        width: "15px",
+                        height: "15px"
                     }
                 },
                 {
@@ -254,8 +254,8 @@ require([
                         type: "picture-marker",
                         url: "media/heliport.png",
                         contentType: "image/png",
-                        width: "12px",
-                        height: "12px"
+                        width: "15px",
+                        height: "15px"
                     }
                 },
                 {
@@ -264,8 +264,8 @@ require([
                         type: "picture-marker",
                         url: "media/seaplane_base.png",
                         contentType: "image/png",
-                        width: "12px",
-                        height: "13.75px"
+                        width: "15px",
+                        height: "17.1875px"
                     }
                 },
                 {
