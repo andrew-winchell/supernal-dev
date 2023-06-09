@@ -236,25 +236,13 @@ require([
         renderer: {
             type: "unique-value",
             field: "TYPE_CODE",
-            field2: "MIL_CODE",
-            fieldDelimeter: ", ",
             defaultSymbol: { type: "simple-fill" },
             uniqueValueInfos: [
                 {
-                    value: "AD, CIVIL",
+                    value: "AD",
                     symbol: {
                         type: "picture-marker",
                         url: "media/aerodrome_civil.png",
-                        contentType: "image/png",
-                        width: "12px",
-                        height: "12px"
-                    }
-                },
-                {
-                    value: "AD, MIL",
-                    symbol: {
-                        type: "picture-marker",
-                        url: "media/aerodrome_mil.png",
                         contentType: "image/png",
                         width: "12px",
                         height: "12px"
