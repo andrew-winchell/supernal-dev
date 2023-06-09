@@ -13,9 +13,10 @@ require([
     "esri/layers/ElevationLayer",
     "esri/views/draw/Draw",
     "esri/widgets/LayerList",
-    "esri/widgets/Sketch"
+    "esri/widgets/Sketch",
+    "esri/widgets/Search"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch, Search) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -411,8 +412,12 @@ require([
     let layerlist = new LayerList ({
         view: mapView
     });
-
     mapView.ui.add(layerlist, { position: "top-right" });
+
+    let search = new Search ({
+        view: mapView,
+        container: search-widget
+    });
 
     /* POINT SKETCH SECTION WORKING
     const pointSketch = new Sketch ({
