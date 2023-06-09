@@ -425,7 +425,7 @@ require([
         view: mapView
     });
     let bgExpand = new Expand ({
-        view,
+        mapView,
         content: basemapGallery,
         expandIconClass: "esri-icon-basemap"
     });
