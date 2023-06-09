@@ -363,8 +363,8 @@ require([
       }
 
     $("#create-route").on("click", () => {
-        //console.log("Open Waypoint List");
-        //$("#waypoint-list").css("display", "block");
+        console.log("Open Waypoint List");
+        $("#waypoint-list").css("display", "block");
 
         mapView.ui.add(lineSketch, "top-right");
     });
