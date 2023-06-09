@@ -13,9 +13,10 @@ require([
     "esri/layers/ElevationLayer",
     "esri/views/draw/Draw",
     "esri/widgets/LayerList",
-    "esri/widgets/Sketch"
+    "esri/widgets/Sketch",
+    "esri/symbols/PictureMarkerSymbol"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch, PictureMarkerSymbol) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -69,12 +70,11 @@ require([
         }
     });
     
-    const obstaclesSymbol = {
-        type: "picture-marker",
+    const obstaclesSymbol = new PictureMarkerSymbol ({
         url: "media/obstacle.png",
         width: "24px",
         height: "36.66px"
-    }
+    })
     const obstaclesLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0",
         title: "OBSTACLES",
