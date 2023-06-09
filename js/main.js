@@ -163,57 +163,65 @@ require([
                 {
                     value: "RPT",
                     symbol: {
-                        type: "simple-fill",
-                        color: "red"
+                        type: "simple-marker",
+                        size: 3,
+                        color: [255, 0, 0]
                     }
                 },
                 {
                     value: "WPT",
                     symbol: {
-                        type: "simple-fill",
-                        color: "pink"
+                        type: "simple-marker",
+                        size: 3,
+                        color: [255, 180, 0]
                     }
                 },
                 {
                     value: "OTHER",
                     symbol: {
-                        type: "simple-fill",
-                        color: "gray"
+                        type: "simple-marker",
+                        size: 3,
+                        color: [200, 200, 200]
                     }
                 },
                 {
                     value: "NRS",
                     symbol: {
-                        type: "simple-fill",
-                        color: "orange"
+                        type: "simple-marker",
+                        size: 3,
+                        color: [255, 0, 0]
                     }
                 },
                 {
                     value: "RNAV",
                     symbol: {
-                        type: "simple-fill",
-                        color: "green"
+                        type: "simple-marker",
+                        size: 3,
+                        color: [255, 158, 244]
                     }
                 },
                 {
                     value: "CNF",
                     symbol: {
-                        type: "simple-fill",
-                        color: "yellow"
+                        type: "simple-marker",
+                        size: 3,
+                        color: [181, 0, 161]
                     }
                 },
                 {
                     value: "GND",
                     symbol: {
-                        type: "simple-fill",
-                        color: "teal"
+                        type: "simple-marker",
+                        size: 3,
+                        color: [0, 207, 3]
                     }
                 },
                 {
                     value: "MRPT",
                     symbol: {
-                        type: "simple-fill",
-                        color: "purple"
+                        type: "simple-marker",
+                        size: 3,
+                        color: [33, 52, 255]
                     }
                 }
             ]
