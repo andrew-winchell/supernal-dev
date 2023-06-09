@@ -66,7 +66,8 @@ require([
                     ]
                 }
             ]
-        }
+        },
+        minScale: 1500000
     });
 
     const obstaclesLyr = new FeatureLayer ({
@@ -233,7 +234,8 @@ require([
                     }
                 }
             ]
-        }
+        },
+        minScale: 1000000
     });
 
     const classAirspaceLyr = new FeatureLayer ({
