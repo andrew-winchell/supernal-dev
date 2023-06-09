@@ -165,7 +165,8 @@ require([
                     symbol: {
                         type: "simple-marker",
                         size: 3,
-                        color: [255, 0, 0]
+                        color: [255, 0, 0],
+                        outline: null
                     }
                 },
                 {
@@ -173,7 +174,8 @@ require([
                     symbol: {
                         type: "simple-marker",
                         size: 3,
-                        color: [255, 180, 0]
+                        color: [255, 180, 0],
+                        outline: null
                     }
                 },
                 {
@@ -181,7 +183,8 @@ require([
                     symbol: {
                         type: "simple-marker",
                         size: 3,
-                        color: [200, 200, 200]
+                        color: [200, 200, 200],
+                        outline: null
                     }
                 },
                 {
@@ -189,7 +192,8 @@ require([
                     symbol: {
                         type: "simple-marker",
                         size: 3,
-                        color: [255, 0, 0]
+                        color: [255, 0, 0],
+                        outline: null
                     }
                 },
                 {
@@ -197,7 +201,8 @@ require([
                     symbol: {
                         type: "simple-marker",
                         size: 3,
-                        color: [255, 158, 244]
+                        color: [255, 158, 244],
+                        outline: null
                     }
                 },
                 {
@@ -205,7 +210,8 @@ require([
                     symbol: {
                         type: "simple-marker",
                         size: 3,
-                        color: [181, 0, 161]
+                        color: [181, 0, 161],
+                        outline: null
                     }
                 },
                 {
@@ -213,7 +219,8 @@ require([
                     symbol: {
                         type: "simple-marker",
                         size: 3,
-                        color: [0, 207, 3]
+                        color: [0, 207, 3],
+                        outline: null
                     }
                 },
                 {
@@ -221,7 +228,8 @@ require([
                     symbol: {
                         type: "simple-marker",
                         size: 3,
-                        color: [33, 52, 255]
+                        color: [33, 52, 255],
+                        outline: null
                     }
                 }
             ]
