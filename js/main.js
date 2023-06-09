@@ -239,7 +239,10 @@ require([
         graphics: [],
         snappingOptions: {
             enabled: true,
-            featureSources: [{ layer: navaidsLyr, enabled: true }]
+            featureSources: [
+                { layer: navaidsLyr, enabled: true },
+                { layer: desPointsLyr, enabled: true }
+            ]
         }
     });
 
