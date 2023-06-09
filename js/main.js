@@ -156,70 +156,67 @@ require([
             ]
         },
         renderer: {
-            type: "simple",
-            symbol: {
-                type: "unique-values",
-                field: "TYPE_CODE",
-                defaultSymbol: { type: "simple-fill" },
-                uniqueValueInfos: [
-                    {
-                        value: "RPT",
-                        symbol: {
-                            type: "simple-fill",
-                            color: "red"
-                        }
-                    },
-                    {
-                        value: "WPT",
-                        symbol: {
-                            type: "simple-fill",
-                            color: "pink"
-                        }
-                    },
-                    {
-                        value: "OTHER",
-                        symbol: {
-                            type: "simple-fill",
-                            color: "gray"
-                        }
-                    },
-                    {
-                        value: "NRS",
-                        symbol: {
-                            type: "simple-fill",
-                            color: "orange"
-                        }
-                    },
-                    {
-                        value: "RNAV",
-                        symbol: {
-                            type: "simple-fill",
-                            color: "green"
-                        }
-                    },
-                    {
-                        value: "CNF",
-                        symbol: {
-                            type: "simple-fill",
-                            color: "yellow"
-                        }
-                    },
-                    {
-                        value: "GND",
-                        symbol: {
-                            type: "simple-fill",
-                            color: "teal"
-                        }
-                    },
-                    {
-                        value: "MRPT",
-                        symbol: {
-                            type: "simple-fill",
-                            color: "purple"
-                        }
+            type: "unique-value",
+            field: "TYPE_CODE",
+            defaultSymbol: { type: "simple-fill" },
+            uniqueValueInfos: [
+                {
+                    value: "RPT",
+                    symbol: {
+                        type: "simple-fill",
+                        color: "red"
                     }
-                ]
-            }
+                },
+                {
+                    value: "WPT",
+                    symbol: {
+                        type: "simple-fill",
+                        color: "pink"
+                    }
+                },
+                {
+                    value: "OTHER",
+                    symbol: {
+                        type: "simple-fill",
+                        color: "gray"
+                    }
+                },
+                {
+                    value: "NRS",
+                    symbol: {
+                        type: "simple-fill",
+                        color: "orange"
+                    }
+                },
+                {
+                    value: "RNAV",
+                    symbol: {
+                        type: "simple-fill",
+                        color: "green"
+                    }
+                },
+                {
+                    value: "CNF",
+                    symbol: {
+                        type: "simple-fill",
+                        color: "yellow"
+                    }
+                },
+                {
+                    value: "GND",
+                    symbol: {
+                        type: "simple-fill",
+                        color: "teal"
+                    }
+                },
+                {
+                    value: "MRPT",
+                    symbol: {
+                        type: "simple-fill",
+                        color: "purple"
+                    }
+                }
+            ]
         }
     });
 
