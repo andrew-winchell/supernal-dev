@@ -254,11 +254,13 @@ require([
         layers: [navaidsLyr, obstaclesLyr, desPointsLyr, graphicsLyr]
     });
 
+    /*
     const map3D = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
         layers: [navaidsLyr, desPointsLyr, graphicsLyr]
     });
+    */
 
     const mapView = new MapView ({
         map: map2D,
@@ -268,7 +270,7 @@ require([
     });
 
     const sceneView = new SceneView ({
-        map: map3D,
+        map: map2D,
         container: "inset-div"
     });
 
@@ -379,7 +381,7 @@ require([
     lineSketch.on("click", (evt) => {
         console.log(evt)
     });
-    
+
     lineSketch.on("create", (evt) => {
         if (evt.state === "complete") {
             console.log("Route Complete");
