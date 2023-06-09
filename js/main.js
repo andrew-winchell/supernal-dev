@@ -227,7 +227,7 @@ require([
                 }
             ]
         },
-        minScale: 1000000
+        minScale: 1500000
     });
 
     const classAirspaceLyr = new FeatureLayer ({
@@ -372,7 +372,6 @@ require([
     lineSketch.on("create", (evt) => {
         if (evt.state === "complete") {
             console.log("Route Complete");
-            mapView.ui.remove(lineSketch);
         } else if (evt.toolEventInfo.type === "vertex-add") {
             let mapPt = evt.graphic.geometry.paths[0].slice(-1);
             selectVertice(mapView.toMap(mapPt))
