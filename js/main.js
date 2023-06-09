@@ -272,7 +272,7 @@ require([
                     value: "UL",
                     symbol: {
                         type: "picture-marker",
-                        url: "",
+                        url: "media/ultralite_port.png",
                         contentType: "image/png",
                         width: "10px",
                         height: "10px"
@@ -282,7 +282,7 @@ require([
                     value: "GL",
                     symbol: {
                         type: "picture-marker",
-                        url: "",
+                        url: "media/gliderport.png",
                         contentType: "image/png",
                         width: "10px",
                         height: "10px"
@@ -292,7 +292,7 @@ require([
                     value: "BP",
                     symbol: {
                         type: "picture-marker",
-                        url: "",
+                        url: "media/balloonport.png",
                         contentType: "image/png",
                         width: "10px",
                         height: "10px"
