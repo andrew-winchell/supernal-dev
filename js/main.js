@@ -275,8 +275,8 @@ require([
                         type: "picture-marker",
                         url: "media/seaplane_base.png",
                         contentType: "image/png",
-                        width: "10px",
-                        height: "10px"
+                        width: "12px",
+                        height: "13.75px"
                     }
                 },
                 {
