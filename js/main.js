@@ -237,6 +237,7 @@ require([
             type: "unique-value",
             field: "TYPE_CODE",
             field2: "MIL_CODE",
+            fieldDelimeter: ", ",
             defaultSymbol: { type: "simple-fill" },
             uniqueValueInfos: [
                 {
