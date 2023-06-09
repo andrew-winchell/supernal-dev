@@ -236,14 +236,7 @@ require([
     
     const graphicsLyr = new GraphicsLayer ({
         title: "Proposed Route",
-        graphics: [],
-        snappingOptions: {
-            enabled: true,
-            featureSources: [
-                { layer: navaidsLyr, enabled: true },
-                { layer: desPointsLyr, enabled: true }
-            ]
-        }
+        graphics: []
     });
 
     const route = new GeoJSONLayer ({
@@ -295,6 +288,10 @@ require([
             featureSources: [
                 {
                     layer: navaidsLyr,
+                    enabled: true
+                },
+                {
+                    layer: desPointsLyr,
                     enabled: true
                 }
             ]
