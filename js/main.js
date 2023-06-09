@@ -91,7 +91,8 @@ require([
                 width: "12px",
                 height: "18.33px"
             }
-        }
+        },
+        minScale: 500000 
     });
 
     const classAirspaceLyr = new FeatureLayer ({
