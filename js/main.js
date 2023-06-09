@@ -233,6 +233,32 @@ require([
     const airportsLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/US_Airport/FeatureServer/0",
         title: "Airports",
+        popupTemplate: {
+            title: "Airports",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "IDENT",
+                            label: "Identifier"
+                        },
+                        {
+                            fieldName: "TYPE_CODE",
+                            label: "Type"
+                        },
+                        {
+                            fieldName: "MIL_CODE",
+                            label: "Military Code"
+                        },
+                        {
+                            fieldName: "NAME",
+                            label: "Name"
+                        }
+                    ]
+                }
+            ]
+        },
         renderer: {
             type: "unique-value",
             field: "TYPE_CODE",
@@ -274,8 +300,8 @@ require([
                         type: "picture-marker",
                         url: "media/ultralite_port.png",
                         contentType: "image/png",
-                        width: "10px",
-                        height: "10px"
+                        width: "15px",
+                        height: "15px"
                     }
                 },
                 {
@@ -284,8 +310,8 @@ require([
                         type: "picture-marker",
                         url: "media/gliderport.png",
                         contentType: "image/png",
-                        width: "10px",
-                        height: "10px"
+                        width: "15px",
+                        height: "15px"
                     }
                 },
                 {
@@ -294,8 +320,8 @@ require([
                         type: "picture-marker",
                         url: "media/balloonport.png",
                         contentType: "image/png",
-                        width: "10px",
-                        height: "10px"
+                        width: "15px",
+                        height: "15px"
                     }
                 }
             ]
