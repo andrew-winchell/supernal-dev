@@ -242,10 +242,10 @@ require([
                     value: "AD",
                     symbol: {
                         type: "picture-marker",
-                        url: "",
+                        url: "media/airport.png",
                         contentType: "image/png",
-                        width: "10px",
-                        height: "10px"
+                        width: "12px",
+                        height: "12px"
                     }
                 },
                 {
