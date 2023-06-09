@@ -330,7 +330,34 @@ require([
     })
 
     const classAirspaceLyr = new FeatureLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0"
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0",
+        definitionExpression: "LOCAL_TYPE = 'CLASS_B' OR LOCAL_TYPE = 'CLASS_C' OR LOCAL_TYPE = 'CLASS_D'",
+        popupTemplate: {
+            title: "Class Airspace",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "IDENT",
+                            label: "Identifier"
+                        },
+                        {
+                            fieldName: "TYPE_CODE",
+                            label: "Type"
+                        },
+                        {
+                            fieldName: "LOCAL_TYPE",
+                            label: "Local Type"
+                        },
+                        {
+                            fieldName: "ICAO_ID",
+                            label: "ICAO ID"
+                        }
+                    ]
+                }
+            ]
+        }
     });
     
     const graphicsLyr = new GraphicsLayer ({
@@ -350,7 +377,7 @@ require([
     const map2D = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
-        layers: [navaidsLyr, obstaclesLyr, desPointsLyr, airportsLyr, graphicsLyr]
+        layers: [navaidsLyr, obstaclesLyr, desPointsLyr, airportsLyr, classAirspaceLyr, graphicsLyr]
     });
 
     /*
