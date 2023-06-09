@@ -376,6 +376,10 @@ require([
         mapView.ui.add(lineSketch, "top-right");
     });
 
+    lineSketch.on("click", (evt) => {
+        console.log(evt)
+    });
+    
     lineSketch.on("create", (evt) => {
         if (evt.state === "complete") {
             console.log("Route Complete");
