@@ -69,15 +69,16 @@ require([
         }
     });
     
+    const obstaclesSymbol = {
+        type: "picture-marker",
+        url: "media/obstacle.png",
+        width: "24px",
+        height: "36.66px"
+    }
     const obstaclesLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0",
         title: "OBSTACLES",
-        renderer: {
-            type: "picture-marker",
-            url: "media/obstacle.png",
-            width: "24px",
-            height: "36.66px"
-        }
+        renderer: obstaclesSymbol
     });
 
     const classAirspaceLyr = new FeatureLayer ({
