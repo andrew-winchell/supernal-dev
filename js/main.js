@@ -416,7 +416,7 @@ require([
 
     let search = new Search ({
         view: mapView,
-        container: search-widget
+        container: "search-div"
     });
 
     /* POINT SKETCH SECTION WORKING
