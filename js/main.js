@@ -125,6 +125,44 @@ require([
 
     mapView.ui.add(layerlist, { position: "top-right" });
 
+    const pointSketch = new Sketch ({
+        layer: graphicsLyr,
+        view: mapView,
+        availableCreateTools: ["point"],
+        snappingOptions: {
+            enabled: true,
+            featureSources: [
+                {
+                    layer: navaidsLyr,
+                    enabled: true
+                }
+            ]
+        },
+        visibleElements: {
+            createTools: {
+                polygon: false,
+                polyline: false,
+                circle: false,
+                rectangle: false,
+            },
+            selectionTools: {
+                "lasso-selection": false,
+                "rectangle-selection": false
+            },
+            settingsMenu: false
+        }
+    });
+    pointSketch.viewModel.pointSymbol = {
+        type: "simple-point",
+        color: [255, 0, 0],
+        size: 4
+    }
+
+    $("#create-route").on("click", () => {
+        mapView.ui.add(pointSketch, "top-right");
+    })
+
+    /*  POLYLINE SKETCH SECTION WORKING
     const sketch = new Sketch ({
         layer: graphicsLyr,
         view: mapView,
@@ -192,6 +230,8 @@ require([
                 //console.log(results)
             })
     }
+    */
+
     /*
         mapView.when(() => {
             const elevation = new ElevationLayer ({
