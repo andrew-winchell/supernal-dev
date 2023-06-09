@@ -14,9 +14,10 @@ require([
     "esri/views/draw/Draw",
     "esri/widgets/LayerList",
     "esri/widgets/Sketch",
-    "esri/widgets/Search"
+    "esri/widgets/Search",
+    "esri/widgets/BasemapGallery"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch, Search) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -418,6 +419,11 @@ require([
         view: mapView,
         container: "search-div"
     });
+
+    let basemapGallery = new BasemapGallery ({
+        view: mapView
+    });
+    mapView.ui.add(basemapGallery, { position: "top-left" });
 
     /* POINT SKETCH SECTION WORKING
     const pointSketch = new Sketch ({
