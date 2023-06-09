@@ -279,6 +279,7 @@ require([
 
     mapView.ui.add(layerlist, { position: "top-right" });
 
+    /* POINT SKETCH SECTION WORKING
     const pointSketch = new Sketch ({
         layer: graphicsLyr,
         view: mapView,
@@ -319,9 +320,10 @@ require([
     $("#create-route").on("click", () => {
         mapView.ui.add(pointSketch, "top-right");
     })
+    */
 
-    /*  POLYLINE SKETCH SECTION WORKING
-    const sketch = new Sketch ({
+    
+    const lineSketch = new Sketch ({
         layer: graphicsLyr,
         view: mapView,
         availableCreateTools: ["polyline"],
@@ -330,6 +332,10 @@ require([
             featureSources: [
                 {
                     layer: navaidsLyr,
+                    enabled: true
+                },
+                {
+                    layer: desPointsLyr,
                     enabled: true
                 }
             ]
@@ -348,7 +354,7 @@ require([
             settingsMenu: false
         }
     });
-    sketch.viewModel.polylineSymbol = {
+    lineSketch.viewModel.polylineSymbol = {
         type: "simple-line",
         color: [0, 200, 200],
         width: 3,
@@ -360,13 +366,13 @@ require([
         //console.log("Open Waypoint List");
         //$("#waypoint-list").css("display", "block");
 
-        mapView.ui.add(sketch, "top-right");
+        mapView.ui.add(lineSketch, "top-right");
     });
 
-    sketch.on("create", (evt) => {
+    lineSketch.on("create", (evt) => {
         if (evt.state === "complete") {
             console.log("Route Complete");
-            mapView.ui.remove(sketch);
+            mapView.ui.remove(lineSketch);
         } else if (evt.toolEventInfo.type === "vertex-add") {
             let mapPt = evt.graphic.geometry.paths[0].slice(-1);
             selectVertice(mapView.toMap(mapPt))
@@ -388,7 +394,7 @@ require([
                 //console.log(results)
             })
     }
-    */
+    
 
     /*
         mapView.when(() => {
