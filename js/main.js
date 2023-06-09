@@ -130,7 +130,7 @@ require([
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/DesignatedPoints/FeatureServer/0",
         title: "Designated Points",
         popupTemplate: {
-            title: "Obstacles",
+            title: "Designated Points",
             content: [
                 {
                     type: "fields",
@@ -311,7 +311,7 @@ require([
     pointSketch.viewModel.pointSymbol = {
         type: "simple-marker",
         color: [255, 0, 0],
-        size: 4
+        size: 6
     }
 
     $("#create-route").on("click", () => {
