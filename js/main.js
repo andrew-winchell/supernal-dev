@@ -236,13 +236,24 @@ require([
         renderer: {
             type: "unique-value",
             field: "TYPE_CODE",
+            field2: "MIL_CODE",
             defaultSymbol: { type: "simple-fill" },
             uniqueValueInfos: [
                 {
-                    value: "AD",
+                    value: "AD, CIVIL",
                     symbol: {
                         type: "picture-marker",
-                        url: "media/airport.png",
+                        url: "media/aerodrome_civil.png",
+                        contentType: "image/png",
+                        width: "12px",
+                        height: "12px"
+                    }
+                },
+                {
+                    value: "AD, MIL",
+                    symbol: {
+                        type: "picture-marker",
+                        url: "media/aerodrome_mil.png",
                         contentType: "image/png",
                         width: "12px",
                         height: "12px"
@@ -262,7 +273,7 @@ require([
                     value: "SP",
                     symbol: {
                         type: "picture-marker",
-                        url: "",
+                        url: "media/seaplane_base.png",
                         contentType: "image/png",
                         width: "10px",
                         height: "10px"
