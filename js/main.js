@@ -301,7 +301,7 @@ require([
         }
     });
     pointSketch.viewModel.pointSymbol = {
-        type: "simple-point",
+        type: "simple-marker",
         color: [255, 0, 0],
         size: 4
     }
