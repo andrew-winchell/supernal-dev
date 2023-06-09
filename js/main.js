@@ -120,7 +120,7 @@ require([
             },
             labelPlacement: "above-center",
             labelExpressionInfo: {
-                expression: "$feature.AMSL"
+                expression: "$feature.AMSL + TextFormatting.NewLine + '(' + ')'"
             }
         },
         minScale: 500000 
