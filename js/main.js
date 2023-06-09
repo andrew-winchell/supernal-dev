@@ -71,9 +71,9 @@ require([
 
     const obstaclesLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0",
-        title: "OBSTACLES",
+        title: "Obstacles",
         popupTemplate: {
-            title: "OBSTACLES",
+            title: "Obstacles",
             content: [
                 {
                     type: "fields",
@@ -126,6 +126,37 @@ require([
         minScale: 500000 
     });
 
+    const desPointsLyr = new FeatureLayer ({
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/DesignatedPoints/FeatureServer/0",
+        title: "Designated Points",
+        popupTemplate: {
+            title: "Obstacles",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "IDENT",
+                            label: "Identifier"
+                        },
+                        {
+                            fieldName: "TYPE_CODE",
+                            label: "Type"
+                        },
+                        {
+                            fieldName: "MIL_CODE",
+                            label: "Military Code"
+                        },
+                        {
+                            fieldName: "NOTES_ID",
+                            label: "Notes ID"
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+
     const classAirspaceLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0"
     });
@@ -151,7 +182,7 @@ require([
     const map = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
-        layers: [navaidsLyr, obstaclesLyr, graphicsLyr]
+        layers: [navaidsLyr, obstaclesLyr, desPointsLyr, graphicsLyr]
     });
 
     const mapView = new MapView ({
