@@ -611,7 +611,7 @@ require([
             console.log("Route Complete");
         } else if (newVert.toolEventInfo.type === "vertex-add") {
             console.log(newVert);
-            let mapPt = mapView.toMap(newVert.toolEventInfo.added)
+            let mapPt = mapView.toScreen(newVert.toolEventInfo.added[0])
             console.log(mapPt)
             //let mapPt = evt.graphic.geometry.paths[0].slice(-1);
             //selectVertice(mapView.toMap(mapPt))
