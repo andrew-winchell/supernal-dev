@@ -45,11 +45,6 @@ html, body, #view-div {
 
 #waypoint-list {
   display: none;
-  position: absolute;
-  height: 40%;
-  width: 200px;
-  bottom: 35px;
-  left: 20px;
   background-color: white;
   border: 3px solid black;
 }
