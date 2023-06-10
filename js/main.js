@@ -162,9 +162,9 @@ require([
         renderer: {
             type: "unique-value",
             field: "TYPE_CODE",
-            defaultSymbol: { type: "simple-fill" },
             uniqueValueInfos: [
                 {
+                    label: "Regular Public Transport",
                     value: "RPT",
                     symbol: {
                         type: "simple-marker",
@@ -173,6 +173,7 @@ require([
                     }
                 },
                 {
+                    label: "Waypoint",
                     value: "WPT",
                     symbol: {
                         type: "simple-marker",
@@ -181,6 +182,7 @@ require([
                     }
                 },
                 {
+                    label: "Other",
                     value: "OTHER",
                     symbol: {
                         type: "simple-marker",
@@ -189,6 +191,7 @@ require([
                     }
                 },
                 {
+                    label: "Navigation Reference System",
                     value: "NRS",
                     symbol: {
                         type: "simple-marker",
@@ -197,6 +200,7 @@ require([
                     }
                 },
                 {
+                    label: "Area Navigation",
                     value: "RNAV",
                     symbol: {
                         type: "simple-marker",
@@ -205,6 +209,7 @@ require([
                     }
                 },
                 {
+                    label: "Computer Navigation Fix",
                     value: "CNF",
                     symbol: {
                         type: "simple-marker",
@@ -213,6 +218,7 @@ require([
                     }
                 },
                 {
+                    label: "Ground Movement Control",
                     value: "GND",
                     symbol: {
                         type: "simple-marker",
@@ -265,9 +271,9 @@ require([
         renderer: {
             type: "unique-value",
             field: "TYPE_CODE",
-            defaultSymbol: { type: "simple-fill" },
             uniqueValueInfos: [
                 {
+                    label: "Aerodrome",
                     value: "AD",
                     symbol: {
                         type: "picture-marker",
@@ -278,6 +284,7 @@ require([
                     }
                 },
                 {
+                    label: "Heliport",
                     value: "HP",
                     symbol: {
                         type: "picture-marker",
@@ -288,6 +295,7 @@ require([
                     }
                 },
                 {
+                    label: "Seaplane Base",
                     value: "SP",
                     symbol: {
                         type: "picture-marker",
@@ -298,6 +306,7 @@ require([
                     }
                 },
                 {
+                    label: "Ultralite",
                     value: "UL",
                     symbol: {
                         type: "picture-marker",
@@ -308,6 +317,7 @@ require([
                     }
                 },
                 {
+                    label: "Glider",
                     value: "GL",
                     symbol: {
                         type: "picture-marker",
@@ -318,6 +328,7 @@ require([
                     }
                 },
                 {
+                    label: "Balloonport",
                     value: "BP",
                     symbol: {
                         type: "picture-marker",
