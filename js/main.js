@@ -612,7 +612,7 @@ require([
             console.log("Route Complete");
         } else if (evt.toolEventInfo.type === "vertex-add") {
             let webMercPt = evt.toolEventInfo.added[0];
-            let wgsPt = webMercatorUtils.xyToLngLat(webMercPt);
+            let wgsPt = webMercatorUtils.geographicToWebMercator(webMercPt);
             console.log(webMercPt)
             console.log(wgsPt)
 
