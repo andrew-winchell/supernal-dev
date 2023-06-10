@@ -36,12 +36,6 @@ html, body, #view-div {
   position: absolute;
 }
 
-#map-area {
-  width: calc(100% - 137.44px);
-  position: absolute;
-  left: 137.44px
-}
-
 #route-toolbar {
   display: none;
   position: absolute;
