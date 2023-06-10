@@ -379,14 +379,12 @@ require([
         graphics: []
     });
 
-    const route = new GeoJSONLayer ({
-        title: "Proposed Route",
-        id: "route",
-        hasZ: true,
-        elevationInfo: {
-            mode: "relative-to-ground"
-        }
+    /*
+    const routesLyr = new FeatureLayer ({
+        url: "",
+        title: "Supernal Routes"
     });
+    */
 
     const map2D = new Map ({
         basemap: "topo-vector",
@@ -481,10 +479,6 @@ require([
             })
     });
 
-    lineSketch.on("create", (newVert) => {
-        console.log(newVert);
-    })
-
     /*
         mapView.when(() => {
             const elevation = new ElevationLayer ({
@@ -556,8 +550,8 @@ require([
         mapView.ui.add(pointSketch, "top-right");
     })
     */
-
     
+    /* LINE SKETCH COMPLETE
     const lineSketch = new Sketch ({
         layer: graphicsLyr,
         view: mapView,
@@ -608,13 +602,14 @@ require([
         console.log(evt)
     });
 
-    lineSketch.on("create", (evt) => {
-        if (evt.state === "complete") {
+    lineSketch.on("create", (newVert) => {
+        if (newVert.state === "complete") {
             console.log("Route Complete");
-        } else if (evt.toolEventInfo.type === "vertex-add") {
-            let mapPt = evt.graphic.geometry.paths[0].slice(-1);
-            selectVertice(mapView.toMap(mapPt))
-            console.log(mapPt)
+        } else if (newVert.toolEventInfo.type === "vertex-add") {
+            console.log(newVert);
+            //let mapPt = evt.graphic.geometry.paths[0].slice(-1);
+            //selectVertice(mapView.toMap(mapPt))
+            //console.log(mapPt)
             //console.log(evt.graphic.geometry.paths[0],evt.graphic.geometry.paths[0].slice(-1))
         }
     })
@@ -632,4 +627,5 @@ require([
                 //console.log(results)
             })
     }
+    */
 });
