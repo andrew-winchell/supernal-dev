@@ -414,9 +414,9 @@ require([
     let layerlist = new LayerList ({
         view: mapView,
         container: "layer-list",
-        sortable: true,
         listItemCreatedFunction: (event) => {
             const item = event.item;
+            item.sortable = true;
             item.actionsSections = [
                 [
                     {
