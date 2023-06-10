@@ -431,6 +431,11 @@ require([
     });
     mapView.ui.add(bgExpand, { position: "top-left" });
 
+    mapView.on("pointer-move", (move) => {
+        console.log(move)
+    })
+
+
     /* POINT SKETCH SECTION WORKING
     const pointSketch = new Sketch ({
         layer: graphicsLyr,
