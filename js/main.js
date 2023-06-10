@@ -453,10 +453,11 @@ require([
 
         layerList.on("trigger-action", (event) => {
             const id = event.action.id;
+            console.log(event)
             if (id === "filter") {
                 console.log('filter')
             } else if (id === "item-details") {
-                window.open(id.layer.url);
+                window.open(event.layer.url);
             }
         })
     })
