@@ -26,6 +26,39 @@
     </head>
 
     <body>
+
+        <calcite-shell>
+            <div id="header-title" slot="header">
+                <h2>Supernal Route and Procedure Development</h2>
+                <calcite-dropdown id="menu">
+                    <calcite-button slot="trigger" icon-start="hamburger" appearance="transparent" kind="neutral" scale="l"></calcite-button>
+                    <calcite-dropdown-group>
+                        <calcite-dropdown-item icon-start="web" href="https://supernal.aero/" target="_blank">Supernal Official Website</calcite-dropdown-item>
+                    </calcite-dropdown-group>
+                </calcite-dropdown>
+                <div id="search-div"></div>
+            </div>
+
+            <calcite-shell-panel slot="panel-start" width-scale="l">
+                <calcite-panel closable>
+                    <calcite-block collapsible heading="Map Contents">
+                        <calcite-icon slot="icon" scale="s" icon="map-contents"></calcite-icon>
+                    </calcite-block>
+                    <calcite-block collapsible heading="Tools">
+                        <calcite-icon slot="icon" scale="s" icon="map-contents"></calcite-icon>
+                    </calcite-block>
+                    <calcite-block collapsible heading="Routes">
+                        <calcite-icon slot="icon" scale="s" icon="map-contents"></calcite-icon>
+                    </calcite-block>
+                </calcite-panel>
+            </calcite-shell-panel>
+
+        </calcite-shell>
+
+
+
+
+    <!--
         <calcite-shell>
             <div id="header-title" slot="header">
                 <h2>Supernal Route and Procedure Development</h2>
@@ -57,7 +90,7 @@
                 <div id="inset-div"></div>
 
                 <div id="waypoint-list">
-                    <!--Auto Genereated in main.js-->
+                    Auto Genereated in main.js
                 </div>
 
                 <calcite-action-pad expand-disabled layout="horizontal" position="start" id="route-toolbar">
@@ -69,6 +102,8 @@
                 </calcite-action-pad>
             </calcite-panel>
         </calcite-shell>
+
+    -->
 
         <script src="lib/jquery-3.6.4.js"></script>
         <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
