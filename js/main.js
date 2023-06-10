@@ -610,13 +610,7 @@ require([
         if (evt.state === "complete") {
             console.log("Route Complete");
         } else if (evt.toolEventInfo.type === "vertex-add") {
-            mapView.on("click", (click) => {
-                console.log(click)
-            })
-            //let mapPt = evt.graphic.geometry.paths[0].slice(-1);
-            //selectVertice(mapView.toMap(mapPt))
-            //console.log(mapPt)
-            //console.log(evt.graphic.geometry.paths[0],evt.graphic.geometry.paths[0].slice(-1))
+            console.log(evt.graphic.geometry)
         }
     })
 
