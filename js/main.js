@@ -412,9 +412,9 @@ require([
     appConfig.activeView = appConfig.mapView;
 
     let layerlist = new LayerList ({
-        view: mapView
+        view: mapView,
+        container: "map-contents"
     });
-    mapView.ui.add(layerlist, { position: "top-right" });
 
     let search = new Search ({
         view: mapView,
