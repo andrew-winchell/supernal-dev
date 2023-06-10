@@ -16,9 +16,10 @@ require([
     "esri/widgets/Sketch",
     "esri/widgets/Search",
     "esri/widgets/BasemapGallery",
-    "esri/widgets/Expand"
+    "esri/widgets/Expand",
+    "esri/widgets/Editor"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -447,6 +448,12 @@ require([
             }
         }
     });
+
+    let editorWidget = new Editor ({
+        view: mapView,
+        container: "editor-widget",
+        
+    })
 
     let search = new Search ({
         view: mapView,
