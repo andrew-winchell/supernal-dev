@@ -68,3 +68,7 @@ html, body, #view-div {
 #layer-list {
   padding: 0px !important;
 }
+
+.esri-layer-list__item-container {
+  padding: 12px 5px 12px 5px !important;
+}
