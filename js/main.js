@@ -431,10 +431,57 @@ require([
     });
     mapView.ui.add(bgExpand, { position: "top-left" });
 
+    /*
     mapView.on("pointer-move", (move) => {
         let point = mapView.toMap({x: move.x, y: move.y});
         $("#pointer-coords").html(point.latitude.toFixed(5) + ", " + point.longitude.toFixed(5));
     });
+    */
+
+    mapView.when(() => {
+        const elevation = new ElevationLayer ({
+            url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
+        });
+        return elevation.load();
+    }).then((elevation) => {
+        elevation.createElevationSampler(mapView.extent)
+            .then((sampler) => {
+                mapView.on("pointer-move", (move) => {
+                    let mapPt = mapView.toMap(move);
+                    console.log(mapPt)
+                    let coordinates = sampler.queryElevation(mapPt)
+                    console.log(coordinates)
+                })
+            })
+    })
+
+    /*
+        mapView.when(() => {
+            const elevation = new ElevationLayer ({
+                url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
+            });
+            return elevation.load();
+        }).then((elevation) => {
+            elevation.createElevationSampler(mapView.extent)
+                .then((sampler) => {
+                    mapView.on("pointer-down", (e) => {
+                        const opts = {
+                            include: [navaidsLyr]
+                        };
+                        mapView.hitTest(e, opts)
+                            .then((response) => {
+                                if (response.results.length) {
+                                    const mapPt = mapView.toMap(e);
+                                    const values = sampler.queryElevation(mapPt);
+                                    const vertice = [values.longitude, values.latitude, values.z];
+                                    console.log(vertice);
+                                }
+                            })
+                    })
+                })
+        });
+    });
+    */
 
 
     /* POINT SKETCH SECTION WORKING
@@ -555,33 +602,4 @@ require([
                 //console.log(results)
             })
     }
-    
-
-    /*
-        mapView.when(() => {
-            const elevation = new ElevationLayer ({
-                url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
-            });
-            return elevation.load();
-        }).then((elevation) => {
-            elevation.createElevationSampler(mapView.extent)
-                .then((sampler) => {
-                    mapView.on("pointer-down", (e) => {
-                        const opts = {
-                            include: [navaidsLyr]
-                        };
-                        mapView.hitTest(e, opts)
-                            .then((response) => {
-                                if (response.results.length) {
-                                    const mapPt = mapView.toMap(e);
-                                    const values = sampler.queryElevation(mapPt);
-                                    const vertice = [values.longitude, values.latitude, values.z];
-                                    console.log(vertice);
-                                }
-                            })
-                    })
-                })
-        });
-    });
-    */
 });
