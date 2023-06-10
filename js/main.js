@@ -419,14 +419,14 @@ require([
             item.actionsSections = [
                 [
                     {
-                        title: "Legend",
-                        className: "esri-icon-legend",
-                        id: "legend"
-                    },
-                    {
                         title: "Filter",
                         className: "esri-icon-filter",
                         id: "filter"
+                    },
+                    {
+                        title: "Item Details",
+                        className: "esri-icon-description",
+                        id: "item-details"
                     }
                 ]
             ];
