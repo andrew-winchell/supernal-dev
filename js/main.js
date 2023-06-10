@@ -422,6 +422,36 @@ require([
     };
     appConfig.activeView = appConfig.mapView;
 
+    mapView.when(() => {
+        const layerList = new LayerList({
+            view: mapView,
+            container: "layer-list",
+            listItemCreatedFunction: (event) => {
+                const item = event.item;
+                item.actionsSections = [
+                    [
+                        {
+                            title: "Filter",
+                            className: "esri-icon-filter",
+                            id: "filter"
+                        },
+                        {
+                            title: "Item Details",
+                            className: "esri-icon-description",
+                            id: "item-details"
+                        }
+                    ]
+                ]
+            }
+        });
+
+        layerList.on("trigger-action", (event) => {
+            const id = event.action.id;
+            console.log(event, id);
+        })
+    })
+
+    /*
     let layerlist = new LayerList ({
         view: mapView,
         container: "layer-list",
@@ -449,6 +479,7 @@ require([
             }
         }
     });
+    */
 
     let search = new Search ({
         view: mapView,
