@@ -420,12 +420,12 @@ require([
                 [
                     {
                         title: "Legend",
-                        className: "esri-icon-description",
+                        className: "esri-icon-legend",
                         id: "legend"
                     },
                     {
                         title: "Filter",
-                        className: "esri-icon-up",
+                        className: "esri-icon-filter",
                         id: "filter"
                     }
                 ]
@@ -433,10 +433,6 @@ require([
             if (item.layer.type != "group") {
                 item.panel = {
                     content: "legend",
-                    open: true
-                };
-                item.panel = {
-                    content: "filter",
                     open: true
                 };
             }
