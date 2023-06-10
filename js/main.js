@@ -593,7 +593,7 @@ require([
         width: 3,
         cap: "round",
         join: "round"
-      }
+    }
 
     $("#create-route").on("click", () => {
         console.log("Open Waypoint List");
