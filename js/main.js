@@ -428,6 +428,7 @@ require([
             container: "layer-list",
             listItemCreatedFunction: (event) => {
                 const item = event.item;
+                console.log(item)
                 item.actionsSections = [
                     [
                         {
@@ -457,7 +458,7 @@ require([
             if (id === "filter") {
                 console.log('filter')
             } else if (id === "item-details") {
-                window.open(event.layer.url);
+                window.open(event.item.layer.url);
             }
         })
     })
