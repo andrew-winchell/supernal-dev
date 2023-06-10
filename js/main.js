@@ -432,8 +432,9 @@ require([
     mapView.ui.add(bgExpand, { position: "top-left" });
 
     mapView.on("pointer-move", (move) => {
-        console.log(mapView.toMap({x: move.x, y: move.y}))
-    })
+        let point = mapView.toMap({x: move.x, y: move.y});
+        $("#pointer-coords").html(point.latitude + ", " + point.longitude);
+    });
 
 
     /* POINT SKETCH SECTION WORKING
