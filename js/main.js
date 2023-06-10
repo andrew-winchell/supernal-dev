@@ -450,7 +450,7 @@ require([
                     let mapPt = mapView.toMap(move);
                     console.log(mapPt)
                     let coordinates = sampler.queryElevation(mapPt)
-                    $("#pointer-coords").html("Lat: " + coordinates.latitude + " Long: " + coordinates.longitude + " Alt: " + coordinates.z);
+                    $("#pointer-coords").html("Lat: " + coordinates.latitude + "  Long: " + coordinates.longitude + "  Elev: " + coordinates.z);
                 })
             })
     })
