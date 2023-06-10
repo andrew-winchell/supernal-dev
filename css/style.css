@@ -62,4 +62,5 @@ html, body, #view-div {
 #pointer-coords {
   text-align: right;
   margin-right: 5px;
+  font-size: 9pt;
 }
