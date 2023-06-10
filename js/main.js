@@ -433,7 +433,7 @@ require([
 
     mapView.on("pointer-move", (move) => {
         let point = mapView.toMap({x: move.x, y: move.y});
-        $("#pointer-coords").html(point.latitude + ", " + point.longitude);
+        $("#pointer-coords").html(point.latitude.toFixed(3) + ", " + point.longitude.toFixed(3));
     });
 
 
