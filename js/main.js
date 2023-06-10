@@ -431,13 +431,6 @@ require([
     });
     mapView.ui.add(bgExpand, { position: "top-left" });
 
-    /*
-    mapView.on("pointer-move", (move) => {
-        let point = mapView.toMap({x: move.x, y: move.y});
-        $("#pointer-coords").html(point.latitude.toFixed(5) + ", " + point.longitude.toFixed(5));
-    });
-    */
-
     mapView.when(() => {
         const elevation = new ElevationLayer ({
             url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
@@ -448,9 +441,8 @@ require([
             .then((sampler) => {
                 mapView.on("pointer-move", (move) => {
                     let mapPt = mapView.toMap(move);
-                    console.log(mapPt)
                     let coordinates = sampler.queryElevation(mapPt)
-                    $("#pointer-coords").html("Lat: " + coordinates.latitude + "  Long: " + coordinates.longitude + "  Elev: " + coordinates.z);
+                    $("#pointer-coords").html("Lat: " + coordinates.latitude + "  Long: " + coordinates.longitude + "  Elev: " + (coordinates.z * 3.28084) + " ft");
                 })
             })
     })
