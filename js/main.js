@@ -506,22 +506,22 @@ require([
     });
     */
 
-    let search = new Search ({
+    const search = new Search ({
         view: mapView,
         container: "search-div"
     });
 
-    let basemapGallery = new BasemapGallery ({
+    const basemapGallery = new BasemapGallery ({
         view: mapView
     });
-    let bgExpand = new Expand ({
+    const bgExpand = new Expand ({
         mapView,
         content: basemapGallery,
         expandIconClass: "esri-icon-basemap"
     });
     mapView.ui.add(bgExpand, { position: "top-left" });
 
-    let filterExpand = new Expand ({
+    const filterExpand = new Expand ({
         mapView,
         expandIconClass: "esri-icon-filter"
     });
