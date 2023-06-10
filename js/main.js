@@ -449,12 +449,6 @@ require([
         }
     });
 
-    let editorWidget = new Editor ({
-        view: mapView,
-        container: "editor-widget",
-        
-    })
-
     let search = new Search ({
         view: mapView,
         container: "search-div"
@@ -558,7 +552,6 @@ require([
     })
     */
     
-    /* LINE SKETCH COMPLETE
     const lineSketch = new Sketch ({
         layer: graphicsLyr,
         view: mapView,
@@ -572,6 +565,10 @@ require([
                 },
                 {
                     layer: desPointsLyr,
+                    enabled: true
+                },
+                {
+                    layer: airportsLyr,
                     enabled: true
                 }
             ]
@@ -634,5 +631,4 @@ require([
                 //console.log(results)
             })
     }
-    */
 });
