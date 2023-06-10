@@ -429,15 +429,17 @@ require([
                         id: "filter"
                     }
                 ]
-            ]
-            /*
+            ];
             if (item.layer.type != "group") {
                 item.panel = {
                     content: "legend",
                     open: true
                 };
+                item.panel = {
+                    content: "filter",
+                    open: true
+                };
             }
-            */
         }
     });
 
