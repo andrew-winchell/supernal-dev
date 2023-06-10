@@ -58,3 +58,8 @@ html, body, #view-div {
   float: right;
   margin: 13.92px;
 }
+
+#pointer-coords {
+  text-align: right;
+  margin-right: 5px;
+}
