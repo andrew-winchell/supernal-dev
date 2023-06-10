@@ -429,20 +429,22 @@ require([
             listItemCreatedFunction: (event) => {
                 const item = event.item;
                 console.log(item)
-                item.actionsSections = [
-                    [
-                        {
-                            title: "Filter",
-                            className: "esri-icon-filter",
-                            id: "filter"
-                        },
-                        {
-                            title: "Item Details",
-                            className: "esri-icon-description",
-                            id: "item-details"
-                        }
+                if (item.layer.url != null) {
+                    item.actionsSections = [
+                        [
+                            {
+                                title: "Filter",
+                                className: "esri-icon-filter",
+                                id: "filter"
+                            },
+                            {
+                                title: "Item Details",
+                                className: "esri-icon-description",
+                                id: "item-details"
+                            }
+                        ]
                     ]
-                ];
+                };
                 if (item.layer.type != "group") {
                     item.panel = {
                         content: "legend",
