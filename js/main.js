@@ -17,9 +17,10 @@ require([
     "esri/widgets/Search",
     "esri/widgets/BasemapGallery",
     "esri/widgets/Expand",
-    "esri/widgets/Editor"
+    "esri/widgets/Editor",
+    "esri/geometry/support/webMercatorUtils"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor, webMercatorUtils) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -610,7 +611,8 @@ require([
         if (evt.state === "complete") {
             console.log("Route Complete");
         } else if (evt.toolEventInfo.type === "vertex-add") {
-            console.log(evt.graphic.geometry)
+            console.log(evt)
+            //let webMercPt = evt.graphic.geometry)
         }
     })
 
