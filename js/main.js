@@ -416,12 +416,28 @@ require([
         container: "layer-list",
         listItemCreatedFunction: (event) => {
             const item = event.item;
+            item.actionsSections = [
+                [
+                    {
+                        title: "Legend",
+                        className: "esri-icon-description",
+                        id: "legend"
+                    },
+                    {
+                        title: "Filter",
+                        className: "esri-icon-up",
+                        id: "filter"
+                    }
+                ]
+            ]
+            /*
             if (item.layer.type != "group") {
                 item.panel = {
                     content: "legend",
                     open: true
                 };
             }
+            */
         }
     });
 
