@@ -611,8 +611,11 @@ require([
         if (evt.state === "complete") {
             console.log("Route Complete");
         } else if (evt.toolEventInfo.type === "vertex-add") {
-            console.log(evt)
-            //let webMercPt = evt.graphic.geometry)
+            let webMercPt = evt.toolEventInfo.added[0];
+            let wgsPt = webMercatorUtils.webMercatorToGeographic(webMercPt);
+            console.log(webMercPt)
+            console.log(wgsPt)
+
         }
     })
 
