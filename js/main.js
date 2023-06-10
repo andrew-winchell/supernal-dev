@@ -479,6 +479,10 @@ require([
                     $("#pointer-coords").html("Lat: " + coordinates.latitude + "  Long: " + coordinates.longitude + "  Elev: " + (coordinates.z * 3.28084) + " ft");
                 })
             })
+    });
+
+    lineSketch.on("create", (newVert) => {
+        console.log(newVert);
     })
 
     /*
