@@ -432,7 +432,7 @@ require([
     mapView.ui.add(bgExpand, { position: "top-left" });
 
     mapView.on("pointer-move", (move) => {
-        console.log(move)
+        console.log(mapView.toMap({x: move.x, y: move.y}))
     })
 
 
