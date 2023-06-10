@@ -413,7 +413,7 @@ require([
 
     let layerlist = new LayerList ({
         view: mapView,
-        container: "map-contents"
+        container: "layer-list"
     });
 
     let search = new Search ({
