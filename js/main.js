@@ -441,7 +441,13 @@ require([
                             id: "item-details"
                         }
                     ]
-                ]
+                ];
+                if (item.layer.type != "group") {
+                    item.panel = {
+                        content: "legend",
+                        open: true
+                    };
+                }
             }
         });
 
