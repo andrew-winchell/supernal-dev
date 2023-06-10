@@ -413,7 +413,16 @@ require([
 
     let layerlist = new LayerList ({
         view: mapView,
-        container: "layer-list"
+        container: "layer-list",
+        listItemCreatedFunction: (event) => {
+            const item = event.item;
+            if (item.layer.type != "group") {
+                item.panel = {
+                    content: "legend",
+                    open: true
+                };
+            }
+        }
     });
 
     let search = new Search ({
