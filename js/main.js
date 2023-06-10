@@ -428,15 +428,32 @@ require([
             container: "layer-list",
             listItemCreatedFunction: (event) => {
                 const item = event.item;
-                item.actionsSections = [
-                    [
-                        {
-                            title: "Filter",
-                            className: "esri-icon-filter",
-                            id: "filter"
-                        }
+                if (item.layer.url != null) {
+                    item.actionsSections = [
+                        [
+                            {
+                                title: "Filter",
+                                className: "esri-icon-filter",
+                                id: "filter"
+                            },
+                            {
+                                title: "Item Details",
+                                className: "esri-icon-description",
+                                id: "item-details"
+                            }
+                        ]
                     ]
-                ];
+                } else {
+                    item.actionsSections = [
+                        [
+                            {
+                                title: "Filter",
+                                className: "esri-icon-filter",
+                                id: "filter"
+                            }
+                        ]
+                    ]
+                };
 
                 if (item.layer.type != "group") {
                     item.panel = {
