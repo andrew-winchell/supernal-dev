@@ -454,12 +454,18 @@ require([
                         ]
                     ]
                 };
+
                 if (item.layer.type != "group") {
+                    item.panel = {
+                        content: "testing panel contents",
+                        open: true
+                    }
                     item.panel = {
                         content: "legend",
                         open: true
                     };
                 }
+
             }
         });
 
