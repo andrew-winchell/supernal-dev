@@ -685,7 +685,9 @@ require([
 
     function getFilterFields (layer) {
         if (layer === "airspace") {
-            console.log(classAirspaceLyr.fields);
+            for (let field of classAirspaceLyr.fields) {
+                console.log(field.name);
+            }
         } else if (layer === "airports") {
             console.log(classAirspaceLyr.fields);
         } else if (layer === "fixes") {
