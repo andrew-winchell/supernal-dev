@@ -538,6 +538,14 @@ require([
                 "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
             )
         };
+    });
+
+    $("#airport-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        if (evtSwitch.checked == true) {
+            $("#airport-filter-icon")[0].icon = "filter";
+        } else {
+            $("#airport-filter-icon")[0].icon = "";
+        }
     })
     
 
