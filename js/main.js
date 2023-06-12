@@ -547,7 +547,39 @@ require([
         } else if (evtSwitch.currentTarget.checked == false) {
             $("#airport-filter-icon")[0].icon = " ";
         }
-    })
+    });
+    $("#airspace-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        console.log(evtSwitch)
+        if (evtSwitch.currentTarget.checked == true) {
+            $("#airspace-filter-icon")[0].icon = "filter";
+        } else if (evtSwitch.currentTarget.checked == false) {
+            $("#airspace-filter-icon")[0].icon = " ";
+        }
+    });
+    $("#fixes-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        console.log(evtSwitch)
+        if (evtSwitch.currentTarget.checked == true) {
+            $("#fixes-filter-icon")[0].icon = "filter";
+        } else if (evtSwitch.currentTarget.checked == false) {
+            $("#fixes-filter-icon")[0].icon = " ";
+        }
+    });
+    $("#navaids-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        console.log(evtSwitch)
+        if (evtSwitch.currentTarget.checked == true) {
+            $("#navaids-filter-icon")[0].icon = "filter";
+        } else if (evtSwitch.currentTarget.checked == false) {
+            $("#navaids-filter-icon")[0].icon = " ";
+        }
+    });
+    $("#obstacles-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        console.log(evtSwitch)
+        if (evtSwitch.currentTarget.checked == true) {
+            $("#obstacles-filter-icon")[0].icon = "filter";
+        } else if (evtSwitch.currentTarget.checked == false) {
+            $("#obstacles-filter-icon")[0].icon = " ";
+        }
+    });
     
 
 
