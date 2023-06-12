@@ -551,42 +551,90 @@ require([
                 layerView.filter = {
                     where: field + " = '" + value + "'"
                 }
-            })
+            });
         } else if (evtSwitch.currentTarget.checked == false) {
             $("#airport-filter-icon")[0].icon = " ";
             mapView.whenLayerView(airportsLyr).then((layerView) => {
                 layerView.filter = {
                     where: "1=1"
                 }
-            })
+            });
         }
     });
     $("#airspace-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        let field = $("#airspace-field-select")[0].value;
+        let value = $("#airspace-filter-value")[0].value;
         if (evtSwitch.currentTarget.checked == true) {
             $("#airspace-filter-icon")[0].icon = "filter";
+            mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            });
         } else if (evtSwitch.currentTarget.checked == false) {
             $("#airspace-filter-icon")[0].icon = " ";
+            mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
+                layerView.filter = {
+                    where: "1=1"
+                }
+            });
         }
     });
     $("#fixes-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        let field = $("#fixes-field-select")[0].value;
+        let value = $("#fixes-filter-value")[0].value;
         if (evtSwitch.currentTarget.checked == true) {
             $("#fixes-filter-icon")[0].icon = "filter";
+            mapView.whenLayerView(desPointsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            });
         } else if (evtSwitch.currentTarget.checked == false) {
             $("#fixes-filter-icon")[0].icon = " ";
+            mapView.whenLayerView(desPointsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: "1=1"
+                }
+            });
         }
     });
     $("#navaids-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        let field = $("#navaids-field-select")[0].value;
+        let value = $("#navaids-filter-value")[0].value;
         if (evtSwitch.currentTarget.checked == true) {
             $("#navaids-filter-icon")[0].icon = "filter";
+            mapView.whenLayerView(navaidsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            });
         } else if (evtSwitch.currentTarget.checked == false) {
             $("#navaids-filter-icon")[0].icon = " ";
+            mapView.whenLayerView(navaidsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: "1=1"
+                }
+            });
         }
     });
     $("#obstacles-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        let field = $("#obstacles-field-select")[0].value;
+        let value = $("#obstacles-filter-value")[0].value;
         if (evtSwitch.currentTarget.checked == true) {
             $("#obstacles-filter-icon")[0].icon = "filter";
+            mapView.whenLayerView(obstaclesLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            });
         } else if (evtSwitch.currentTarget.checked == false) {
             $("#obstacles-filter-icon")[0].icon = " ";
+            mapView.whenLayerView(obstaclesLyr).then((layerView) => {
+                layerView.filter = {
+                    where: "1=1"
+                }
+            });
         }
     });
     
