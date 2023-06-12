@@ -542,7 +542,7 @@ require([
 
     $("#airport-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
         console.log(evtSwitch)
-        if (evtSwitch.checked == true) {
+        if (evtSwitch.currentTarget.checked == true) {
             $("#airport-filter-icon")[0].icon = "filter";
         } else {
             $("#airport-filter-icon")[0].icon = "";
