@@ -515,6 +515,10 @@ require([
         getFilterFields(layerId)
     })
 
+    $("#filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        console.log(evtSwitch)
+    })
+
     mapView.when(() => {
         const elevation = new ElevationLayer ({
             url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
