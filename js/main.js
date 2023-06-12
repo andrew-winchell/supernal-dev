@@ -516,11 +516,12 @@ require([
     })
 
     $("#filter-value").on("calciteInputInput", (textEntry) => {
+        console.log($("#layer-select"))
+        console.log($("#field-select"))
         if ($("#filter-switch")[0].checked == true) {
             let layer = "";
             let field = "";
-            let value = "";
-            console.log(textEntry);
+            let value = textEntry.currentTarget.value;
         } else {
             console.log("turn off filtering");
         }
