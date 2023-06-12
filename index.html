@@ -71,7 +71,7 @@
                     </calcite-label>
                     <calcite-label>
                         Choose a map layer
-                        <calcite-select>
+                        <calcite-select id="layer-select">
                             <calcite-option value="routes">Proposed Routes</calcite-option>
                             <calcite-option value="airspace">Class Airspace</calcite-option>
                             <calcite-option value="airports">Airports</calcite-option>
@@ -82,11 +82,11 @@
                     </calcite-label>
                     <calcite-label>
                         Choose a field
-                        <calcite-select>
+                        <calcite-select id="field-select">
                             <!--Auto Generated in main.js-->
                         </calcite-select>
                     </calcite-label>
-                    <calcite-input placeholder="Filter Value"></calcite-input>
+                    <calcite-input placeholder="Filter Value" id="filter-value"></calcite-input>
                 </div>
 
             <div id="elevation-profile" slot="footer">
