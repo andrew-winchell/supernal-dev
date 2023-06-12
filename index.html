@@ -99,7 +99,7 @@
                                 <!--Auto Generated in main.js-->
                             </calcite-select>
                         </calcite-label>
-                        <calcite-input placeholder="Filter Value"></calcite-input>
+                        <calcite-input placeholder="Filter Value" id="fixes-filter-value"></calcite-input>
                         <calcite-label layout="inline">
                             <calcite-switch class="filterSwitch" id="fixes-filter-switch"></calcite-switch>
                         </calcite-label>
@@ -112,7 +112,7 @@
                                 <!--Auto Generated in main.js-->
                             </calcite-select>
                         </calcite-label>
-                        <calcite-input placeholder="Filter Value"></calcite-input>
+                        <calcite-input placeholder="Filter Value" id="navaids-filter-value"></calcite-input>
                         <calcite-label layout="inline">
                             <calcite-switch class="filterSwitch" id="navaids-filter-switch"></calcite-switch>
                         </calcite-label>
@@ -125,7 +125,7 @@
                                 <!--Auto Generated in main.js-->
                             </calcite-select>
                         </calcite-label>
-                        <calcite-input placeholder="Filter Value"></calcite-input>
+                        <calcite-input placeholder="Filter Value" id="obstacles-filter-value"></calcite-input>
                         <calcite-label layout="inline">
                             <calcite-switch class="filterSwitch" id="obstacles-filter-switch"></calcite-switch>
                         </calcite-label>
@@ -137,56 +137,6 @@
             </div>
 
         </calcite-shell>
-
-
-
-
-    <!--
-        <calcite-shell>
-            <div id="header-title" slot="header">
-                <h2>Supernal Route and Procedure Development</h2>
-                <calcite-dropdown id="menu">
-                    <calcite-button slot="trigger" icon-start="hamburger" appearance="transparent" kind="neutral" scale="l"></calcite-button>
-                    <calcite-dropdown-group>
-                        <calcite-dropdown-item icon-start="web" href="https://supernal.aero/" target="_blank">Supernal Official Website</calcite-dropdown-item>
-                    </calcite-dropdown-group>
-                </calcite-dropdown>
-                <div id="search-div"></div>
-            </div>
-
-            <calcite-alert id="hittest_zero" icon="exclamation-mark-triangle" auto-close auto-close-duration="medium" kind="danger" placement="top">
-                <div slot="title">Selection Error</div>
-                <div slot="message">Please select a predefined waypoint on the map to include in the proposed route.</div>
-            </calcite-alert>
-
-            <calcite-alert id="hittest_many" icon="exclamation-mark-triangle" auto-close auto-close-duration="medium" kind="danger" placement="top">
-                <div slot="title">Selection Error</div>
-                <div slot="message">Please select only 1 predefined waypoint on the map to include in the proposed route.</div>
-            </calcite-alert>
-
-            <calcite-action-bar id="toolbar" scale="m" expanded>
-                <calcite-action text="Create Route" icon="line" text-enabled alignment="center" appearance="transparent" scale="m" id="create-route"></calcite-button>
-            </calcite-action-bar>
-
-            <calcite-panel id="map-area">
-                <div id="view-div"></div>
-                <div id="inset-div"></div>
-
-                <div id="waypoint-list">
-                    Auto Genereated in main.js
-                </div>
-
-                <calcite-action-pad expand-disabled layout="horizontal" position="start" id="route-toolbar">
-                    <calcite-action text="Add" icon="vertex-plus" id="add-pt-btn"></calcite-action>
-                    <calcite-action text="Undo" icon="undo" id="undo-pt-btn"></calcite-action>
-                    <calcite-action text="Redo" icon="redo" id="redo-pt-btn"></calcite-action>
-                    <calcite-action text="Reset" icon="reset" id="reset-line-btn"></calcite-action>
-                    <calcite-action text="Complete" icon="check" id="finish-line-btn"></calcite-action>
-                </calcite-action-pad>
-            </calcite-panel>
-        </calcite-shell>
-
-    -->
 
         <script src="lib/jquery-3.6.4.js"></script>
         <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
