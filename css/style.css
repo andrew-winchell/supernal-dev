@@ -67,3 +67,7 @@ html, body, #view-div {
 .esri-layer-list__item-container {
   padding: 12px 5px 12px 5px !important;
 }
+
+#filter-container {
+  visibility: hidden;
+}
