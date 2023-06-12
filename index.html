@@ -65,59 +65,72 @@
                 <div id="pointer-coords"></div>
 
                 <div id="filter-container" class="esri-widget">
-                    <calcite-block collapsible heading="Airports" id="airport-filter">
+                    <calcite-block collapsible heading="Airports">
                         <calcite-icon slot="icon" scale="s" icon=""></calcite-icon>
                         <calcite-label>
                             Choose a field
-                            <calcite-select id="field-select">
+                            <calcite-select id="airport-field-select">
                                 <!--Auto Generated in main.js-->
                             </calcite-select>
                         </calcite-label>
-                        <calcite-input placeholder="Filter Value" id="filter-value"></calcite-input>
+                        <calcite-input placeholder="Filter Value"></calcite-input>
                         <calcite-label layout="inline">
-                            <calcite-switch style="margin-right:0px; margin-left:auto; padding-top:12px;" id="filter-switch"></calcite-switch>
+                            <calcite-switch style="margin-right:0px; margin-left:auto; padding-top:12px;"></calcite-switch>
                         </calcite-label>
                     </calcite-block>
-                    <calcite-block collapsible heading="Class Airspace" id="airspace-filter">
+                    <calcite-block collapsible heading="Class Airspace">
                         <calcite-icon slot="icon" scale="s" icon=""></calcite-icon>
+                        <calcite-label>
+                            Choose a field
+                            <calcite-select id="airspace-field-select">
+                                <!--Auto Generated in main.js-->
+                            </calcite-select>
+                        </calcite-label>
+                        <calcite-input placeholder="Filter Value"></calcite-input>
+                        <calcite-label layout="inline">
+                            <calcite-switch style="margin-right:0px; margin-left:auto; padding-top:12px;"></calcite-switch>
+                        </calcite-label>
                     </calcite-block>
-                    <calcite-block collapsible heading="Fixes" id="fixes-filter">
+                    <calcite-block collapsible heading="Fixes">
                         <calcite-icon slot="icon" scale="s" icon=""></calcite-icon>
+                        <calcite-label>
+                            Choose a field
+                            <calcite-select id="fix-field-select">
+                                <!--Auto Generated in main.js-->
+                            </calcite-select>
+                        </calcite-label>
+                        <calcite-input placeholder="Filter Value"></calcite-input>
+                        <calcite-label layout="inline">
+                            <calcite-switch style="margin-right:0px; margin-left:auto; padding-top:12px;"></calcite-switch>
+                        </calcite-label>
                     </calcite-block>
-                    <calcite-block collapsible heading="NAVAIDS" id="navaids-filter">
+                    <calcite-block collapsible heading="NAVAIDS">
                         <calcite-icon slot="icon" scale="s" icon=""></calcite-icon>
+                        <calcite-label>
+                            Choose a field
+                            <calcite-select id="navaids-field-select">
+                                <!--Auto Generated in main.js-->
+                            </calcite-select>
+                        </calcite-label>
+                        <calcite-input placeholder="Filter Value"></calcite-input>
+                        <calcite-label layout="inline">
+                            <calcite-switch style="margin-right:0px; margin-left:auto; padding-top:12px;"></calcite-switch>
+                        </calcite-label>
                     </calcite-block>
-                    <calcite-block collapsible heading="Obstacles" id="obstacles-filter">
+                    <calcite-block collapsible heading="Obstacles">
                         <calcite-icon slot="icon" scale="s" icon=""></calcite-icon>
+                        <calcite-label>
+                            Choose a field
+                            <calcite-select id="obstacles-field-select">
+                                <!--Auto Generated in main.js-->
+                            </calcite-select>
+                        </calcite-label>
+                        <calcite-input placeholder="Filter Value"></calcite-input>
+                        <calcite-label layout="inline">
+                            <calcite-switch style="margin-right:0px; margin-left:auto; padding-top:12px;"></calcite-switch>
+                        </calcite-label>
                     </calcite-block>
                 </div>
-
-                <!--
-                <div id="filter-container" class="esri-widget">
-                    <calcite-label>
-                        Choose a map layer
-                        <calcite-select id="layer-select">
-                            <calcite-option>Select</calcite-option>
-                            <calcite-option value="routes">Proposed Routes</calcite-option>
-                            <calcite-option value="airspace">Class Airspace</calcite-option>
-                            <calcite-option value="airports">Airports</calcite-option>
-                            <calcite-option value="fixes">Designated Points</calcite-option>
-                            <calcite-option value="obstacles">Obstacles</calcite-option>
-                            <calcite-option value="navaids">NAVAIDS</calcite-option>
-                        </calcite-select>
-                    </calcite-label>
-                    <calcite-label>
-                        Choose a field
-                        <calcite-select id="field-select">
-                            <!--Auto Generated in main.js->
-                        </calcite-select>
-                    </calcite-label>
-                    <calcite-input placeholder="Filter Value" id="filter-value"></calcite-input>
-                    <calcite-label layout="inline">
-                        <calcite-switch style="margin-right:0px; margin-left:auto; padding-top:12px;" id="filter-switch"></calcite-switch>
-                    </calcite-label>
-                </div>
-            -->
 
             <div id="elevation-profile" slot="footer">
                 Elevation Profile
