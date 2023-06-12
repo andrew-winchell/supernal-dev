@@ -510,32 +510,34 @@ require([
     });
     mapView.ui.add(filterExpand, { position: "top-left" });
 
-    for (let field in airportsLyr.fields) {
-        console.log(field);
-        $("#airport-field-select").append(
-            "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-        )
-    };
-    for (let field in classAirspaceLyr.fields) {
-        $("#airspace-field-select").append(
-            "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-        )
-    };
-    for (let field in desPointsLyr.fields) {
-        $("#fixes-field-select").append(
-            "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-        )
-    };
-    for (let field in navaidsLyr.fields) {
-        $("#navaids-field-select").append(
-            "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-        )
-    };
-    for (let field in obstaclesLyr.fields) {
-        $("#obstacles-field-select").append(
-            "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-        )
-    };
+    mapView.when(() => {
+        for (let field in airportsLyr.fields) {
+            console.log(field);
+            $("#airport-field-select").append(
+                "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+            )
+        };
+        for (let field in classAirspaceLyr.fields) {
+            $("#airspace-field-select").append(
+                "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+            )
+        };
+        for (let field in desPointsLyr.fields) {
+            $("#fixes-field-select").append(
+                "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+            )
+        };
+        for (let field in navaidsLyr.fields) {
+            $("#navaids-field-select").append(
+                "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+            )
+        };
+        for (let field in obstaclesLyr.fields) {
+            $("#obstacles-field-select").append(
+                "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+            )
+        };
+    })
     
 
 
