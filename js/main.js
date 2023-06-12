@@ -684,6 +684,7 @@ require([
     }
 
     function getFilterFields (layer) {
+        $("#field-select").remove("calcite-option");
         if (layer === "airspace") {
             for (let field of classAirspaceLyr.fields) {
                 $("#field-select").append(
