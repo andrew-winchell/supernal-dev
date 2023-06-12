@@ -512,27 +512,27 @@ require([
 
     console.log(airportsLyr)
     for (let field in airportsLyr.fields) {
-        $("#airport-filter-select").append(
+        $("#airport-field-select").append(
             "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
         )
     };
-    for (let field of classAirspaceLyr.fields) {
-        $("#airspace-filter-select").append(
+    for (let field in classAirspaceLyr.fields) {
+        $("#airspace-field-select").append(
             "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
         )
     };
-    for (let field of desPointsLyr.fields) {
-        $("#fixes-filter-select").append(
+    for (let field in desPointsLyr.fields) {
+        $("#fixes-field-select").append(
             "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
         )
     };
-    for (let field of navaidsLyr.fields) {
-        $("#navaids-filter-select").append(
+    for (let field in navaidsLyr.fields) {
+        $("#navaids-field-select").append(
             "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
         )
     };
-    for (let field of obstaclesLyr.fields) {
-        $("#obstacles-filter-select").append(
+    for (let field in obstaclesLyr.fields) {
+        $("#obstacles-field-select").append(
             "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
         )
     };
