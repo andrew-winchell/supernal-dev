@@ -513,6 +513,10 @@ require([
     });
     mapView.ui.add(filterExpand, { position: "top-left" });
 
+    $("#layer-select").on("calciteSelectChange", (select) => {
+        console.log(select);
+    })
+
     mapView.when(() => {
         const elevation = new ElevationLayer ({
             url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
