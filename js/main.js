@@ -547,7 +547,11 @@ require([
         let value = $("#airport-filter-value")[0].value;
         if (evtSwitch.currentTarget.checked == true) {
             $("#airport-filter-icon")[0].icon = "filter";
-            console.log(field, value);
+            mapView.whenLayerView(airportsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            })
         } else if (evtSwitch.currentTarget.checked == false) {
             $("#airport-filter-icon")[0].icon = " ";
         }
