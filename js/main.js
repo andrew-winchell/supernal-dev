@@ -511,7 +511,8 @@ require([
     mapView.ui.add(filterExpand, { position: "top-left" });
 
     $("#layer-select").on("calciteSelectChange", (select) => {
-        console.log(select.currentTarget.value);
+        let layerId = select.currentTarget.value;
+        getFilterFields(layerId)
     })
 
     mapView.when(() => {
@@ -680,5 +681,21 @@ require([
             .then((results) => {
                 //console.log(results)
             })
+    }
+
+    function getFilterFields (layer) {
+        if (layer === "airspace") {
+            console.log(classAirspaceLyr.fields);
+        } else if (layer === "airports") {
+            console.log(classAirspaceLyr.fields);
+        } else if (layer === "fixes") {
+            console.log(classAirspaceLyr.fields);
+        } else if (layer === "navaids") {
+            console.log(classAirspaceLyr.fields);
+        } else if (layer === "obstacles") {
+            console.log(classAirspaceLyr.fields);
+        } else if (layer === "routes") {
+            console.log(classAirspaceLyr.fields);
+        }
     }
 });
