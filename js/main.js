@@ -716,7 +716,7 @@ require([
                 )
             }
         } else if (layer === "routes") {
-            console.log(routes);
+            console.log("routes");
         }
     }
 });
