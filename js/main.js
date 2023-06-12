@@ -510,6 +510,7 @@ require([
     });
     mapView.ui.add(filterExpand, { position: "top-left" });
 
+    console.log(airportsLyr)
     for (let field of airportsLyr.fields) {
         $("#airport-filter-select").append(
             "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
