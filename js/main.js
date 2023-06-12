@@ -686,7 +686,9 @@ require([
     function getFilterFields (layer) {
         if (layer === "airspace") {
             for (let field of classAirspaceLyr.fields) {
-                console.log(field.name);
+                $("#field-select").append(
+                    "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+                )
             }
         } else if (layer === "airports") {
             console.log(classAirspaceLyr.fields);
