@@ -516,12 +516,13 @@ require([
     })
 
     $("#filter-value").on("calciteInputInput", (textEntry) => {
-        console.log($("#layer-select"))
-        console.log($("#field-select"))
+        let layerSelect = $("#layer-select")[0]
+        let fieldSelect = $("#field-select")[0]
         if ($("#filter-switch")[0].checked == true) {
-            let layer = "";
-            let field = "";
+            let layer = layerSelect.value;
+            let field = fieldSelect.value;
             let value = textEntry.currentTarget.value;
+            filterLayer(layer, field, value);
         } else {
             console.log("turn off filtering");
         }
@@ -730,5 +731,31 @@ require([
         } else if (layer === "routes") {
             console.log("routes");
         }
+    }
+    
+    function filterLayer (layer, field, value) {
+        let featureLyr;
+        switch (layer) {
+            case "airports":
+                featureLyr = airportsLyr;
+                break;
+            case "airspace":
+                featureLyr = classAirspaceLyr;
+                break;
+            case "fixes":
+                featureLyr = desPointsLyr;
+                break;
+            case "navaids":
+                featureLyr = navaidsLyr;
+                break;
+            case "obstacles":
+                featureLyr = obstaclesLyr;
+                break;
+        }
+        mapView.whenLayerView(featureLyr).then((layerView) => {
+            layerView.filter = {
+                where: field + " = '" + value + "'"
+            }
+        })
     }
 });
