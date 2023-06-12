@@ -543,7 +543,6 @@ require([
     // Listen to each filter switch and turn on/off the filter indicator icon
     // On switch on/off filter/unfilter the data layer
     $("#airport-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        console.log(evtSwitch)
         if (evtSwitch.currentTarget.checked == true) {
             $("#airport-filter-icon")[0].icon = "filter";
         } else if (evtSwitch.currentTarget.checked == false) {
@@ -551,7 +550,6 @@ require([
         }
     });
     $("#airspace-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        console.log(evtSwitch)
         if (evtSwitch.currentTarget.checked == true) {
             $("#airspace-filter-icon")[0].icon = "filter";
         } else if (evtSwitch.currentTarget.checked == false) {
@@ -559,7 +557,6 @@ require([
         }
     });
     $("#fixes-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        console.log(evtSwitch)
         if (evtSwitch.currentTarget.checked == true) {
             $("#fixes-filter-icon")[0].icon = "filter";
         } else if (evtSwitch.currentTarget.checked == false) {
@@ -567,7 +564,6 @@ require([
         }
     });
     $("#navaids-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        console.log(evtSwitch)
         if (evtSwitch.currentTarget.checked == true) {
             $("#navaids-filter-icon")[0].icon = "filter";
         } else if (evtSwitch.currentTarget.checked == false) {
@@ -575,7 +571,6 @@ require([
         }
     });
     $("#obstacles-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        console.log(evtSwitch)
         if (evtSwitch.currentTarget.checked == true) {
             $("#obstacles-filter-icon")[0].icon = "filter";
         } else if (evtSwitch.currentTarget.checked == false) {
