@@ -692,15 +692,31 @@ require([
                 )
             }
         } else if (layer === "airports") {
-            console.log(classAirspaceLyr.fields);
+            for (let field of airportsLyr.fields) {
+                $("#field-select").append(
+                    "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+                )
+            }
         } else if (layer === "fixes") {
-            console.log(classAirspaceLyr.fields);
+            for (let field of desPointsLyr.fields) {
+                $("#field-select").append(
+                    "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+                )
+            }
         } else if (layer === "navaids") {
-            console.log(classAirspaceLyr.fields);
+            for (let field of navaidsLyr.fields) {
+                $("#field-select").append(
+                    "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+                )
+            }
         } else if (layer === "obstacles") {
-            console.log(classAirspaceLyr.fields);
+            for (let field of obstaclesLyr.fields) {
+                $("#field-select").append(
+                    "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+                )
+            }
         } else if (layer === "routes") {
-            console.log(classAirspaceLyr.fields);
+            console.log(routes);
         }
     }
 });
