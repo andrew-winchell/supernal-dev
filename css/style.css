@@ -77,3 +77,9 @@ html, body, #view-div {
   padding: 1rem;
   width: max-content;
 }
+
+.filterSwitch {
+  margin-right:0px;
+  margin-left:auto;
+  padding-top:12px;
+}
