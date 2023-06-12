@@ -608,7 +608,55 @@ require([
                 }
             })
         }
-    })
+    });
+    $("#airspace-filter-value").on("calciteInputInput", (textEntry) => {
+        let fieldSelect = $("#airspace-field-select")[0]
+        let field = fieldSelect.value;
+        let value = textEntry.currentTarget.value;
+        if ($("#airspace-filter-switch")[0].checked == true) {
+            mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            })
+        }
+    });
+    $("#fixes-filter-value").on("calciteInputInput", (textEntry) => {
+        let fieldSelect = $("#fixes-field-select")[0]
+        let field = fieldSelect.value;
+        let value = textEntry.currentTarget.value;
+        if ($("#fixes-filter-switch")[0].checked == true) {
+            mapView.whenLayerView(desPointsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            })
+        }
+    });
+    $("#navaids-filter-value").on("calciteInputInput", (textEntry) => {
+        let fieldSelect = $("#navaids-field-select")[0]
+        let field = fieldSelect.value;
+        let value = textEntry.currentTarget.value;
+        if ($("#navaids-filter-switch")[0].checked == true) {
+            mapView.whenLayerView(navaidsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            })
+        }
+    });
+    $("#obstacles-filter-value").on("calciteInputInput", (textEntry) => {
+        let fieldSelect = $("#osbtacles-field-select")[0]
+        let field = fieldSelect.value;
+        let value = textEntry.currentTarget.value;
+        if ($("#obstacles-filter-switch")[0].checked == true) {
+            mapView.whenLayerView(obstaclesLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            })
+        }
+    });
 
     mapView.when(() => {
         const elevation = new ElevationLayer ({
