@@ -18,10 +18,9 @@ require([
     "esri/widgets/BasemapGallery",
     "esri/widgets/Expand",
     "esri/widgets/Editor",
-    "esri/geometry/support/webMercatorUtils",
-    "dojo/dom-construct"
+    "esri/geometry/support/webMercatorUtils"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor, webMercatorUtils, domConstruct) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor, webMercatorUtils) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
