@@ -70,4 +70,7 @@ html, body, #view-div {
 
 #filter-container {
   visibility: hidden;
+  background-color: white;
+  padding: 1rem;
+  width: max-content;
 }

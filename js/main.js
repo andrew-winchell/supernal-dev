@@ -504,7 +504,6 @@ require([
     mapView.ui.add(bgExpand, { position: "top-left" });
 
     const filterDiv = $("#filter-container")[0];
-
     const filterExpand = new Expand ({
         content: filterDiv,
         expandIconClass: "esri-icon-filter"
