@@ -554,6 +554,11 @@ require([
             })
         } else if (evtSwitch.currentTarget.checked == false) {
             $("#airport-filter-icon")[0].icon = " ";
+            mapView.whenLayerView(airportsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: "1=1"
+                }
+            })
         }
     });
     $("#airspace-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
