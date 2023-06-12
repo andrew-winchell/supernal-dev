@@ -597,19 +597,16 @@ require([
         getFilterFields(layerId)
     })
 
-    $("#filter-value").on("calciteInputInput", (textEntry) => {
-        let layerSelect = $("#layer-select")[0]
-        let fieldSelect = $("#field-select")[0]
-        let layer = layerSelect.value;
+    $("#airport-filter-value").on("calciteInputInput", (textEntry) => {
+        let fieldSelect = $("#airport-field-select")[0]
         let field = fieldSelect.value;
         let value = textEntry.currentTarget.value;
-        let checked;
-        if ($("#filter-switch")[0].checked == true) {
-            checked = true;
-            filterLayer(layer, field, value, checked);
-        } else {
-            checked = false;
-            filterLayer(layer, field, value, checked);
+        if ($("#airport-filter-switch")[0].checked == true) {
+            mapView.whenLayerView(airportsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            })
         }
     })
 
