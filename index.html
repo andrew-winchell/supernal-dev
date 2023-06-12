@@ -63,7 +63,19 @@
                 <div id="view-div"></div>
                 <div id="inset-div"></div>
                 <div id="pointer-coords"></div>
-                <div id="filter-container"></div>
+                <div id="filter-container">
+                    <calcite-label>
+                        Choose a map layer
+                        <calcite-select>
+                            <calcite-option value="routes">Proposed Routes</calcite-option>
+                            <calcite-option value="airspace">Class Airspace</calcite-option>
+                            <calcite-option value="airports">Airports</calcite-option>
+                            <calcite-option value="fixes">Designated Points</calcite-option>
+                            <calcite-option value="obstacles">Obstacles</calcite-option>
+                            <calcite-option value="navaids">NAVAIDS</calcite-option>
+                        </calcite-select>
+                    </calcite-label>
+                </div>
 
             <div id="elevation-profile" slot="footer">
                 Elevation Profile
