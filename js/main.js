@@ -684,7 +684,7 @@ require([
     }
 
     function getFilterFields (layer) {
-        $("#field-select").remove();
+        $("#field-select").empty();
         if (layer === "airspace") {
             for (let field of classAirspaceLyr.fields) {
                 $("#field-select").append(
