@@ -504,7 +504,7 @@ require([
     mapView.ui.add(bgExpand, { position: "top-left" });
 
     const filterDiv = $("#filter-container")[0];
-    filterDiv.on("click", () => {
+    filterDiv.addEventListener("click", () => {
         filterDiv.css("visibility", "visible")
     })
     const filterExpand = new Expand ({
