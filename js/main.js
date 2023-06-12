@@ -511,7 +511,7 @@ require([
     mapView.ui.add(filterExpand, { position: "top-left" });
 
     $("#layer-select").on("calciteSelectChange", (select) => {
-        console.log(select);
+        console.log(select.currentTarget.value);
     })
 
     mapView.when(() => {
