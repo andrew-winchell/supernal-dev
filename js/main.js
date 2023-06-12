@@ -438,16 +438,6 @@ require([
                             }
                         ]
                     ]
-                } else {
-                    item.actionsSections = [
-                        [
-                            {
-                                title: "Filter",
-                                className: "esri-icon-filter",
-                                id: "filter"
-                            }
-                        ]
-                    ]
                 };
 
                 if (item.layer.type != "group") {
