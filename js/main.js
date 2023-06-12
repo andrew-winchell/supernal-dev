@@ -510,29 +510,30 @@ require([
     });
     mapView.ui.add(filterExpand, { position: "top-left" });
 
+    // Popuplate filter field dropdowns for each layer
+    // Wait for map and layers to load first
     mapView.when(() => {
         for (let field of airportsLyr.fields) {
-            console.log(field);
             $("#airport-field-select").append(
                 "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
             )
         };
-        for (let field in classAirspaceLyr.fields) {
+        for (let field of classAirspaceLyr.fields) {
             $("#airspace-field-select").append(
                 "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
             )
         };
-        for (let field in desPointsLyr.fields) {
+        for (let field of desPointsLyr.fields) {
             $("#fixes-field-select").append(
                 "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
             )
         };
-        for (let field in navaidsLyr.fields) {
+        for (let field of navaidsLyr.fields) {
             $("#navaids-field-select").append(
                 "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
             )
         };
-        for (let field in obstaclesLyr.fields) {
+        for (let field of obstaclesLyr.fields) {
             $("#obstacles-field-select").append(
                 "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
             )
