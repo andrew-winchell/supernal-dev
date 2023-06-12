@@ -515,18 +515,12 @@ require([
         getFilterFields(layerId)
     })
 
-    $("#filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        if (evtSwitch.checked == true) {
-            console.log("turn on filter");
-        } else {
-            console.log("turn off filter");
-        }
-    });
-
     $("#filter-value").on("calciteInputInput", (textEntry) => {
-        console.log($("#filter-switch"))
         if ($("#filter-switch")[0].checked == true) {
-            console.log("turn on filtering");
+            let layer = "";
+            let field = "";
+            let value = "";
+            console.log(textEntry);
         } else {
             console.log("turn off filtering");
         }
