@@ -540,6 +540,8 @@ require([
         };
     });
 
+    // Listen to each filter switch and turn on/off the filter indicator icon
+    // On switch on/off filter/unfilter the data layer
     $("#airport-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
         console.log(evtSwitch)
         if (evtSwitch.currentTarget.checked == true) {
