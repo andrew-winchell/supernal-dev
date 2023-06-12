@@ -18,9 +18,10 @@ require([
     "esri/widgets/BasemapGallery",
     "esri/widgets/Expand",
     "esri/widgets/Editor",
-    "esri/geometry/support/webMercatorUtils"
+    "esri/geometry/support/webMercatorUtils",
+    "dojo/dom-construct"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor, webMercatorUtils) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor, webMercatorUtils, domConstruct) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -432,11 +433,6 @@ require([
                     item.actionsSections = [
                         [
                             {
-                                title: "Filter",
-                                className: "esri-icon-filter",
-                                id: "filter"
-                            },
-                            {
                                 title: "Item Details",
                                 className: "esri-icon-description",
                                 id: "item-details"
@@ -523,6 +519,7 @@ require([
 
     const filterExpand = new Expand ({
         mapView,
+        content: $("#filter-container"),
         expandIconClass: "esri-icon-filter"
     });
     mapView.ui.add(filterExpand, { position: "top-left" });
