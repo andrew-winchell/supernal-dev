@@ -68,6 +68,10 @@ html, body, #view-div {
   padding: 12px 5px 12px 5px !important;
 }
 
+.esri-expand__content {
+  overflow-y: scroll !important;
+}
+
 #filter-container {
   background-color: white;
   padding: 1rem;
