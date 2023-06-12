@@ -545,7 +545,7 @@ require([
         if (evtSwitch.currentTarget.checked == true) {
             $("#airport-filter-icon")[0].icon = "filter";
         } else if (evtSwitch.currentTarget.checked == false) {
-            $("#airport-filter-icon")[0].icon = null;
+            $("#airport-filter-icon")[0].icon = " ";
         }
     })
     
