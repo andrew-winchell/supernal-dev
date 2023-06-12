@@ -516,7 +516,19 @@ require([
     })
 
     $("#filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        console.log(evtSwitch)
+        if (evtSwitch.checked == true) {
+            console.log("turn on filter");
+        } else {
+            console.log("turn off filter");
+        }
+    });
+
+    $("#filter-value").on("calciteInputInput", (textEntry) => {
+        if ($("#filter-switch").checked == true) {
+            console.log("turn on filtering");
+        } else {
+            console.log("turn off filtering");
+        }
     })
 
     mapView.when(() => {
