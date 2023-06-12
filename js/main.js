@@ -510,6 +510,34 @@ require([
     });
     mapView.ui.add(filterExpand, { position: "top-left" });
 
+    for (let field of airportsLyr.fields) {
+        $("#airport-filter-select").append(
+            "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+        )
+    };
+    for (let field of classAirspaceLyr.fields) {
+        $("#airspace-filter-select").append(
+            "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+        )
+    };
+    for (let field of desPointsLyr.fields) {
+        $("#fixes-filter-select").append(
+            "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+        )
+    };
+    for (let field of navaidsLyr.fields) {
+        $("#navaids-filter-select").append(
+            "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+        )
+    };
+    for (let field of obstaclesLyr.fields) {
+        $("#obstacles-filter-select").append(
+            "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
+        )
+    };
+    
+
+
     $("#layer-select").on("calciteSelectChange", (select) => {
         let layerId = select.currentTarget.value;
         getFilterFields(layerId)
