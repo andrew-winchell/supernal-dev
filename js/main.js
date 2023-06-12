@@ -543,8 +543,11 @@ require([
     // Listen to each filter switch and turn on/off the filter indicator icon
     // On switch on/off filter/unfilter the data layer
     $("#airport-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        let field = $("#airport-field-select")[0].value;
+        let value = $("#airport-filter-value")[0].value;
         if (evtSwitch.currentTarget.checked == true) {
             $("#airport-filter-icon")[0].icon = "filter";
+            console.log(field, value);
         } else if (evtSwitch.currentTarget.checked == false) {
             $("#airport-filter-icon")[0].icon = " ";
         }
