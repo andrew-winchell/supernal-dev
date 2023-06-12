@@ -524,7 +524,8 @@ require([
     });
 
     $("#filter-value").on("calciteInputInput", (textEntry) => {
-        if ($("#filter-switch").checked == true) {
+        console.log($("#filter-switch"))
+        if ($("#filter-switch")[0].checked == true) {
             console.log("turn on filtering");
         } else {
             console.log("turn off filtering");
