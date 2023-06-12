@@ -67,6 +67,16 @@
                 <div id="filter-container" class="esri-widget">
                     <calcite-block collapsible heading="Airports" id="airport-filter">
                         <calcite-icon slot="icon" scale="s" icon=""></calcite-icon>
+                        <calcite-label>
+                            Choose a field
+                            <calcite-select id="field-select">
+                                <!--Auto Generated in main.js-->
+                            </calcite-select>
+                        </calcite-label>
+                        <calcite-input placeholder="Filter Value" id="filter-value"></calcite-input>
+                        <calcite-label layout="inline">
+                            <calcite-switch style="margin-right:0px; margin-left:auto; padding-top:12px;" id="filter-switch"></calcite-switch>
+                        </calcite-label>
                     </calcite-block>
                     <calcite-block collapsible heading="Class Airspace" id="airspace-filter">
                         <calcite-icon slot="icon" scale="s" icon=""></calcite-icon>
