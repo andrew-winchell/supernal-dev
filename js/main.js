@@ -518,13 +518,16 @@ require([
     $("#filter-value").on("calciteInputInput", (textEntry) => {
         let layerSelect = $("#layer-select")[0]
         let fieldSelect = $("#field-select")[0]
+        let layer = layerSelect.value;
+        let field = fieldSelect.value;
+        let value = textEntry.currentTarget.value;
+        let checked;
         if ($("#filter-switch")[0].checked == true) {
-            let layer = layerSelect.value;
-            let field = fieldSelect.value;
-            let value = textEntry.currentTarget.value;
-            filterLayer(layer, field, value);
+            checked = true;
+            filterLayer(layer, field, value, checked);
         } else {
-            console.log("turn off filtering");
+            checked = false;
+            filterLayer(layer, field, value, checked);
         }
     })
 
@@ -733,7 +736,7 @@ require([
         }
     }
     
-    function filterLayer (layer, field, value) {
+    function filterLayer (layer, field, value, checked) {
         let featureLyr;
         switch (layer) {
             case "airports":
@@ -751,11 +754,19 @@ require([
             case "obstacles":
                 featureLyr = obstaclesLyr;
                 break;
+        };
+        if (checked == true) {
+            mapView.whenLayerView(featureLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            })
+        } else {
+            mapView.whenLayerView(featureLyr).then((layerView) => {
+                layerView.filter = {
+                    where: "1 = 1"
+                }
+            })
         }
-        mapView.whenLayerView(featureLyr).then((layerView) => {
-            layerView.filter = {
-                where: field + " = '" + value + "'"
-            }
-        })
     }
 });
