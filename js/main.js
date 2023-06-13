@@ -740,7 +740,6 @@ require([
                 layerView.filter = {
                     where: field + " = '" + value + "'"
                 }
-                console.log(layerView.filter.where)
             })
         }
     });
@@ -748,12 +747,14 @@ require([
         let fieldSelect = $("#airspace-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
-        console.log(value);
+        let valueList = (value);
+        console.log(valueList)
         if ($("#airspace-filter-switch")[0].checked == true) {
             mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
                 layerView.filter = {
-                    where: field + " IN (" + value + ")"
+                    where: field + " IN (" + valueList + ")"
                 }
+                console.log(layerView.filter.where)
             })
         }
     });
