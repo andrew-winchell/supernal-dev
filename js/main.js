@@ -735,10 +735,19 @@ require([
         let fieldSelect = $("#airport-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
+        let valueList = [];
+        if (Array.isArray(value)) {
+            for (let v of value) {
+                valueList.push("'" + v + "'");
+            }            
+        } else {
+            value = "'" + value + "'";
+            valueList.push(value)
+        }
         if ($("#airport-filter-switch")[0].checked == true) {
             mapView.whenLayerView(airportsLyr).then((layerView) => {
                 layerView.filter = {
-                    where: field + " = '" + value + "'"
+                    where: field + " IN (" + valueList + ")"
                 }
             })
         }
@@ -747,7 +756,6 @@ require([
         let fieldSelect = $("#airspace-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
-        console.log(selection)
         let valueList = [];
         if (Array.isArray(value)) {
             for (let v of value) {
@@ -770,10 +778,19 @@ require([
         let fieldSelect = $("#fixes-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
+        let valueList = [];
+        if (Array.isArray(value)) {
+            for (let v of value) {
+                valueList.push("'" + v + "'");
+            }            
+        } else {
+            value = "'" + value + "'";
+            valueList.push(value)
+        }
         if ($("#fixes-filter-switch")[0].checked == true) {
             mapView.whenLayerView(desPointsLyr).then((layerView) => {
                 layerView.filter = {
-                    where: field + " = '" + value + "'"
+                    where: field + " IN (" + valueList + ")"
                 }
             })
         }
@@ -782,10 +799,19 @@ require([
         let fieldSelect = $("#navaids-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
+        let valueList = [];
+        if (Array.isArray(value)) {
+            for (let v of value) {
+                valueList.push("'" + v + "'");
+            }            
+        } else {
+            value = "'" + value + "'";
+            valueList.push(value)
+        }
         if ($("#navaids-filter-switch")[0].checked == true) {
             mapView.whenLayerView(navaidsLyr).then((layerView) => {
                 layerView.filter = {
-                    where: field + " = '" + value + "'"
+                    where: field + " IN (" + valueList + ")"
                 }
             })
         }
@@ -794,10 +820,19 @@ require([
         let fieldSelect = $("#osbtacles-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
+        let valueList = [];
+        if (Array.isArray(value)) {
+            for (let v of value) {
+                valueList.push("'" + v + "'");
+            }            
+        } else {
+            value = "'" + value + "'";
+            valueList.push(value)
+        }
         if ($("#obstacles-filter-switch")[0].checked == true) {
             mapView.whenLayerView(obstaclesLyr).then((layerView) => {
                 layerView.filter = {
-                    where: field + " = '" + value + "'"
+                    where: field + " IN (" + valueList + ")"
                 }
             })
         }
