@@ -244,6 +244,15 @@ require([
     const airportsLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/US_Airport/FeatureServer/0",
         title: "Airports",
+        outFields: [
+            "IDENT",
+            "ICAO_ID",
+            "NAME",
+            "TYPE_CODE",
+            "MIL_CODE",
+            "SERVCITY",
+            "STATE"
+        ],
         popupTemplate: {
             title: "Airports",
             content: [
