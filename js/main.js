@@ -503,7 +503,7 @@ require([
         expandIconClass: "esri-icon-basemap"
     });
     // Add BG Expand to UI
-    mapView.ui.add(bgExpand, { position: "top-left" });
+    mapView.ui.add(bgExpand, { position: "bottom-left" });
 
     // Get the div container for the custom filter widget
     const filterDiv = $("#filter-container")[0];
@@ -513,9 +513,7 @@ require([
         expandIconClass: "esri-icon-filter"
     });
     // Add Filter Expand to UI
-    mapView.ui.add(filterExpand, { position: "top-left" });
-
-    mapView.ui.add("line-button", "top-left");
+    mapView.ui.add(filterExpand, { position: "bottom-left" });
 
     // Popuplate filter field dropdowns for each layer
     // Wait for map and layers to load first
