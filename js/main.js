@@ -531,12 +531,12 @@ require([
     // Wait for map and layers to load first
     mapView.when(() => {
         $("#airport-field-select").on("calciteSelectChange", (change) => {
-            let field = change.currentTarget.value
+            $("#airport-filter-value").empty();
+            let field = change.currentTarget.value;
             uniqueValues({
                 layer: airportsLyr,
                 field: field
             }).then((response) => {
-                console.log(response)
                 let unique = [];
                 response.uniqueValueInfos.forEach((val) => {
                     unique.push(val.value);
@@ -545,9 +545,9 @@ require([
                 for (let item of unique) {
                     $("#airport-filter-value").append(
                         "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
-                    )
+                    );
                 }
-            })
+            });
         });
     });
 
