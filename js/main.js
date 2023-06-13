@@ -530,11 +530,6 @@ require([
     // Popuplate filter field dropdowns for each layer
     // Wait for map and layers to load first
     mapView.when(() => {
-        for (let field of airportsLyr.fields) {
-            $("#airport-field-select").append(
-                "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-            )
-        };
         for (let field of desPointsLyr.fields) {
             $("#fixes-field-select").append(
                 "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
