@@ -530,11 +530,9 @@ require([
     // Popuplate filter field dropdowns for each layer
     // Wait for map and layers to load first
     mapView.when(() => {
-        for (let field of desPointsLyr.fields) {
-            $("#fixes-field-select").append(
-                "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-            )
-        };
+        $("#airport-field-select").on("calciteSelectChange", (change) => {
+            console.log(change);
+        });
     });
 
     // Listen to each filter switch and turn on/off the filter indicator icon
