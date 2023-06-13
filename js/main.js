@@ -747,10 +747,11 @@ require([
         let fieldSelect = $("#airspace-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
+        console.log(value);
         if ($("#airspace-filter-switch")[0].checked == true) {
             mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
                 layerView.filter = {
-                    where: field + " = '" + value + "'"
+                    where: field + " IN '" + value + "'"
                 }
             })
         }
