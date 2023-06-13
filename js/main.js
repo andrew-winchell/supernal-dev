@@ -532,6 +532,7 @@ require([
     mapView.when(() => {
         $("#airport-field-select").on("calciteSelectChange", (change) => {
             $("#airport-filter-value").empty();
+            let field = change.currentTarget.value;
             uniqueValues({
                 layer: airportsLyr,
                 field: field,
