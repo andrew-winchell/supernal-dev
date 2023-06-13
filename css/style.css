@@ -72,6 +72,10 @@ html, body, #view-div {
   overflow-y: scroll !important;
 }
 
+.list-container {
+  max-height: 200px !important;
+}
+
 #filter-container {
   background-color: white;
   padding: 1rem;
