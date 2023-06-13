@@ -749,7 +749,7 @@ require([
         let value = selection.currentTarget.value;
         console.log(selection)
         let valueList = [];
-        if (selection.currentTarget.value.length > 1) {
+        if (Array.isArray(value)) {
             for (let v of value) {
                 valueList.push("'" + v + "'");
             }            
