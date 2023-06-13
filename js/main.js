@@ -537,6 +537,12 @@ require([
                 field: field
             }).then((response) => {
                 console.log(response)
+                let unique = [];
+                response.uniqueValueInfos.forEach((val) => {
+                    unique.push(val);
+                });
+                unique.sort();
+                console.log(unique)
             })
         });
     });
