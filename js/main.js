@@ -754,7 +754,7 @@ require([
                 valueList.push("'" + v + "'");
             }            
         } else {
-            valueList.push("'" + value + "'")
+            valueList.push(value)
         }
         if ($("#airspace-filter-switch")[0].checked == true) {
             mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
