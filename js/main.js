@@ -549,6 +549,44 @@ require([
                 }
             });
         });
+        $("#airspace-field-select").on("calciteComboboxChange", (change) => {
+            $("#airspace-filter-value").empty();
+            let field = change.currentTarget.value;
+            uniqueValues({
+                layer: classAirspaceLyr,
+                field: field
+            }).then((response) => {
+                let unique = [];
+                response.uniqueValueInfos.forEach((val) => {
+                    unique.push(val.value);
+                });
+                unique.sort();
+                for (let item of unique) {
+                    $("#airspace-filter-value").append(
+                        "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
+                    );
+                }
+            });
+        });
+        $("#fixes-field-select").on("calciteComboboxChange", (change) => {
+            $("#fixes-filter-value").empty();
+            let field = change.currentTarget.value;
+            uniqueValues({
+                layer: desPointsLyr,
+                field: field
+            }).then((response) => {
+                let unique = [];
+                response.uniqueValueInfos.forEach((val) => {
+                    unique.push(val.value);
+                });
+                unique.sort();
+                for (let item of unique) {
+                    $("#fixes-filter-value").append(
+                        "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
+                    );
+                }
+            });
+        });
     });
 
     // Listen to each filter switch and turn on/off the filter indicator icon
