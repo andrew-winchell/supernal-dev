@@ -747,7 +747,7 @@ require([
         let fieldSelect = $("#airspace-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
-        console.log(selection.currentTarget)
+        console.log(selection)
         let valueList = [];
         if (value.length > 1) {
             for (let v of value) {
