@@ -538,7 +538,8 @@ require([
             let field = change.currentTarget.value;
             uniqueValues({
                 layer: airportsLyr,
-                field: field
+                field: field,
+                sqlWhere: "OBJECTID >=1001 AND OBJECTID <= 2000"
             }).then((response) => {
                 let unique = [];
                 response.uniqueValueInfos.forEach((val) => {
