@@ -754,6 +754,7 @@ require([
                 valueList.push("'" + v + "'");
             }            
         } else {
+            value = "'" + value + "'";
             valueList.push(value)
         }
         if ($("#airspace-filter-switch")[0].checked == true) {
