@@ -832,7 +832,7 @@ require([
     // Obstacles Layer listen for changes in filter selection
     // Filter based on any matching values
     $("#obstacles-filter-value").on("calciteComboboxChange", (selection) => {
-        let fieldSelect = $("#osbtacles-field-select")[0]
+        let fieldSelect = $("#obstacles-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
         let valueList = [];
