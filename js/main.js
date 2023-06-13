@@ -535,8 +535,7 @@ require([
             let field = change.currentTarget.value;
             uniqueValues({
                 layer: airportsLyr,
-                field: field,
-                sqlWhere: "OBJECTID = " + i
+                field: field
             }).then((response) => {
                 let unique = [];
                 response.uniqueValueInfos.forEach((val) => {
