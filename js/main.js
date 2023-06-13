@@ -533,13 +533,13 @@ require([
         $("#airport-field-select").on("calciteSelectChange", (change) => {
             $("#airport-filter-value").empty();
             airportsLyr.queryObjectIds().then((results) => {
-                console.log(results);
+                console.log(results.length)
             })
             let field = change.currentTarget.value;
             uniqueValues({
                 layer: airportsLyr,
                 field: field,
-                sqlWhere: "OBJECTID >=1001 AND OBJECTID <= 2000"
+                sqlWhere: "OBJECTID = " + i
             }).then((response) => {
                 let unique = [];
                 response.uniqueValueInfos.forEach((val) => {
