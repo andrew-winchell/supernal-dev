@@ -531,7 +531,14 @@ require([
     // Wait for map and layers to load first
     mapView.when(() => {
         $("#airport-field-select").on("calciteSelectChange", (change) => {
-            console.log(change);
+            let field = change.currentTarget.value;
+            let query =  airportsLyr.createQuery();
+            query.outFields = [field];
+            query.where = "1=1";
+            query.returnDistinctValues = true;
+            airportsLyr.queryFeatures(query).then((response) => {
+                console.log(response);
+            });
         });
     });
 
