@@ -18,9 +18,10 @@ require([
     "esri/widgets/BasemapGallery",
     "esri/widgets/Expand",
     "esri/widgets/Editor",
-    "esri/geometry/support/webMercatorUtils"
+    "esri/geometry/support/webMercatorUtils",
+    "esri/widgets/Compass"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor, webMercatorUtils) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor, webMercatorUtils, Compass) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -477,6 +478,13 @@ require([
             }
         })
     })
+
+    // Create Compass widget instance and place in the top-left UI
+    const compass = new Compass ({
+        view: mapView
+    });
+    // Add Compass to UI
+    mapView.ui.add(compass, "top-left");
 
     // Create Search widget instance and place in the search-div container
     const search = new Search ({
