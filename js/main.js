@@ -39,208 +39,6 @@ require([
             console.log("User not signed in.")
         });
 
-    const navaidsLyr = new FeatureLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0",
-        title: "NAVAIDS",
-        popupTemplate: {
-            title: "NAVAIDS",
-            content: [
-                {
-                    type: "fields",
-                    fieldInfos: [
-                        {
-                            fieldName: "IDENT",
-                            label: "Identifier"
-                        },
-                        {
-                            fieldName: "CHANNEL",
-                            label: "Channel"
-                        },
-                        {
-                            fieldName: "NAS_USE",
-                            label: "NAS Use"
-                        },
-                        {
-                            fieldName: "US_LOW",
-                            label: "US LOW"
-                        },
-                        {
-                            fieldName: "US_HIGH",
-                            label: "US HIGH"
-                        }
-                    ]
-                }
-            ]
-        },
-        minScale: 1500000
-    });
-
-    const obstaclesLyr = new FeatureLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0",
-        title: "Obstacles",
-        popupTemplate: {
-            title: "Obstacles",
-            content: [
-                {
-                    type: "fields",
-                    fieldInfos: [
-                        {
-                            fieldName: "Type_Code",
-                            label: "Type"
-                        },
-                        {
-                            fieldName: "OAS_Number",
-                            label: "OAS Number"
-                        },
-                        {
-                            fieldName: "Quantity",
-                            label: "Quantity"
-                        },
-                        {
-                            fieldName: "AMSL",
-                            label: "AMSL"
-                        }
-                    ]
-                }
-            ]
-        },
-        renderer: {
-            type: "simple",
-            symbol: {
-                type: "picture-marker",
-                url: "media/obstacle.png",
-                contentType: "image/png",
-                width: "12px",
-                height: "18.33px"
-            }
-        },
-        labelingInfo: {
-            symbol: {
-                type: "text",
-                color: "black",
-                font: {
-                    family: "Playfair Display",
-                    size: 10,
-                    weight: "normal"
-                }
-            },
-            labelPlacement: "above-center",
-            labelExpressionInfo: {
-                expression: "$feature.AMSL + TextFormatting.NewLine + '(' + $feature.AGL + ')'"
-            }
-        },
-        minScale: 500000 
-    });
-
-    const desPointsLyr = new FeatureLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/DesignatedPoints/FeatureServer/0",
-        title: "Designated Points",
-        popupTemplate: {
-            title: "Designated Points",
-            content: [
-                {
-                    type: "fields",
-                    fieldInfos: [
-                        {
-                            fieldName: "IDENT",
-                            label: "Identifier"
-                        },
-                        {
-                            fieldName: "TYPE_CODE",
-                            label: "Type"
-                        },
-                        {
-                            fieldName: "MIL_CODE",
-                            label: "Military Code"
-                        },
-                        {
-                            fieldName: "NOTES_ID",
-                            label: "Notes ID"
-                        }
-                    ]
-                }
-            ]
-        },
-        renderer: {
-            type: "unique-value",
-            field: "TYPE_CODE",
-            uniqueValueInfos: [
-                {
-                    label: "Regular Public Transport",
-                    value: "RPT",
-                    symbol: {
-                        type: "simple-marker",
-                        size: 4,
-                        color: [255, 0, 0]
-                    }
-                },
-                {
-                    label: "Waypoint",
-                    value: "WPT",
-                    symbol: {
-                        type: "simple-marker",
-                        size: 4,
-                        color: [255, 180, 0]
-                    }
-                },
-                {
-                    label: "Other",
-                    value: "OTHER",
-                    symbol: {
-                        type: "simple-marker",
-                        size: 4,
-                        color: [200, 200, 200]
-                    }
-                },
-                {
-                    label: "Navigation Reference System",
-                    value: "NRS",
-                    symbol: {
-                        type: "simple-marker",
-                        size: 4,
-                        color: [255, 0, 0]
-                    }
-                },
-                {
-                    label: "Area Navigation",
-                    value: "RNAV",
-                    symbol: {
-                        type: "simple-marker",
-                        size: 4,
-                        color: [255, 158, 244]
-                    }
-                },
-                {
-                    label: "Computer Navigation Fix",
-                    value: "CNF",
-                    symbol: {
-                        type: "simple-marker",
-                        size: 4,
-                        color: [181, 0, 161]
-                    }
-                },
-                {
-                    label: "Ground Movement Control",
-                    value: "GND",
-                    symbol: {
-                        type: "simple-marker",
-                        size: 4,
-                        color: [0, 207, 3]
-                    }
-                },
-                {
-                    value: "MRPT",
-                    symbol: {
-                        type: "simple-marker",
-                        size: 4,
-                        color: [33, 52, 255]
-                    }
-                }
-            ]
-        },
-        minScale: 1500000
-    });
-
     const airportsLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/US_Airport/FeatureServer/0",
         title: "Airports",
@@ -392,6 +190,208 @@ require([
             ]
         }
     });
+
+    const desPointsLyr = new FeatureLayer ({
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/DesignatedPoints/FeatureServer/0",
+        title: "Designated Points",
+        popupTemplate: {
+            title: "Designated Points",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "IDENT",
+                            label: "Identifier"
+                        },
+                        {
+                            fieldName: "TYPE_CODE",
+                            label: "Type"
+                        },
+                        {
+                            fieldName: "MIL_CODE",
+                            label: "Military Code"
+                        },
+                        {
+                            fieldName: "NOTES_ID",
+                            label: "Notes ID"
+                        }
+                    ]
+                }
+            ]
+        },
+        renderer: {
+            type: "unique-value",
+            field: "TYPE_CODE",
+            uniqueValueInfos: [
+                {
+                    label: "Regular Public Transport",
+                    value: "RPT",
+                    symbol: {
+                        type: "simple-marker",
+                        size: 4,
+                        color: [255, 0, 0]
+                    }
+                },
+                {
+                    label: "Waypoint",
+                    value: "WPT",
+                    symbol: {
+                        type: "simple-marker",
+                        size: 4,
+                        color: [255, 180, 0]
+                    }
+                },
+                {
+                    label: "Other",
+                    value: "OTHER",
+                    symbol: {
+                        type: "simple-marker",
+                        size: 4,
+                        color: [200, 200, 200]
+                    }
+                },
+                {
+                    label: "Navigation Reference System",
+                    value: "NRS",
+                    symbol: {
+                        type: "simple-marker",
+                        size: 4,
+                        color: [255, 0, 0]
+                    }
+                },
+                {
+                    label: "Area Navigation",
+                    value: "RNAV",
+                    symbol: {
+                        type: "simple-marker",
+                        size: 4,
+                        color: [255, 158, 244]
+                    }
+                },
+                {
+                    label: "Computer Navigation Fix",
+                    value: "CNF",
+                    symbol: {
+                        type: "simple-marker",
+                        size: 4,
+                        color: [181, 0, 161]
+                    }
+                },
+                {
+                    label: "Ground Movement Control",
+                    value: "GND",
+                    symbol: {
+                        type: "simple-marker",
+                        size: 4,
+                        color: [0, 207, 3]
+                    }
+                },
+                {
+                    value: "MRPT",
+                    symbol: {
+                        type: "simple-marker",
+                        size: 4,
+                        color: [33, 52, 255]
+                    }
+                }
+            ]
+        },
+        minScale: 1500000
+    });
+
+    const navaidsLyr = new FeatureLayer ({
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/NAVAIDSystem/FeatureServer/0",
+        title: "NAVAIDS",
+        popupTemplate: {
+            title: "NAVAIDS",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "IDENT",
+                            label: "Identifier"
+                        },
+                        {
+                            fieldName: "CHANNEL",
+                            label: "Channel"
+                        },
+                        {
+                            fieldName: "NAS_USE",
+                            label: "NAS Use"
+                        },
+                        {
+                            fieldName: "US_LOW",
+                            label: "US LOW"
+                        },
+                        {
+                            fieldName: "US_HIGH",
+                            label: "US HIGH"
+                        }
+                    ]
+                }
+            ]
+        },
+        minScale: 1500000
+    });
+
+    const obstaclesLyr = new FeatureLayer ({
+        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Digital_Obstacle_File/FeatureServer/0",
+        title: "Obstacles",
+        popupTemplate: {
+            title: "Obstacles",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "Type_Code",
+                            label: "Type"
+                        },
+                        {
+                            fieldName: "OAS_Number",
+                            label: "OAS Number"
+                        },
+                        {
+                            fieldName: "Quantity",
+                            label: "Quantity"
+                        },
+                        {
+                            fieldName: "AMSL",
+                            label: "AMSL"
+                        }
+                    ]
+                }
+            ]
+        },
+        renderer: {
+            type: "simple",
+            symbol: {
+                type: "picture-marker",
+                url: "media/obstacle.png",
+                contentType: "image/png",
+                width: "12px",
+                height: "18.33px"
+            }
+        },
+        labelingInfo: {
+            symbol: {
+                type: "text",
+                color: "black",
+                font: {
+                    family: "Playfair Display",
+                    size: 10,
+                    weight: "normal"
+                }
+            },
+            labelPlacement: "above-center",
+            labelExpressionInfo: {
+                expression: "$feature.AMSL + TextFormatting.NewLine + '(' + $feature.AGL + ')'"
+            }
+        },
+        minScale: 500000 
+    });
     
     const graphicsLyr = new GraphicsLayer ({
         title: "Proposed Route",
@@ -439,6 +439,9 @@ require([
     };
     appConfig.activeView = appConfig.mapView;
 
+    // After map load, create a customized Layer List widget
+    // Place in left pane layer-list div
+    // Add custom actions for legend and item details
     mapView.when(() => {
         const layerList = new LayerList({
             view: mapView,
@@ -474,36 +477,6 @@ require([
             }
         })
     })
-
-    /*
-    let layerlist = new LayerList ({
-        view: mapView,
-        container: "layer-list",
-        listItemCreatedFunction: (event) => {
-            const item = event.item;
-            item.actionsSections = [
-                [
-                    {
-                        title: "Filter",
-                        className: "esri-icon-filter",
-                        id: "filter"
-                    },
-                    {
-                        title: "Item Details",
-                        className: "esri-icon-description",
-                        id: "item-details"
-                    }
-                ]
-            ];
-            if (item.layer.type != "group") {
-                item.panel = {
-                    content: "legend",
-                    open: true
-                };
-            }
-        }
-    });
-    */
 
     // Create Search widget instance and place in the search-div container
     const search = new Search ({
