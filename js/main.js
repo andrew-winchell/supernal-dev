@@ -755,7 +755,8 @@ require([
                 console.log(valueList)
             }            
         } else {
-            valueList.push("'" + value + "'")
+            console.log(value)
+            valueList.push("'" + value[0] + "'")
             console.log(valueList)
         }
         if ($("#airspace-filter-switch")[0].checked == true) {
