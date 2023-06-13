@@ -853,6 +853,15 @@ require([
         }
     });
 
+
+    let drawPoints = new Draw ({
+        view: mapView
+    });
+    let action = drawPoints.create("multipoint", { mode:"click" })
+    action.on("vertex-add", (evt) => {
+        console.log(evt)
+    })
+
     mapView.when(() => {
         const elevation = new ElevationLayer ({
             url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
@@ -944,7 +953,7 @@ require([
     const lineSketch = new Sketch ({
         layer: graphicsLyr,
         view: mapView,
-        availableCreateTools: ["multpoint"],
+        availableCreateTools: ["polyline"],
         snappingOptions: {
             enabled: true,
             featureSources: [
