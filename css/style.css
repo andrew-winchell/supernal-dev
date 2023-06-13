@@ -22,8 +22,15 @@ html, body, #view-div {
   margin-right: 1rem;
 }
 
+#logo {
+  vertical-align: middle;
+  width: 200px;
+  margin: 5px;
+}
+
 #header-title h2 {
   display: inline-block;
+  vertical-align: middle;
 }
 
 #menu { 
