@@ -751,7 +751,7 @@ require([
         if ($("#airspace-filter-switch")[0].checked == true) {
             mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
                 layerView.filter = {
-                    where: field + " IN '" + value + "'"
+                    where: field + " = '" + value + "'"
                 }
             })
         }
