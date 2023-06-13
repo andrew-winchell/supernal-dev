@@ -423,7 +423,7 @@ require([
     const mapView = new MapView ({
         map: map2D,
         container: "view-div",
-        zoom: 4,
+        zoom: 3,
         center: [-97, 39]
     });
 
