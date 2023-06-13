@@ -533,25 +533,39 @@ require([
         $("#airport-field-select").on("calciteSelectChange", (change) => {
             $("#airport-filter-value").empty();
             airportsLyr.queryObjectIds().then((results) => {
-                console.log(results.length)
-            })
-            let field = change.currentTarget.value;
-            uniqueValues({
-                layer: airportsLyr,
-                field: field,
-                sqlWhere: "OBJECTID = " + i
-            }).then((response) => {
-                let unique = [];
-                response.uniqueValueInfos.forEach((val) => {
-                    unique.push(val.value);
-                });
-                unique.sort();
-                for (let item of unique) {
-                    $("#airport-filter-value").append(
-                        "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
-                    );
+                let totalIds = results.length;
+                let field = change.currentTarget.value;
+
+                for (let i=1; i<=totalIds; i++) {
+                    airportsLyr.queryFeatures({
+                        returnGeometry: false,
+                        outFields: [field],
+                        where: "OBJECTID = " + i
+                    }).then((queryResults) => {
+                        console.log(queryResults)
+                    })
                 }
-            });
+
+
+                /*
+                uniqueValues({
+                    layer: airportsLyr,
+                    field: field,
+                    sqlWhere: "OBJECTID = " + i
+                }).then((response) => {
+                    let unique = [];
+                    response.uniqueValueInfos.forEach((val) => {
+                        unique.push(val.value);
+                    });
+                    unique.sort();
+                    for (let item of unique) {
+                        $("#airport-filter-value").append(
+                            "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
+                        );
+                    }
+                });
+                */
+            })
         });
     });
 
