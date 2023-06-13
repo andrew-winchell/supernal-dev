@@ -740,6 +740,7 @@ require([
                 layerView.filter = {
                     where: field + " = '" + value + "'"
                 }
+                console.log(layerView.filter.where)
             })
         }
     });
