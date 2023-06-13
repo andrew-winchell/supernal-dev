@@ -539,7 +539,7 @@ require([
                 console.log(response)
                 let unique = [];
                 response.uniqueValueInfos.forEach((val) => {
-                    unique.push(val);
+                    unique.push(val.value);
                 });
                 unique.sort();
                 console.log(unique)
