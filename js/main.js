@@ -530,7 +530,7 @@ require([
     // Popuplate filter field dropdowns for each layer
     // Wait for map and layers to load first
     mapView.when(() => {
-        $("#airport-field-select").on("calciteSelectChange", (change) => {
+        $("#airport-field-select").on("calciteComboboxChange", (change) => {
             $("#airport-filter-value").empty();
             let field = change.currentTarget.value;
             uniqueValues({
