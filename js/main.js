@@ -724,7 +724,6 @@ require([
             });
         }
     });
-    
 
 
     $("#layer-select").on("calciteSelectChange", (select) => {
@@ -732,10 +731,10 @@ require([
         getFilterFields(layerId)
     })
 
-    $("#airport-filter-value").on("calciteInputInput", (textEntry) => {
+    $("#airport-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#airport-field-select")[0]
         let field = fieldSelect.value;
-        let value = textEntry.currentTarget.value;
+        let value = selection.currentTarget.value;
         if ($("#airport-filter-switch")[0].checked == true) {
             mapView.whenLayerView(airportsLyr).then((layerView) => {
                 layerView.filter = {
@@ -744,10 +743,10 @@ require([
             })
         }
     });
-    $("#airspace-filter-value").on("calciteInputInput", (textEntry) => {
+    $("#airspace-filter-value").on("calciteInputInput", (selection) => {
         let fieldSelect = $("#airspace-field-select")[0]
         let field = fieldSelect.value;
-        let value = textEntry.currentTarget.value;
+        let value = selection.currentTarget.value;
         if ($("#airspace-filter-switch")[0].checked == true) {
             mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
                 layerView.filter = {
@@ -756,10 +755,10 @@ require([
             })
         }
     });
-    $("#fixes-filter-value").on("calciteInputInput", (textEntry) => {
+    $("#fixes-filter-value").on("calciteInputInput", (selection) => {
         let fieldSelect = $("#fixes-field-select")[0]
         let field = fieldSelect.value;
-        let value = textEntry.currentTarget.value;
+        let value = selection.currentTarget.value;
         if ($("#fixes-filter-switch")[0].checked == true) {
             mapView.whenLayerView(desPointsLyr).then((layerView) => {
                 layerView.filter = {
@@ -768,10 +767,10 @@ require([
             })
         }
     });
-    $("#navaids-filter-value").on("calciteInputInput", (textEntry) => {
+    $("#navaids-filter-value").on("calciteInputInput", (selection) => {
         let fieldSelect = $("#navaids-field-select")[0]
         let field = fieldSelect.value;
-        let value = textEntry.currentTarget.value;
+        let value = selection.currentTarget.value;
         if ($("#navaids-filter-switch")[0].checked == true) {
             mapView.whenLayerView(navaidsLyr).then((layerView) => {
                 layerView.filter = {
@@ -780,10 +779,10 @@ require([
             })
         }
     });
-    $("#obstacles-filter-value").on("calciteInputInput", (textEntry) => {
+    $("#obstacles-filter-value").on("calciteInputInput", (selection) => {
         let fieldSelect = $("#osbtacles-field-select")[0]
         let field = fieldSelect.value;
-        let value = textEntry.currentTarget.value;
+        let value = selection.currentTarget.value;
         if ($("#obstacles-filter-switch")[0].checked == true) {
             mapView.whenLayerView(obstaclesLyr).then((layerView) => {
                 layerView.filter = {
