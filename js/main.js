@@ -348,6 +348,14 @@ require([
     const classAirspaceLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0",
         definitionExpression: "LOCAL_TYPE = 'CLASS_B' OR LOCAL_TYPE = 'CLASS_C' OR LOCAL_TYPE = 'CLASS_D'",
+        outFields: [
+            "IDENT",
+            "ICAO_ID",
+            "NAME",
+            "TYPE_CODE",
+            "CLASS",
+            "LOCAL_TYPE"
+        ],
         popupTemplate: {
             title: "Class Airspace",
             content: [
