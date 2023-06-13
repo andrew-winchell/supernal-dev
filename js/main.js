@@ -526,11 +526,6 @@ require([
                 "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
             )
         };
-        for (let field of classAirspaceLyr.fields) {
-            $("#airspace-field-select").append(
-                "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-            )
-        };
         for (let field of desPointsLyr.fields) {
             $("#fixes-field-select").append(
                 "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
