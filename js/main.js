@@ -747,7 +747,10 @@ require([
         let fieldSelect = $("#airspace-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
-        let valueList = (value);
+        let valueList = [];
+        for (let v of value) {
+            valueList.push("'" + v + "'");
+        }
         console.log(valueList)
         if ($("#airspace-filter-switch")[0].checked == true) {
             mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
