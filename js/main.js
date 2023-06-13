@@ -743,7 +743,7 @@ require([
             })
         }
     });
-    $("#airspace-filter-value").on("calciteInputInput", (selection) => {
+    $("#airspace-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#airspace-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
@@ -755,7 +755,7 @@ require([
             })
         }
     });
-    $("#fixes-filter-value").on("calciteInputInput", (selection) => {
+    $("#fixes-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#fixes-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
@@ -767,7 +767,7 @@ require([
             })
         }
     });
-    $("#navaids-filter-value").on("calciteInputInput", (selection) => {
+    $("#navaids-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#navaids-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
@@ -779,7 +779,7 @@ require([
             })
         }
     });
-    $("#obstacles-filter-value").on("calciteInputInput", (selection) => {
+    $("#obstacles-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#osbtacles-field-select")[0]
         let field = fieldSelect.value;
         let value = selection.currentTarget.value;
