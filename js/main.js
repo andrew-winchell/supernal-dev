@@ -944,7 +944,7 @@ require([
     const lineSketch = new Sketch ({
         layer: graphicsLyr,
         view: mapView,
-        availableCreateTools: ["polyline"],
+        availableCreateTools: ["multpoint"],
         snappingOptions: {
             enabled: true,
             featureSources: [
