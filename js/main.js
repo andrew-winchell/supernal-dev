@@ -535,16 +535,6 @@ require([
                 "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
             )
         };
-        for (let field of navaidsLyr.fields) {
-            $("#navaids-field-select").append(
-                "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-            )
-        };
-        for (let field of obstaclesLyr.fields) {
-            $("#obstacles-field-select").append(
-                "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-            )
-        };
     });
 
     // Listen to each filter switch and turn on/off the filter indicator icon
