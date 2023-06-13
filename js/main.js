@@ -9,7 +9,7 @@ require([
     "esri/Graphic",
     "esri/layers/GraphicsLayer",
     "esri/layers/FeatureLayer",
-    "esri/layers/GeoJSONLayer",
+    "esri/smartMapping/statistics/uniqueValues",
     "esri/layers/ElevationLayer",
     "esri/views/draw/Draw",
     "esri/widgets/LayerList",
@@ -20,7 +20,7 @@ require([
     "esri/widgets/Editor",
     "esri/geometry/support/webMercatorUtils"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, GeoJSONLayer, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor, webMercatorUtils) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor, webMercatorUtils) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -531,14 +531,13 @@ require([
     // Wait for map and layers to load first
     mapView.when(() => {
         $("#airport-field-select").on("calciteSelectChange", (change) => {
-            let field = change.currentTarget.value;
-            let query =  airportsLyr.createQuery();
-            query.outFields = [field];
-            query.where = "1=1";
-            query.returnDistinctValues = true;
-            airportsLyr.queryFeatures(query).then((response) => {
-                console.log(response);
-            });
+            let field = change.currentTarget.value
+            uniqueValues({
+                layer: airportsLyr,
+                field: field
+            }).then((response) => {
+                console.log(response)
+            })
         });
     });
 
