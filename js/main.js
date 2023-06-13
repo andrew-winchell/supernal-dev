@@ -730,7 +730,10 @@ require([
         let layerId = select.currentTarget.value;
         getFilterFields(layerId)
     })
+    
 
+    // Airports Layer listen for changes in filter selection
+    // Filter based on any matching values
     $("#airport-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#airport-field-select")[0]
         let field = fieldSelect.value;
@@ -752,6 +755,9 @@ require([
             })
         }
     });
+
+    // Airspace Layer listen for changes in filter selection
+    // Filter based on any matching values
     $("#airspace-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#airspace-field-select")[0]
         let field = fieldSelect.value;
@@ -774,6 +780,9 @@ require([
             })
         }
     });
+    
+    // Fixes Layer listen for changes in filter selection
+    // Filter based on any matching values
     $("#fixes-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#fixes-field-select")[0]
         let field = fieldSelect.value;
@@ -795,6 +804,9 @@ require([
             })
         }
     });
+    
+    // NAVAIDS Layer listen for changes in filter selection
+    // Filter based on any matching values
     $("#navaids-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#navaids-field-select")[0]
         let field = fieldSelect.value;
@@ -816,6 +828,9 @@ require([
             })
         }
     });
+    
+    // Obstacles Layer listen for changes in filter selection
+    // Filter based on any matching values
     $("#obstacles-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#osbtacles-field-select")[0]
         let field = fieldSelect.value;
