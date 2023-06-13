@@ -507,6 +507,8 @@ require([
     // Add Filter Expand to UI
     mapView.ui.add(filterExpand, { position: "top-left" });
 
+    mapView.ui.add("line-button", "top-left");
+
     // Popuplate filter field dropdowns for each layer
     // Wait for map and layers to load first
     mapView.when(() => {
