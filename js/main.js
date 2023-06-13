@@ -505,26 +505,33 @@ require([
     });
     */
 
+    // Create Search widget instance and place in the search-div container
     const search = new Search ({
         view: mapView,
         container: "search-div"
     });
 
+    // Create BasemapGallery instance
     const basemapGallery = new BasemapGallery ({
         view: mapView
     });
+    // Create Expand widget instance and place basemap gallery content inside
     const bgExpand = new Expand ({
         mapView,
         content: basemapGallery,
         expandIconClass: "esri-icon-basemap"
     });
+    // Add BG Expand to UI
     mapView.ui.add(bgExpand, { position: "top-left" });
 
+    // Get the div container for the custom filter widget
     const filterDiv = $("#filter-container")[0];
+    // Create Expand widget instance and place the custom filter div in the content
     const filterExpand = new Expand ({
         content: filterDiv,
         expandIconClass: "esri-icon-filter"
     });
+    // Add Filter Expand to UI
     mapView.ui.add(filterExpand, { position: "top-left" });
 
     // Popuplate filter field dropdowns for each layer
@@ -627,8 +634,8 @@ require([
         });
     });
 
-    // Listen to each filter switch and turn on/off the filter indicator icon
-    // On switch on/off filter/unfilter the data layer
+    // Airport Layer listen for filter switch to be turned on
+    // If turned on, apply current filter values
     $("#airport-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
         let field = $("#airport-field-select")[0].value;
         let value = $("#airport-filter-value")[0].value;
@@ -648,6 +655,9 @@ require([
             });
         }
     });
+
+    // Airspace Layer listen for filter switch to be turned on
+    // If turned on, apply current filter values
     $("#airspace-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
         let field = $("#airspace-field-select")[0].value;
         let value = $("#airspace-filter-value")[0].value;
@@ -667,6 +677,9 @@ require([
             });
         }
     });
+
+    // Fixes Layer listen for filter switch to be turned on
+    // If turned on, apply current filter values
     $("#fixes-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
         let field = $("#fixes-field-select")[0].value;
         let value = $("#fixes-filter-value")[0].value;
@@ -686,6 +699,9 @@ require([
             });
         }
     });
+
+    // NAVAIDS Layer listen for filter switch to be turned on
+    // If turned on, apply current filter values
     $("#navaids-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
         let field = $("#navaids-field-select")[0].value;
         let value = $("#navaids-filter-value")[0].value;
@@ -705,6 +721,9 @@ require([
             });
         }
     });
+
+    // Obstacles Layer listen for filter switch to be turned on
+    // If turned on, apply current filter values
     $("#obstacles-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
         let field = $("#obstacles-field-select")[0].value;
         let value = $("#obstacles-filter-value")[0].value;
@@ -723,14 +742,7 @@ require([
                 }
             });
         }
-    });
-
-
-    $("#layer-select").on("calciteSelectChange", (select) => {
-        let layerId = select.currentTarget.value;
-        getFilterFields(layerId)
-    })
-    
+    });    
 
     // Airports Layer listen for changes in filter selection
     // Filter based on any matching values
@@ -852,15 +864,6 @@ require([
             })
         }
     });
-
-
-    let drawPoints = new Draw ({
-        view: mapView
-    });
-    let action = drawPoints.create("multipoint", { mode:"click" })
-    action.on("vertex-add", (evt) => {
-        console.log(evt)
-    })
 
     mapView.when(() => {
         const elevation = new ElevationLayer ({
@@ -1028,43 +1031,6 @@ require([
             .then((results) => {
                 //console.log(results)
             })
-    }
-
-    function getFilterFields (layer) {
-        $("#field-select").empty();
-        if (layer === "airspace") {
-            for (let field of classAirspaceLyr.fields) {
-                $("#field-select").append(
-                    "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-                )
-            }
-        } else if (layer === "airports") {
-            for (let field of airportsLyr.fields) {
-                $("#field-select").append(
-                    "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-                )
-            }
-        } else if (layer === "fixes") {
-            for (let field of desPointsLyr.fields) {
-                $("#field-select").append(
-                    "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-                )
-            }
-        } else if (layer === "navaids") {
-            for (let field of navaidsLyr.fields) {
-                $("#field-select").append(
-                    "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-                )
-            }
-        } else if (layer === "obstacles") {
-            for (let field of obstaclesLyr.fields) {
-                $("#field-select").append(
-                    "<calcite-option value='" + field.name + "'>" + field.name + "</calcite-option>"
-                )
-            }
-        } else if (layer === "routes") {
-            console.log("routes");
-        }
     }
     
     function filterLayer (layer, field, value, checked) {
