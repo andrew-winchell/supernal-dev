@@ -542,7 +542,11 @@ require([
                     unique.push(val.value);
                 });
                 unique.sort();
-                console.log(unique)
+                for (let item of unique) {
+                    $("#airport-filter-value").append(
+                        "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
+                    )
+                }
             })
         });
     });
