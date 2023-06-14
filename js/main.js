@@ -518,6 +518,9 @@ require([
 
     mapView.ui.add("draw-button", "bottom-left");
 
+    $("#toolbar-button")
+
+    /*
     const draw = new Draw ({
         view: mapView,
         hasZ: true
@@ -555,6 +558,7 @@ require([
         });
         mapView.graphics.add(graphic);
     }
+    */
     
 
     // Popuplate filter field dropdowns for each layer
