@@ -551,7 +551,7 @@ require([
             }
           }
         });
-        view.graphics.add(graphic);
+        mapView.graphics.add(graphic);
     }
     
 
