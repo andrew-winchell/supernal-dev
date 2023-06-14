@@ -536,10 +536,7 @@ require([
         action.on("vertex-add", (evt) => {
             let altitude = prompt("Enter Altitude:");
             let coords = [evt.vertices[0][0], evt.vertices[0][1], altitude]
-            let mapPt = action.getCoordsFromScreenPoint(coords)
-            console.log(mapPt)
-            console.log(evt.vertices);
-            //createVertice(evt.vertices, altit)
+            createVertice(coords)
         });
 
 
@@ -547,6 +544,29 @@ require([
 
     function createVertice (vertice) {
         console.log(vertice)
+
+        view.graphics.removeAll();
+
+        let multipoint = new Multipoint ({
+            points: vertice,
+            spatialReference: mapView.spatialReference
+        });
+    
+        const graphic = new Graphic ({
+            geometry: multipoint,
+            symbol: {
+                type: "simple-marker",
+                style: "square",
+                color: "red",
+                size: "16px",
+                outline: {
+                    color: [255, 255, 0],
+                    width: 3
+                }
+            }
+        })
+        mapView.graphics.add(graphic);
+        console.log(graphic)
     }
 
 
