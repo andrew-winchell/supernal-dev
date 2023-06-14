@@ -519,7 +519,8 @@ require([
     mapView.ui.add("draw-button", "bottom-left");
 
     const draw = new Draw ({
-        view: mapView
+        view: mapView,
+        hasZ: true
     });
     $("#draw-button").on("click", () => {
         $("#route-toolbar").css("display", "block")
