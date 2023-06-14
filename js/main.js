@@ -533,10 +533,10 @@ require([
 
         const action = draw.create("multipoint");
 
-        let point3D = action.getCoordsAndPointFromScreenPoint(evt)
-        console.log(point3D)
         action.on("vertex-add", (evt) => {
             let altitude = prompt("Enter Altitude:");
+            let coords = [evt.vertices, altitude]
+            console.log(coords)
             console.log(evt.vertices);
             //createVertice(evt.vertices, altit)
         });
