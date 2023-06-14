@@ -20,7 +20,7 @@ require([
     "esri/widgets/Editor",
     "esri/geometry/support/webMercatorUtils",
     "esri/widgets/Compass",
-    "esri/views/draw/MultipointDrawAction"
+    "esri/geometry/Multipoint"
 
 ], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint) => {
 
