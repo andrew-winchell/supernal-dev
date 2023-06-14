@@ -531,7 +531,7 @@ require([
 
         mapView.focus();
 
-        const action = draw.create("point");
+        const action = draw.create("multipoint");
 
         action.on("vertex-add", (evt) => {
             let altitude = prompt("Enter Altitude:");
