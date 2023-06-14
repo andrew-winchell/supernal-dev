@@ -518,7 +518,7 @@ require([
     mapView.ui.add("draw-button", "bottom-left");
 
     const draw = new Draw ({
-        view: MapView
+        view: mapView
     });
     const action = draw.create("multipoint");
     
