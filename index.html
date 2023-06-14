@@ -67,12 +67,11 @@
                     <div id="draw-button" class="esri-widget esri-widget--button esri-interactive" title="Draw multipoint feature">
                         <span class="esri-icon-polyline"></span>
                     </div>
-                    <calcite-action-pad expand-disabled layout="horizontal" visibility="hidden">
+                    <calcite-action-pad expand-disabled layout="horizontal" visibility="hidden" id="route-toolbar">
                         <calcite-action text="Add" icon="plus"></calcite-action>
+                        <calcite-action text="Undo" icon="undo"></calcite-action>
+                        <calcite-action text="Redo" icon="redo"></calcite-action>
                         <calcite-action text="Save" icon="save"></calcite-action>
-                        <calcite-action text="Layers" icon="layers"></calcite-action>
-                        <calcite-action text="Basemaps" icon="layer-basemap"></calcite-action>
-                        <calcite-tooltip slot="expand-tooltip">Toggle Action Bar</calcite-tooltip>
                     </calcite-action-pad>                    
                 </div>
                 <div id="inset-div"></div>
