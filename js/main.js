@@ -528,6 +528,9 @@ require([
         action.on("cursor-update", (evt) => {
             createMultipointGraphic(evt.verices);
         })
+        action.on("vertex-add", function (evt) {
+            createMultipointGraphic(evt.vertices);
+        });
     });
 
     function createMultipointGraphic (vertices) {
