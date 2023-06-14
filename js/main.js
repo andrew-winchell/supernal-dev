@@ -517,6 +517,12 @@ require([
 
     mapView.ui.add("draw-button", "bottom-left");
 
+    const draw = new Draw ({
+        view: MapView
+    });
+    const action = draw.create("multipoint");
+    
+
     // Popuplate filter field dropdowns for each layer
     // Wait for map and layers to load first
     mapView.when(() => {
