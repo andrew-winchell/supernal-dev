@@ -522,6 +522,7 @@ require([
         view: mapView
     });
     $("#draw-button").on("click", () => {
+        $("#route-toolbar").css("visibility", "visible")
         mapView.focus();
 
         const action = draw.create("multipoint");
