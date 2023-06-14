@@ -516,9 +516,12 @@ require([
     // Add Filter Expand to UI
     mapView.ui.add(filterExpand, { position: "bottom-left" });
 
-    mapView.ui.add("draw-button", "bottom-left");
+    mapView.ui.add("toolbar-button", "bottom-left");
 
-    $("#toolbar-button")
+    // Open Route Editor Toolbar
+    $("#toolbar-button").on("click", () => {
+        $("#route-toolbar").css("display", "block");
+    })
 
     /*
     const draw = new Draw ({
