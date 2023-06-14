@@ -521,7 +521,31 @@ require([
     // Open Route Editor Toolbar
     $("#toolbar-button").on("click", () => {
         $("#route-toolbar").css("display", "block");
+    });
+
+    $("#add-route-vertices").on("click", () => {
+        const draw = new Draw ({
+            view: mapView,
+            hasZ: true
+        });
+
+        mapView.focus();
+
+        const action = draw.create("point");
+
+        action.on("vertex-add", (evt) => {
+            let altitude = prompt("Enter Altitude:");
+            console.log(evt.vertices);
+            //createVertice(evt.vertices, altit)
+        });
+
+
     })
+
+    function createVertice (vertice) {
+        console.log(vertice)
+    }
+
 
     /*
     const draw = new Draw ({
