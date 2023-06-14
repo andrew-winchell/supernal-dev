@@ -536,7 +536,7 @@ require([
         action.on("vertex-add", (evt) => {
             let altitude = prompt("Enter Altitude:");
             console.log(evt.vertices);
-            let point3D = action.getCoordsFromScreenPoint(evt.vertices);
+            let point3D = action.getCoordsFromScreenPoint(evt);
             console.log(point3D)
             //createVertice(evt.vertices, altit)
         });
