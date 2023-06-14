@@ -526,9 +526,6 @@ require([
         mapView.focus();
 
         const action = draw.create("multipoint");
-        action.on("cursor-update", (evt) => {
-            createMultipointGraphic(evt.verices);
-        })
         action.on("vertex-add", function (evt) {
             createMultipointGraphic(evt.vertices);
         });
