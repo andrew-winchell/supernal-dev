@@ -19,9 +19,10 @@ require([
     "esri/widgets/Expand",
     "esri/widgets/Editor",
     "esri/geometry/support/webMercatorUtils",
-    "esri/widgets/Compass"
+    "esri/widgets/Compass",
+    "esri/views/draw/MultipointDrawAction"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor, webMercatorUtils, Compass) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -520,7 +521,38 @@ require([
     const draw = new Draw ({
         view: mapView
     });
-    const action = draw.create("multipoint");
+    $("#draw-button").on("click", () => {
+        mapView.focus();
+
+        const action = draw.create("multipoint");
+        action.on("cursor-update", (evt) => {
+            createMultipointGraphic(evt.verices);
+        })
+    });
+
+    function createMultipointGraphic (vertices) {
+        mapView.graphics.removeAll();
+
+        let multipoint = new Multipoint({
+            points: vertices,
+            spatialReference: mapView.spatialReference
+        })
+
+        const graphic = new Graphic({
+          geometry: multipoint,
+          symbol: {
+            type: "simple-marker",
+            style: "square",
+            color: "red",
+            size: "16px",
+            outline: {
+              color: [255, 255, 0],
+              width: 3
+            }
+          }
+        });
+        view.graphics.add(graphic);
+    }
     
 
     // Popuplate filter field dropdowns for each layer
