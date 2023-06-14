@@ -47,7 +47,7 @@ html, body, #view-div {
   display: none;
   position: absolute;
   left: calc(50% - 120px);
-  bottom: 35px;
+  top: 15px;
 }
 
 #waypoint-list {
