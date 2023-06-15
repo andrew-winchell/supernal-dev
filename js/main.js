@@ -528,7 +528,9 @@ require([
         view: mapView,
         polylineSymbol: {
             type: "simple-line",
-            color: "cyan"
+            color: "cyan",
+            width: "2.5px",
+            style: "short-dash"
         },
         snappingOptions: {
             enabled: true,
@@ -599,12 +601,12 @@ require([
             geometry: multipoint,
             symbol: {
                 type: "simple-marker",
-                style: "square",
-                color: "red",
-                size: "16px",
+                style: "circle",
+                color: "blue",
+                size: "12px",
                 outline: {
-                    color: [255, 255, 0],
-                    width: 3
+                    color: [0, 0, 0],
+                    width: 1.5
                 }
             }
         })
