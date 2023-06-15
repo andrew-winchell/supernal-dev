@@ -516,10 +516,8 @@ require([
     // Add Filter Expand to UI
     mapView.ui.add(filterExpand, { position: "bottom-left" });
 
-    mapView.ui.add("toolbar-button", "bottom-left");
-
     // Open Route Editor Toolbar
-    $("#toolbar-button").on("click", () => {
+    $("#create-route").on("click", () => {
         $("#route-toolbar").css("display", "block");
     });
 
@@ -557,7 +555,7 @@ require([
         });
 
         $("#waypoints").empty();
-        
+
         for (let i=0; i<multipoint.points.length; i++) {
             let mapPt = multipoint.getPoint(i);
             let x = mapPt.longitude.toFixed(4);
@@ -1092,7 +1090,6 @@ require([
         console.log("Open Waypoint List");
         $("#waypoint-list").css("display", "block");
 
-        mapView.ui.add(lineSketch, "top-right");
     });
 
     lineSketch.on("click", (evt) => {
