@@ -14,6 +14,7 @@ require([
     "esri/views/draw/Draw",
     "esri/widgets/LayerList",
     "esri/widgets/Sketch",
+    "esri/widgets/Sketch/SketchViewModel",
     "esri/widgets/Search",
     "esri/widgets/BasemapGallery",
     "esri/widgets/Expand",
@@ -22,7 +23,7 @@ require([
     "esri/widgets/Compass",
     "esri/geometry/Multipoint"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, Search, BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint) => {
+], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search, BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
@@ -519,12 +520,40 @@ require([
     // Open Route Editor Toolbar
     $("#create-route").on("click", () => {
         $("#route-toolbar").css("display", "block");
+        $("#waypoint-list").css("display", "block");
     });
 
+    const sketchViewModel = new SketchViewModel ({
+        layer: graphicsLyr,
+        view: mapView,
+        polylineSymbol: {
+            type: "simple-line",
+            color: "cyan"
+        },
+        snappingOptions: {
+            enabled: true,
+            featureSources: [
+                {
+                    layer: navaidsLyr,
+                    enabled: true
+                },
+                {
+                    layer: desPointsLyr,
+                    enabled: true
+                },
+                {
+                    layer: airportsLyr,
+                    enabled: true
+                }
+            ]
+        }
+    });
 
     let multipointVertices = [];
 
     $("#add-route-vertices").on("click", () => {
+        sketchViewModel.create("polyline");
+
         const draw = new Draw ({
             view: mapView,
             hasZ: true
@@ -580,49 +609,7 @@ require([
             }
         })
         mapView.graphics.add(graphic);
-    }
-
-
-    /*
-    const draw = new Draw ({
-        view: mapView,
-        hasZ: true
-    });
-    $("#draw-button").on("click", () => {
-        $("#route-toolbar").css("display", "block")
-        mapView.focus();
-
-        const action = draw.create("multipoint");
-        action.on("vertex-add", function (evt) {
-            createMultipointGraphic(evt.vertices);
-        });
-    });
-
-    function createMultipointGraphic (vertices) {
-        mapView.graphics.removeAll();
-
-        let multipoint = new Multipoint({
-            points: vertices,
-            spatialReference: mapView.spatialReference
-        })
-
-        const graphic = new Graphic({
-          geometry: multipoint,
-          symbol: {
-            type: "simple-marker",
-            style: "square",
-            color: "red",
-            size: "16px",
-            outline: {
-              color: [255, 255, 0],
-              width: 3
-            }
-          }
-        });
-        mapView.graphics.add(graphic);
-    }
-    */
-    
+    }    
 
     // Popuplate filter field dropdowns for each layer
     // Wait for map and layers to load first
@@ -970,78 +957,6 @@ require([
                 })
             })
     });
-
-    /*
-        mapView.when(() => {
-            const elevation = new ElevationLayer ({
-                url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
-            });
-            return elevation.load();
-        }).then((elevation) => {
-            elevation.createElevationSampler(mapView.extent)
-                .then((sampler) => {
-                    mapView.on("pointer-down", (e) => {
-                        const opts = {
-                            include: [navaidsLyr]
-                        };
-                        mapView.hitTest(e, opts)
-                            .then((response) => {
-                                if (response.results.length) {
-                                    const mapPt = mapView.toMap(e);
-                                    const values = sampler.queryElevation(mapPt);
-                                    const vertice = [values.longitude, values.latitude, values.z];
-                                    console.log(vertice);
-                                }
-                            })
-                    })
-                })
-        });
-    });
-    */
-
-
-    /* POINT SKETCH SECTION WORKING
-    const pointSketch = new Sketch ({
-        layer: graphicsLyr,
-        view: mapView,
-        availableCreateTools: ["point"],
-        snappingOptions: {
-            enabled: true,
-            featureSources: [
-                {
-                    layer: navaidsLyr,
-                    enabled: true
-                },
-                {
-                    layer: desPointsLyr,
-                    enabled: true
-                }
-            ]
-        },
-        visibleElements: {
-            createTools: {
-                polygon: false,
-                polyline: false,
-                circle: false,
-                rectangle: false,
-            },
-            selectionTools: {
-                "lasso-selection": false,
-                "rectangle-selection": false
-            },
-            settingsMenu: false
-        }
-    });
-    pointSketch.viewModel.pointSymbol = {
-        type: "simple-marker",
-        color: [255, 0, 0],
-        size: 6
-    }
-
-    $("#create-route").on("click", () => {
-        mapView.ui.add(pointSketch, "top-right");
-    })
-    */
     
     const lineSketch = new Sketch ({
         layer: graphicsLyr,
@@ -1086,12 +1001,6 @@ require([
         join: "round"
     }
 
-    $("#create-route").on("click", () => {
-        console.log("Open Waypoint List");
-        $("#waypoint-list").css("display", "block");
-
-    });
-
     lineSketch.on("click", (evt) => {
         console.log(evt)
     });
@@ -1107,20 +1016,6 @@ require([
 
         }
     })
-
-    function selectVertice (geom) {
-        const query = {
-            geometry: geom,
-            spatialRelationship: "intersects",
-            returnGeometry: true,
-            outFields: ["*"]
-        };
-
-        navaidsLyr.queryFeatures(query)
-            .then((results) => {
-                //console.log(results)
-            })
-    }
     
     function filterLayer (layer, field, value, checked) {
         let featureLyr;
