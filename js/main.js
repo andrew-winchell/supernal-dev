@@ -523,6 +523,7 @@ require([
         $("#route-toolbar").css("display", "block");
     });
 
+
     $("#add-route-vertices").on("click", () => {
         const draw = new Draw ({
             view: mapView,
@@ -534,22 +535,24 @@ require([
         const action = draw.create("multipoint");
 
         action.on("vertex-add", (evt) => {
+            console.log(evt)
             let altitude = prompt("Enter Altitude:", 0);
             let i = evt.vertices.length - 1
             let coords = [evt.vertices[i][0], evt.vertices[i][1], parseInt(altitude)];
+            vertices.slice(0,-1)
             createVertice(coords)
         });
 
 
     })
 
-    function createVertice (vertice) {
-        console.log(vertice)
+    function createVertice (vertices) {
+        console.log(vertices)
 
         mapView.graphics.removeAll();
 
         let multipoint = new Multipoint ({
-            points: vertice,
+            points: vertices,
             spatialReference: mapView.spatialReference
         });
     
