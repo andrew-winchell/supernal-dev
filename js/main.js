@@ -558,7 +558,7 @@ require([
 
         console.log(multipoint.points.length)
         for (let i=0; i<multipoint.points.length; i++) {
-            console.log(multipoint.getPoint(i+1))
+            console.log(multipoint.getPoint(i))
         }
     
         const graphic = new Graphic ({
