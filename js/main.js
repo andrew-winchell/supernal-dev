@@ -556,9 +556,14 @@ require([
             spatialReference: mapView.spatialReference
         });
 
-        console.log(multipoint.points.length)
         for (let i=0; i<multipoint.points.length; i++) {
-            console.log(multipoint.getPoint(i))
+            let mapPt = multipoint.getPoint(i);
+            let x = mapPt.longitude.toFixed(4);
+            let y = mapPt.latitude.toFixed(4);
+            let z = mapPt.z;
+            $("#waypoints").append(
+                "<calcite-list-item label='Vertice #" + i + "' description='X: " + x + " Y: " + y +" Z: " + z + "'><calcite-list-item>"
+            )
         }
     
         const graphic = new Graphic ({
