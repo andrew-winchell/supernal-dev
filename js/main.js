@@ -558,7 +558,7 @@ require([
 
         console.log(multipoint);
 
-        multipoint.getPoint(1)
+        console.log(multipoint.getPoint(1))
     
         const graphic = new Graphic ({
             geometry: multipoint,
