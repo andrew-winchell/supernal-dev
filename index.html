@@ -72,7 +72,21 @@
                     <calcite-action text="Redo" icon="redo" id="redo-vertices" disabled></calcite-action>
                     <calcite-action text="Save" icon="save" id="save-route" disabled></calcite-action>
                 </calcite-action-pad> 
+                
                 <div id="inset-div"></div>
+
+                <calcite-modal aria-labelledby="modal-title" id="example-modal" outside-close-disabled close-button-disabled escape-disabled scale="s" width="s" open>
+                    <div slot="header" id="modal-title">
+                        Enter Altitude
+                    </div>
+                    <div slot="content">
+                      <calcite-input value="City of Acme Surveying Crews" placeholder="Enter a descriptive title"></calcite-input>
+                    </div>
+                    <calcite-button slot="primary" width="full">
+                        Submit Value
+                    </calcite-button>
+                </calcite-modal>
+
                 <div id="pointer-coords"></div>
 
                 <div id="filter-container" class="esri-widget">
