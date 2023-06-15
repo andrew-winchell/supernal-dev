@@ -547,8 +547,8 @@ require([
 
     })
 
-    function createVertice (vertices) 
-        console.log("kill")
+    function createVertice (vertices) {
+        
         mapView.graphics.removeAll();
 
         let multipoint = new Multipoint ({
