@@ -557,7 +557,7 @@ require([
         });
 
         console.log(multipoint.points.length)
-        for (let i=0; multipoint.points.length; i++) {
+        for (let i=1; multipoint.points.length; i++) {
             console.log(multipoint.getPoint(i))
         }
     
