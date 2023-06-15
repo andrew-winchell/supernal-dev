@@ -524,6 +524,8 @@ require([
     });
 
 
+    let multipointVertices = [];
+
     $("#add-route-vertices").on("click", () => {
         const draw = new Draw ({
             view: mapView,
@@ -535,11 +537,11 @@ require([
         const action = draw.create("multipoint");
 
         action.on("vertex-add", (evt) => {
-            console.log(evt)
             let altitude = prompt("Enter Altitude:", 0);
             let i = evt.vertices.length - 1
             let coords = [evt.vertices[i][0], evt.vertices[i][1], parseInt(altitude)];
-            createVertice(coords)
+            multipointVertices.push(coords);
+            createVertice(multipointVertices)
         });
 
 
