@@ -547,8 +547,7 @@ require([
 
     })
 
-    function createVertice (vertices) {
-        console.log(vertices)
+    function createVertice (vertices) 
 
         mapView.graphics.removeAll();
 
@@ -556,6 +555,8 @@ require([
             points: vertices,
             spatialReference: mapView.spatialReference
         });
+
+        console.log(multipoint)
     
         const graphic = new Graphic ({
             geometry: multipoint,
