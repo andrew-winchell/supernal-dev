@@ -556,11 +556,10 @@ require([
             spatialReference: mapView.spatialReference
         });
 
-        console.log(multipoint.points)
-        for (let vert of multipoint.points) {
-            console.log(vert)
+        console.log(multipoint.points.length)
+        for (let i=0; multipoint.points.length; i++) {
+            console.log(multipoint.getPoint(i))
         }
-        //console.log(multipoint.getPoint(1))
     
         const graphic = new Graphic ({
             geometry: multipoint,
