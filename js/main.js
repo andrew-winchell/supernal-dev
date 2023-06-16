@@ -566,31 +566,26 @@ require([
         const action = draw.create("multipoint");
 
         action.on("vertex-add", (evt) => {
-            let i = evt.vertices.length - 1;
-            console.log(i)
-            $("#altitude-modal")[0].open = true;
-            $("#altitude-save").on("click", () => {
-                let altitude = $("#altitude-value")[0].value;
-                console.log(i)
-                $("#altitude-modal")[0].open = false;
-                let coords = [evt.vertices[i][0], evt.vertices[i][1], altitude];
-                multipointVertices.push(coords);
-                createVertice(multipointVertices);
-            });
+            let altitude = prompt("Enter Altitude:", 0);
+            let i = evt.vertices.length - 1
+            let coords = [evt.vertices[i][0], evt.vertices[i][1], parseInt(altitude)];
+            multipointVertices.push(coords);
+            createVertice(multipointVertices)
         });
+
+
     })
 
     function createVertice (vertices) {
 
         mapView.graphics.removeAll();
 
-        $("#waypoints").empty();
-
         let multipoint = new Multipoint ({
             points: vertices,
             spatialReference: mapView.spatialReference
         });
 
+        $("#waypoints").empty();
 
         for (let i=0; i<multipoint.points.length; i++) {
             let mapPt = multipoint.getPoint(i);
