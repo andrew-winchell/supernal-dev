@@ -1,5 +1,3 @@
-import chart from "chart.js/auto"
-
 (async function() {
     const data = [
       { year: 2010, count: 10 },
