@@ -569,8 +569,7 @@ require([
             let altitude;
             $("#altitude-modal")[0].open = true;
             $("#altitude-save").on("click", (evt) => {
-                console.log($("#altitude-value"))
-                altitude = $("#altitude-value")[0]
+                altitude = $("#altitude-value")[0].value;
                 $("#altitude-modal")[0].open = false;
             })
             let i = evt.vertices.length - 1
@@ -578,8 +577,6 @@ require([
             multipointVertices.push(coords);
             createVertice(multipointVertices)
         });
-
-
     })
 
     function createVertice (vertices) {
