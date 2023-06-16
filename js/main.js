@@ -566,7 +566,13 @@ require([
         const action = draw.create("multipoint");
 
         action.on("vertex-add", (evt) => {
+            let altitude;
             $("#altitude-modal")[0].open = true;
+            $("#altitude-save").on("click", (evt) => {
+                console.log($("#altitude-value"))
+                altitude = $("#altitude-value")[0]
+                $("#altitude-modal")[0].open = false;
+            })
             let i = evt.vertices.length - 1
             let coords = [evt.vertices[i][0], evt.vertices[i][1], parseInt(altitude)];
             multipointVertices.push(coords);
