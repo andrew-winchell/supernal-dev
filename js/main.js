@@ -568,7 +568,7 @@ require([
         action.on("vertex-add", (evt) => {
             let i = evt.vertices.length - 1;
             $("#altitude-modal")[0].open = true;
-            $("#altitude-save").on("click", (evt) => {
+            $("#altitude-save").on("click", () => {
                 let altitude = $("#altitude-value")[0].value;
                 console.log(altitude)
                 $("#altitude-modal")[0].open = false;
