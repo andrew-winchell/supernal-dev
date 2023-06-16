@@ -960,6 +960,7 @@ require([
             })
     });
     
+    /*
     const lineSketch = new Sketch ({
         layer: graphicsLyr,
         view: mapView,
@@ -1018,6 +1019,7 @@ require([
 
         }
     })
+    */
     
     function filterLayer (layer, field, value, checked) {
         let featureLyr;
