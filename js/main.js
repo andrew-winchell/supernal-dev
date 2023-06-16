@@ -578,9 +578,10 @@ require([
     })
 
     function enterAltitude () {
+        var altitude;
         $("#altitude-modal")[0].open = true;
-        let altitude = $("#altitude-value")[0].value;
-        $("#altitude-save").on("click", () => { 
+        $("#altitude-save").on("click", () => {
+            altitude = $("#altitude-value")[0].value;
             $("#altitude-modal")[0].open = false;
         });
 
