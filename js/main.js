@@ -570,12 +570,13 @@ require([
             $("#altitude-modal")[0].open = true;
             $("#altitude-save").on("click", (evt) => {
                 altitude = $("#altitude-value")[0].value;
+                console.log(altitude)
                 $("#altitude-modal")[0].open = false;
             })
             let i = evt.vertices.length - 1
-            let coords = [evt.vertices[i][0], evt.vertices[i][1], parseInt(altitude)];
+            let coords = [evt.vertices[i][0], evt.vertices[i][1], altitude];
             multipointVertices.push(coords);
-            createVertice(multipointVertices)
+            createVertice(multipointVertices);
         });
     })
 
