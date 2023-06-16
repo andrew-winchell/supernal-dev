@@ -567,9 +567,11 @@ require([
 
         action.on("vertex-add", (evt) => {
             let i = evt.vertices.length - 1;
+            console.log(i)
             $("#altitude-modal")[0].open = true;
             $("#altitude-save").on("click", () => {
                 let altitude = $("#altitude-value")[0].value;
+                console.log(i)
                 $("#altitude-modal")[0].open = false;
                 let coords = [evt.vertices[i][0], evt.vertices[i][1], altitude];
                 multipointVertices.push(coords);
@@ -581,7 +583,7 @@ require([
     function createVertice (vertices) {
 
         mapView.graphics.removeAll();
-        
+
         $("#waypoints").empty();
 
         let multipoint = new Multipoint ({
