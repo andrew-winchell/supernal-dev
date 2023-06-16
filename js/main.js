@@ -567,7 +567,6 @@ require([
 
         action.on("vertex-add", (evt) => {
             $("#altitude-modal")[0].open = true;
-            let altitude = prompt("Enter Altitude:", 0);
             let i = evt.vertices.length - 1
             let coords = [evt.vertices[i][0], evt.vertices[i][1], parseInt(altitude)];
             multipointVertices.push(coords);
