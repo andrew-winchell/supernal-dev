@@ -570,7 +570,6 @@ require([
             $("#altitude-modal")[0].open = true;
             $("#altitude-save").on("click", () => {
                 let altitude = $("#altitude-value")[0].value;
-                console.log(altitude)
                 $("#altitude-modal")[0].open = false;
                 let coords = [evt.vertices[i][0], evt.vertices[i][1], altitude];
                 multipointVertices.push(coords);
@@ -582,13 +581,14 @@ require([
     function createVertice (vertices) {
 
         mapView.graphics.removeAll();
+        
+        $("#waypoints").empty();
 
         let multipoint = new Multipoint ({
             points: vertices,
             spatialReference: mapView.spatialReference
         });
 
-        $("#waypoints").empty();
 
         for (let i=0; i<multipoint.points.length; i++) {
             let mapPt = multipoint.getPoint(i);
