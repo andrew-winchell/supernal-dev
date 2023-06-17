@@ -396,8 +396,13 @@ require([
         minScale: 500000 
     });
     
-    const graphicsLyr = new GraphicsLayer ({
+    const lineGraphicsLyr = new GraphicsLayer ({
         title: "Proposed Route",
+        graphics: []
+    });
+    
+    const pntGraphicsLyr = new GraphicsLayer ({
+        title: "Proposed Route Vertices",
         graphics: []
     });
 
@@ -411,7 +416,7 @@ require([
     const map2D = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
-        layers: [navaidsLyr, obstaclesLyr, desPointsLyr, airportsLyr, classAirspaceLyr, graphicsLyr]
+        layers: [navaidsLyr, obstaclesLyr, desPointsLyr, airportsLyr, classAirspaceLyr, lineGraphicsLyr, pntGraphicsLyr]
     });
 
     /*
@@ -524,7 +529,7 @@ require([
     });
 
     const polylineSketchViewModel = new SketchViewModel ({
-        layer: graphicsLyr,
+        layer: lineGraphicsLyr,
         view: mapView,
         polylineSymbol: {
             type: "simple-line",
@@ -552,7 +557,7 @@ require([
     });
 
     const pointSketchViewModel = new SketchViewModel ({
-        layer: graphicsLyr,
+        layer: pntGraphicsLyr,
         view: mapView,
         pointSymbol: {
             type: "simple-marker",
