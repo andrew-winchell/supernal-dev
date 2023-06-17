@@ -583,8 +583,10 @@ require([
                     enabled: true
                 }
             ]
-        }
-    })
+        },
+        labelOptions: { enabled: true },
+        tooltipOptions: { enabled: true }
+    });
 
     let multipointVertices = [];
 
