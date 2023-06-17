@@ -1,76 +1,41 @@
 window.onload = function () {
 
     var options = {
-        animationEnabled: true,
-        theme: "light2",
+        animationEnabled: true,  
         title:{
-            text: "Monthly Sales Comparison by Location"
+            text: "Company Revenue by Year"
         },
         axisY: {
-            title: "Revenue (in Pound Sterling)",
-            valueFormatString: "#0",
-            includeZero: true,
-            suffix: "K",
-            prefix: "£"
-        },
-        legend: {
-            cursor: "pointer",
-            itemclick: toogleDataSeries
-        },
-        toolTip: {
-            shared: true
+            title: "Revenue in USD",
+            valueFormatString: "#0,,.",
+            suffix: "mn",
+            prefix: "$"
         },
         data: [{
             type: "area",
-            name: "London",
             markerSize: 5,
-            showInLegend: true,
-            xValueFormatString: "MMMM",
-            yValueFormatString: "£#0K",
+            xValueFormatString: "YYYY",
+            yValueFormatString: "$#,##0.##",
             dataPoints: [
-                { x: new Date(2017, 0), y: 12 },
-                { x: new Date(2017, 1), y: 15 },
-                { x: new Date(2017, 2), y: 12 },
-                { x: new Date(2017, 3), y: 17 },
-                { x: new Date(2017, 4), y: 20 },
-                { x: new Date(2017, 5), y: 21 },
-                { x: new Date(2017, 6), y: 24 },
-                { x: new Date(2017, 7), y: 19 },
-                { x: new Date(2017, 8), y: 22 },
-                { x: new Date(2017, 9), y: 25 },
-                { x: new Date(2017, 10), y: 21 },
-                { x: new Date(2017, 11), y: 19 }
-            ]
-        }, {
-            type: "area",
-            name: "Manchester",
-            markerSize: 5,
-            showInLegend: true,
-            yValueFormatString: "£#0K",
-            dataPoints: [
-                { x: new Date(2017, 0), y: 8 },
-                { x: new Date(2017, 1), y: 12 },
-                { x: new Date(2017, 2), y: 9 },
-                { x: new Date(2017, 3), y: 11 },
-                { x: new Date(2017, 4), y: 15 },
-                { x: new Date(2017, 5), y: 12 },
-                { x: new Date(2017, 6), y: 13 },
-                { x: new Date(2017, 7), y: 9 },
-                { x: new Date(2017, 8), y: 7 },
-                { x: new Date(2017, 9), y: 14 },
-                { x: new Date(2017, 10), y: 18 },
-                { x: new Date(2017, 11), y: 14 }
+                { x: new Date(2000, 0), y: 2289000 },
+                { x: new Date(2001, 0), y: 2830000 },
+                { x: new Date(2002, 0), y: 1009000 },
+                { x: new Date(2003, 0), y: 1840000 },
+                { x: new Date(2004, 0), y: 1396000 },
+                { x: new Date(2005, 0), y: 2613000 },
+                { x: new Date(2006, 0), y: 1821000 },
+                { x: new Date(2007, 0), y: 1000000 },
+                { x: new Date(2008, 0), y: 1397000 },
+                { x: new Date(2009, 0), y: 1506000 },
+                { x: new Date(2010, 0), y: 1798000 },
+                { x: new Date(2011, 0), y: 2386000 },
+                { x: new Date(2012, 0), y: 4704000},
+                { x: new Date(2013, 0), y: 4926000 },
+                { x: new Date(2014, 0), y: 1394000 },
+                { x: new Date(2015, 0), y: 972000 },
+                { x: new Date(2016, 0), y: 1140000 }
             ]
         }]
     };
     $("#elevation-profile").CanvasJSChart(options);
-    
-    function toogleDataSeries(e) {
-        if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-            e.dataSeries.visible = false;
-        } else {
-            e.dataSeries.visible = true;
-        }
-        e.chart.render();
-    }
 }
