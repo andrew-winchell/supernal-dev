@@ -63,7 +63,7 @@ window.onload = function () {
             ]
         }]
     };
-    $("#chartContainer").CanvasJSChart(options);
+    $("#elevation-profile").CanvasJSChart(options);
     
     function toogleDataSeries(e) {
         if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
