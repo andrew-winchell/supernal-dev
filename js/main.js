@@ -523,7 +523,7 @@ require([
         $("#waypoint-list").css("display", "block");
     });
 
-    const sketchViewModel = new SketchViewModel ({
+    const polylineSketchViewModel = new SketchViewModel ({
         layer: graphicsLyr,
         view: mapView,
         polylineSymbol: {
@@ -551,10 +551,20 @@ require([
         }
     });
 
+    const pointSketchViewModel = new SketchViewModel ({
+        layer: graphicsLyr,
+        view: mapView,
+        pointSymbol: {
+            type: "simple-marker",
+            color: "blue",
+            
+        }
+    })
+
     let multipointVertices = [];
 
     $("#add-route-vertices").on("click", () => {
-        sketchViewModel.create("polyline");
+        polylineSketchViewModel.create("polyline");
 
         const draw = new Draw ({
             view: mapView,
@@ -959,67 +969,6 @@ require([
                 })
             })
     });
-    
-    /*
-    const lineSketch = new Sketch ({
-        layer: graphicsLyr,
-        view: mapView,
-        availableCreateTools: ["polyline"],
-        snappingOptions: {
-            enabled: true,
-            featureSources: [
-                {
-                    layer: navaidsLyr,
-                    enabled: true
-                },
-                {
-                    layer: desPointsLyr,
-                    enabled: true
-                },
-                {
-                    layer: airportsLyr,
-                    enabled: true
-                }
-            ]
-        },
-        visibleElements: {
-            createTools: {
-                point: false,
-                circle: false,
-                polygon: false,
-                rectangle: false
-            },
-            selectionTools: {
-                "lasso-selection": false,
-                "rectangle-selection": false
-            },
-            settingsMenu: false
-        }
-    });
-    lineSketch.viewModel.polylineSymbol = {
-        type: "simple-line",
-        color: [0, 200, 200],
-        width: 3,
-        cap: "round",
-        join: "round"
-    }
-
-    lineSketch.on("click", (evt) => {
-        console.log(evt)
-    });
-
-    lineSketch.on("create", (evt) => {
-        if (evt.state === "complete") {
-            console.log("Route Complete");
-        } else if (evt.toolEventInfo.type === "vertex-add") {
-            let webMercPt = evt.toolEventInfo.added[0];
-            let wgsPt = webMercatorUtils.geographicToWebMercator(webMercPt);
-            console.log(webMercPt)
-            console.log(wgsPt)
-
-        }
-    })
-    */
     
     function filterLayer (layer, field, value, checked) {
         let featureLyr;
