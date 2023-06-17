@@ -555,7 +555,7 @@ require([
             ]
         },
         labelOptions: {
-            enabled: true;
+            enabled: true
         }
     });
 
