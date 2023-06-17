@@ -553,6 +553,9 @@ require([
                     enabled: true
                 }
             ]
+        },
+        labelOptions: {
+            enabled: true;
         }
     });
 
@@ -586,7 +589,7 @@ require([
     let multipointVertices = [];
 
     $("#add-route-vertices").on("click", () => {
-        pointSketchViewModel.create("multipoint");
+        polylineSketchViewModel.create("polyline");
 
         /*
         const draw = new Draw ({
