@@ -556,8 +556,25 @@ require([
         view: mapView,
         pointSymbol: {
             type: "simple-marker",
-            color: "blue",
-            
+            style: "circle",
+            color: "blue"
+        },
+        snappingOptions: {
+            enabled: true,
+            featureSources: [
+                {
+                    layer: navaidsLyr,
+                    enabled: true
+                },
+                {
+                    layer: desPointsLyr,
+                    enabled: true
+                },
+                {
+                    layer: airportsLyr,
+                    enabled: true
+                }
+            ]
         }
     })
 
@@ -565,7 +582,9 @@ require([
 
     $("#add-route-vertices").on("click", () => {
         polylineSketchViewModel.create("polyline");
+        pointSketchViewModel.create("multipoint");
 
+        /*
         const draw = new Draw ({
             view: mapView,
             hasZ: true
@@ -582,8 +601,7 @@ require([
             multipointVertices.push(coords);
             createVertice(multipointVertices);
         });
-
-
+        */
     });
 
     function createVertice (vertices) {
