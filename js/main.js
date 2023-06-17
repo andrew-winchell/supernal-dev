@@ -586,8 +586,8 @@ require([
     let multipointVertices = [];
 
     $("#add-route-vertices").on("click", () => {
-        polylineSketchViewModel.create("polyline");
         pointSketchViewModel.create("multipoint");
+        polylineSketchViewModel.create("polyline");
 
         /*
         const draw = new Draw ({
