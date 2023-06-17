@@ -98,3 +98,7 @@ html, body, #view-div {
 .condition-selector {
   margin-bottom: 10px;
 }
+
+#elevation-profile {
+  height: 200px;
+}
