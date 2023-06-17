@@ -587,7 +587,6 @@ require([
 
     $("#add-route-vertices").on("click", () => {
         pointSketchViewModel.create("multipoint");
-        polylineSketchViewModel.create("polyline");
 
         /*
         const draw = new Draw ({
@@ -597,7 +596,7 @@ require([
 
         mapView.focus();
 
-        const action = draw.create("multipoint");
+        const action = draw.create("polyline");
 
         action.on("vertex-add", (evt) => {
             let altitude = prompt("Enter Altitude:", 0);
