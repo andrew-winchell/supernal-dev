@@ -1,4 +1,4 @@
-import Chart from "../lib/chart";
+import Chart from "/chart.js/auto";
 
 (async function() {
     const data = [
@@ -27,4 +27,3 @@ import Chart from "../lib/chart";
         }
     );
   })();
-  
