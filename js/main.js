@@ -593,6 +593,10 @@ require([
     $("#add-route-vertices").on("click", () => {
         pointSketchViewModel.create("multipoint");
 
+        pointSketchViewModel.on("create", (evt) => {
+            console.log(evt)
+        })
+
         /*
         const draw = new Draw ({
             view: mapView,
