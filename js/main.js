@@ -602,7 +602,6 @@ require([
         pointSketchViewModel.create("multipoint");
 
         pointSketchViewModel.on("create", (evt) => {
-            console.log(evt)
             if (evt.state == "complete") {
                 console.log("complete feature");
             } else if (evt.state == "start") {
@@ -622,6 +621,8 @@ require([
                     multipointVertices.push(coords);
                     drawPath(multipointVertices);
                 }
+            } else {
+                console.log(evt)
             }
         })
 
