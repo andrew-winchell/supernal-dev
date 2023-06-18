@@ -626,7 +626,7 @@ require([
     });
 
     $("#save-route").on("click", (evt) => {
-        console.log(evt)
+        evt.currentTarget.disabled = true;
         pointSketchViewModel.complete();
 
     })
