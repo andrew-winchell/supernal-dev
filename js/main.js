@@ -602,7 +602,6 @@ require([
         pointSketchViewModel.create("multipoint");
 
         pointSketchViewModel.on("create", (evt) => {
-            console.log(evt)
             if (evt.state == "complete") {
                 console.log("complete feature");
             } else if (evt.state == "start") {
@@ -657,7 +656,7 @@ require([
             symbol: {
                 type: "simple-line",
                 color: "#008b8b",
-                size: "5px",
+                width: "3",
                 style: "short-dash"
             }
         })
