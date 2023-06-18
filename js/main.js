@@ -591,17 +591,25 @@ require([
     let multipointVertices = [];
 
     $("#add-route-vertices").on("click", () => {
+        mapView.focus();
+
         pointSketchViewModel.create("multipoint");
 
         pointSketchViewModel.on("create", (evt) => {
             if (evt.state == "complete") {
                 console.log("complete feature");
+            } else if (evt.state == "start") {
+                let altitude = prompt("Enter Altitude:", 0);
+                let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], parseInt(altitude)];
+                multipointVertices.push(coords);
+                createVertice(multipointVertices);
             } else if (evt.state == "active") {
                 if (evt.toolEventInfo.type == "vertex-add") {
-                    console.log(evt)
+                    let altitude = prompt("Enter Altitude:", 0);
+                    let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], parseInt(altitude)];
+                    multipointVertices.push(coords);
+                    createVertice(multipointVertices);
                 }
-            } else {
-                console.log(evt)
             }
         })
 
