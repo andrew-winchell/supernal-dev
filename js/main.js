@@ -626,7 +626,9 @@ require([
     });
 
     $("#save-route").on("click", (evt) => {
-        console.log("Save Route")
+        console.log(evt)
+        pointSketchViewModel.complete();
+
     })
 
     function drawPath (vertices) {
