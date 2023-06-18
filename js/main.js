@@ -617,10 +617,17 @@ require([
                     multipointVertices.push(coords);
                     createVertice(multipointVertices);
                     drawPath(multipointVertices);
+                    if (multipointVertices.length > 1) {
+                        $("#save-route")[0].disabled = false;
+                    }
                 }
             }
         })
     });
+
+    $("#save-route").on("click", (evt) => {
+        console.log("Save Route")
+    })
 
     function drawPath (vertices) {
         let polyline = new Polyline ({
