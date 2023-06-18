@@ -647,6 +647,12 @@ require([
             spatialReference: mapView.spatialReference
         });
 
+        let polyline = new Polyline ({
+            hasZ: true,
+            spatialReference: mapView.spatialReference,
+            paths: vertices
+        });
+
         $("#waypoints").empty();
 
         for (let i=0; i<multipoint.points.length; i++) {
@@ -660,16 +666,12 @@ require([
         }
     
         const graphic = new Graphic ({
-            geometry: multipoint,
+            geometry: polyline,
             symbol: {
-                type: "simple-marker",
-                style: "circle",
-                color: "blue",
-                size: "12px",
-                outline: {
-                    color: [0, 0, 0],
-                    width: 1.5
-                }
+                type: "simple-line",
+                color: "#008b8b",
+                size: "3.5px",
+                style: "short-dash"
             }
         })
         mapView.graphics.add(graphic);
