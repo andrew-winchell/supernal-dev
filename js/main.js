@@ -21,9 +21,14 @@ require([
     "esri/widgets/Editor",
     "esri/geometry/support/webMercatorUtils",
     "esri/widgets/Compass",
-    "esri/geometry/Multipoint"
+    "esri/geometry/Multipoint",
+    "esri/geometry/Polyline"
 
-], (Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search, BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint) => {
+], (
+        Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer,
+        FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
+        BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline
+    ) => {
 
     // Esri AGOL Authorization
     const info = new OAuthInfo({
