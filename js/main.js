@@ -618,7 +618,7 @@ require([
                     createVertice(multipointVertices);
                     drawPath(multipointVertices);
                     if (multipointVertices.length > 1) {
-                        $("#save-route")[0].disabled = false;
+                        $("#complete-route")[0].disabled = false;
                     }
                 }
             }
