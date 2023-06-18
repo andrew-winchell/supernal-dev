@@ -601,6 +601,7 @@ require([
         pointSketchViewModel.create("multipoint");
 
         pointSketchViewModel.on("create", (evt) => {
+            console.log(evt)
             if (evt.state == "complete") {
                 console.log("complete feature");
             } else if (evt.state == "start") {
@@ -614,7 +615,7 @@ require([
                     let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], parseInt(altitude)];
                     multipointVertices.push(coords);
                     createVertice(multipointVertices);
-                    drawPath(vertices);
+                    drawPath(multipointVertices);
                 }
             }
         })
