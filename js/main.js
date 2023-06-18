@@ -599,6 +599,8 @@ require([
             } else if (evt.state == "active") {
                 if (evt.toolEventInfo.type == "vertex-add") {
                     console.log(evt)
+                } else {
+                    console.log(evt)
                 }
             }
         })
