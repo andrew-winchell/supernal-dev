@@ -594,7 +594,7 @@ require([
         pointSketchViewModel.create("multipoint");
 
         pointSketchViewModel.on("create", (evt) => {
-            if (evt.toolEventInfo.added) {
+            if (evt.toolEventInfo.added != null) {
                 console.log(evt)
             } else {
                 console.log(evt)
