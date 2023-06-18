@@ -625,9 +625,10 @@ require([
         })
     });
 
-    $("#save-route").on("click", (evt) => {
+    $("#complete-route").on("click", (evt) => {
         evt.currentTarget.disabled = true;
         pointSketchViewModel.complete();
+        $("#save-route")[0].disabled = false;
 
     })
 
