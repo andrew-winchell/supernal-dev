@@ -596,6 +596,8 @@ require([
         pointSketchViewModel.on("create", (evt) => {
             if (evt.toolEventInfo.added) {
                 console.log(evt)
+            } else {
+                console.log(evt)
             }
         })
 
