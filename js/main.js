@@ -533,37 +533,6 @@ require([
         $("#waypoint-list").css("display", "block");
     });
 
-    const polylineSketchViewModel = new SketchViewModel ({
-        layer: lineGraphicsLyr,
-        view: mapView,
-        polylineSymbol: {
-            type: "simple-line",
-            color: "#008b8b",
-            width: "3.5px",
-            style: "short-dash"
-        },
-        snappingOptions: {
-            enabled: true,
-            featureSources: [
-                {
-                    layer: navaidsLyr,
-                    enabled: true
-                },
-                {
-                    layer: desPointsLyr,
-                    enabled: true
-                },
-                {
-                    layer: airportsLyr,
-                    enabled: true
-                }
-            ]
-        },
-        labelOptions: {
-            enabled: true
-        }
-    });
-
     const pointSketchViewModel = new SketchViewModel ({
         layer: pntGraphicsLyr,
         view: mapView,
@@ -595,7 +564,6 @@ require([
     });
 
     let multipointVertices = [];
-    let pathVertices = [];
 
     $("#add-route-vertices").on("click", () => {
         mapView.focus();
@@ -631,6 +599,8 @@ require([
         evt.currentTarget.disabled = true;
         pointSketchViewModel.complete();
         $("#save-route")[0].disabled = false;
+        $("#undo-vertices")[0].disabled = false;
+        $("#redo-vertices")[0].disabled = false;
 
     })
 
