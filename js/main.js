@@ -614,6 +614,7 @@ require([
                     let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], parseInt(altitude)];
                     multipointVertices.push(coords);
                     createVertice(multipointVertices);
+                    drawPath(vertices);
                 }
             }
         })
@@ -638,6 +639,25 @@ require([
         */
     });
 
+    function drawPath (vertices) {
+        let polyline = new Polyline ({
+            hasZ: true,
+            spatialReference: mapView.spatialReference,
+            paths: vertices
+        });
+    
+        const graphic = new Graphic ({
+            geometry: polyline,
+            symbol: {
+                type: "simple-line",
+                color: "#008b8b",
+                size: "5px",
+                style: "short-dash"
+            }
+        })
+        mapView.graphics.add(graphic);
+    }
+
     function createVertice (vertices) {
 
         mapView.graphics.removeAll();
@@ -645,12 +665,6 @@ require([
         let multipoint = new Multipoint ({
             points: vertices,
             spatialReference: mapView.spatialReference
-        });
-
-        let polyline = new Polyline ({
-            hasZ: true,
-            spatialReference: mapView.spatialReference,
-            paths: vertices
         });
 
         $("#waypoints").empty();
@@ -664,17 +678,6 @@ require([
                 "<calcite-list-item disabled style='opacity:1;' label='Vertice #" + (i+1) + "' description='X: " + x + " Y: " + y +" Z: " + z + "'><calcite-list-item>"
             )
         }
-    
-        const graphic = new Graphic ({
-            geometry: polyline,
-            symbol: {
-                type: "simple-line",
-                color: "#008b8b",
-                size: "3.5px",
-                style: "short-dash"
-            }
-        })
-        mapView.graphics.add(graphic);
     }    
 
     // Popuplate filter field dropdowns for each layer
