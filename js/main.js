@@ -594,7 +594,13 @@ require([
         pointSketchViewModel.create("multipoint");
 
         pointSketchViewModel.on("create", (evt) => {
-            console.log(evt)
+            if (evt.state == "complete") {
+                console.log("complete feature");
+            } else if (evt.state == "active") {
+                if (evt.toolEventInfo.type == "vertex-add") {
+                    console.log(evt)
+                }
+            }
         })
 
         /*
