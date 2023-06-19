@@ -601,8 +601,11 @@ require([
         $("#save-route")[0].disabled = false;
         $("#undo-vertices")[0].disabled = false;
         $("#redo-vertices")[0].disabled = false;
+    });
 
-    })
+    $("#edit-route").on("click", (evt) => {
+        pointSketchViewModel.update();
+    });
 
     function drawPath (vertices) {
         let polyline = new Polyline ({
