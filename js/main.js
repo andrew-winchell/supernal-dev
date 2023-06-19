@@ -427,7 +427,8 @@ require([
                 width: "15px",
                 height: "15px"
             }
-        } 
+        },
+        minScale: 2500000 
     });
 
 
