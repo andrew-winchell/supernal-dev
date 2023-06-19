@@ -587,6 +587,10 @@ require([
                 {
                     layer: airportsLyr,
                     enabled: true
+                },
+                {
+                    layer: vertiportsLyr,
+                    enabled: true
                 }
             ]
         },
