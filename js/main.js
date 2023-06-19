@@ -452,7 +452,7 @@ require([
     const map2D = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
-        layers: [navaidsLyr, obstaclesLyr, desPointsLyr, airportsLyr, classAirspaceLyr, lineGraphicsLyr, pntGraphicsLyr]
+        layers: [navaidsLyr, obstaclesLyr, desPointsLyr, airportsLyr, classAirspaceLyr, lineGraphicsLyr, pntGraphicsLyr, vertiportsLyr]
     });
 
     /*
