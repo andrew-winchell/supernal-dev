@@ -430,6 +430,19 @@ require([
         },
         minScale: 2500000 
     });
+
+    const supernalRoutesLyr = new FeatureLayer ({
+        url: "",
+        title: "Existing Routes",
+        renderer: {
+            type: "simple",
+            symbol: {
+                type: "simple-line",
+                color: "green",
+                width: "3px",
+            }
+        }
+    })
     
     const lineGraphicsLyr = new GraphicsLayer ({
         title: "Proposed Route",
@@ -444,7 +457,17 @@ require([
     const map2D = new Map ({
         basemap: "topo-vector",
         ground: "world-elevation",
-        layers: [navaidsLyr, obstaclesLyr, desPointsLyr, airportsLyr, classAirspaceLyr, lineGraphicsLyr, pntGraphicsLyr, vertiportsLyr]
+        layers: [
+            navaidsLyr,
+            obstaclesLyr,
+            desPointsLyr,
+            airportsLyr,
+            classAirspaceLyr,
+            lineGraphicsLyr,
+            pntGraphicsLyr,
+            vertiportsLyr,
+            supernalRoutesLyr
+        ]
     });
 
     /*
@@ -629,8 +652,18 @@ require([
             paths: multipointVertices
         });
 
+        const edits = {
+            addFeatures: polyline
+        }
+
         console.log(polyline);
-        
+
+        supernalRoutesLyr
+            .applyEdits(edits)
+            .then((results) => {
+                console.log(results)
+            })
+
         evt.currentTarget.disabled = true;
         pointSketchViewModel.complete();
         $("#save-route")[0].disabled = false;
