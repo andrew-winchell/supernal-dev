@@ -400,6 +400,37 @@ require([
         },
         minScale: 500000 
     });
+
+    const vertiportsLyr = new FeatureLayer ({
+        url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Vertiport/FeatureServer/0",
+        title: "Vertiports",
+        popupTemplate: {
+            title: "Vertiport",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "Name",
+                            label: "Name"
+                        }
+                    ]
+                }
+            ]
+        },
+        renderer: {
+            type: "simple",
+            symbol: {
+                type: "picture-marker",
+                url: "media/vertiport.png",
+                contentType: "image/png",
+                width: "12px",
+                height: "18.33px"
+            }
+        } 
+    });
+
+
     
     const lineGraphicsLyr = new GraphicsLayer ({
         title: "Proposed Route",
@@ -601,11 +632,6 @@ require([
         $("#save-route")[0].disabled = false;
         $("#undo-vertices")[0].disabled = false;
         $("#redo-vertices")[0].disabled = false;
-    });
-
-    $("#edit-route").on("click", (evt) => {
-        console.log(mapView.graphics)
-        pointSketchViewModel.update(mapView.graphics.items[0]);
     });
 
     function drawPath (vertices) {
