@@ -604,7 +604,7 @@ require([
     });
 
     $("#edit-route").on("click", (evt) => {
-        pointSketchViewModel.update();
+        pointSketchViewModel.update(mapView.graphics[0]);
     });
 
     function drawPath (vertices) {
