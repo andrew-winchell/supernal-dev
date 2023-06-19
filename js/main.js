@@ -424,8 +424,8 @@ require([
                 type: "picture-marker",
                 url: "media/vertiport.png",
                 contentType: "image/png",
-                width: "12px",
-                height: "18.33px"
+                width: "15px",
+                height: "15px"
             }
         } 
     });
