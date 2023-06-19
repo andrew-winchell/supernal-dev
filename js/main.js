@@ -430,8 +430,6 @@ require([
         },
         minScale: 2500000 
     });
-
-
     
     const lineGraphicsLyr = new GraphicsLayer ({
         title: "Proposed Route",
@@ -442,13 +440,6 @@ require([
         title: "Proposed Route Vertices",
         graphics: []
     });
-
-    /*
-    const routesLyr = new FeatureLayer ({
-        url: "",
-        title: "Supernal Routes"
-    });
-    */
 
     const map2D = new Map ({
         basemap: "topo-vector",
@@ -599,6 +590,7 @@ require([
     });
 
     let multipointVertices = [];
+    let routePaths = [];
 
     $("#add-route-vertices").on("click", () => {
         mapView.focus();
@@ -646,6 +638,8 @@ require([
             spatialReference: mapView.spatialReference,
             paths: vertices
         });
+
+        console.log(polyline)
     
         const graphic = new Graphic ({
             geometry: polyline,
