@@ -530,7 +530,6 @@ require([
     // Open Route Editor Toolbar
     $("#create-route").on("click", () => {
         $("#route-toolbar").css("display", "block");
-        $("#waypoint-list").css("display", "block");
     });
 
     const pointSketchViewModel = new SketchViewModel ({
@@ -578,6 +577,7 @@ require([
                 let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], parseInt(altitude)];
                 multipointVertices.push(coords);
                 createVertice(multipointVertices);
+                $("#waypoint-list").css("display", "block");
             } else if (evt.state == "active") {
                 if (evt.toolEventInfo.type == "vertex-add") {
                     let altitude = prompt("Enter Altitude:", 0);
