@@ -632,6 +632,7 @@ require([
     });
 
     $("#complete-route").on("click", (evt) => {
+        console.log(multipointVertices)
         evt.currentTarget.disabled = true;
         pointSketchViewModel.complete();
         $("#save-route")[0].disabled = false;
