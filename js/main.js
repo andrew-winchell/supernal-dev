@@ -590,7 +590,6 @@ require([
     });
 
     let multipointVertices = [];
-    let routePaths = [];
 
     $("#add-route-vertices").on("click", () => {
         mapView.focus();
@@ -624,7 +623,14 @@ require([
     });
 
     $("#complete-route").on("click", (evt) => {
-        console.log(multipointVertices)
+        let polyline = new Polyline ({
+            hasZ: true,
+            spatialReference: mapView.spatialReference,
+            paths: multipointVertices
+        });
+
+        console.log(polyline);
+        
         evt.currentTarget.disabled = true;
         pointSketchViewModel.complete();
         $("#save-route")[0].disabled = false;
@@ -638,8 +644,6 @@ require([
             spatialReference: mapView.spatialReference,
             paths: vertices
         });
-
-        console.log(polyline)
     
         const graphic = new Graphic ({
             geometry: polyline,
