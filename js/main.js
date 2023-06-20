@@ -654,15 +654,18 @@ require([
     });
 
     $("#save-route").on("click", (evt) => {
-        let polyline = new Polyline ({
-            hasZ: true,
-            spatialReference: mapView.spatialReference,
+        let polyline = {
+            type: "polyline",
             paths: multipointVertices
+        };
+
+        let polylineGraphic = new Graphic ({
+            geometry: polyline
         });
 
         const edits = {
-            addFeatures: polyline
-        }
+            addFeatures: polylineGraphic
+        };
 
         console.log(polyline);
 
