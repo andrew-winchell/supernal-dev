@@ -646,6 +646,14 @@ require([
     });
 
     $("#complete-route").on("click", (evt) => {
+        evt.currentTarget.disabled = true;
+        pointSketchViewModel.complete();
+        $("#save-route")[0].disabled = false;
+        $("#undo-vertices")[0].disabled = true;
+        $("#redo-vertices")[0].disabled = true;
+    });
+
+    $("#save-route").on("click", (evt) => {
         let polyline = new Polyline ({
             hasZ: true,
             spatialReference: mapView.spatialReference,
@@ -663,12 +671,6 @@ require([
             .then((results) => {
                 console.log(results)
             })
-
-        evt.currentTarget.disabled = true;
-        pointSketchViewModel.complete();
-        $("#save-route")[0].disabled = false;
-        $("#undo-vertices")[0].disabled = false;
-        $("#redo-vertices")[0].disabled = false;
     });
 
     function drawPath (vertices) {
