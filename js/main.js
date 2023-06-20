@@ -660,7 +660,10 @@ require([
         };
 
         let polylineGraphic = new Graphic ({
-            geometry: polyline
+            geometry: polyline,
+            attributes: {
+                "route_name": "test"
+            }
         });
 
         const edits = {
