@@ -613,6 +613,7 @@ require([
     });
 
     let multipointVertices = [];
+    let path = [];
 
     $("#add-route-vertices").on("click", () => {
         mapView.focus();
@@ -666,6 +667,7 @@ require([
             }
         });
 
+        console.log(polylineGraphic)
         const edits = {
             addFeatures: [polylineGraphic]
         };
@@ -706,6 +708,8 @@ require([
             points: vertices,
             spatialReference: mapView.spatialReference
         });
+
+        console.log(multipoint)
 
         $("#waypoints").empty();
 
