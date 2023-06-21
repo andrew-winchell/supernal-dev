@@ -690,6 +690,8 @@ require([
             }
         });
 
+        console.log(polylineGraphic);
+
         const edits = {
             addFeatures: [polylineGraphic]
         };
