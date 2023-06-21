@@ -686,7 +686,7 @@ require([
             attributes: {
                 "route_name": rName,
                 "departing_fac": rDepart,
-
+                "arriving_facility": rArrival
             }
         });
 
