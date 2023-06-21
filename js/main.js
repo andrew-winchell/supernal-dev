@@ -655,9 +655,22 @@ require([
     });
 
     $("#save-route").on("click", (evt) => {
+        let path = [];
+
+        let multipoint = new Multipoint ({
+            points: vertices,
+            spatialReference: mapView.spatialReference
+        });
+
+        for (let i=0; i<multipoint.points.length; i++) {
+            let mapPt = multipoint.getPoint(i);
+            let coords = [mapPt.longitude, mapPt.latitude, mapPt.z];
+            path.push(coords);
+        }
+
         let polyline = {
             type: "polyline",
-            paths: multipointVertices
+            paths: path
         };
 
         let polylineGraphic = new Graphic ({
@@ -667,7 +680,6 @@ require([
             }
         });
 
-        console.log(polylineGraphic)
         const edits = {
             addFeatures: [polylineGraphic]
         };
