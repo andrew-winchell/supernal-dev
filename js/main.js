@@ -656,6 +656,13 @@ require([
 
     $("#save-route").on("click", (evt) => {
         $("#route-save-modal")[0].open = true;
+    });
+
+    $("#route-save").on("click", (evt) => {
+        let rName = $("#route-name")[0].value;
+        let rArrival = $("#route-arr")[0].value;
+        let rDepart = $("#route-dep")[0].value;
+
         let path = [];
 
         let multipoint = new Multipoint ({
@@ -677,7 +684,9 @@ require([
         let polylineGraphic = new Graphic ({
             geometry: polyline,
             attributes: {
-                "route_name": "test"
+                "route_name": rName,
+                "departing_fac": rDepart,
+
             }
         });
 
@@ -691,8 +700,10 @@ require([
             .applyEdits(edits)
             .then((results) => {
                 console.log(results)
-            })
-    });
+            });
+
+            mapView.graphics.removeAll();
+    })
 
     function drawPath (vertices) {
         let polyline = new Polyline ({
