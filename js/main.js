@@ -658,7 +658,7 @@ require([
         let path = [];
 
         let multipoint = new Multipoint ({
-            points: vertices,
+            points: multipointVertices,
             spatialReference: mapView.spatialReference
         });
 
