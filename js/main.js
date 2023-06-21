@@ -22,12 +22,13 @@ require([
     "esri/geometry/support/webMercatorUtils",
     "esri/widgets/Compass",
     "esri/geometry/Multipoint",
-    "esri/geometry/Polyline"
+    "esri/geometry/Polyline",
+    "esri/geometry/geometryEngine"
 
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
-        BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline
+        BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, geometryEngine
     ) => {
 
     // Esri AGOL Authorization
@@ -681,12 +682,15 @@ require([
             paths: path
         };
 
+        let rDistance = geometryEngine.geodesicLength(polyline, "miles");
+
         let polylineGraphic = new Graphic ({
             geometry: polyline,
             attributes: {
                 "route_name": rName,
                 "departing_fac": rDepart,
-                "arriving_facility": rArrival
+                "arriving_facility": rArrival,
+                "route_distance": rDistance
             }
         });
 
@@ -695,8 +699,6 @@ require([
         const edits = {
             addFeatures: [polylineGraphic]
         };
-
-        console.log(polyline);
 
         supernalRoutesLyr
             .applyEdits(edits)
