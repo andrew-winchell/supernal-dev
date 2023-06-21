@@ -89,6 +89,29 @@
                     </calcite-button>
                 </calcite-modal>
 
+                <calcite-modal aria-labelledby="modal-title" id="route-save-modal" outside-close-disabled close-button-disabled escape-disabled scale="s" width="s">
+                    <div slot="header" id="modal-title">
+                        Save New Route
+                    </div>
+                    <div slot="content">
+                        <calcite-label>
+                            Route Name
+                            <calcite-input placeholder="Example: 'Raytheon to Hawthorne"></calcite-input>
+                        </calcite-label>
+                        <calcite-label>
+                            Departing Facility
+                            <calcite-input placeholder="Example: 'Raytheon"></calcite-input>
+                        </calcite-label>
+                        <calcite-label>
+                            Arriving Facility
+                            <calcite-input placeholder="Example: 'Hawthorne"></calcite-input>
+                        </calcite-label>
+                    </div>
+                    <calcite-button slot="primary" width="full" id="altitude-save">
+                        Submit Value
+                    </calcite-button>
+                </calcite-modal>
+
                 <div id="pointer-coords"></div>
 
                 <div id="filter-container" class="esri-widget">
