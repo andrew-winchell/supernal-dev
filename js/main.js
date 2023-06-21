@@ -655,7 +655,7 @@ require([
     });
 
     $("#save-route").on("click", (evt) => {
-        $("route-save-modal")[0].open = true;
+        $("#route-save-modal")[0].open = true;
         let path = [];
 
         let multipoint = new Multipoint ({
