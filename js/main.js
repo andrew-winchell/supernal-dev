@@ -690,7 +690,7 @@ require([
             }
         });
 
-        console.log(polylineGraphic);
+        console.log(polylineGraphic.geometry);
 
         const edits = {
             addFeatures: [polylineGraphic]
@@ -736,8 +736,6 @@ require([
             points: vertices,
             spatialReference: mapView.spatialReference
         });
-
-        console.log(multipoint)
 
         $("#waypoints").empty();
 
