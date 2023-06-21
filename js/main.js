@@ -702,7 +702,9 @@ require([
                 console.log(results)
             });
 
-            mapView.graphics.removeAll();
+        mapView.graphics.removeAll();
+        
+        $("#route-save-modal")[0].open = false;
     })
 
     function drawPath (vertices) {
