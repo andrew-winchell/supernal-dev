@@ -682,17 +682,18 @@ require([
             paths: path
         };
 
-        let rDistance = geometryEngine.geodesicLength(polyline, "miles");
-
         let polylineGraphic = new Graphic ({
             geometry: polyline,
             attributes: {
                 "route_name": rName,
                 "departing_fac": rDepart,
-                "arriving_facility": rArrival,
-                "route_distance": rDistance
+                "arriving_facility": rArrival
             }
         });
+
+        let rDistance = geometryEngine.geodesicLength(polyline, "nautical-miles");
+
+        polylineGraphic.attributes["route_distance"] = rDistance
 
         const edits = {
             addFeatures: [polylineGraphic]
