@@ -694,8 +694,6 @@ require([
             }
         });
 
-        console.log(polylineGraphic.geometry);
-
         const edits = {
             addFeatures: [polylineGraphic]
         };
@@ -709,6 +707,8 @@ require([
         mapView.graphics.removeAll();
         
         $("#route-save-modal")[0].open = false;
+        
+        multipointVertices = [];
     })
 
     function drawPath (vertices) {
