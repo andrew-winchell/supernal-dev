@@ -695,7 +695,6 @@ require([
         });
 
         let rDistance = geometryEngine.geodesicLength(polylineGraphic.geometry, "nautical-miles");
-        console.log(rDistance)
 
         polylineGraphic.attributes["route_distance"] = rDistance
 
@@ -714,6 +713,8 @@ require([
         $("#route-save-modal")[0].open = false;
         
         multipointVertices = [];
+
+        pntGraphicsLyr.removeAll();
     })
 
     function drawPath (vertices) {
