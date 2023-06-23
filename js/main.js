@@ -679,8 +679,7 @@ require([
 
         let polyline = {
             type: "polyline",
-            paths: path,
-            spatialReference: mapView.spatialReference
+            paths: path
         };
 
         let polylineGraphic = new Graphic ({
@@ -693,6 +692,7 @@ require([
         });
 
         let rDistance = geometryEngine.geodesicLength(polylineGraphic.geometry, "nautical-miles");
+        console.log(rDistance)
 
         polylineGraphic.attributes["route_distance"] = rDistance
 
