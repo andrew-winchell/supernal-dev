@@ -650,8 +650,8 @@ require([
         evt.currentTarget.disabled = true;
         pointSketchViewModel.complete();
         $("#save-route")[0].disabled = false;
-        $("#undo-vertices")[0].disabled = true;
-        $("#redo-vertices")[0].disabled = true;
+        $("#edit-vertices")[0].disabled = true;
+        $("#cancel-vertices")[0].disabled = true;
     });
 
     // Open the save route modal
