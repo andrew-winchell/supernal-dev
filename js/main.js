@@ -692,7 +692,7 @@ require([
             }
         });
 
-        let rDistance = geometryEngine.geodesicLength(polylineGraphic, "nautical-miles");
+        let rDistance = geometryEngine.geodesicLength(polylineGraphic.geometry, "nautical-miles");
 
         polylineGraphic.attributes["route_distance"] = rDistance
 
