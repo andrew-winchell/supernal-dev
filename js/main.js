@@ -618,6 +618,8 @@ require([
     $("#add-route-vertices").on("click", () => {
         mapView.focus();
 
+        console.log(multipointVertices)
+
         pointSketchViewModel.create("multipoint");
 
         pointSketchViewModel.on("create", (evt) => {
@@ -649,7 +651,6 @@ require([
     $("#complete-route").on("click", (evt) => {
         evt.currentTarget.disabled = true;
         pointSketchViewModel.complete();
-        pointSketchViewModel.destroy();
         $("#save-route")[0].disabled = false;
         $("#undo-vertices")[0].disabled = true;
         $("#redo-vertices")[0].disabled = true;
