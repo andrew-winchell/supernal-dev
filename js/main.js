@@ -612,15 +612,12 @@ require([
         labelOptions: { enabled: true },
         tooltipOptions: { enabled: true }
     });
+    pointSketchViewModel.create("multipoint");
 
     let multipointVertices = [];
 
     $("#add-route-vertices").on("click", () => {
         mapView.focus();
-
-        console.log(multipointVertices)
-
-        pointSketchViewModel.create("multipoint");
 
         pointSketchViewModel.on("create", (evt) => {
             if (evt.state == "complete") {
@@ -718,6 +715,8 @@ require([
 
         $("#waypoints").empty();
         $("#waypoint-list").css("display", "none");
+
+        $("#save-route")[0].disabled = true;
     })
 
     function drawPath (vertices) {
