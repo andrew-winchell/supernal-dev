@@ -679,7 +679,8 @@ require([
 
         let polyline = {
             type: "polyline",
-            paths: path
+            paths: path,
+            spatialReference: mapView.spatialReference
         };
 
         let polylineGraphic = new Graphic ({
