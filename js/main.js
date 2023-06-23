@@ -614,7 +614,6 @@ require([
     });
 
     let multipointVertices = [];
-    let path = [];
 
     $("#add-route-vertices").on("click", () => {
         mapView.focus();
@@ -650,15 +649,18 @@ require([
     $("#complete-route").on("click", (evt) => {
         evt.currentTarget.disabled = true;
         pointSketchViewModel.complete();
+        pointSketchViewModel.destroy();
         $("#save-route")[0].disabled = false;
         $("#undo-vertices")[0].disabled = true;
         $("#redo-vertices")[0].disabled = true;
     });
 
+    // Open the save route modal
     $("#save-route").on("click", (evt) => {
         $("#route-save-modal")[0].open = true;
     });
 
+    // Save the route with options to the Supernal Exisiting Routes feature class
     $("#route-save").on("click", (evt) => {
         let rName = $("#route-name")[0].value;
         let rArrival = $("#route-arr")[0].value;
