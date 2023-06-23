@@ -715,6 +715,9 @@ require([
         multipointVertices = [];
 
         pntGraphicsLyr.removeAll();
+
+        $("#waypoints").empty();
+        $("#waypoint-list").css("display", "none");
     })
 
     function drawPath (vertices) {
