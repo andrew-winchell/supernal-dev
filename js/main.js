@@ -639,8 +639,8 @@ require([
                     if (multipointVertices.length > 1) {
                         $("#complete-route")[0].disabled = false;
                     }
-                    $("#undo-vertices")[0].disabled = false;
-                    $("#redo-vertices")[0].disabled = false;
+                    $("#edit-vertices")[0].disabled = false;
+                    $("#cancel-vertices")[0].disabled = false;
                 }
             }
         })
