@@ -718,8 +718,6 @@ require([
         $("#waypoint-list").css("display", "none");
 
         $("#save-route")[0].disabled = true;
-
-        pointSketchViewModel.removeHandles();
     })
 
     function drawPath (vertices) {
