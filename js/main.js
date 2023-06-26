@@ -1159,6 +1159,7 @@ require([
                         "<calcite-list-item label=" + f.attributes.route_name + "' description='Distance: " + f.attributes.route_distance + "'><calcite-list-item>"
                     )
                 }
+                $("#existing-routes")[0].loading = false;
             })
     })
 });
