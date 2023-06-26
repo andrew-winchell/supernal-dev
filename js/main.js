@@ -542,6 +542,7 @@ require([
     const compass = new Compass ({
         view: mapView
     });
+
     // Add Compass to UI
     mapView.ui.add(compass, "top-left");
 
@@ -555,17 +556,20 @@ require([
     const basemapGallery = new BasemapGallery ({
         view: mapView
     });
+
     // Create Expand widget instance and place basemap gallery content inside
     const bgExpand = new Expand ({
         mapView,
         content: basemapGallery,
         expandIconClass: "esri-icon-basemap"
     });
+
     // Add BG Expand to UI
     mapView.ui.add(bgExpand, { position: "bottom-left" });
 
     // Get the div container for the custom filter widget
     const filterDiv = $("#filter-container")[0];
+
     // Create Expand widget instance and place the custom filter div in the content
     const filterExpand = new Expand ({
         content: filterDiv,
@@ -1141,4 +1145,16 @@ require([
             })
         }
     }
+
+    // Populate Exiting Routes List
+    mapView.when(() => {
+        const query = {
+            where: "1=1",
+            outFields: ["*"]
+        }
+        supernalRoutesLyr.queryFeatures(query)
+            .then((results) => {
+                console.log(results)
+            })
+    })
 });
