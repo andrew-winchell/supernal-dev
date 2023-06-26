@@ -760,7 +760,7 @@ require([
             let y = mapPt.latitude.toFixed(4);
             let z = mapPt.z;
             $("#waypoints").append(
-                "<calcite-list-item disabled style='opacity:1;' label='Vertice #" + (i+1) + "' description='X: " + x + " Y: " + y +" Z: " + z + "'><calcite-list-item>"
+                "<calcite-list-item disabled style='opacity:1;' label='Vertice #" + (i+1) + "' description='X: " + x + " Y: " + y +" Z: " + z + "'></calcite-list-item>"
             )
         }
     }    
