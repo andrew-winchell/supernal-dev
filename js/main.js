@@ -1154,7 +1154,11 @@ require([
         }
         supernalRoutesLyr.queryFeatures(query)
             .then((results) => {
-                console.log(results)
+                for (let f of results.features) {
+                    $("#existing-routes").append(
+                        "<calcite-list-item label=" + f.attributes.route_name + "' description='Distance: " + f.attributes.route_distance + "'><calcite-list-item>"
+                    )
+                }
             })
     })
 });
