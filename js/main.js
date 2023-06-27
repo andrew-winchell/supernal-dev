@@ -630,14 +630,14 @@ require([
                 console.log("complete feature");
             } else if (evt.state == "start") {
                 let altitude = prompt("Enter Altitude:", 0);
-                let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], parseInt(altitude / 3.281)];
+                let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], parseInt(altitude) / 3.281];
                 multipointVertices.push(coords);
                 createVertice(multipointVertices);
                 $("#waypoint-list").css("display", "block");
             } else if (evt.state == "active") {
                 if (evt.toolEventInfo.type == "vertex-add") {
                     let altitude = prompt("Enter Altitude:", 0);
-                    let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], parseInt(altitude / 3.281)];
+                    let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], parseInt(altitude) / 3.281];
                     multipointVertices.push(coords);
                     createVertice(multipointVertices);
                     drawPath(multipointVertices);
@@ -761,7 +761,7 @@ require([
             let y = mapPt.latitude.toFixed(4);
             let z = mapPt.z;
             $("#waypoints").append(
-                "<calcite-list-item disabled style='opacity:1;' label='Vertice #" + (i+1) + "' description='X: " + x + " Y: " + y +" Z: " + z + "'></calcite-list-item>"
+                "<calcite-list-item disabled style='opacity:1;' label='Vertice #" + (i+1) + "' description='X: " + x + " Y: " + y +" Z: " + (z*3.281) + "'></calcite-list-item>"
             )
         }
     }    
