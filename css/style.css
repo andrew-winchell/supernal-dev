@@ -100,5 +100,6 @@ html, body, #view-div {
 }
 
 #elevation-profile {
-  height: 200px;
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
 }
