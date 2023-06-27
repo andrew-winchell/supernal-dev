@@ -1181,9 +1181,7 @@ require([
         // scene to select and display the elevation profile for
         visibleElements: {
           sketchButton: false
-        }
+        },
+        container: "elevation-profile"
     });
-
-    // add the widget to the view
-    mapView.ui.add(elevationProfile, "top-right");
 });
