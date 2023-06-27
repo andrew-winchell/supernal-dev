@@ -629,6 +629,7 @@ require([
             if (evt.state == "complete") {
                 console.log("complete feature");
             } else if (evt.state == "start") {
+                createVertice([[evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0]]);
                 let altitude = prompt("Enter Altitude:", 0);
                 let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], parseInt(altitude) / 3.281];
                 multipointVertices.push(coords);
