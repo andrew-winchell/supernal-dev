@@ -1173,7 +1173,8 @@ require([
             type: "ground" // first profile line samples the ground elevation
           },
           {
-            type: "input" // second profile samples the view and shows building profiles
+            type: "input", // second profile samples the view and shows building profiles
+            title: "Flight Plan"
           }
         ],
         // hide the select button
