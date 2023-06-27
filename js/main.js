@@ -1155,9 +1155,8 @@ require([
         supernalRoutesLyr.queryFeatures(query)
             .then((results) => {
                 for (let f of results.features) {
-                    console.log(f.attributes.route_name)
                     $("#existing-routes").append(
-                        "<calcite-list-item label=" + f.attributes.route_name + "' description='Distance: " + parseFloat(f.attributes.route_distance).toFixed(2) + " nautical miles' value='test'></calcite-list-item>"
+                        "<calcite-list-item label='" + f.attributes.route_name + "' description='Distance: " + parseFloat(f.attributes.route_distance).toFixed(2) + " nautical miles' value='test'></calcite-list-item>"
                     )
                 }
                 $("#existing-routes")[0].loading = false;
