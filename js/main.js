@@ -630,39 +630,14 @@ require([
                 console.log("complete feature");
             } else if (evt.state == "start") {
                 let startCoord = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
+                createTableRow([startCoord]);
                 multipointVertices.push(startCoord);
                 let altitude = prompt("Enter Altitude:", 0);
                 let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], parseInt(altitude) / 3.281];
+                createTableRow([coords]);
                 multipointVertices.push(coords);
                 createVertice(multipointVertices);
                 $("#waypoint-list").css("display", "block");
-
-                let firstRow = $("#waypoint-table")[0].insertRow(-1);
-                let firstVert = firstRow.insertCell(0);
-                let firstX = firstRow.insertCell(1);
-                let firstY = firstRow.insertCell(2);
-                let firstZ = firstRow.insertCell(3);
-                firstVert.innerHTML = 1;
-                firstX.innerHTML = startCoord[0].toFixed(4);
-                firstX.setAttribute("contentEditable", "true");
-                firstY.innerHTML = startCoord[1].toFixed(4);
-                firstY.setAttribute("contentEditable", "true");
-                firstZ.innerHTML = startCoord[2].toFixed(4);
-                firstZ.setAttribute("contentEditable", "true");
-
-                let nextRow = $("#waypoint-table")[0].insertRow(-1);
-                let nextVert = nextRow.insertCell(0);
-                let nextX = nextRow.insertCell(1);
-                let nextY = nextRow.insertCell(2);
-                let nextZ = nextRow.insertCell(3);
-                nextVert.innerHTML = 2;
-                nextX.innerHTML = coords[0].toFixed(4);
-                nextX.setAttribute("contentEditable", "true");
-                nextY.innerHTML = coords[1].toFixed(4);
-                nextY.setAttribute("contentEditable", "true");
-                nextZ.innerHTML = coords[2].toFixed(4);
-                nextZ.setAttribute("contentEditable", "true");
-
 
 
             } else if (evt.state == "active") {
@@ -681,6 +656,53 @@ require([
             }
         })
     });
+
+    function createTableRow (vertice) {
+        let multipoint = new Multipoint ({
+            points: vertice,
+            spatialReference: mapView.spatialReference
+        });
+
+        let mapPt = multipoint.getPoint(0);
+
+        let nextRow = $("#waypoint-table")[0].insertRow(-1);
+        let nextVert = nextRow.insertCell(0);
+        let nextX = nextRow.insertCell(1);
+        let nextY = nextRow.insertCell(2);
+        let nextZ = nextRow.insertCell(3);
+
+        nextX.innerHTML = mapPt.longitude.toFixed(4);
+        nextX.setAttribute("contentEditable", "true");
+        nextY.innerHTML = mapPt.latitude.toFixed(4);
+        nextY.setAttribute("contentEditable", "true");
+        nextZ.innerHTML = mapPt.z.toFixed(0);
+        nextZ.setAttribute("contentEditable", "true");
+
+    }
+
+    function createVertice (vertices) {
+
+        mapView.graphics.removeAll();
+
+        let multipoint = new Multipoint ({
+            points: vertices,
+            spatialReference: mapView.spatialReference
+        });
+
+        /*
+        $("#waypoints").empty();
+
+        for (let i=0; i<multipoint.points.length; i++) {
+            let mapPt = multipoint.getPoint(i);
+            let x = mapPt.longitude.toFixed(4);
+            let y = mapPt.latitude.toFixed(4);
+            let z = mapPt.z;
+            $("#waypoints").append(
+                "<calcite-list-item disabled style='opacity:1;' label='Vertice #" + (i+1) + "' description='X: " + x + " Y: " + y +" Z: " + parseFloat(z*3.281).toFixed(0) + "'></calcite-list-item>"
+            )
+        }
+        */
+    } 
 
     $("#complete-route").on("click", (evt) => {
         evt.currentTarget.disabled = true;
@@ -773,31 +795,7 @@ require([
             }
         })
         mapView.graphics.add(graphic);
-    }
-
-    function createVertice (vertices) {
-
-        mapView.graphics.removeAll();
-
-        let multipoint = new Multipoint ({
-            points: vertices,
-            spatialReference: mapView.spatialReference
-        });
-
-        /*
-        $("#waypoints").empty();
-
-        for (let i=0; i<multipoint.points.length; i++) {
-            let mapPt = multipoint.getPoint(i);
-            let x = mapPt.longitude.toFixed(4);
-            let y = mapPt.latitude.toFixed(4);
-            let z = mapPt.z;
-            $("#waypoints").append(
-                "<calcite-list-item disabled style='opacity:1;' label='Vertice #" + (i+1) + "' description='X: " + x + " Y: " + y +" Z: " + parseFloat(z*3.281).toFixed(0) + "'></calcite-list-item>"
-            )
-        }
-        */
-    }    
+    }   
 
     // Popuplate filter field dropdowns for each layer
     // Wait for map and layers to load first
