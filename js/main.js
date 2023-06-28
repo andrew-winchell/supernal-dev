@@ -636,6 +636,29 @@ require([
                 multipointVertices.push(coords);
                 createVertice(multipointVertices);
                 $("#waypoint-list").css("display", "block");
+
+                let firstRow = $("#waypoint-table").insertRow(-1);
+                let firstVert = firstRow.insertRow(0);
+                let firstX = firstRow.insertRow(1);
+                let firstY = firstRow.insertRow(2);
+                let firstZ = firstRow.insertRow(3);
+                firstVert.innerHTML = 1;
+                firstX.innerHTML = startCoord[0];
+                firstY.innerHTML = startCoord[1];
+                firstZ.innerHTML = startCoord[2];
+
+                let nextRow = $("#waypoint-table").insertRow(-1);
+                let nextVert = nextRow.insertRow(0);
+                let nextX = nextRow.insertRow(1);
+                let nextY = nextRow.insertRow(2);
+                let nextZ = nextRow.insertRow(3);
+                nextVert.innerHTML = 2;
+                nextX.innerHTML = coords[0];
+                nextY.innerHTML = coords[1];
+                nextZ.innerHTML = coords[2];
+
+
+
             } else if (evt.state == "active") {
                 if (evt.toolEventInfo.type == "vertex-add") {
                     let altitude = prompt("Enter Altitude:", 0);
@@ -755,6 +778,7 @@ require([
             spatialReference: mapView.spatialReference
         });
 
+        /*
         $("#waypoints").empty();
 
         for (let i=0; i<multipoint.points.length; i++) {
@@ -766,6 +790,7 @@ require([
                 "<calcite-list-item disabled style='opacity:1;' label='Vertice #" + (i+1) + "' description='X: " + x + " Y: " + y +" Z: " + parseFloat(z*3.281).toFixed(0) + "'></calcite-list-item>"
             )
         }
+        */
     }    
 
     // Popuplate filter field dropdowns for each layer
