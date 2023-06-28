@@ -637,21 +637,21 @@ require([
                 createVertice(multipointVertices);
                 $("#waypoint-list").css("display", "block");
 
-                let firstRow = $("#waypoint-table").insertRow(-1);
-                let firstVert = firstRow.insertRow(0);
-                let firstX = firstRow.insertRow(1);
-                let firstY = firstRow.insertRow(2);
-                let firstZ = firstRow.insertRow(3);
+                let firstRow = $("#waypoint-table")[0].insertRow(-1);
+                let firstVert = firstRow.insertCell(0);
+                let firstX = firstRow.insertCell(1);
+                let firstY = firstRow.insertCell(2);
+                let firstZ = firstRow.insertCell(3);
                 firstVert.innerHTML = 1;
                 firstX.innerHTML = startCoord[0];
                 firstY.innerHTML = startCoord[1];
                 firstZ.innerHTML = startCoord[2];
 
-                let nextRow = $("#waypoint-table").insertRow(-1);
-                let nextVert = nextRow.insertRow(0);
-                let nextX = nextRow.insertRow(1);
-                let nextY = nextRow.insertRow(2);
-                let nextZ = nextRow.insertRow(3);
+                let nextRow = $("#waypoint-table")[0].insertRow(-1);
+                let nextVert = nextRow.insertCell(0);
+                let nextX = nextRow.insertCell(1);
+                let nextY = nextRow.insertCell(2);
+                let nextZ = nextRow.insertCell(3);
                 nextVert.innerHTML = 2;
                 nextX.innerHTML = coords[0];
                 nextY.innerHTML = coords[1];
