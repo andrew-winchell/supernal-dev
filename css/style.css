@@ -104,6 +104,6 @@ html, body, #view-div {
   width: -webkit-fill-available;
 }
 
-#waypoint-table > td {
+#waypoint-table td {
   text-align: center;
 }
