@@ -103,3 +103,7 @@ html, body, #view-div {
   height: -webkit-fill-available;
   width: -webkit-fill-available;
 }
+
+#waypoint-table > td {
+  text-align: center;
+}

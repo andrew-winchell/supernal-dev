@@ -675,7 +675,7 @@ require([
         nextX.setAttribute("contentEditable", "true");
         nextY.innerHTML = mapPt.latitude.toFixed(4);
         nextY.setAttribute("contentEditable", "true");
-        nextZ.innerHTML = mapPt.z.toFixed(0);
+        nextZ.innerHTML = (mapPt.z * 3.281).toFixed(0);
         nextZ.setAttribute("contentEditable", "true");
 
     }
