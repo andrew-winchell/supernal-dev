@@ -672,6 +672,7 @@ require([
         let nextY = nextRow.insertCell(2);
         let nextZ = nextRow.insertCell(3);
 
+        nextVert.innerHTML = nextRow.rowIndex
         nextX.innerHTML = mapPt.longitude.toFixed(4);
         nextX.setAttribute("contentEditable", "true");
         nextY.innerHTML = mapPt.latitude.toFixed(4);
