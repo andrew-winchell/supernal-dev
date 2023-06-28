@@ -643,9 +643,12 @@ require([
                 let firstY = firstRow.insertCell(2);
                 let firstZ = firstRow.insertCell(3);
                 firstVert.innerHTML = 1;
-                firstX.innerHTML = startCoord[0];
-                firstY.innerHTML = startCoord[1];
-                firstZ.innerHTML = startCoord[2];
+                firstX.innerHTML = startCoord[0].toFixed(4);
+                firstX.setAttribute("contentEditable", "true");
+                firstY.innerHTML = startCoord[1].toFixed(4);
+                firstY.setAttribute("contentEditable", "true");
+                firstZ.innerHTML = startCoord[2].toFixed(4);
+                firstZ.setAttribute("contentEditable", "true");
 
                 let nextRow = $("#waypoint-table")[0].insertRow(-1);
                 let nextVert = nextRow.insertCell(0);
@@ -653,9 +656,12 @@ require([
                 let nextY = nextRow.insertCell(2);
                 let nextZ = nextRow.insertCell(3);
                 nextVert.innerHTML = 2;
-                nextX.innerHTML = coords[0];
-                nextY.innerHTML = coords[1];
-                nextZ.innerHTML = coords[2];
+                nextX.innerHTML = coords[0].toFixed(4);
+                nextX.setAttribute("contentEditable", "true");
+                nextY.innerHTML = coords[1].toFixed(4);
+                nextY.setAttribute("contentEditable", "true");
+                nextZ.innerHTML = coords[2].toFixed(4);
+                nextZ.setAttribute("contentEditable", "true");
 
 
 
