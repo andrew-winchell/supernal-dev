@@ -784,6 +784,7 @@ require([
             }
         })
         mapView.graphics.add(graphic);
+        elevationProfile.input = graphic;
     }   
 
     // Popuplate filter field dropdowns for each layer
