@@ -685,27 +685,12 @@ require([
     }
 
     function createVertice (vertices) {
-
         mapView.graphics.removeAll();
 
         let multipoint = new Multipoint ({
             points: vertices,
             spatialReference: mapView.spatialReference
         });
-
-        /*
-        $("#waypoints").empty();
-
-        for (let i=0; i<multipoint.points.length; i++) {
-            let mapPt = multipoint.getPoint(i);
-            let x = mapPt.longitude.toFixed(4);
-            let y = mapPt.latitude.toFixed(4);
-            let z = mapPt.z;
-            $("#waypoints").append(
-                "<calcite-list-item disabled style='opacity:1;' label='Vertice #" + (i+1) + "' description='X: " + x + " Y: " + y +" Z: " + parseFloat(z*3.281).toFixed(0) + "'></calcite-list-item>"
-            )
-        }
-        */
     } 
 
     $("#complete-route").on("click", (evt) => {
