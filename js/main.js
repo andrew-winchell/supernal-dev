@@ -771,12 +771,6 @@ require([
             spatialReference: mapView.spatialReference,
             paths: vertices
         });
-
-        let multipoint = new Multipoint ({
-            hasZ: true,
-            spatialReference: mapView.spatialReference,
-            points: vertices
-        })
     
         const graphic = new Graphic ({
             geometry: polyline,
@@ -788,11 +782,8 @@ require([
             }
         });
 
-        const graphic2 = new Graphic ({
-            geometry: multipoint
-        })
         mapView.graphics.add(graphic);
-        elevationProfile.input = graphic2;
+        elevationProfile.input = graphic;
     }   
 
     // Popuplate filter field dropdowns for each layer
