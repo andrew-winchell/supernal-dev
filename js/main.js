@@ -1201,7 +1201,12 @@ require([
         // this button can be displayed when there are polylines in the
         // scene to select and display the elevation profile for
         visibleElements: {
-          sketchButton: false
+            legend: true,
+            clearButton: false,
+            settingsButton: false,
+            sketchButton: false,
+            selectButton: false,
+            uniformChartScalingToggle: false
         },
         container: "elevation-profile"
     });
