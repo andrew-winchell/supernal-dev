@@ -1209,6 +1209,7 @@ require([
             selectButton: false,
             uniformChartScalingToggle: false
         },
-        container: "elevation-profile"
+        container: "elevation-profile",
+        unit: "imperial"
     });
 });
