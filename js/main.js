@@ -632,6 +632,8 @@ require([
                 let startCoord = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
                 createTableRow([startCoord]);
                 multipointVertices.push(startCoord);
+                createVertice(multipointVertices);
+
                 let altitude = prompt("Enter Altitude:", 0);
                 let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], parseInt(altitude) / 3.281];
                 createTableRow([coords]);
@@ -639,11 +641,11 @@ require([
                 createVertice(multipointVertices);
                 $("#waypoint-list").css("display", "block");
 
-
             } else if (evt.state == "active") {
                 if (evt.toolEventInfo.type == "vertex-add") {
                     let altitude = prompt("Enter Altitude:", 0);
                     let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], parseInt(altitude) / 3.281];
+
                     createTableRow([coords]);
                     multipointVertices.push(coords);
                     createVertice(multipointVertices);
