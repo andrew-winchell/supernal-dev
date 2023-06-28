@@ -106,4 +106,10 @@ html, body, #view-div {
 
 #waypoint-table td {
   text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+#waypoint-table {
+  border-collapse: collapse;
 }
