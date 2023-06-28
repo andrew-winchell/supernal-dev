@@ -54,9 +54,27 @@
                         <calcite-action text="Edit Route" icon="pencil" text-enabled alignment="center" appearance="transparent" scale="m" id="edit-route"></calcite-action>
                         <div id="editor-widget"></div>
                         <div id="waypoint-list">
-                            <calcite-list id="waypoints">
-                                <!--Auto Genereated in main.js-->                                
-                            </calcite-list>
+                            <table id="waypoint-table">
+                                <colgroup>
+                                    <col span="1" style="width: 15%;">
+                                    <col span="1" style="width: 30%;">
+                                    <col span="1" style="width: 27.5%;">
+                                    <col span="1" style="width: 27.5%;">
+                                </colgroup>
+                                
+                                <tbody>
+                                    <tr>
+                                        <th>Vertice</th>
+                                        <th>X</th>
+                                        <th>Y</th>
+                                        <th>Z</th>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                            <!--<calcite-list id="waypoints">
+                                <--Auto Genereated in main.js->                                
+                            </calcite-list> -->
                         </div>
                     </calcite-block>
                     <calcite-block collapsible heading="Routes" id="routes-container">
