@@ -32,7 +32,8 @@ require([
         ElevationProfile
     ) => {
 
-    // Esri AGOL Authorization
+    /********** ESRI ArcGIS Online User Authentication **********/
+
     const info = new OAuthInfo({
         appId: "VciB4pGjVFKkH1Og",
         portalUrl: "https://cobecconsulting.maps.arcgis.com",
@@ -48,6 +49,9 @@ require([
         }).catch(() => {
             console.log("User not signed in.")
         });
+
+
+    /********** ArcGIS Online Hosted Feature Layers **********/
 
     const airportsLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/US_Airport/FeatureServer/0",
@@ -160,7 +164,7 @@ require([
             ]
         },
         minScale: 2500000
-    })
+    });
 
     const classAirspaceLyr = new FeatureLayer ({
         url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/Class_Airspace/FeatureServer/0",
@@ -444,8 +448,10 @@ require([
                 width: "3px",
             }
         }
-    })
-    
+    });
+
+    /********** Client-Side Graphics Layers for Drawing **********/
+
     const lineGraphicsLyr = new GraphicsLayer ({
         title: "Proposed Route",
         graphics: []
@@ -455,6 +461,8 @@ require([
         title: "Proposed Route Vertices",
         graphics: []
     });
+
+    /********** 2D and 3D Map View Configurations **********/
 
     const map2D = new Map ({
         basemap: "topo-vector",
@@ -500,6 +508,8 @@ require([
     };
     appConfig.activeView = appConfig.mapView;
 
+    /********** Map Widgets **********/
+
     // After map load, create a customized Layer List widget
     // Place in left pane layer-list div
     // Add custom actions for legend and item details
@@ -539,50 +549,42 @@ require([
         })
     })
 
-    // Create Compass widget instance and place in the top-left UI
     const compass = new Compass ({
         view: mapView
     });
 
-    // Add Compass to UI
     mapView.ui.add(compass, "top-left");
 
-    // Create Search widget instance and place in the search-div container
     const search = new Search ({
         view: mapView,
         container: "search-div"
     });
 
-    // Create BasemapGallery instance
     const basemapGallery = new BasemapGallery ({
         view: mapView
     });
 
-    // Create Expand widget instance and place basemap gallery content inside
     const bgExpand = new Expand ({
         mapView,
         content: basemapGallery,
         expandIconClass: "esri-icon-basemap"
     });
 
-    // Add BG Expand to UI
     mapView.ui.add(bgExpand, { position: "bottom-left" });
 
-    // Get the div container for the custom filter widget
     const filterDiv = $("#filter-container")[0];
 
-    // Create Expand widget instance and place the custom filter div in the content
     const filterExpand = new Expand ({
         content: filterDiv,
         expandIconClass: "esri-icon-filter"
     });
-    // Add Filter Expand to UI
+
     mapView.ui.add(filterExpand, { position: "bottom-left" });
 
-    // Open Route Editor Toolbar
-    $("#create-route").on("click", () => {
-        $("#route-toolbar").css("display", "block");
-    });
+    /********** Route Creation Tool **********/
+
+    // Drawing variables
+    let multipointVertices = [];
 
     const pointSketchViewModel = new SketchViewModel ({
         layer: pntGraphicsLyr,
@@ -618,7 +620,10 @@ require([
         tooltipOptions: { enabled: true }
     });
 
-    let multipointVertices = [];
+    // Open Creator Toolbar
+    $("#create-route").on("click", () => {
+        $("#route-toolbar").css("display", "block");
+    });
 
     $("#add-route-vertices").on("click", () => {
         mapView.focus();
@@ -648,6 +653,7 @@ require([
                     multipointVertices.push(coords);
                     createVertice(multipointVertices);
                     drawPath(multipointVertices);
+
                     if (multipointVertices.length > 1) {
                         $("#complete-route")[0].disabled = false;
                     }
@@ -679,7 +685,6 @@ require([
         nextY.setAttribute("contentEditable", "true");
         nextZ.innerHTML = (mapPt.z * 3.281).toFixed(0);
         nextZ.setAttribute("contentEditable", "true");
-
     }
 
     function createVertice (vertices) {
@@ -704,7 +709,6 @@ require([
         $("#route-save-modal")[0].open = true;
     });
 
-    // Save the route with options to the Supernal Exisiting Routes feature class
     $("#route-save").on("click", (evt) => {
         let rName = $("#route-name")[0].value;
         let rArrival = $("#route-arr")[0].value;
@@ -886,8 +890,8 @@ require([
         });
     });
 
-    // Airport Layer listen for filter switch to be turned on
-    // If turned on, apply current filter values
+    /********** Layer Filtering Capabilities **********/
+
     $("#airport-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
         let field = $("#airport-field-select")[0].value;
         let value = $("#airport-filter-value")[0].value;
@@ -906,98 +910,8 @@ require([
                 }
             });
         }
-    });
+    });  
 
-    // Airspace Layer listen for filter switch to be turned on
-    // If turned on, apply current filter values
-    $("#airspace-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        let field = $("#airspace-field-select")[0].value;
-        let value = $("#airspace-filter-value")[0].value;
-        if (evtSwitch.currentTarget.checked == true) {
-            $("#airspace-filter-icon")[0].icon = "filter";
-            mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
-                layerView.filter = {
-                    where: field + " = '" + value + "'"
-                }
-            });
-        } else if (evtSwitch.currentTarget.checked == false) {
-            $("#airspace-filter-icon")[0].icon = " ";
-            mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
-                layerView.filter = {
-                    where: "1=1"
-                }
-            });
-        }
-    });
-
-    // Fixes Layer listen for filter switch to be turned on
-    // If turned on, apply current filter values
-    $("#fixes-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        let field = $("#fixes-field-select")[0].value;
-        let value = $("#fixes-filter-value")[0].value;
-        if (evtSwitch.currentTarget.checked == true) {
-            $("#fixes-filter-icon")[0].icon = "filter";
-            mapView.whenLayerView(desPointsLyr).then((layerView) => {
-                layerView.filter = {
-                    where: field + " = '" + value + "'"
-                }
-            });
-        } else if (evtSwitch.currentTarget.checked == false) {
-            $("#fixes-filter-icon")[0].icon = " ";
-            mapView.whenLayerView(desPointsLyr).then((layerView) => {
-                layerView.filter = {
-                    where: "1=1"
-                }
-            });
-        }
-    });
-
-    // NAVAIDS Layer listen for filter switch to be turned on
-    // If turned on, apply current filter values
-    $("#navaids-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        let field = $("#navaids-field-select")[0].value;
-        let value = $("#navaids-filter-value")[0].value;
-        if (evtSwitch.currentTarget.checked == true) {
-            $("#navaids-filter-icon")[0].icon = "filter";
-            mapView.whenLayerView(navaidsLyr).then((layerView) => {
-                layerView.filter = {
-                    where: field + " = '" + value + "'"
-                }
-            });
-        } else if (evtSwitch.currentTarget.checked == false) {
-            $("#navaids-filter-icon")[0].icon = " ";
-            mapView.whenLayerView(navaidsLyr).then((layerView) => {
-                layerView.filter = {
-                    where: "1=1"
-                }
-            });
-        }
-    });
-
-    // Obstacles Layer listen for filter switch to be turned on
-    // If turned on, apply current filter values
-    $("#obstacles-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        let field = $("#obstacles-field-select")[0].value;
-        let value = $("#obstacles-filter-value")[0].value;
-        if (evtSwitch.currentTarget.checked == true) {
-            $("#obstacles-filter-icon")[0].icon = "filter";
-            mapView.whenLayerView(obstaclesLyr).then((layerView) => {
-                layerView.filter = {
-                    where: field + " = '" + value + "'"
-                }
-            });
-        } else if (evtSwitch.currentTarget.checked == false) {
-            $("#obstacles-filter-icon")[0].icon = " ";
-            mapView.whenLayerView(obstaclesLyr).then((layerView) => {
-                layerView.filter = {
-                    where: "1=1"
-                }
-            });
-        }
-    });    
-
-    // Airports Layer listen for changes in filter selection
-    // Filter based on any matching values
     $("#airport-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#airport-field-select")[0]
         let field = fieldSelect.value;
@@ -1020,8 +934,26 @@ require([
         }
     });
 
-    // Airspace Layer listen for changes in filter selection
-    // Filter based on any matching values
+    $("#airspace-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        let field = $("#airspace-field-select")[0].value;
+        let value = $("#airspace-filter-value")[0].value;
+        if (evtSwitch.currentTarget.checked == true) {
+            $("#airspace-filter-icon")[0].icon = "filter";
+            mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            });
+        } else if (evtSwitch.currentTarget.checked == false) {
+            $("#airspace-filter-icon")[0].icon = " ";
+            mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
+                layerView.filter = {
+                    where: "1=1"
+                }
+            });
+        }
+    });
+
     $("#airspace-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#airspace-field-select")[0]
         let field = fieldSelect.value;
@@ -1044,9 +976,67 @@ require([
             })
         }
     });
+
+    $("#fixes-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        let field = $("#fixes-field-select")[0].value;
+        let value = $("#fixes-filter-value")[0].value;
+        if (evtSwitch.currentTarget.checked == true) {
+            $("#fixes-filter-icon")[0].icon = "filter";
+            mapView.whenLayerView(desPointsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            });
+        } else if (evtSwitch.currentTarget.checked == false) {
+            $("#fixes-filter-icon")[0].icon = " ";
+            mapView.whenLayerView(desPointsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: "1=1"
+                }
+            });
+        }
+    });
+
+   $("#navaids-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        let field = $("#navaids-field-select")[0].value;
+        let value = $("#navaids-filter-value")[0].value;
+        if (evtSwitch.currentTarget.checked == true) {
+            $("#navaids-filter-icon")[0].icon = "filter";
+            mapView.whenLayerView(navaidsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            });
+        } else if (evtSwitch.currentTarget.checked == false) {
+            $("#navaids-filter-icon")[0].icon = " ";
+            mapView.whenLayerView(navaidsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: "1=1"
+                }
+            });
+        }
+    });
+
+    $("#obstacles-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+        let field = $("#obstacles-field-select")[0].value;
+        let value = $("#obstacles-filter-value")[0].value;
+        if (evtSwitch.currentTarget.checked == true) {
+            $("#obstacles-filter-icon")[0].icon = "filter";
+            mapView.whenLayerView(obstaclesLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            });
+        } else if (evtSwitch.currentTarget.checked == false) {
+            $("#obstacles-filter-icon")[0].icon = " ";
+            mapView.whenLayerView(obstaclesLyr).then((layerView) => {
+                layerView.filter = {
+                    where: "1=1"
+                }
+            });
+        }
+    });  
     
-    // Fixes Layer listen for changes in filter selection
-    // Filter based on any matching values
     $("#fixes-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#fixes-field-select")[0]
         let field = fieldSelect.value;
@@ -1069,8 +1059,6 @@ require([
         }
     });
     
-    // NAVAIDS Layer listen for changes in filter selection
-    // Filter based on any matching values
     $("#navaids-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#navaids-field-select")[0]
         let field = fieldSelect.value;
@@ -1093,8 +1081,6 @@ require([
         }
     });
     
-    // Obstacles Layer listen for changes in filter selection
-    // Filter based on any matching values
     $("#obstacles-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#obstacles-field-select")[0]
         let field = fieldSelect.value;
