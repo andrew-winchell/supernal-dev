@@ -704,7 +704,6 @@ require([
         $("#cancel-vertices")[0].disabled = true;
     });
 
-    // Open the save route modal
     $("#save-route").on("click", (evt) => {
         $("#route-save-modal")[0].open = true;
     });
@@ -790,8 +789,8 @@ require([
         elevationProfile.input = graphic;
     }   
 
-    // Popuplate filter field dropdowns for each layer
-    // Wait for map and layers to load first
+    /********** Layer Filtering Capabilities **********/
+
     mapView.when(() => {
         $("#airport-field-select").on("calciteComboboxChange", (change) => {
             $("#airport-filter-value").empty();
@@ -889,8 +888,6 @@ require([
             });
         });
     });
-
-    /********** Layer Filtering Capabilities **********/
 
     $("#airport-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
         let field = $("#airport-field-select")[0].value;
@@ -1121,7 +1118,8 @@ require([
             })
     });
 
-    // Populate Exiting Routes List
+    /********** Existing Routes List **********/
+
     mapView.when(() => {
         const query = {
             where: "1=1",
@@ -1138,7 +1136,8 @@ require([
             })
     })
 
-    // create the elevation profile widget
+    /********** Elevation Profile Widget **********/
+
     const elevationProfile = new ElevationProfile({
         view: mapView,
         // configure widget with desired profile lines
