@@ -581,7 +581,7 @@ require([
 
     mapView.ui.add(filterExpand, { position: "bottom-left" });
 
-    const switchBtn = $("#switch-btn");
+    const switchBtn = $("#switch-btn")[0];
     mapView.ui.add(switchBtn, { position: "bottom-left" });
 
     /********** Route Creation Tool **********/
