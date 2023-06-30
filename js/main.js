@@ -1211,12 +1211,12 @@ require([
     function to2DView () {
         mapView.container = "view-div";
         sceneView.container = "inset-div";
-        $("#switch-btn")[0].value = "2D";
+        $("#switch-btn").value = "2D";
     }
 
     function to3DView () {
         mapView.container = "inset-div";
         sceneView.container = "view-div";
-        $("#switch-btn")[0].value = "3D";
+        $("#switch-btn").value = "3D";
     }
 });
