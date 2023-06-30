@@ -1194,4 +1194,15 @@ require([
 
         view.watch("viewpoint", () => sync(view));
     }
+
+    /********** Conversion From 2D & 3D **********/
+
+    $("#switch-btn").on("click", () => {
+        switchContainer();
+    });
+
+    function switchContainer () {
+        mapView.container = "inset-div";
+        sceneView.container = "view-div";
+    }
 });
