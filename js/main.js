@@ -1202,8 +1202,10 @@ require([
         console.log(evt)
         if (active == "view-div") {
             to3DView();
+            evt.currentTarget.value = "2D";
         } else {
             to2DView();
+            evt.currentTarget.value = "3D";
         }
     });
 
