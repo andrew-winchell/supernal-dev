@@ -1198,7 +1198,7 @@ require([
     /********** Conversion From 2D & 3D **********/
 
     $("#switch-btn").on("click", () => {
-        let active = mapView;
+        let active = mapView.container.id;
         if (active == "view-div") {
             to3DView();
             console.log(active, "2D")
