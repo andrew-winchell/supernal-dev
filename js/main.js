@@ -1201,8 +1201,10 @@ require([
         let active = mapView.container;
         if (active == "view-div") {
             to3DView();
+            console.log(active, "2D")
         } else {
             to2DView();
+            console.log(active, "3D")
         }
     });
 
