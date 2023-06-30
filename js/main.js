@@ -1197,26 +1197,23 @@ require([
 
     /********** Conversion From 2D & 3D **********/
 
-    $("#switch-btn").on("click", () => {
+    $("#switch-btn").on("click", (evt) => {
         let active = mapView.container.id;
+        console.log(evt)
         if (active == "view-div") {
             to3DView();
-            console.log(active, "2D")
         } else {
             to2DView();
-            console.log(active, "3D")
         }
     });
 
     function to2DView () {
         mapView.container = "view-div";
         sceneView.container = "inset-div";
-        $("#switch-btn").value = "2D";
     }
 
     function to3DView () {
         mapView.container = "inset-div";
         sceneView.container = "view-div";
-        $("#switch-btn").value = "3D";
     }
 });
