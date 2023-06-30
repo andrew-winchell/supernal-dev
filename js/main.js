@@ -790,7 +790,6 @@ require([
 
         mapView.graphics.add(graphic);
         elevationProfile.input = graphic;
-        elevationProfile3D.input = graphic;
     }   
 
     /********** Layer Filtering Capabilities **********/
@@ -1175,10 +1174,6 @@ require([
         profiles: [
           {
             type: "ground" // first profile line samples the ground elevation
-          },
-          {
-            type: "input", // second profile samples the view and shows building profiles
-            title: "Flight Plan"
           }
         ]
     });
