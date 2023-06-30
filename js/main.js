@@ -1164,4 +1164,31 @@ require([
         container: "elevation-profile",
         unit: "imperial"
     });
+
+    /********** Synchronize 2D & 3D Views **********/
+
+    const views = [mapView, sceneView];
+    let activeView;
+
+    const sync = (source) => {
+        if (!activeView || !activeView.viewpoint || activeView !== source) {
+            return;
+        }
+
+        for (const view of views) {
+            if (view !== activeView) {
+                view.viewpoint = activeView.viewpoint;
+            }
+        }
+    };
+
+    for (const view of views) {
+        view.watch(["interacting", "animation"],
+        () => {
+            activeView = view;
+            sync(activeView);
+        });
+
+        view.watch("viewpoint", () => sync(view));
+    }
 });
