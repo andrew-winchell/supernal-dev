@@ -480,13 +480,13 @@ require([
         ]
     });
 
-    /*
+    
     const map3D = new Map ({
-        basemap: "topo-vector",
+        basemap: "arcgis-imagery",
         ground: "world-elevation",
-        layers: [navaidsLyr, desPointsLyr, graphicsLyr]
+        layers: [navaidsLyr]
     });
-    */
+    
 
     const mapView = new MapView ({
         map: map2D,
@@ -496,7 +496,7 @@ require([
     });
 
     const sceneView = new SceneView ({
-        map: map2D,
+        map: map3D,
         container: "inset-div"
     });
 
