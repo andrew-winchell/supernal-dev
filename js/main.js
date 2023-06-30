@@ -1143,19 +1143,15 @@ require([
 
     const elevationProfile = new ElevationProfile({
         view: mapView,
-        // configure widget with desired profile lines
         profiles: [
           {
-            type: "ground" // first profile line samples the ground elevation
+            type: "ground"
           },
           {
-            type: "input", // second profile samples the view and shows building profiles
+            type: "input",
             title: "Flight Plan"
           }
         ],
-        // hide the select button
-        // this button can be displayed when there are polylines in the
-        // scene to select and display the elevation profile for
         visibleElements: {
             legend: false,
             clearButton: false,
@@ -1170,10 +1166,9 @@ require([
 
     const elevationProfile3D = new ElevationProfile({
         view: sceneView,
-        // configure widget with desired profile lines
         profiles: [
           {
-            type: "ground" // first profile line samples the ground elevation
+            type: "ground"
           }
         ]
     });
