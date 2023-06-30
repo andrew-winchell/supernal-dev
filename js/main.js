@@ -1202,12 +1202,9 @@ require([
     });
 
     function switchContainer () {
-        if (mapView.container == "view-div") {
+        if (mapView.container === "view-div") {
             mapView.container = "inset-div";
             sceneView.container = "view-div";
-        } else {
-            mapView.container = "view-div";
-            sceneView.container = "inset-div";
         }
     }
 });
