@@ -790,6 +790,7 @@ require([
 
         mapView.graphics.add(graphic);
         elevationProfile.input = graphic;
+        elevationProfile3D.input = graphic;
     }   
 
     /********** Layer Filtering Capabilities **********/
@@ -1015,7 +1016,7 @@ require([
                 layerView.filter = {
                     where: field + " IN (" + valueList + ")"
                 }
-            })
+            }) 
         }
     });
 
@@ -1166,6 +1167,20 @@ require([
         },
         container: "elevation-profile",
         unit: "imperial"
+    });
+
+    const elevationProfile3D = new ElevationProfile({
+        view: mapView,
+        // configure widget with desired profile lines
+        profiles: [
+          {
+            type: "ground" // first profile line samples the ground elevation
+          },
+          {
+            type: "input", // second profile samples the view and shows building profiles
+            title: "Flight Plan"
+          }
+        ]
     });
 
     /********** Synchronize 2D & 3D Views **********/
