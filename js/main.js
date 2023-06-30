@@ -640,12 +640,10 @@ require([
                 let startCoord = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
                 createTableRow([startCoord]);
                 multipointVertices.push(startCoord);
-                createVertice(multipointVertices);
 
                 let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
                 createTableRow([coords]);
                 multipointVertices.push(coords);
-                createVertice(multipointVertices);
                 $("#waypoint-list").css("display", "block");
 
             } else if (evt.state == "active") {
@@ -654,7 +652,6 @@ require([
 
                     createTableRow([coords]);
                     multipointVertices.push(coords);
-                    createVertice(multipointVertices);
                     drawPath(multipointVertices);
 
                     if (multipointVertices.length > 1) {
@@ -690,9 +687,27 @@ require([
         nextZ.setAttribute("contentEditable", "true");
     }
 
-    function createVertice (vertices) {
+    function drawPath (vertices) {
         mapView.graphics.removeAll();
 
+        let polyline = new Polyline ({
+            hasZ: true,
+            spatialReference: mapView.spatialReference,
+            paths: vertices
+        });
+    
+        const graphic = new Graphic ({
+            geometry: polyline,
+            symbol: {
+                type: "simple-line",
+                color: "#008b8b",
+                width: "3",
+                style: "short-dash"
+            }
+        });
+
+        mapView.graphics.add(graphic);
+        elevationProfile.input = graphic;
     } 
 
     $("#complete-route").on("click", (evt) => {
@@ -765,28 +780,7 @@ require([
         $("#waypoint-list").css("display", "none");
 
         $("#save-route")[0].disabled = true;
-    })
-
-    function drawPath (vertices) {
-        let polyline = new Polyline ({
-            hasZ: true,
-            spatialReference: mapView.spatialReference,
-            paths: vertices
-        });
-    
-        const graphic = new Graphic ({
-            geometry: polyline,
-            symbol: {
-                type: "simple-line",
-                color: "#008b8b",
-                width: "3",
-                style: "short-dash"
-            }
-        });
-
-        mapView.graphics.add(graphic);
-        elevationProfile.input = graphic;
-    }   
+    }); 
 
     /********** Layer Filtering Capabilities **********/
 
