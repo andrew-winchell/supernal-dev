@@ -496,7 +496,7 @@ require([
     });
 
     const sceneView = new SceneView ({
-        map: map3D,
+        map: map2D,
         container: "inset-div"
     });
 
