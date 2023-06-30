@@ -1169,7 +1169,7 @@ require([
     });
 
     const elevationProfile3D = new ElevationProfile({
-        view: mapView,
+        view: sceneView,
         // configure widget with desired profile lines
         profiles: [
           {
