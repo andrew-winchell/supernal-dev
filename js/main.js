@@ -693,10 +693,6 @@ require([
     function createVertice (vertices) {
         mapView.graphics.removeAll();
 
-        let multipoint = new Multipoint ({
-            points: vertices,
-            spatialReference: mapView.spatialReference
-        });
     } 
 
     $("#complete-route").on("click", (evt) => {
