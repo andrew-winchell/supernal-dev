@@ -60,9 +60,8 @@ html, body, #view-div {
   margin: 21.92px;
 }
 
-#infoDiv input {
+#switch-btn {
   border: none;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 2px;
 }
 
 #pointer-coords {
