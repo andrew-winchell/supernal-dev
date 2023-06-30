@@ -447,8 +447,7 @@ require([
                 color: "green",
                 width: "3px",
             }
-        },
-        elevationInfo: "relative-to-scene"
+        }
     });
 
     /********** Client-Side Graphics Layers for Drawing **********/
