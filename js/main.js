@@ -447,7 +447,8 @@ require([
                 color: "green",
                 width: "3px",
             }
-        }
+        },
+        elevationInfo: "relative-to-ground"
     });
 
     /********** Client-Side Graphics Layers for Drawing **********/
@@ -480,14 +481,12 @@ require([
         ]
     });
 
-    
     const map3D = new Map ({
         basemap: "arcgis-imagery",
         ground: "world-elevation",
         layers: [navaidsLyr]
     });
     
-
     const mapView = new MapView ({
         map: map2D,
         container: "view-div",
