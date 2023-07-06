@@ -80,11 +80,13 @@ html, body, #view-div {
 }
 
 #route-table {
+  padding: 5px;
+  overflow: auto;
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 251px;
-  width: calc(100% - 1075.2px);
+  height: 241px;
+  width: calc(100% - 1085.2px);
 }
 
 .esri-layer-list__item-container {
