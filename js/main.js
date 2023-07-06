@@ -662,7 +662,7 @@ require([
         })
     });
 
-    $("#waypoint-table td").on("input", (evt) => {
+    $("#waypoint-table").on("input", (evt) => {
         console.log(evt)
     })
 
