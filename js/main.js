@@ -483,17 +483,7 @@ require([
     const map3D = new Map ({
         basemap: "arcgis-imagery",
         ground: "world-elevation",
-        layers: [
-            navaidsLyr,
-            obstaclesLyr,
-            desPointsLyr,
-            airportsLyr,
-            classAirspaceLyr,
-            lineGraphicsLyr,
-            pntGraphicsLyr,
-            vertiportsLyr,
-            supernalRoutesLyr
-        ]
+        layers: [navaidsLyr]
     });
     
     const mapView = new MapView ({
@@ -504,7 +494,7 @@ require([
     });
 
     const sceneView = new SceneView ({
-        map: map3D,
+        map: map2D,
         container: "inset-div"
     });
 
