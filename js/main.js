@@ -483,7 +483,17 @@ require([
     const map3D = new Map ({
         basemap: "arcgis-imagery",
         ground: "world-elevation",
-        layers: [navaidsLyr]
+        layers: [
+            navaidsLyr,
+            obstaclesLyr,
+            desPointsLyr,
+            airportsLyr,
+            classAirspaceLyr,
+            lineGraphicsLyr,
+            pntGraphicsLyr,
+            vertiportsLyr,
+            supernalRoutesLyr
+        ]
     });
     
     const mapView = new MapView ({
