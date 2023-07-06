@@ -207,12 +207,12 @@ require([
             type: "simple",
             symbol: {
                 type: "polygon-3d",
-                symbolLayers: [{ type: "extrude" }]
+                symbolLayers: [{ tyep: "extrude" }]
             },
             visualVariables: [
                 {
                     type: "size",
-                    valueExpression: "$feature.UPPER_VAL - $feature.LOWER_VAL" 
+                    field: "UPPER_VAL"
                 }
             ]
         }
