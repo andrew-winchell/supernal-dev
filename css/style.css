@@ -79,6 +79,14 @@ html, body, #view-div {
   height: calc(100% - 251px);
 }
 
+#route-table {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 251px;
+  width: calc(100% - 1075.2px);
+}
+
 .esri-layer-list__item-container {
   padding: 12px 5px 12px 5px !important;
 }
