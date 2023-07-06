@@ -202,19 +202,6 @@ require([
                     ]
                 }
             ]
-        },
-        renderer: {
-            type: "simple",
-            symbol: {
-                type: "polygon-3d",
-                symbolLayers: [{ type: "extrude" }]
-            },
-            visualVariables: [
-                {
-                    type: "size",
-                    field: "UPPER_VAL"
-                }
-            ]
         }
     });
 
