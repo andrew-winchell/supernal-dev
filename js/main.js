@@ -662,7 +662,7 @@ require([
         })
     });
 
-    $("tbody").on("change", (evt) => {
+    $("tbody td").on("input", (evt) => {
         console.log(evt)
     })
 
