@@ -51,29 +51,6 @@
                     <calcite-block collapsible heading="Tools" id="map-tools">
                         <calcite-icon slot="icon" scale="s" icon="wrench"></calcite-icon>
                         <calcite-action text="Create Route" icon="line" text-enabled alignment="center" appearance="transparent" scale="m" id="create-route"></calcite-action>
-                        <div id="waypoint-list">
-                            <table id="waypoint-table" style="width: 100%;">
-                                <colgroup>
-                                    <col span="1" style="width: 15%;">
-                                    <col span="1" style="width: 30%;">
-                                    <col span="1" style="width: 27.5%;">
-                                    <col span="1" style="width: 27.5%;">
-                                </colgroup>
-                                
-                                <tbody>
-                                    <tr>
-                                        <th>Vertice</th>
-                                        <th>X</th>
-                                        <th>Y</th>
-                                        <th>Z</th>
-                                    </tr>
-                                </tbody>
-
-                            </table>
-                            <!--<calcite-list id="waypoints">
-                                <--Auto Genereated in main.js->                                
-                            </calcite-list> -->
-                        </div>
                     </calcite-block>
                     <calcite-block collapsible heading="Routes" id="routes-container">
                         <calcite-icon slot="icon" scale="s" icon="conditional-rules-path"></calcite-icon>
@@ -231,7 +208,31 @@
                 <div id="elevation-profile" slot="footer"></div>
             </calcite-panel>
 
-            <div id="route-table"></div>
+            <div id="route-table">
+                <div id="waypoint-list">
+                    <table id="waypoint-table" style="width: 100%;">
+                        <colgroup>
+                            <col span="1" style="width: 15%;">
+                            <col span="1" style="width: 30%;">
+                            <col span="1" style="width: 27.5%;">
+                            <col span="1" style="width: 27.5%;">
+                        </colgroup>
+                        
+                        <tbody>
+                            <tr>
+                                <th>Vertice</th>
+                                <th>X</th>
+                                <th>Y</th>
+                                <th>Z</th>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    <!--<calcite-list id="waypoints">
+                        <--Auto Genereated in main.js->                                
+                    </calcite-list> -->
+                </div>
+            </div>
 
         </calcite-shell>
 
