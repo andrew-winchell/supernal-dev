@@ -202,6 +202,19 @@ require([
                     ]
                 }
             ]
+        },
+        renderer: {
+            type: "simple",
+            symbol: {
+                type: "polygon-3d",
+                symbolLayers: [{ type: "extrude" }]
+            },
+            visualVariables: [
+                {
+                    type: "size",
+                    valueExpression: "$feature.UPPER_VAL - $feature.LOWER_VAL" 
+                }
+            ]
         }
     });
 
