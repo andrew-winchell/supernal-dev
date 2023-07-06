@@ -207,7 +207,7 @@ require([
             type: "simple",
             symbol: {
                 type: "polygon-3d",
-                symbolLayers: [{ tyep: "extrude" }]
+                symbolLayers: [{ type: "extrude" }]
             },
             visualVariables: [
                 {
