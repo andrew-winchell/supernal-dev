@@ -662,6 +662,10 @@ require([
         })
     });
 
+    $("tbody").on("change", (evt) => {
+        console.log(evt)
+    })
+
     function createTableRow (vertice) {
         let multipoint = new Multipoint ({
             points: vertice,
