@@ -583,12 +583,6 @@ require([
 
     mapView.ui.add(switchBtn, { position: "bottom-left" });
 
-    const editor =  new Editor({
-        view: mapView
-    });
-
-    mapView.ui.add(editor, { position: "bottom-right" })
-
     /********** Route Creation Tool **********/
 
     // Drawing variables
