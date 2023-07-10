@@ -657,6 +657,8 @@ require([
                     }
                     $("#edit-vertices")[0].disabled = false;
                     $("#cancel-vertices")[0].disabled = false;
+                    
+                    createTable(multipointVertices);
                 }
             }
         })
@@ -672,7 +674,9 @@ require([
             spatialReference: mapView.spatialReference
         });
 
-        console.log(multipoint);
+        for (let point of multipoint.points) {
+            console.log(point);
+        }
     }
 
     function drawPath (vertices) {
