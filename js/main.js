@@ -24,12 +24,13 @@ require([
     "esri/geometry/Multipoint",
     "esri/geometry/Polyline",
     "esri/geometry/geometryEngine",
-    "esri/widgets/ElevationProfile"
+    "esri/widgets/ElevationProfile",
+    "esri/widgets/Editor"
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
         BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, geometryEngine,
-        ElevationProfile
+        ElevationProfile, Editor
     ) => {
 
     /********** ESRI ArcGIS Online User Authentication **********/
@@ -580,7 +581,14 @@ require([
     mapView.ui.add(filterExpand, { position: "bottom-left" });
 
     const switchBtn = $("#switch-btn")[0];
+
     mapView.ui.add(switchBtn, { position: "bottom-left" });
+
+    const editor =  new Editor({
+        view: mapView
+    });
+
+    mapView.ui.add(editor, { position: "bottom-right" })
 
     /********** Route Creation Tool **********/
 
