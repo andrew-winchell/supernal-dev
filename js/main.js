@@ -24,13 +24,12 @@ require([
     "esri/geometry/Multipoint",
     "esri/geometry/Polyline",
     "esri/geometry/geometryEngine",
-    "esri/widgets/ElevationProfile",
-    "esri/widgets/Editor"
+    "esri/widgets/ElevationProfile"
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
         BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, geometryEngine,
-        ElevationProfile, Editor
+        ElevationProfile
     ) => {
 
     /********** ESRI ArcGIS Online User Authentication **********/
