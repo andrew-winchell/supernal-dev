@@ -636,7 +636,6 @@ require([
                 console.log("complete feature");
             } else if (evt.state == "start") {
                 let startCoord = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
-                createTableRow([startCoord]);
                 multipointVertices.push(startCoord);
 
                 let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
