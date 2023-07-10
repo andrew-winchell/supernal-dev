@@ -86,7 +86,7 @@ html, body, #view-div {
   left: 0;
   bottom: 0;
   height: 241px;
-  width: calc(100% - 1085.2px);
+  width: 19.25%;
 }
 
 .esri-layer-list__item-container {
