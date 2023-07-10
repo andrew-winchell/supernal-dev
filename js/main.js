@@ -663,7 +663,7 @@ require([
     });
 
     $("#waypoint-table").on("input", (evt) => {
-        console.log(evt)
+        console.log(parseFloat(evt.target.textContent))
     })
 
     function createTableRow (vertice) {
