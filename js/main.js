@@ -636,19 +636,19 @@ require([
                 console.log("complete feature");
             } else if (evt.state == "start") {
                 let startCoord = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
+                createTableRow([startCoord]);
                 multipointVertices.push(startCoord);
 
                 let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
-                
+                createTableRow([coords]);
                 multipointVertices.push(coords);
                 $("#waypoint-list").css("display", "block");
-
-                createTable(multipointVertices);
 
             } else if (evt.state == "active") {
                 if (evt.toolEventInfo.type == "vertex-add") {
                     let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
 
+                    createTableRow([coords]);
                     multipointVertices.push(coords);
                     drawPath(multipointVertices);
 
@@ -657,8 +657,6 @@ require([
                     }
                     $("#edit-vertices")[0].disabled = false;
                     $("#cancel-vertices")[0].disabled = false;
-                    
-                    createTable(multipointVertices);
                 }
             }
         })
@@ -666,17 +664,29 @@ require([
 
     $("#waypoint-table").on("input", (evt) => {
         console.log(parseFloat(evt.target.textContent))
-    })
+    });
 
-    function createTable (vertices) {
+    function createTableRow (vertice) {
         let multipoint = new Multipoint ({
-            points: vertices,
+            points: vertice,
             spatialReference: mapView.spatialReference
         });
 
-        for (let point of multipoint.points) {
-            console.log(point);
-        }
+        let mapPt = multipoint.getPoint(0);
+
+        let nextRow = $("#waypoint-table")[0].insertRow(-1);
+        let nextVert = nextRow.insertCell(0);
+        let nextX = nextRow.insertCell(1);
+        let nextY = nextRow.insertCell(2);
+        let nextZ = nextRow.insertCell(3);
+
+        nextVert.innerHTML = nextRow.rowIndex
+        nextX.innerHTML = mapPt.longitude.toFixed(4);
+        nextX.setAttribute("contentEditable", "true");
+        nextY.innerHTML = mapPt.latitude.toFixed(4);
+        nextY.setAttribute("contentEditable", "true");
+        nextZ.innerHTML = (mapPt.z * 3.281).toFixed(0);
+        nextZ.setAttribute("contentEditable", "true");
     }
 
     function drawPath (vertices) {
