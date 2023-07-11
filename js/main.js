@@ -668,23 +668,24 @@ require([
 
         let table = document.getElementById('waypoint-table'),
             rows = table.getElementsByTagName("tr"),
-            i, j, cells
+            newVertices = [],
+            i, j, cells;
 
         for (i=0, j=rows.length; i<j; ++i) {
             cells = rows[i].getElementsByTagName("td");
             if (!cells.length) {
                 continue;
             }
-            console.log(cells[1].innerHTML)
+            
+            let long = cells[1].innerHTML,
+                lat = cells[2].innerHTML,
+                alt = cells[3].innerHTML;
+            
+            let coord = [long,lat,alt];
+            newVertices.push(coord);
         }
 
-
-        /*$("#waypoint-table tbody tr").each((item) => {
-            let long = $(this).find("td").eq(1).val();
-            let lat = $(this).find("td").eq(2).text();
-            let alt = $(this).find("td").eq(3).html();
-            console.log(long, lat, alt)
-        })*/
+        console.log(newVertices)
     });
 
     function createTableRow (vertice) {
