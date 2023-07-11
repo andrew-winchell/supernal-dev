@@ -666,7 +666,7 @@ require([
     $("#waypoint-table").on("input", (evt) => {
         console.log(parseFloat(evt.target.textContent));
 
-        let table = $("#waypoint-table"),
+        let table = document.getElementById('waypoint-table'),
             rows = table.getElementsByTagName("tr"),
             i, j, cells
 
