@@ -664,8 +664,6 @@ require([
     });
 
     $("#waypoint-table").on("input", (evt) => {
-        console.log(parseFloat(evt.target.textContent));
-
         let table = document.getElementById('waypoint-table'),
             rows = table.getElementsByTagName("tr"),
             newVertices = [],
@@ -679,10 +677,12 @@ require([
             
             let long = cells[1].innerHTML,
                 lat = cells[2].innerHTML,
-                alt = cells[3].innerHTML;
+                alt = cells[3].innerHTML,
+                coord = [long,lat,alt];
             
-            let coord = [long,lat,alt];
-            newVertices.push(coord);
+            let wgsCoord = webMercatorUtils.geographicToWebMercator();
+            console.log(wgsCoord);
+            newVertices.push(wgsCoord);
         }
 
         multipointVertices = newVertices;
