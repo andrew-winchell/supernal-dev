@@ -667,7 +667,7 @@ require([
         console.log(parseFloat(evt.target.textContent));
         $("#waypoint-table tr td").each(()=>{
             let textTo = $(this).text();
-            let textToo = $(this);
+            let textToo = $(this)[0];
             console.log(textTo, "/n", textToo)
         })
     });
