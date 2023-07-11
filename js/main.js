@@ -665,11 +665,11 @@ require([
 
     $("#waypoint-table").on("input", (evt) => {
         console.log(parseFloat(evt.target.textContent));
-        $("#waypoint-table tr td").each((item)=>{
-            if (item % 4 != 0) {
-                let cellVal = $(this);
-                console.log(cellVal)
-            }
+        $("#waypoint-table tr").each((item) => {
+            let long = $(this).find("td").eq(1).html();
+            let lat = $(this).find("td").eq(2).html();
+            let alt = $(this).find("td").eq(3).html();
+            console.log(long, lat, alt)
         })
     });
 
