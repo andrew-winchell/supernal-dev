@@ -665,7 +665,7 @@ require([
 
     $("#waypoint-table").on("input", (evt) => {
         console.log(parseFloat(evt.target.textContent));
-        $("#waypoint-table tbody tr td").each((item) => {
+        $("#waypoint-table tbody tr").each((item) => {
             let long = $(this).find("td").eq(1);
             let lat = $(this).find("td").eq(2).text();
             let alt = $(this).find("td").eq(3);
