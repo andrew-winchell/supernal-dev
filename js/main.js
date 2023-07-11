@@ -667,7 +667,7 @@ require([
         console.log(parseFloat(evt.target.textContent));
         $("#waypoint-table tr td").each((item)=>{
             if (item % 4 != 0) {
-                let cellVal = $(this);
+                let cellVal = $(this)[0];
                 console.log(cellVal)
             }
         })
