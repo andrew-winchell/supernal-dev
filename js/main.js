@@ -680,7 +680,7 @@ require([
                 alt = cells[3].innerHTML,
                 coord = [long,lat,alt];
             
-            let wgsCoord = webMercatorUtils.geographicToWebMercator(coord);
+            let wgsCoord = webMercatorUtils.lngLatToXY(coord);
             console.log(wgsCoord);
             newVertices.push(wgsCoord);
         }
