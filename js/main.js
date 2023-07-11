@@ -666,8 +666,9 @@ require([
     $("#waypoint-table").on("input", (evt) => {
         console.log(parseFloat(evt.target.textContent));
         $("#waypoint-table tr td").each(()=>{
-            let textTo = $(this);
-            console.log(textTo)
+            let textTo = $(this).val();
+            let textToo = $(this).html();
+            console.log(textTo, "/n", textToo)
         })
     });
 
