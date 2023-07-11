@@ -681,7 +681,7 @@ require([
                 lat = cells[2].innerHTML,
                 alt = cells[3].innerHTML;
             
-            let coord = [long,lat,alt];
+            let coord = [lat,long,alt];
             newVertices.push(coord);
         }
 
