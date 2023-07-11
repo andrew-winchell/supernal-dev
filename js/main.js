@@ -682,9 +682,13 @@ require([
             
             newVertices.push(coord);
         }
+            
+        let multipoint = new Multipoint ({
+            points: vertice,
+            spatialReference: mapView.spatialReference
+        });
 
-        console.log(multipointVertices);
-        multipointVertices = newVertices;
+        multipointVertices = multipoint.points;
         console.log(multipointVertices);
 
         drawPath(multipointVertices)
