@@ -680,12 +680,12 @@ require([
                 alt = cells[3].innerHTML,
                 coord = [long,lat,alt];
             
-            let wgsCoord = webMercatorUtils.lngLatToXY(coord);
-            console.log(wgsCoord);
-            newVertices.push(wgsCoord);
+            newVertices.push(coord);
         }
 
+        console.log(multipointVertices);
         multipointVertices = newVertices;
+        console.log(multipointVertices);
 
         drawPath(multipointVertices)
     });
