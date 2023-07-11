@@ -665,12 +665,26 @@ require([
 
     $("#waypoint-table").on("input", (evt) => {
         console.log(parseFloat(evt.target.textContent));
-        $("#waypoint-table tbody tr").each((item) => {
+
+        let table = $("#waypoint-table"),
+            rows = table.getElementsByTagName("tr"),
+            i, j, cells
+
+        for (i=0, j=rows.length; i<j; ++i) {
+            cells = rows[i].getElementsByTagName("td");
+            if (!cells.length) {
+                continue;
+            }
+            console.log(cells[1].innerHTML)
+        }
+
+
+        /*$("#waypoint-table tbody tr").each((item) => {
             let long = $(this).find("td").eq(1).val();
             let lat = $(this).find("td").eq(2).text();
             let alt = $(this).find("td").eq(3).html();
             console.log(long, lat, alt)
-        })
+        })*/
     });
 
     function createTableRow (vertice) {
