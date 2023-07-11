@@ -23,13 +23,14 @@ require([
     "esri/widgets/Compass",
     "esri/geometry/Multipoint",
     "esri/geometry/Polyline",
+    "esri/geometry/Point",
     "esri/geometry/geometryEngine",
     "esri/widgets/ElevationProfile"
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
-        BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, geometryEngine,
-        ElevationProfile
+        BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, Point,
+        geometryEngine, ElevationProfile
     ) => {
 
     /********** ESRI ArcGIS Online User Authentication **********/
@@ -677,9 +678,16 @@ require([
             
             let long = cells[1].innerHTML,
                 lat = cells[2].innerHTML,
-                alt = cells[3].innerHTML,
-                coord = [long,lat,alt];
+                alt = cells[3].innerHTML;
             
+            let point = new Point ({
+                latitude: lat,
+                longitude: long,
+                z: alt/3.281
+            });
+
+            let coord = [point.x, point.y, point.z];
+
             newVertices.push(coord);
         }
             
