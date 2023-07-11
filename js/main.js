@@ -685,7 +685,9 @@ require([
             newVertices.push(coord);
         }
 
-        console.log(newVertices)
+        multipointVertices = newVertices;
+
+        drawPath(multipointVertices)
     });
 
     function createTableRow (vertice) {
