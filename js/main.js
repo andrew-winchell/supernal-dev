@@ -1163,8 +1163,8 @@ require([
             });
     });
 
-    $("#existing-routes").on("calciteListChange", (evt) => {
-        console.log("change");
+    $("#existing-routes").on("click", (evt) => {
+        console.log("evt");
     });
 
     /********** Elevation Profile Widget **********/
