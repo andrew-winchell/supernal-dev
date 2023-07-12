@@ -1155,9 +1155,8 @@ require([
         supernalRoutesLyr.queryFeatures(query)
             .then((results) => {
                 for (let f of results.features) {
-                    console.log(f)
                     $("#existing-routes").append(
-                        "<calcite-list-item value='" + f.attributes.route_name + "' label='" + f.attributes.route_name + "' description='Distance: " + parseFloat(f.attributes.route_distance).toFixed(2) + " nautical miles' value='test'></calcite-list-item>"
+                        "<calcite-list-item value='" + f.attributes.OBJECTID + "' label='" + f.attributes.route_name + "' description='Distance: " + parseFloat(f.attributes.route_distance).toFixed(2) + " nautical miles' value='test'></calcite-list-item>"
                     )
                 }
                 $("#existing-routes")[0].loading = false;
@@ -1165,7 +1164,18 @@ require([
     });
 
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
-        console.log(evt);
+        let objectId = evt.target.value;
+
+        const query = {
+            where: "OBJECTID = " + objectId,
+            outFields: ["*"],
+            returnGeometry: true
+        };
+
+        supernalRoutesLyr.queryFeatures(query)
+            .then((results) => {
+                console.log(results.features);
+            });
     });
 
     /********** Elevation Profile Widget **********/
