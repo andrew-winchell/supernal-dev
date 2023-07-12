@@ -1164,7 +1164,7 @@ require([
     });
 
     $("#existing-routes").on("calciteListChange", (evt) => {
-        console.log(evt);
+        console.log("change");
     });
 
     /********** Elevation Profile Widget **********/
