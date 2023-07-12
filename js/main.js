@@ -1163,7 +1163,7 @@ require([
             });
     });
 
-    $("#existing-routes").on("calcite-change", (evt) => {
+    $("#existing-routes").on("calcite-list-change", (evt) => {
         console.log(evt);
     });
 
