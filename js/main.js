@@ -1163,7 +1163,7 @@ require([
             });
     });
 
-    $("#existing-routes").on("click", (evt) => {
+    $("#existing-routes").on("calciteListItemSelect", (evt) => {
         console.log(evt);
     });
 
