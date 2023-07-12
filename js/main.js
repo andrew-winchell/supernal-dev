@@ -686,6 +686,7 @@ require([
                 z: alt/3.281
             });
 
+            console.log(point.latitude, point.longitude, point.x, point.y)
             let coord = [point.x, point.y, point.z];
 
             newVertices.push(coord);
