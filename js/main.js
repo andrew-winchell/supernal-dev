@@ -687,7 +687,6 @@ require([
                 spatialReference: 3857
             });
 
-            console.log(point.latitude, point.longitude, point.x, point.y)
             let coord = [point.x, point.y, point.z];
 
             newVertices.push(coord);
@@ -1142,7 +1141,7 @@ require([
                 mapView.on("pointer-move", (move) => {
                     let mapPt = mapView.toMap(move);
                     let coordinates = sampler.queryElevation(mapPt)
-                    $("#pointer-coords").html("Lat: " + coordinates.latitude + "  Long: " + coordinates.longitude + "  Elev: " + (coordinates.z * 3.28084) + " ft");
+                    $("#pointer-coords").html("Lat: " + coordinates.latitude + "  Long: " + coordinates.longitude + "  Elev: " + (coordinates.z) + " ft");
                 })
             })
     });
