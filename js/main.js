@@ -1150,7 +1150,8 @@ require([
         const query = {
             where: "1=1",
             outFields: ["*"]
-        }
+        };
+
         supernalRoutesLyr.queryFeatures(query)
             .then((results) => {
                 for (let f of results.features) {
@@ -1159,8 +1160,12 @@ require([
                     )
                 }
                 $("#existing-routes")[0].loading = false;
-            })
-    })
+            });
+    });
+
+    $("#existing-routes").on("calcite-change", (evt) => {
+        console.log(evt);
+    });
 
     /********** Elevation Profile Widget **********/
 
