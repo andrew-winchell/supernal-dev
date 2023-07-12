@@ -1163,7 +1163,7 @@ require([
             });
     });
 
-    $("#existing-routes").on("calciteListChange", (evt) => {
+    $("#existing-routes").on("click", (evt) => {
         console.log(evt);
     });
 
