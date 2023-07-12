@@ -694,8 +694,6 @@ require([
     
         multipointVertices = newVertices;
 
-        console.log(multipointVertices);
-
         drawPath(multipointVertices)
     });
 
