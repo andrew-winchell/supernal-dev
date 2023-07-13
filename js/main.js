@@ -1271,6 +1271,14 @@ require([
             );
             mapView.ui.add(editor, "bottom-right");
         }
+
+        reactiveUtils.when(
+            () => editor.viewModel.state === "ready",
+            () => {
+                mapView.ui.remove(editor);
+                mapView.popup.open()
+            }
+        )
     }
 
     /********** Elevation Profile Widget **********/
