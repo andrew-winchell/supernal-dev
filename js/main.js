@@ -1204,7 +1204,9 @@ require([
                 mapView
                     .goTo(feature.geometry.extent.expand(2))
                     .then(() => {
-                        mapView.popup.open();
+                        mapView.popup.open({
+                            features: [feature]
+                        });
                     })
                     .catch((error) => {
                         if (error.name != "AbortError") {
