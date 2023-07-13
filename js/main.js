@@ -1206,7 +1206,7 @@ require([
                     .then(() => {
                         mapView.openPopup({
                             features: [feature],
-                            location: feature.geometry.centroid
+                            location: mapView.center
                         });
                     })
                     .catch((error) => {
