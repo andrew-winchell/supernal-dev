@@ -1248,10 +1248,10 @@ require([
                             }
                         ]
                     }
-                }
-            ],
-            deleteEnabled: false,
-            geometryUpdatesEnabled: false
+                },
+                deleteEnabled: false,
+                geometryUpdatesEnabled: false
+            ]
         })
     });
 
