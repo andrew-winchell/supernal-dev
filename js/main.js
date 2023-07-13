@@ -1249,7 +1249,9 @@ require([
                         ]
                     }
                 }
-            ]
+            ],
+            deleteEnabled: false,
+            geometryUpdatesEnabled: false
         })
     });
 
