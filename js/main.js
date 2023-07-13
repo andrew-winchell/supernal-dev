@@ -1175,6 +1175,8 @@ require([
         supernalRoutesLyr.queryFeatures(query)
             .then((results) => {
                 console.log(results.features);
+                mapView
+                    .goTo(results.features[0].geometry.extent.expand(2))
             });
     });
 
