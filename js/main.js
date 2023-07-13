@@ -25,12 +25,13 @@ require([
     "esri/geometry/Polyline",
     "esri/geometry/Point",
     "esri/geometry/geometryEngine",
-    "esri/widgets/ElevationProfile"
+    "esri/widgets/ElevationProfile",
+    "esri/core/reactiveUtils"
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
         BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, Point,
-        geometryEngine, ElevationProfile
+        geometryEngine, ElevationProfile, reactiveUtils
     ) => {
 
     /********** ESRI ArcGIS Online User Authentication **********/
