@@ -448,6 +448,32 @@ require([
                 color: "green",
                 width: "3px",
             }
+        },
+        popupTemplate: {
+            title: "Route {route_name}",
+            content: [
+                {
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "route_name",
+                            label: "Name"
+                        },
+                        {
+                            fieldName: "departing_fac",
+                            label: "Departure Facility"
+                        },
+                        {
+                            fieldName: "arriving_facility",
+                            label: "Arrival Facility"
+                        },
+                        {
+                            fieldName: "route_distance",
+                            label: "Distance"
+                        }
+                    ]
+                }
+            ]
         }
     });
 
