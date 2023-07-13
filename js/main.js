@@ -1174,9 +1174,14 @@ require([
 
         supernalRoutesLyr.queryFeatures(query)
             .then((results) => {
-                console.log(results.features);
+                let feature = results.features[0];
                 mapView
-                    .goTo(results.features[0].geometry.extent.expand(2))
+                    .goTo(feature.geometry.extent.expand(2))
+                    .then(() => {
+                        mapView.openPopup({
+                            features: [feature]
+                        })
+                    })
             });
     });
 
