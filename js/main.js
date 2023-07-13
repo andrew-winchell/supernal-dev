@@ -1177,7 +1177,7 @@ require([
             })
     });
 
-    /********** Existing Routes List **********/
+    /********** Existing Routes Actions **********/
 
     mapView.when(() => {
         const query = {
@@ -1226,6 +1226,51 @@ require([
                     });
             });
     });
+
+    let editor;
+    mapView.when(() => {
+        editor = new Editor ({
+            view: mapView,
+            visibleElements: {
+                snappingControls: false
+            },
+            container: document.createElement("div"),
+            layerInfos: [
+                {
+                    layer: supernalRoutesLyr,
+                    formTemplate: {
+                        elements: [
+                            {
+                                type: "field",
+                                fieldName: "route_name",
+                                label: "Route Name"
+                            }
+                        ]
+                    }
+                }
+            ]
+        })
+    });
+
+    reactiveUtils.on(
+        () => mapView.popup,
+        "trigger-action",
+        (event) => {
+            if (event.action.id === "edit-route") {
+                editRouteAttributes();
+            }
+        }
+    );
+
+    function editRouteAttributes () {
+        if (!editor.activeWorkflow) {
+            mapView.popup.visible = false;
+            editor.startUpdateWorkflorAtFeatureEdit(
+                mapView.popup.selectedFeature
+            );
+            mapView.ui.add(editor, "bottom-right");
+        }
+    }
 
     /********** Elevation Profile Widget **********/
 
