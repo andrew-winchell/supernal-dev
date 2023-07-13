@@ -1266,7 +1266,7 @@ require([
     function editRouteAttributes () {
         if (!editor.activeWorkflow) {
             mapView.popup.visible = false;
-            editor.startUpdateWorkflorAtFeatureEdit(
+            editor.startUpdateWorkflowAtFeatureEdit(
                 mapView.popup.selectedFeature
             );
             mapView.ui.add(editor, "bottom-right");
