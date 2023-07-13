@@ -1204,6 +1204,8 @@ require([
                 mapView
                     .goTo(feature.geometry.extent.expand(2))
                     .then(() => {
+                        mapView.popup.dockEnabled = true;
+                        mapView.popup.currentDockPosition = "bottom-right";
                         mapView.popup.open({
                             features: [feature]
                         });
