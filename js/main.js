@@ -1276,7 +1276,9 @@ require([
             () => editor.viewModel.state === "ready",
             () => {
                 mapView.ui.remove(editor);
-                mapView.popup.open()
+                mapView.popup.open({
+                    fetchFeatures: true
+                })
             }
         )
     }
