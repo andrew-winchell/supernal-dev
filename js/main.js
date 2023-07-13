@@ -1204,7 +1204,10 @@ require([
                 mapView
                     .goTo(feature.geometry.extent.expand(2))
                     .then(() => {
-                        mapView.openPopup()
+                        view.openPopup({
+                            features: [feature],
+                            location: feature.geometry.centroid
+                        })
                     })
             });
     });
