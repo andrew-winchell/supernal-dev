@@ -1178,9 +1178,7 @@ require([
                 mapView
                     .goTo(feature.geometry.extent.expand(2))
                     .then(() => {
-                        mapView.openPopup({
-                            features: [feature]
-                        })
+                        mapView.openPopup()
                     })
             });
     });
