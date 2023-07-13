@@ -1247,10 +1247,10 @@ require([
                                 label: "Route Name"
                             }
                         ]
-                    }
-                },
-                deleteEnabled: false,
-                geometryUpdatesEnabled: false
+                    },
+                    deleteEnabled: false,
+                    geometryUpdatesEnabled: false
+                }
             ]
         })
     });
