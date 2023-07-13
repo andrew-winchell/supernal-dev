@@ -1203,8 +1203,8 @@ require([
                 let feature = results.features[0];
                 mapView
                     .goTo(feature.geometry.extent.expand(2))
-                    .then((view) => {
-                        view.openPopup({
+                    .then(() => {
+                        mapView.openPopup({
                             features: [feature],
                             location: mapView.center
                         });
