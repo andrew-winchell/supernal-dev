@@ -450,7 +450,7 @@ require([
             }
         },
         popupTemplate: {
-            title: "Route {route_name}",
+            title: "{route_name}",
             content: [
                 {
                     type: "fields",
@@ -1204,11 +1204,16 @@ require([
                 mapView
                     .goTo(feature.geometry.extent.expand(2))
                     .then(() => {
-                        view.openPopup({
+                        mapView.openPopup({
                             features: [feature],
                             location: feature.geometry.centroid
-                        })
+                        });
                     })
+                    .catch((error) => {
+                        if (error.name != "AbortError") {
+                            console.log(error);
+                        }
+                    });
             });
     });
 
