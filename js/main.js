@@ -473,6 +473,13 @@ require([
                         }
                     ]
                 }
+            ],
+            actions: [
+                {
+                    title: "Edit Route",
+                    id: "edit-route",
+                    className: "esri-icon-edit"
+                }
             ]
         }
     });
