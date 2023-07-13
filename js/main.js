@@ -1277,7 +1277,7 @@ require([
             () => {
                 mapView.ui.remove(editor);
                 mapView.popup.open({
-                    fetchFeatures: true
+                    features: [mapView.popup.selectedFeature]
                 })
             }
         )
