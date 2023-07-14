@@ -1268,16 +1268,6 @@ require([
         })
     });
 
-    reactiveUtils.on(
-        () => mapView.popup,
-        "trigger-action",
-        (event) => {
-            if (event.action.id === "edit-route") {
-                editRouteAttributes();
-            }
-        }
-    );
-
     function editRouteAttributes () {
         if (!editor.activeWorkflow) {
             mapView.popup.visible = false;
@@ -1292,11 +1282,33 @@ require([
             () => {
                 mapView.ui.remove(editor);
                 mapView.popup.open({
-                    features: [mapView.popup.selectedFeature]
-                })
+                    features: [mapView.popup.selectedFeature],
+                    shouldFocus: true
+                });
             }
-        )
+        );
     }
+
+    reactiveUtils.on(
+        () => mapView.popup,
+        "trigger-action",
+        (event) => {
+            if (event.action.id === "edit-route") {
+                editRouteAttributes();
+            }
+        }
+    );
+
+    reactiveUtils.watch(
+        () => mapView.popup?.visible,
+        (event) => {
+            if (editor.viewModel.state === "editing-existing-feature") {
+                mapView.popup.close();
+            } else {
+                features = mapView.popup.features;
+            }
+        }
+    );
 
     /********** Elevation Profile Widget **********/
 
