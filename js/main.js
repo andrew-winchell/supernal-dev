@@ -1300,15 +1300,19 @@ require([
     }
 
     function selectedFeatureTable (vertices) {
-        console.log(vertices)
         for (let vert of vertices) {
-            console.log(vert)
-            let multipoint = new Multipoint ({
-                points: vert,
+            let point = new Point ({
+                hasZ: true,
+                x: vert[0],
+                y: vert[1],
+                z: vert[2],
                 spatialReference: mapView.spatialReference
             });
+
+            console.log(point);
     
-            let mapPt = multipoint.getPoint(0);
+            /*
+            let mapPt = point.getPoint(0);
     
             let nextRow = $("#waypoint-table")[0].insertRow(-1);
             let nextVert = nextRow.insertCell(0);
@@ -1323,6 +1327,7 @@ require([
             nextY.setAttribute("contentEditable", "true");
             nextZ.innerHTML = (mapPt.z * 3.281).toFixed(0);
             nextZ.setAttribute("contentEditable", "true");
+            */
         }
     }
 
