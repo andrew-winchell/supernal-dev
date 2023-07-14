@@ -1295,7 +1295,7 @@ require([
     }
 
     function editRoutePath () {
-        console.log(selectedFeature.geometry.paths)
+        drawPath(selectedFeature.geometry.paths)
     }
 
     reactiveUtils.on(
