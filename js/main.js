@@ -1245,6 +1245,21 @@ require([
                                 type: "field",
                                 fieldName: "route_name",
                                 label: "Route Name"
+                            },
+                            {
+                                type: "field",
+                                fieldName: "departing_fac",
+                                label: "Departure Facility"
+                            },
+                            {
+                                type: "field",
+                                fieldName: "arriving_facility",
+                                label: "Arrival Facility"
+                            },
+                            {
+                                type: "field",
+                                fieldName: "route_distance",
+                                label: "Route Distance"
                             }
                         ]
                     },
