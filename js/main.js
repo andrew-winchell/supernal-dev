@@ -1241,6 +1241,8 @@ require([
                 {
                     layer: supernalRoutesLyr,
                     formTemplate: {
+                        title: "Route Attributes",
+                        description: "Enter or Modify all route attributes below",
                         elements: [
                             {
                                 type: "field",
@@ -1260,10 +1262,18 @@ require([
                             {
                                 type: "field",
                                 fieldName: "route_distance",
-                                label: "Route Distance"
+                                label: "Route Distance",
+                                valueExpression: "distance"
                             }
                         ]
                     },
+                    expressionInfos: [
+                        {
+                            name: "distance",
+                            title: "Distance (nautical miles)",
+                            expression: "Round(LengthGeodetic($feature, 'nautical-miles'), 3)"
+                        }
+                    ],
                     deleteEnabled: false,
                     geometryUpdatesEnabled: false
                 }
