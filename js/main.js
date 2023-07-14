@@ -1301,7 +1301,7 @@ require([
 
     function selectedFeatureTable (vertices) {
         $("#waypoint-table tbody tr").remove();
-        
+
         for (let vert of vertices[0]) {
             let point = new Point ({
                 hasZ: true,
@@ -1324,7 +1324,6 @@ require([
             nextY.setAttribute("contentEditable", "true");
             nextZ.innerHTML = (point.z * 3.281).toFixed(0);
             nextZ.setAttribute("contentEditable", "true");
-            */
         }
     }
 
