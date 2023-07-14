@@ -1220,6 +1220,7 @@ require([
                         .goTo(selectedFeature.geometry.extent.expand(2))
                         .then(() => {
                             $("#waypoint-list").css("display", "block");
+                            selectedFeatureTable(selectedFeature.geometry.paths);
                             selectedFeatureProfile(selectedFeature.geometry.paths);
                             mapView.popup.dockEnabled = true;
                             mapView.popup.set("dockOptions", {
@@ -1297,6 +1298,11 @@ require([
         
         elevationProfile.input = graphic;
     }
+
+    function selectedFeatureTable (vertices) {
+        console.log(vertices);
+    }
+
     function editRouteAttributes () {
         if (!editor.activeWorkflow) {
             mapView.popup.visible = false;
