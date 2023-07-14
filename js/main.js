@@ -1180,6 +1180,9 @@ require([
 
     /********** Existing Routes Actions **********/
 
+    let selectedFeature,
+        editor;
+
     mapView.when(() => {
         const query = {
             where: "1=1",
@@ -1209,7 +1212,7 @@ require([
 
             supernalRoutesLyr.queryFeatures(query)
                 .then((results) => {
-                    let feature = results.features[0];
+                    selectedFeature = results.features[0];
                     mapView
                         .goTo(feature.geometry.extent.expand(2))
                         .then(() => {
@@ -1219,7 +1222,7 @@ require([
                                 buttonEnabled: false
                             });
                             mapView.popup.open({
-                                features: [feature]
+                                features: [selectedFeature]
                             });
                         })
                         .catch((error) => {
@@ -1231,7 +1234,6 @@ require([
         }
     });
 
-    let editor;
     mapView.when(() => {
         editor = new Editor ({
             view: mapView,
@@ -1285,7 +1287,7 @@ require([
             () => {
                 mapView.ui.remove(editor);
                 mapView.popup.open({
-                    features: [mapView.popup.selectedFeature],
+                    features: [selectedFeature],
                     shouldFocus: true
                 });
             }
