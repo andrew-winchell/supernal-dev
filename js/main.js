@@ -1299,6 +1299,7 @@ require([
     }
 
     function editRoutePath () {
+        $("#waypoint-list").css("display", "block");
         drawPath(selectedFeature.geometry.paths);
     }
 
