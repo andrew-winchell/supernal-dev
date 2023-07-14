@@ -1292,12 +1292,17 @@ require([
         );
     }
 
+    function editRoutePath () {
+        console.log("populate X/Y/Z table", "add save button")
+    }
+
     reactiveUtils.on(
         () => mapView.popup,
         "trigger-action",
         (event) => {
             if (event.action.id === "edit-route") {
                 editRouteAttributes();
+                editRoutePath();
             }
         }
     );
