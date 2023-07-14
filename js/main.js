@@ -1271,7 +1271,7 @@ require([
                         {
                             name: "distance",
                             title: "Distance (nautical miles)",
-                            expression: "Round(LengthGeodetic($feature, 'nautical-miles'), 3)"
+                            expression: "Round(LengthGeodetic(Geometry($feature), 'nautical-miles'), 3)"
                         }
                     ],
                     deleteEnabled: false,
