@@ -1202,6 +1202,7 @@ require([
 
     /********** Editing Existing Routes **********/
 
+    // Listen or item selection from routes list
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
         if (editor.viewModel.state !== "editing-existing-feature") {
             let objectId = evt.target.value;
@@ -1213,14 +1214,15 @@ require([
                 returnZ: true
             };
 
+            // Run feature query based on the OBJECTID of the list item selected
             supernalRoutesLyr.queryFeatures(query)
                 .then((results) => {
                     selectedFeature = results.features[0];
                     mapView
-                        .goTo(selectedFeature.geometry.extent.expand(2))
+                        .goTo(selectedFeature.geometry.extent.expand(2)) // zoom to route extent
                         .then(() => {
                             $("#waypoint-list").css("display", "block");
-                            selectedFeatureProfile(selectedFeature.geometry.paths);
+                            selectedFeatureProfile(selectedFeature.geometry.paths); // send selected feature geometry to elevation profile widget
                             mapView.popup.dockEnabled = true;
                             mapView.popup.set("dockOptions", {
                                 position: "bottom-right",
@@ -1287,6 +1289,7 @@ require([
 
         elevationProfile.input = polyline;
     }
+
     function editRouteAttributes () {
         if (!editor.activeWorkflow) {
             mapView.popup.visible = false;
@@ -1319,6 +1322,7 @@ require([
             if (event.action.id === "edit-attributes") {
                 editRouteAttributes();
                 editRoutePath();
+                createEditTable(selectedFeature.geometry.paths);
             }
         }
     );
@@ -1338,6 +1342,15 @@ require([
         drawPath(selectedFeature.geometry.paths);
         
     });
+
+    function createEditTable (vertices) {
+        let multipoint = new Multipoint ({
+            points: vertices,
+            spatialReference: mapView.spatialReference
+        });
+
+        console.log(multipoint);
+    }
 
     /********** Elevation Profile Widget **********/
 
