@@ -1300,7 +1300,9 @@ require([
     }
 
     function selectedFeatureTable (vertices) {
-        console.log(vertices);
+        for (let vert in vertices) {
+            console.log(vert)
+        }
     }
 
     function editRouteAttributes () {
