@@ -1202,7 +1202,6 @@ require([
 
     /********** Editing Existing Routes **********/
 
-    // Listen or item selection from routes list
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
         if (editor.viewModel.state !== "editing-existing-feature") {
             let objectId = evt.target.value;
@@ -1214,15 +1213,14 @@ require([
                 returnZ: true
             };
 
-            // Run feature query based on the OBJECTID of the list item selected
             supernalRoutesLyr.queryFeatures(query)
                 .then((results) => {
                     selectedFeature = results.features[0];
                     mapView
-                        .goTo(selectedFeature.geometry.extent.expand(2)) // zoom to route extent
+                        .goTo(selectedFeature.geometry.extent.expand(2))
                         .then(() => {
                             $("#waypoint-list").css("display", "block");
-                            selectedFeatureProfile(selectedFeature.geometry.paths); // send selected feature geometry to elevation profile widget
+                            selectedFeatureProfile(selectedFeature.geometry.paths);
                             mapView.popup.dockEnabled = true;
                             mapView.popup.set("dockOptions", {
                                 position: "bottom-right",
@@ -1286,10 +1284,19 @@ require([
             spatialReference: mapView.spatialReference,
             paths: vertices
         });
-
-        elevationProfile.input = polyline;
+    
+        const graphic = new Graphic ({
+            geometry: polyline,
+            symbol: {
+                type: "simple-line",
+                color: "#008b8b",
+                width: "0",
+                style: "short-dash"
+            }
+        });
+        
+        elevationProfile.input = graphic;
     }
-
     function editRouteAttributes () {
         if (!editor.activeWorkflow) {
             mapView.popup.visible = false;
@@ -1322,7 +1329,6 @@ require([
             if (event.action.id === "edit-attributes") {
                 editRouteAttributes();
                 editRoutePath();
-                createEditTable(selectedFeature.geometry.paths);
             }
         }
     );
@@ -1342,10 +1348,6 @@ require([
         drawPath(selectedFeature.geometry.paths);
         
     });
-
-    function createEditTable (vertices) {
-        console.log(vertices);
-    }
 
     /********** Elevation Profile Widget **********/
 
