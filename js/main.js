@@ -1300,6 +1300,8 @@ require([
     }
 
     function selectedFeatureTable (vertices) {
+        $("#waypoint-table tbody tr").remove();
+        
         for (let vert of vertices[0]) {
             let point = new Point ({
                 hasZ: true,
@@ -1308,11 +1310,6 @@ require([
                 z: vert[2],
                 spatialReference: mapView.spatialReference
             });
-
-            console.log(point);
-    
-            /*
-            let mapPt = point.getPoint(0);
     
             let nextRow = $("#waypoint-table")[0].insertRow(-1);
             let nextVert = nextRow.insertCell(0);
@@ -1321,11 +1318,11 @@ require([
             let nextZ = nextRow.insertCell(3);
     
             nextVert.innerHTML = nextRow.rowIndex
-            nextX.innerHTML = mapPt.longitude.toFixed(4);
+            nextX.innerHTML = point.longitude.toFixed(4);
             nextX.setAttribute("contentEditable", "true");
-            nextY.innerHTML = mapPt.latitude.toFixed(4);
+            nextY.innerHTML = point.latitude.toFixed(4);
             nextY.setAttribute("contentEditable", "true");
-            nextZ.innerHTML = (mapPt.z * 3.281).toFixed(0);
+            nextZ.innerHTML = (point.z * 3.281).toFixed(0);
             nextZ.setAttribute("contentEditable", "true");
             */
         }
