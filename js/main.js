@@ -1299,15 +1299,6 @@ require([
         }
     );
 
-    reactiveUtils.watch(
-        () => mapView.popup?.visible,
-        (event) => {
-            if (editor.viewModel.state === "editing-existing-feature") {
-                mapView.popup.close();
-            }
-        }
-    );
-
     /********** Elevation Profile Widget **********/
 
     const elevationProfile = new ElevationProfile({
