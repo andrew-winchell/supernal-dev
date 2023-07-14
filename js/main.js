@@ -1300,6 +1300,7 @@ require([
     }
 
     function selectedFeatureTable (vertices) {
+        console.log(vertices)
         for (let vert of vertices) {
             console.log(vert)
             let multipoint = new Multipoint ({
