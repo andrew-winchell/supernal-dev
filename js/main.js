@@ -1216,6 +1216,7 @@ require([
                     mapView
                         .goTo(selectedFeature.geometry.extent.expand(2))
                         .then(() => {
+                            drawPath(selectedFeature.geometry.paths);
                             mapView.popup.dockEnabled = true;
                             mapView.popup.set("dockOptions", {
                                 position: "bottom-right",
@@ -1295,7 +1296,7 @@ require([
     }
 
     function editRoutePath () {
-        drawPath(selectedFeature.geometry.paths)
+        drawPath(selectedFeature.geometry.paths);
     }
 
     reactiveUtils.on(
