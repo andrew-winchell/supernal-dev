@@ -1214,7 +1214,7 @@ require([
                 .then((results) => {
                     selectedFeature = results.features[0];
                     mapView
-                        .goTo(feature.geometry.extent.expand(2))
+                        .goTo(selectedFeature.geometry.extent.expand(2))
                         .then(() => {
                             mapView.popup.dockEnabled = true;
                             mapView.popup.set("dockOptions", {
