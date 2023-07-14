@@ -1233,7 +1233,8 @@ require([
         editor = new Editor ({
             view: mapView,
             visibleElements: {
-                snappingControls: false
+                snappingControls: false,
+                sketchTooltipControls: false
             },
             container: document.createElement("div"),
             layerInfos: [
