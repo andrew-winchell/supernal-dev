@@ -1219,6 +1219,7 @@ require([
                     mapView
                         .goTo(selectedFeature.geometry.extent.expand(2))
                         .then(() => {
+                            supernalRoutesLyr.definitionExpression = "OBJECTID = " + objectId;
                             $("#waypoint-list").css("display", "block");
                             selectedFeatureTable(selectedFeature.geometry.paths);
                             selectedFeatureProfile(selectedFeature.geometry.paths);
