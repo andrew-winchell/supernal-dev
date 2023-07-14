@@ -75,20 +75,6 @@ html, body, #view-div {
   padding: 0px !important;
 }
 
-#panel-start {
-  height: calc(100% - 251px);
-}
-
-#route-table {
-  padding: 5px;
-  overflow: auto;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 241px;
-  width: 19.25%;
-}
-
 .esri-layer-list__item-container {
   padding: 12px 5px 12px 5px !important;
 }
