@@ -477,8 +477,8 @@ require([
             ],
             actions: [
                 {
-                    title: "Edit Route",
-                    id: "edit-route",
+                    title: "Edit Attributes",
+                    id: "edit-attributes",
                     className: "esri-icon-edit"
                 }
             ]
@@ -1178,7 +1178,7 @@ require([
             })
     });
 
-    /********** Existing Routes Actions **********/
+    /********** Existing Routes List **********/
 
     let selectedFeature,
         editor;
@@ -1199,6 +1199,8 @@ require([
                 $("#existing-routes")[0].loading = false;
             });
     });
+
+    /********** Editing Existing Routes **********/
 
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
         if (editor.viewModel.state !== "editing-existing-feature") {
@@ -1304,7 +1306,7 @@ require([
         () => mapView.popup,
         "trigger-action",
         (event) => {
-            if (event.action.id === "edit-route") {
+            if (event.action.id === "edit-attributes") {
                 editRouteAttributes();
                 editRoutePath();
             }
