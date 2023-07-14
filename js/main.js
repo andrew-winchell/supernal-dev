@@ -1258,22 +1258,9 @@ require([
                                 type: "field",
                                 fieldName: "arriving_facility",
                                 label: "Arrival Facility"
-                            },
-                            {
-                                type: "field",
-                                fieldName: "route_distance",
-                                label: "Route Distance",
-                                valueExpression: "distance"
                             }
                         ]
                     },
-                    expressionInfos: [
-                        {
-                            name: "distance",
-                            title: "Distance (nautical miles)",
-                            expression: "Round(Length($feature, 'nautical-miles'), 3)"
-                        }
-                    ],
                     deleteEnabled: false,
                     geometryUpdatesEnabled: false
                 }
