@@ -1295,7 +1295,7 @@ require([
     }
 
     function editRoutePath () {
-        console.log("populate X/Y/Z table", "add save button")
+        console.log(selectedFeature.geometry.paths)
     }
 
     reactiveUtils.on(
