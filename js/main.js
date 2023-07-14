@@ -1215,7 +1215,8 @@ require([
                         .then(() => {
                             mapView.popup.dockEnabled = true;
                             mapView.popup.set("dockOptions", {
-                                position: "bottom-right"
+                                position: "bottom-right",
+                                buttonEnabled: false
                             });
                             mapView.popup.open({
                                 features: [feature]
