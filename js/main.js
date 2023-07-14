@@ -1304,8 +1304,6 @@ require([
         (event) => {
             if (editor.viewModel.state === "editing-existing-feature") {
                 mapView.popup.close();
-            } else {
-                features = mapView.popup.features;
             }
         }
     );
