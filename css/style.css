@@ -131,3 +131,7 @@ html, body, #view-div {
 #waypoint-table {
   border-collapse: collapse;
 }
+
+#confirm-route {
+  padding: 10px;
+}

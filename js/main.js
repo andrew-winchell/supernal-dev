@@ -1219,6 +1219,7 @@ require([
                     mapView
                         .goTo(selectedFeature.geometry.extent.expand(2))
                         .then(() => {
+                            $("#waypoint-list").css("display", "block");
                             drawPath(selectedFeature.geometry.paths);
                             mapView.popup.dockEnabled = true;
                             mapView.popup.set("dockOptions", {
@@ -1300,7 +1301,6 @@ require([
 
     function editRoutePath () {
         $("#waypoint-list").css("display", "block");
-        drawPath(selectedFeature.geometry.paths);
     }
 
     reactiveUtils.on(
