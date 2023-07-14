@@ -1299,6 +1299,11 @@ require([
         }
     );
 
+    supernalRoutesLyr.on("apply-edits", () => {
+        mapView.ui.remove(editor);
+        editor.viewModel.cancelWorkflow();
+    });
+
     /********** Elevation Profile Widget **********/
 
     const elevationProfile = new ElevationProfile({
