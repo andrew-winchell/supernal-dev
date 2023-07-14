@@ -1300,7 +1300,7 @@ require([
     }
 
     function selectedFeatureTable (vertices) {
-        for (let vert of vertices) {
+        for (let vert of vertices[0]) {
             let point = new Point ({
                 hasZ: true,
                 x: vert[0],
