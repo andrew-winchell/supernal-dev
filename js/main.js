@@ -1207,7 +1207,8 @@ require([
             const query = {
                 where: "OBJECTID = " + objectId,
                 outFields: ["*"],
-                returnGeometry: true
+                returnGeometry: true,
+                returnZ: true
             };
 
             supernalRoutesLyr.queryFeatures(query)
