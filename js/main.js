@@ -1301,6 +1301,7 @@ require([
 
     function selectedFeatureTable (vertices) {
         for (let vert of vertices) {
+            console.log(vert)
             let multipoint = new Multipoint ({
                 points: vert,
                 spatialReference: mapView.spatialReference
