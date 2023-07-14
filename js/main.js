@@ -1301,11 +1301,9 @@ require([
         }
     );
 
-    // Watch when the popup is visible
     reactiveUtils.watch(
       () => mapView.popup?.visible,
       (event) => {
-        // Check the Editor's viewModel state, if it is currently open and editing existing features, disable popups
         if (editor.viewModel.state === "editing-existing-feature") {
           mapView.popup.close();
         }
