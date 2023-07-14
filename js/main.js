@@ -1300,7 +1300,7 @@ require([
     }
 
     function selectedFeatureTable (vertices) {
-        for (let vert in vertices) {
+        for (let vert of vertices) {
             console.log(vert)
         }
     }
