@@ -1198,34 +1198,36 @@ require([
     });
 
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
-        let objectId = evt.target.value;
+        if (editor.viewModel.state !== "editing-existing-feature") {
+            let objectId = evt.target.value;
 
-        const query = {
-            where: "OBJECTID = " + objectId,
-            outFields: ["*"],
-            returnGeometry: true
-        };
+            const query = {
+                where: "OBJECTID = " + objectId,
+                outFields: ["*"],
+                returnGeometry: true
+            };
 
-        supernalRoutesLyr.queryFeatures(query)
-            .then((results) => {
-                let feature = results.features[0];
-                mapView
-                    .goTo(feature.geometry.extent.expand(2))
-                    .then(() => {
-                        mapView.popup.dockEnabled = true;
-                        mapView.popup.set("dockOptions", {
-                            position: "bottom-right"
+            supernalRoutesLyr.queryFeatures(query)
+                .then((results) => {
+                    let feature = results.features[0];
+                    mapView
+                        .goTo(feature.geometry.extent.expand(2))
+                        .then(() => {
+                            mapView.popup.dockEnabled = true;
+                            mapView.popup.set("dockOptions", {
+                                position: "bottom-right"
+                            });
+                            mapView.popup.open({
+                                features: [feature]
+                            });
+                        })
+                        .catch((error) => {
+                            if (error.name != "AbortError") {
+                                console.log(error);
+                            }
                         });
-                        mapView.popup.open({
-                            features: [feature]
-                        });
-                    })
-                    .catch((error) => {
-                        if (error.name != "AbortError") {
-                            console.log(error);
-                        }
-                    });
-            });
+                });
+        }
     });
 
     let editor;
