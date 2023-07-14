@@ -1272,7 +1272,7 @@ require([
                         ]
                     },
                     deleteEnabled: false,
-                    geometryUpdatesEnabled: false
+                    geometryUpdatesEnabled: true
                 }
             ]
         })
