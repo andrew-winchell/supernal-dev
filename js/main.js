@@ -1344,12 +1344,7 @@ require([
     });
 
     function createEditTable (vertices) {
-        let multipoint = new Multipoint ({
-            points: vertices,
-            spatialReference: mapView.spatialReference
-        });
-
-        console.log(multipoint);
+        console.log(vertices);
     }
 
     /********** Elevation Profile Widget **********/
