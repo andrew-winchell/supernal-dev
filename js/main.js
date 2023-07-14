@@ -1302,6 +1302,7 @@ require([
     function selectedFeatureTable (vertices) {
         $("#waypoint-table tbody tr").remove();
 
+
         for (let vert of vertices[0]) {
             let point = new Point ({
                 hasZ: true,
@@ -1311,7 +1312,7 @@ require([
                 spatialReference: mapView.spatialReference
             });
     
-            let nextRow = $("#waypoint-table")[0].insertRow(-1);
+            let nextRow = $("#waypoint-table tbody")[0].insertRow(-1);
             let nextVert = nextRow.insertCell(0);
             let nextX = nextRow.insertCell(1);
             let nextY = nextRow.insertCell(2);
