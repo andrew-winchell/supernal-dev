@@ -1281,6 +1281,65 @@ require([
         })
     });
 
+    $("#confirm-route").on("click", (evt) => {
+        let table = document.getElementById('waypoint-table'),
+            rows = table.getElementsByTagName("tr"),
+            newVertices = [],
+            i, j, cells;
+
+        for (i=0, j=rows.length; i<j; ++i) {
+            cells = rows[i].getElementsByTagName("td");
+            if (!cells.length) {
+                continue;
+            }
+            
+            let long = cells[1].innerHTML,
+                lat = cells[2].innerHTML,
+                alt = cells[3].innerHTML;
+            
+            let point = new Point ({
+                latitude: lat,
+                longitude: long,
+                z: alt/3.281,
+                spatialReference: 3857
+            });
+
+            let coord = [point.x, point.y, point.z];
+
+            newVertices.push(coord);
+        }
+
+        let polyline = {
+            type: "polyline",
+            paths: newVertices
+        };
+
+        let polylineGraphic = new Graphic ({
+            geometry: polyline,
+            attributes: {
+                "route_name": rName,
+                "departing_fac": rDepart,
+                "arriving_facility": rArrival
+            }
+        });
+        
+        /*
+        let rDistance = geometryEngine.geodesicLength(polylineGraphic.geometry, "nautical-miles");
+
+        polylineGraphic.attributes["route_distance"] = rDistance
+
+        const edits = {
+            addFeatures: [polylineGraphic]
+        };
+
+        supernalRoutesLyr
+            .applyEdits(edits)
+            .then((results) => {
+                console.log(results)
+            });
+        */
+    });
+
     function selectedFeatureProfile (vertices) {
         let polyline = new Polyline ({
             hasZ: true,
