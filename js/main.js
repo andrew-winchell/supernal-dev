@@ -1221,6 +1221,7 @@ require([
                         .then(() => {
                             supernalRoutesLyr.definitionExpression = "OBJECTID = " + objectId;
                             $("#waypoint-list").css("display", "block");
+                            $("#confirm-route").css("display", "block");
                             selectedFeatureTable(selectedFeature.geometry.paths);
                             selectedFeatureProfile(selectedFeature.geometry.paths);
                             mapView.popup.dockEnabled = true;
