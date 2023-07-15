@@ -1317,19 +1317,16 @@ require([
         let polylineGraphic = new Graphic ({
             geometry: polyline,
             attributes: {
-                "route_name": rName,
-                "departing_fac": rDepart,
-                "arriving_facility": rArrival
+                "OBJECTID": objectId
             }
         });
-        
-        /*
+
         let rDistance = geometryEngine.geodesicLength(polylineGraphic.geometry, "nautical-miles");
 
         polylineGraphic.attributes["route_distance"] = rDistance
 
         const edits = {
-            addFeatures: [polylineGraphic]
+            updateFeatures: [polylineGraphic]
         };
 
         supernalRoutesLyr
@@ -1337,7 +1334,7 @@ require([
             .then((results) => {
                 console.log(results)
             });
-        */
+        
     });
 
     function selectedFeatureProfile (vertices) {
