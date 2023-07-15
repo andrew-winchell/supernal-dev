@@ -1202,9 +1202,11 @@ require([
 
     /********** Editing Existing Routes **********/
 
+    let objectId;
+    
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
         if (editor.viewModel.state !== "editing-existing-feature") {
-            let objectId = evt.target.value;
+            objectId = evt.target.value;
 
             const query = {
                 where: "OBJECTID = " + objectId,
