@@ -1321,9 +1321,7 @@ require([
     
             nextVert.innerHTML = nextRow.rowIndex
             nextX.innerHTML = point.longitude.toFixed(4);
-            nextX.setAttribute("contentEditable", "true");
             nextY.innerHTML = point.latitude.toFixed(4);
-            nextY.setAttribute("contentEditable", "true");
             nextZ.innerHTML = (point.z * 3.281).toFixed(0);
             nextZ.setAttribute("contentEditable", "true");
         }
