@@ -1203,7 +1203,7 @@ require([
     /********** Editing Existing Routes **********/
 
     let objectId;
-    
+
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
         if (editor.viewModel.state !== "editing-existing-feature") {
             objectId = evt.target.value;
@@ -1303,7 +1303,7 @@ require([
                 latitude: lat,
                 longitude: long,
                 z: alt/3.281,
-                spatialReference: 3857
+                spatialReference: mapView.spatialReference
             });
 
             let coord = [point.x, point.y, point.z];
