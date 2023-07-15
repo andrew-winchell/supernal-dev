@@ -1378,6 +1378,7 @@ require([
         mapView.ui.remove(editor);
         editor.viewModel.cancelWorkflow();
         drawPath(selectedFeature.geometry.paths);
+        selectedFeatureTable(selectedFeature.geometry.paths)
         
     });
 
