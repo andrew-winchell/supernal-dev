@@ -1303,7 +1303,7 @@ require([
                 latitude: lat,
                 longitude: long,
                 z: alt/3.281,
-                spatialReference: mapView.spatialReference
+                spatialReference: 3857
             });
 
             let coord = [point.x, point.y, point.z];
@@ -1330,7 +1330,7 @@ require([
         console.log(polylineGraphic);
 
         const edits = {
-            updateFeatures: [polyline]
+            updateFeatures: [polylineGraphic]
         };
 
         supernalRoutesLyr
