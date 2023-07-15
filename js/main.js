@@ -1327,8 +1327,10 @@ require([
 
         polylineGraphic.attributes["route_distance"] = rDistance
 
+        console.log(polylineGraphic);
+
         const edits = {
-            updateFeatures: [polylineGraphic]
+            updateFeatures: [polyline]
         };
 
         supernalRoutesLyr
