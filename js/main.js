@@ -482,7 +482,8 @@ require([
                     className: "esri-icon-edit"
                 }
             ]
-        }
+        },
+        definitionExpression: "1=0"
     });
 
     /********** Client-Side Graphics Layers for Drawing **********/
@@ -1332,12 +1333,6 @@ require([
         const edits = {
             updateFeatures: [polylineGraphic]
         };
-
-        supernalRoutesLyr
-            .applyEdits(edits)
-            .then((results) => {
-                console.log(results)
-            });
         
     });
 
