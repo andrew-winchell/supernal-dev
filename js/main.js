@@ -1278,9 +1278,7 @@ require([
                                 label: "Arrival Facility"
                             }
                         ]
-                    },
-                    deleteEnabled: false,
-                    geometryUpdatesEnabled: true
+                    }
                 }
             ]
         })
