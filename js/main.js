@@ -1230,7 +1230,6 @@ require([
                             selectedFeatureTable(selectedFeature.geometry.paths);
                             selectedFeatureProfile(selectedFeature.geometry.paths);
                             mapView.popup.dockEnabled = true;
-                            mapView.popup.set("container", "popup-container");
                             mapView.popup.set("dockOptions", {
                                 position: "bottom-right",
                                 buttonEnabled: false
