@@ -1229,7 +1229,7 @@ require([
                             $("#confirm-route").css("display", "block");
                             selectedFeatureTable(selectedFeature.geometry.paths);
                             selectedFeatureProfile(selectedFeature.geometry.paths);
-                            mapView.popup.container = "popup-container";
+                            mapView.popup.container = $("#popup-container");
                             /*mapView.popup.dockEnabled = true;
                             mapView.popup.set("dockOptions", {
                                 position: "bottom-right",
