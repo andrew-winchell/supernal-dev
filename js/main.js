@@ -672,6 +672,8 @@ require([
             if (evt.state == "complete") {
                 console.log("complete feature");
             } else if (evt.state == "start") {
+                $("#waypoint-table tbody tr").remove();
+                
                 let startCoord = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
                 createTableRow([startCoord]);
                 multipointVertices.push(startCoord);
