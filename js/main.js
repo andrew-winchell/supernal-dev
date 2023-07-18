@@ -1230,7 +1230,7 @@ require([
                             selectedFeatureTable(selectedFeature.geometry.paths);
                             selectedFeatureProfile(selectedFeature.geometry.paths);
                             mapView.popup = {
-                                container: popup-container
+                                container: "popup-container"
                             };
                             /*mapView.popup.dockEnabled = true;
                             mapView.popup.set("dockOptions", {
