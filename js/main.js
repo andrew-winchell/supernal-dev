@@ -1333,6 +1333,7 @@ require([
         const edits = {
             updateFeatures: [polylineGraphic]
         };
+        mapView.graphics.add(polylineGraphic);
 
         supernalRoutesLyr
             .applyEdits(edits)
