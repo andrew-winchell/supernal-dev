@@ -1333,6 +1333,12 @@ require([
         const edits = {
             updateFeatures: [polylineGraphic]
         };
+
+        supernalRoutesLyr
+            .applyEdits(edits)
+            .then((results) => {
+                console.log(results)
+            });
         
     });
 
