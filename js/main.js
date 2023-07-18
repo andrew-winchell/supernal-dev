@@ -1337,13 +1337,11 @@ require([
         };
         mapView.graphics.add(polylineGraphic);
 
-        /*
         supernalRoutesLyr
             .applyEdits(edits)
             .then((results) => {
                 console.log(results)
             });
-        */
         
     });
 
