@@ -1306,7 +1306,7 @@ require([
                 latitude: lat,
                 longitude: long,
                 z: alt/3.281,
-                spatialReference: 3857
+                spatialReference: 4326
             });
 
             let coord = [point.x, point.y, point.z];
