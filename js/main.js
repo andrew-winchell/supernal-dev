@@ -477,7 +477,7 @@ require([
             ],
             actions: [
                 {
-                    title: "Edit Attributes",
+                    title: "Edit Route",
                     id: "edit-attributes",
                     className: "esri-icon-edit"
                 }
