@@ -1431,6 +1431,7 @@ require([
         reactiveUtils.when(
             () => editor.viewModel.state === "ready",
             () => {
+                $("#existing-routes").empty();
                 mapView.ui.remove(editor);
                 mapView.popup.open({
                     features: [selectedFeature],
