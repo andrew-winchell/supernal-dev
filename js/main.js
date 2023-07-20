@@ -697,7 +697,6 @@ require([
 
     $("#add-route-vertices").on("click", () => {
         mapView.focus();
-        
         pointSketchViewModel.create("multipoint", {hasZ: true});
     });
 
@@ -879,8 +878,7 @@ require([
 
         pntGraphicsLyr.removeAll();
 
-        $("#waypoints").empty();
-        $("#waypoint-list").css("display", "none");
+        //$("#waypoint-list").css("display", "none");
 
         $("#save")[0].disabled = true;
 
