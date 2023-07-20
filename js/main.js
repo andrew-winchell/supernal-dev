@@ -731,7 +731,11 @@ require([
     $("#waypoint-table").on("input", (evt) => {
         console.log(evt);
 
-        evt.target.bgColor = "lightgreen";
+        if (parseFloat(evt.target.innerHTML)) {
+            evt.target.bgColor = "lightgreen";
+        } else {
+            evt.target.bgColor = "lightred";
+        }
 
         let table = document.getElementById('waypoint-table'),
             rows = table.getElementsByTagName("tr"),
