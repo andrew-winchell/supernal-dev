@@ -878,7 +878,7 @@ require([
 
         pntGraphicsLyr.removeAll();
 
-        //$("#waypoint-list").css("display", "none");
+        $("#waypoint-list").css("display", "none");
 
         $("#save")[0].disabled = true;
 
