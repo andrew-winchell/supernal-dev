@@ -656,40 +656,6 @@ require([
     // Drawing variables
     let multipointVertices = [];
 
-    const pointSketchViewModel = new SketchViewModel ({
-        layer: pntGraphicsLyr,
-        view: mapView,
-        pointSymbol: {
-            type: "simple-marker",
-            style: "circle",
-            color: "blue",
-            size: "8px"
-        },
-        snappingOptions: {
-            enabled: true,
-            featureSources: [
-                {
-                    layer: navaidsLyr,
-                    enabled: true
-                },
-                {
-                    layer: desPointsLyr,
-                    enabled: true
-                },
-                {
-                    layer: airportsLyr,
-                    enabled: true
-                },
-                {
-                    layer: vertiportsLyr,
-                    enabled: true
-                }
-            ]
-        },
-        labelOptions: { enabled: true },
-        tooltipOptions: { enabled: true }
-    });
-
     // Open Creator Toolbar
     $("#create-route").on("click", () => {
         $("#route-toolbar").css("display", "block");
@@ -697,8 +663,41 @@ require([
 
     $("#add-route-vertices").on("click", () => {
         mapView.focus();
+
+        const pointSketchViewModel = new SketchViewModel ({
+            layer: pntGraphicsLyr,
+            view: mapView,
+            pointSymbol: {
+                type: "simple-marker",
+                style: "circle",
+                color: "blue",
+                size: "8px"
+            },
+            snappingOptions: {
+                enabled: true,
+                featureSources: [
+                    {
+                        layer: navaidsLyr,
+                        enabled: true
+                    },
+                    {
+                        layer: desPointsLyr,
+                        enabled: true
+                    },
+                    {
+                        layer: airportsLyr,
+                        enabled: true
+                    },
+                    {
+                        layer: vertiportsLyr,
+                        enabled: true
+                    }
+                ]
+            },
+            labelOptions: { enabled: true },
+            tooltipOptions: { enabled: true }
+        });
         
-        pointSketchViewModel.view = mapView;
         pointSketchViewModel.create("multipoint");
 
         pointSketchViewModel.on("create", (evt) => {
@@ -884,8 +883,6 @@ require([
         $("#waypoint-list").css("display", "none");
 
         $("#save")[0].disabled = true;
-        
-        pointSketchViewModel.destroy();
 
         setTimeout(()=> {
             populateExistingRoutes();
