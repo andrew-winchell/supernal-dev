@@ -816,11 +816,13 @@ require([
         $("#cancel-vertices")[0].disabled = true;
     });
 
-    $("#save-route").on("click", (evt) => {
+    $("#save").on("click", (evt) => {
         $("#route-save-modal")[0].open = true;
     });
 
     $("#route-save").on("click", (evt) => {
+        $("#existing-routes").empty();
+
         let rName = $("#route-name")[0].value;
         let rArrival = $("#route-arr")[0].value;
         let rDepart = $("#route-dep")[0].value;
@@ -998,7 +1000,7 @@ require([
                 }
             });
         }
-    });  
+    });
 
     $("#airport-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#airport-field-select")[0]
@@ -1008,7 +1010,7 @@ require([
         if (Array.isArray(value)) {
             for (let v of value) {
                 valueList.push("'" + v + "'");
-            }            
+            }
         } else {
             value = "'" + value + "'";
             valueList.push(value)
@@ -1050,7 +1052,7 @@ require([
         if (Array.isArray(value)) {
             for (let v of value) {
                 valueList.push("'" + v + "'");
-            }            
+            }
         } else {
             value = "'" + value + "'";
             valueList.push(value)
@@ -1084,7 +1086,7 @@ require([
             });
         }
     });
-    
+
     $("#fixes-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#fixes-field-select")[0]
         let field = fieldSelect.value;
@@ -1093,7 +1095,7 @@ require([
         if (Array.isArray(value)) {
             for (let v of value) {
                 valueList.push("'" + v + "'");
-            }            
+            }
         } else {
             value = "'" + value + "'";
             valueList.push(value)
@@ -1103,11 +1105,11 @@ require([
                 layerView.filter = {
                     where: field + " IN (" + valueList + ")"
                 }
-            }) 
+            })
         }
     });
 
-   $("#navaids-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
+    $("#navaids-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
         let field = $("#navaids-field-select")[0].value;
         let value = $("#navaids-filter-value")[0].value;
         if (evtSwitch.currentTarget.checked == true) {
@@ -1126,7 +1128,7 @@ require([
             });
         }
     });
-    
+
     $("#navaids-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#navaids-field-select")[0]
         let field = fieldSelect.value;
@@ -1135,7 +1137,7 @@ require([
         if (Array.isArray(value)) {
             for (let v of value) {
                 valueList.push("'" + v + "'");
-            }            
+            }
         } else {
             value = "'" + value + "'";
             valueList.push(value)
@@ -1168,7 +1170,7 @@ require([
             });
         }
     });
-    
+
     $("#obstacles-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#obstacles-field-select")[0]
         let field = fieldSelect.value;
@@ -1177,7 +1179,7 @@ require([
         if (Array.isArray(value)) {
             for (let v of value) {
                 valueList.push("'" + v + "'");
-            }            
+            }
         } else {
             value = "'" + value + "'";
             valueList.push(value)
@@ -1194,7 +1196,7 @@ require([
     /********** Pointer Hover X/Y/Z Coordinates **********/
 
     mapView.when(() => {
-        const elevation = new ElevationLayer ({
+        const elevation = new ElevationLayer({
             url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
         });
         return elevation.load();
@@ -1311,9 +1313,7 @@ require([
         })
     });
 
-    $("#confirm-route").on("click", (evt) => {
-        $("#existing-routes").empty();
-        
+    $("#confirm-route").on("click", (evt) => {        
         let table = document.getElementById('waypoint-table'),
             rows = table.getElementsByTagName("tr"),
             newVertices = [],
