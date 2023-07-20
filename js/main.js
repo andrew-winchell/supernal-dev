@@ -729,6 +729,8 @@ require([
     });
 
     $("#waypoint-table").on("input", (evt) => {
+        console.log(evt);
+
         let table = document.getElementById('waypoint-table'),
             rows = table.getElementsByTagName("tr"),
             newVertices = [],
