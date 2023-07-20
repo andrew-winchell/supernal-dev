@@ -1312,6 +1312,8 @@ require([
     });
 
     $("#confirm-route").on("click", (evt) => {
+        $("#existing-routes").empty();
+        
         let table = document.getElementById('waypoint-table'),
             rows = table.getElementsByTagName("tr"),
             newVertices = [],
@@ -1363,7 +1365,6 @@ require([
         supernalRoutesLyr
             .applyEdits(edits)
             .then(() => {
-                $("#existing-routes").empty();
                 const query = {
                     where: "OBJECTID = " + objectId,
                     outFields: ["*"],
