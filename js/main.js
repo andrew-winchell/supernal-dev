@@ -1186,26 +1186,22 @@ require([
     let selectedFeature,
         editor;
 
-    populateExistingRoutes();
+    mapView.when(() => {
+        const query = {
+            where: "1=1",
+            outFields: ["*"]
+        };
 
-    function populateExistingRoutes () {
-        mapView.when(() => {
-            const query = {
-                where: "1=1",
-                outFields: ["*"]
-            };
-    
-            supernalRoutesLyr.queryFeatures(query)
-                .then((results) => {
-                    for (let f of results.features) {
-                        $("#existing-routes").append(
-                            "<calcite-list-item value='" + f.attributes.OBJECTID + "' label='" + f.attributes.route_name + "' description='Distance: " + parseFloat(f.attributes.route_distance).toFixed(2) + " nautical miles' value='test'></calcite-list-item>"
-                        )
-                    }
-                    $("#existing-routes")[0].loading = false;
-                });
-        });
-    }
+        supernalRoutesLyr.queryFeatures(query)
+            .then((results) => {
+                for (let f of results.features) {
+                    $("#existing-routes").append(
+                        "<calcite-list-item value='" + f.attributes.OBJECTID + "' label='" + f.attributes.route_name + "' description='Distance: " + parseFloat(f.attributes.route_distance).toFixed(2) + " nautical miles' value='test'></calcite-list-item>"
+                    )
+                }
+                $("#existing-routes")[0].loading = false;
+            });
+    });
 
     /********** Editing Existing Routes **********/
 
@@ -1435,12 +1431,25 @@ require([
         reactiveUtils.when(
             () => editor.viewModel.state === "ready",
             () => {
-                populateExistingRoutes();
                 mapView.ui.remove(editor);
                 mapView.popup.open({
                     features: [selectedFeature],
                     shouldFocus: true
                 });
+                const query = {
+                    where: "1=1",
+                    outFields: ["*"]
+                };
+        
+                supernalRoutesLyr.queryFeatures(query)
+                    .then((results) => {
+                        for (let f of results.features) {
+                            $("#existing-routes").append(
+                                "<calcite-list-item value='" + f.attributes.OBJECTID + "' label='" + f.attributes.route_name + "' description='Distance: " + parseFloat(f.attributes.route_distance).toFixed(2) + " nautical miles' value='test'></calcite-list-item>"
+                            )
+                        }
+                        $("#existing-routes")[0].loading = false;
+                    });
 
             }
         );
