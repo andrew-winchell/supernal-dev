@@ -1226,7 +1226,6 @@ require([
                         .then(() => {
                             supernalRoutesLyr.definitionExpression = "OBJECTID = " + objectId;
                             $("#waypoint-list").css("display", "block");
-                            $("#confirm-route").css("display", "block");
                             selectedFeatureTable(selectedFeature.geometry.paths);
                             selectedFeatureProfile(selectedFeature.geometry.paths);
                             mapView.popup.dockEnabled = true;
@@ -1366,7 +1365,6 @@ require([
     function selectedFeatureTable (vertices) {
         $("#waypoint-table tbody tr").remove();
 
-
         for (let vert of vertices[0]) {
             let point = new Point ({
                 hasZ: true,
@@ -1420,6 +1418,7 @@ require([
         "trigger-action",
         (event) => {
             if (event.action.id === "edit-attributes") {
+                $("#confirm-route").css("display", "block");
                 editRouteAttributes();
                 editRoutePath();
             }
