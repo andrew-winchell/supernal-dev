@@ -884,7 +884,9 @@ require([
 
         $("#save")[0].disabled = true;
 
-        populateExistingRoutes();
+        setTimeout(()=> {
+            populateExistingRoutes();
+        }, 1000);
     }); 
 
     /********** Layer Filtering Capabilities **********/
