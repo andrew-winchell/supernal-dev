@@ -908,6 +908,7 @@ require([
         $("#complete-route")[0].disabled = true;
         $("#edit-vertices")[0].disabled = true;
         $("#cancel-vertices")[0].disabled = true;
+        $("#add-route-vertices")[0].disabled = false;
         mapView.graphics.removeAll();
         elevationProfile.input = "";
     })
