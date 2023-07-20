@@ -758,8 +758,6 @@ require([
     
         multipointVertices = newVertices;
 
-        pointSketchViewModel.createGraphic.geometry.points = multipointVertices;
-
         drawPath(multipointVertices)
     });
 
