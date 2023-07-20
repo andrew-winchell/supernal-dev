@@ -816,13 +816,16 @@ require([
         $("#cancel-vertices")[0].disabled = true;
     });
 
+    // Open Save Route modal to enter attributes and push route to layer
     $("#save").on("click", (evt) => {
         $("#route-save-modal")[0].open = true;
     });
 
     $("#route-save").on("click", (evt) => {
+        // Delete the current list of existing routes
         $("#existing-routes").empty();
 
+        // Get the user entered valeus for the route attributes
         let rName = $("#route-name")[0].value;
         let rArrival = $("#route-arr")[0].value;
         let rDepart = $("#route-dep")[0].value;
@@ -880,6 +883,8 @@ require([
         $("#waypoint-list").css("display", "none");
 
         $("#save")[0].disabled = true;
+
+        populateExistingRoutes();
     }); 
 
     /********** Layer Filtering Capabilities **********/
@@ -1216,22 +1221,26 @@ require([
     let selectedFeature,
         editor;
 
-    mapView.when(() => {
-        const query = {
-            where: "1=1",
-            outFields: ["*"]
-        };
+    populateExistingRoutes();
 
-        supernalRoutesLyr.queryFeatures(query)
-            .then((results) => {
-                for (let f of results.features) {
-                    $("#existing-routes").append(
-                        "<calcite-list-item value='" + f.attributes.OBJECTID + "' label='" + f.attributes.route_name + "' description='Distance: " + parseFloat(f.attributes.route_distance).toFixed(2) + " nautical miles' value='test'></calcite-list-item>"
-                    )
-                }
-                $("#existing-routes")[0].loading = false;
-            });
-    });
+    function populateExistingRoutes () {
+        mapView.when(() => {
+            const query = {
+                where: "1=1",
+                outFields: ["*"]
+            };
+    
+            supernalRoutesLyr.queryFeatures(query)
+                .then((results) => {
+                    for (let f of results.features) {
+                        $("#existing-routes").append(
+                            "<calcite-list-item value='" + f.attributes.OBJECTID + "' label='" + f.attributes.route_name + "' description='Distance: " + parseFloat(f.attributes.route_distance).toFixed(2) + " nautical miles' value='test'></calcite-list-item>"
+                        )
+                    }
+                    $("#existing-routes")[0].loading = false;
+                });
+        });
+    }
 
     /********** Editing Existing Routes **********/
 
