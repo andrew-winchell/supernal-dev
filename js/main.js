@@ -724,9 +724,11 @@ require([
                 }
                 $("#edit-vertices")[0].disabled = false;
                 $("#cancel-vertices")[0].disabled = false;
+
+                console.log(pointSketchViewModel)
             }
         }
-    })
+    });
 
     $("#waypoint-table").on("input", (evt) => {
         let table = document.getElementById('waypoint-table'),
@@ -872,20 +874,17 @@ require([
 
         mapView.graphics.removeAll();
         
+        // Close modal
+        // Reset vertices, sketch, table
         $("#route-save-modal")[0].open = false;
-        
-        multipointVertices = [];
-
-        pntGraphicsLyr.removeAll();
-
+        $("#waypoint-table tbody tr").remove();
         $("#waypoint-list").css("display", "none");
-
         $("#save")[0].disabled = true;
-
+        multipointVertices = [];
+        pntGraphicsLyr.removeAll();
         pointSketchViewModel.cancel();
 
-        $("#waypoint-table tbody tr").remove();
-
+        // Repopulate existing routes list with new values after 1 second delay
         setTimeout(()=> {
             populateExistingRoutes();
         }, 1000);
