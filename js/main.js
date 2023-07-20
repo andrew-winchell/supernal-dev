@@ -724,8 +724,6 @@ require([
                 }
                 $("#edit-vertices")[0].disabled = false;
                 $("#cancel-vertices")[0].disabled = false;
-
-                console.log(pointSketchViewModel)
             }
         }
     });
@@ -759,6 +757,8 @@ require([
         }
     
         multipointVertices = newVertices;
+
+        pointSketchViewModel.createGraphic.geometry.points = multipointVertices;
 
         drawPath(multipointVertices)
     });
