@@ -624,7 +624,28 @@ require([
             layer: lineGraphicsLyr,
             view: mapView,
             creationMode: "update",
-            availableCreateTools: ["polyline"]
+            availableCreateTools: ["polyline"],
+            snappingOptions: {
+                enabled: true,
+                featureSources: [
+                    {
+                        layer: navaidsLyr,
+                        enabled: true
+                    },
+                    {
+                        layer: desPointsLyr,
+                        enabled: true
+                    },
+                    {
+                        layer: airportsLyr,
+                        enabled: true
+                    },
+                    {
+                        layer: vertiportsLyr,
+                        enabled: true
+                    }
+                ]                
+            }
         });
 
         //mapView.ui.add(sketch, { position: "top-right" });
