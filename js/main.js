@@ -699,35 +699,35 @@ require([
         mapView.focus();
         
         pointSketchViewModel.create("multipoint", {hasZ: true});
+    });
 
-        pointSketchViewModel.on("create", (evt) => {
-            if (evt.state == "complete") {
-                console.log("complete feature");
-            } else if (evt.state == "start") {
-                $("#waypoint-table tbody tr").remove();
+    pointSketchViewModel.on("create", (evt) => {
+        if (evt.state == "complete") {
+            console.log("complete feature");
+        } else if (evt.state == "start") {
+            $("#waypoint-table tbody tr").remove();
 
+            let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
+            createTableRow([coords]);
+            multipointVertices.push(coords);
+            $("#waypoint-list").css("display", "block");
+
+        } else if (evt.state == "active") {
+            if (evt.toolEventInfo.type == "vertex-add") {
                 let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
+
                 createTableRow([coords]);
                 multipointVertices.push(coords);
-                $("#waypoint-list").css("display", "block");
+                drawPath(multipointVertices);
 
-            } else if (evt.state == "active") {
-                if (evt.toolEventInfo.type == "vertex-add") {
-                    let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
-
-                    createTableRow([coords]);
-                    multipointVertices.push(coords);
-                    drawPath(multipointVertices);
-
-                    if (multipointVertices.length > 1) {
-                        $("#complete-route")[0].disabled = false;
-                    }
-                    $("#edit-vertices")[0].disabled = false;
-                    $("#cancel-vertices")[0].disabled = false;
+                if (multipointVertices.length > 1) {
+                    $("#complete-route")[0].disabled = false;
                 }
+                $("#edit-vertices")[0].disabled = false;
+                $("#cancel-vertices")[0].disabled = false;
             }
-        })
-    });
+        }
+    })
 
     $("#waypoint-table").on("input", (evt) => {
         let table = document.getElementById('waypoint-table'),
@@ -825,7 +825,7 @@ require([
         // Delete the current list of existing routes
         $("#existing-routes").empty();
 
-        // Get the user entered valeus for the route attributes
+        // Get the user entered values for the route attributes
         let rName = $("#route-name")[0].value;
         let rArrival = $("#route-arr")[0].value;
         let rDepart = $("#route-dep")[0].value;
