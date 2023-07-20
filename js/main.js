@@ -811,7 +811,7 @@ require([
     $("#complete-route").on("click", (evt) => {
         evt.currentTarget.disabled = true;
         pointSketchViewModel.complete();
-        $("#save-route")[0].disabled = false;
+        $("#save")[0].disabled = false;
         $("#edit-vertices")[0].disabled = true;
         $("#cancel-vertices")[0].disabled = true;
     });
@@ -879,7 +879,7 @@ require([
         $("#waypoints").empty();
         $("#waypoint-list").css("display", "none");
 
-        $("#save-route")[0].disabled = true;
+        $("#save")[0].disabled = true;
     }); 
 
     /********** Layer Filtering Capabilities **********/
