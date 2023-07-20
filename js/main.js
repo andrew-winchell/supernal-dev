@@ -883,6 +883,8 @@ require([
         $("#waypoint-list").css("display", "none");
 
         $("#save")[0].disabled = true;
+        
+        pointSketchViewModel.destroy();
 
         setTimeout(()=> {
             populateExistingRoutes();
