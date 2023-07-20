@@ -619,6 +619,17 @@ require([
 
     mapView.ui.add(switchBtn, { position: "bottom-left" });
 
+    mapView.when(() => {
+        const sketch = new Sketch ({
+            layer: lineGraphicsLyr,
+            view: mapView,
+            creationMode: "update",
+            availableCreateTools: ["polyline"]
+        });
+
+        mapView.ui.add(sketch, { position: "top-right" });
+    })
+
     /********** Route Creation Tool **********/
 
     // Drawing variables
