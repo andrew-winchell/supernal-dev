@@ -884,7 +884,7 @@ require([
 
         $("#save")[0].disabled = true;
 
-        pointSketchViewModel.delete()
+        pointSketchViewModel.cancel()
 
         setTimeout(()=> {
             populateExistingRoutes();
