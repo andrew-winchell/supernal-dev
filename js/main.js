@@ -731,6 +731,8 @@ require([
     $("#waypoint-table").on("input", (evt) => {
         console.log(evt);
 
+        // Check if cell values are decimals
+        // true = green & false = red
         if (parseFloat(evt.target.innerHTML)) {
             evt.target.bgColor = "#C6EFCE";
         } else {
@@ -892,7 +894,15 @@ require([
         setTimeout(()=> {
             populateExistingRoutes();
         }, 1000);
-    }); 
+    });
+
+    $("#cancel-vertices").on("click", (evt) => {
+        pointSketchViewModel.cancel();
+        multipointVertices = [];
+        $("#waypoint-table tbody tr").remove();
+        $("#waypoint-list").css("display", "none");
+        $("#save")[0].disabled = true;
+    })
 
     /********** Layer Filtering Capabilities **********/
 
