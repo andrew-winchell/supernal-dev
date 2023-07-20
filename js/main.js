@@ -903,7 +903,7 @@ require([
         $("#waypoint-list").css("display", "none");
         $("#save")[0].disabled = true;
         $("#complete-route")[0].disabled = true;
-        $("#vertex-edit")[0].disabled = true;
+        $("#edit-vertices")[0].disabled = true;
         $("#cancel-vertices")[0].disabled = true;
         mapView.graphics.removeAll();
     })
