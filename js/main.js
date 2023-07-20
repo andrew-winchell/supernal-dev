@@ -693,13 +693,13 @@ require([
     // Open Creator Toolbar
     $("#create-route").on("click", () => {
         $("#route-toolbar").css("display", "block");
+        $("#add-route-vertices")[0].disabled = false;
     });
 
     $("#add-route-vertices").on("click", () => {
         mapView.focus();
         pointSketchViewModel.create("multipoint", {hasZ: true});
-        mapView.graphics.removeAll();
-        multipointVertices = [];
+        $("#add-route-vertices")[0].disabled = true;
     });
 
     pointSketchViewModel.on("create", (evt) => {
@@ -888,6 +888,7 @@ require([
         $("#waypoint-table tbody tr").remove();
         $("#waypoint-list").css("display", "none");
         $("#save")[0].disabled = true;
+        $("#route-toolbar").css("display", "none");
         multipointVertices = [];
         pntGraphicsLyr.removeAll();
         pointSketchViewModel.cancel();
