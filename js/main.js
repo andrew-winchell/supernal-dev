@@ -732,9 +732,9 @@ require([
         console.log(evt);
 
         if (parseFloat(evt.target.innerHTML)) {
-            evt.target.bgColor = "lightgreen";
+            evt.target.bgColor = "#C6EFCE";
         } else {
-            evt.target.bgColor = "lightred";
+            evt.target.bgColor = "#FFC7CE";
         }
 
         let table = document.getElementById('waypoint-table'),
