@@ -627,7 +627,7 @@ require([
             availableCreateTools: ["polyline"]
         });
 
-        mapView.ui.add(sketch, { position: "top-right" });
+        //mapView.ui.add(sketch, { position: "top-right" });
     })
 
     /********** Route Creation Tool **********/
