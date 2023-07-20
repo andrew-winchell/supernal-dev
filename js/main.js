@@ -1185,7 +1185,7 @@ require([
 
     let selectedFeature,
         editor;
-        
+
     populateExistingRoutes();
 
     function populateExistingRoutes () {
@@ -1435,6 +1435,7 @@ require([
         reactiveUtils.when(
             () => editor.viewModel.state === "ready",
             () => {
+                populateExistingRoutes();
                 mapView.ui.remove(editor);
                 mapView.popup.open({
                     features: [selectedFeature],
