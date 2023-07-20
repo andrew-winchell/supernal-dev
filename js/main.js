@@ -731,6 +731,8 @@ require([
     $("#waypoint-table").on("input", (evt) => {
         console.log(evt);
 
+        evt.target.bgColor = "lightgreen";
+
         let table = document.getElementById('waypoint-table'),
             rows = table.getElementsByTagName("tr"),
             newVertices = [],
