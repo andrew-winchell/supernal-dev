@@ -1334,7 +1334,7 @@ require([
 
         supernalRoutesLyr
             .applyEdits(edits)
-            .then((results) => {
+            .then(() => {
                 const query = {
                     where: "OBJECTID = " + objectId,
                     outFields: ["*"],
