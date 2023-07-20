@@ -884,9 +884,7 @@ require([
 
         $("#save")[0].disabled = true;
 
-        pointSketchViewModel.delete();
-        
-        $("#waypoint-table tbody tr").remove();
+        pointSketchViewModel.delete()
 
         setTimeout(()=> {
             populateExistingRoutes();
