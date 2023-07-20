@@ -1363,6 +1363,7 @@ require([
         supernalRoutesLyr
             .applyEdits(edits)
             .then(() => {
+                $("#existing-routes").empty();
                 const query = {
                     where: "OBJECTID = " + objectId,
                     outFields: ["*"],
@@ -1395,6 +1396,23 @@ require([
                                 }
                             });
                     });
+
+                    const query2 = {
+                        where: "1=1",
+                        outFields: ["*"],
+                        returnGeometry: true,
+                        returnZ: true
+                    };
+
+                    supernalRoutesLyr.queryFeatures(query2)
+                        .then((results) => {
+                            for (let f of results.features) {
+                                $("#existing-routes").append(
+                                    "<calcite-list-item value='" + f.attributes.OBJECTID + "' label='" + f.attributes.route_name + "' description='Distance: " + parseFloat(f.attributes.route_distance).toFixed(2) + " nautical miles' value='test'></calcite-list-item>"
+                                )
+                            }
+                            $("#existing-routes")[0].loading = false;
+                        });
             });
         
         $("#confirm-route").css("display", "none");
