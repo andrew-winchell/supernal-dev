@@ -1466,14 +1466,6 @@ require([
       }
     );
 
-    supernalRoutesLyr.on("apply-edits", () => {
-        mapView.ui.remove(editor);
-        editor.viewModel.cancelWorkflow();
-        drawPath(selectedFeature.geometry.paths);
-        selectedFeatureTable(selectedFeature.geometry.paths)
-        
-    });
-
     /********** Elevation Profile Widget **********/
 
     const elevationProfile = new ElevationProfile({
