@@ -906,6 +906,7 @@ require([
         $("#edit-vertices")[0].disabled = true;
         $("#cancel-vertices")[0].disabled = true;
         mapView.graphics.removeAll();
+        elevationProfile.input = "";
     })
 
     /********** Layer Filtering Capabilities **********/
