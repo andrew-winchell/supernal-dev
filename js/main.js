@@ -1565,7 +1565,7 @@ require([
     supernalRoutesLyr.on("apply-edits", (evt) => {
         editor.viewModel.cancelWorkflow();
 
-        if (event.edits.addFeatures) {
+        if (evt.edits.addFeatures) {
             // Delete the current list of existing routes
             $("#existing-routes").empty();
             // Repopulate existing routes list with new values after 1 second delay
