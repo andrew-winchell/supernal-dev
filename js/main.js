@@ -1533,6 +1533,11 @@ require([
         mapView.ui.remove(editor);
         drawPath(selectedFeature.geometry.paths);
         selectedFeatureTable(selectedFeature.geometry.paths)
+
+        // Repopulate existing routes list with new values after 1 second delay
+        setTimeout(()=> {
+            populateExistingRoutes();
+        }, 1000);
     });
 
     /********** Elevation Profile Widget **********/
