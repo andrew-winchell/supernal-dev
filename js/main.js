@@ -970,6 +970,7 @@ require([
     const pointSketchViewModel = new SketchViewModel ({
         layer: pntGraphicsLyr,
         view: mapView,
+        updateOnGraphicClick: true,
         pointSymbol: {
             type: "simple-marker",
             style: "circle",
