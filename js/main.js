@@ -828,7 +828,9 @@ require([
         $("#route-save-modal")[0].open = true;
     });
 
-    $("#route-save").on("click", (evt) => {v
+    $("#route-save").on("click", (evt) => {
+        // Delete the current list of existing routes
+        $("#existing-routes").empty();
 
         // Get the user entered values for the route attributes
         let rName = $("#route-name")[0].value;
@@ -1527,14 +1529,15 @@ require([
       }
     );
     
+    
     supernalRoutesLyr.on("apply-edits", () => {
         mapView.ui.remove(editor);
+        editor.viewModel.cancelWorkflow();
         drawPath(selectedFeature.geometry.paths);
-        selectedFeatureTable(selectedFeature.geometry.paths)
+        selectedFeatureTable(selectedFeature.geometry.paths);
 
         // Delete the current list of existing routes
         $("#existing-routes").empty();
-        
         // Repopulate existing routes list with new values after 1 second delay
         setTimeout(()=> {
             populateExistingRoutes();
