@@ -1027,6 +1027,8 @@ require([
             createTableRow([coords]);
             multipointVertices.push(coords);
             $("#waypoint-list").css("display", "block");
+            $("#edit-vertices")[0].disabled = false;
+            $("#cancel-vertices")[0].disabled = false;
 
         } else if (evt.state == "active") {
             if (evt.toolEventInfo.type == "vertex-add") {
@@ -1039,8 +1041,6 @@ require([
                 if (multipointVertices.length > 1) {
                     $("#complete-route")[0].disabled = false;
                 }
-                //$("#edit-vertices")[0].disabled = false;
-                $("#cancel-vertices")[0].disabled = false;
             }
         }
     });
