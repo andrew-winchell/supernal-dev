@@ -970,7 +970,6 @@ require([
     const pointSketchViewModel = new SketchViewModel ({
         layer: pntGraphicsLyr,
         view: mapView,
-        updateOnGraphicClick: true,
         pointSymbol: {
             type: "simple-marker",
             style: "circle",
@@ -1014,10 +1013,6 @@ require([
         $("#add-route-vertices")[0].disabled = true;
     });
 
-    $("#edit-vertices").on("click", (evt) => {
-        pointSketchViewModel.update(pntGraphicsLyr.graphics);
-    })
-
     pointSketchViewModel.on("create", (evt) => {
         if (evt.state == "complete") {
             console.log("complete feature");
@@ -1028,8 +1023,6 @@ require([
             createTableRow([coords]);
             multipointVertices.push(coords);
             $("#waypoint-list").css("display", "block");
-            $("#edit-vertices")[0].disabled = false;
-            $("#cancel-vertices")[0].disabled = false;
 
         } else if (evt.state == "active") {
             if (evt.toolEventInfo.type == "vertex-add") {
@@ -1042,6 +1035,8 @@ require([
                 if (multipointVertices.length > 1) {
                     $("#complete-route")[0].disabled = false;
                 }
+                //$("#edit-vertices")[0].disabled = false;
+                $("#cancel-vertices")[0].disabled = false;
             }
         }
     });
@@ -1580,6 +1575,7 @@ require([
             populateExistingRoutes();
         }, 1000);
     });
+
 
     /********** Elevation Profile Widget **********/
 
