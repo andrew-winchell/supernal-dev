@@ -829,6 +829,9 @@ require([
     });
 
     $("#route-save").on("click", (evt) => {
+        // Delete the current list of existing routes
+        $("#existing-routes").empty();
+
         // Get the user entered values for the route attributes
         let rName = $("#route-name")[0].value;
         let rArrival = $("#route-arr")[0].value;
@@ -888,8 +891,6 @@ require([
         pntGraphicsLyr.removeAll();
         pointSketchViewModel.cancel();
 
-        // Delete the current list of existing routes
-        $("#existing-routes").empty();
         // Repopulate existing routes list with new values after 1 second delay
         setTimeout(()=> {
             populateExistingRoutes();
@@ -1527,6 +1528,7 @@ require([
         }
       }
     );
+    
     
     supernalRoutesLyr.on("apply-edits", () => {
         mapView.ui.remove(editor);
