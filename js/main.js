@@ -1572,11 +1572,25 @@ require([
             setTimeout(()=> {
                 populateExistingRoutes();
             }, 1000);
-        } else {
-            console.log(evt);
+        } else if (evt.edits.updateFeatures) {
             mapView.ui.remove(editor);
             drawPath(selectedFeature.geometry.paths);
             selectedFeatureTable(selectedFeature.geometry.paths);
+            // Delete the current list of existing routes
+            $("#existing-routes").empty();
+            // Repopulate existing routes list with new values after 1 second delay
+            setTimeout(()=> {
+                populateExistingRoutes();
+            }, 10);
+        } else {
+            console.log(evt);
+            mapView.ui.remove(editor);
+            // Delete the current list of existing routes
+            $("#existing-routes").empty();
+            // Repopulate existing routes list with new values after 1 second delay
+            setTimeout(()=> {
+                populateExistingRoutes();
+            }, 10
         }
     });
 
