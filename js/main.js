@@ -767,8 +767,6 @@ require([
         }
     
         multipointVertices = newVertices;
-
-        drawPath(multipointVertices)
     });
 
     function createTableRow (vertice) {
@@ -877,7 +875,7 @@ require([
             .then((results) => {
                 objectId = results.addFeatureResults[0].objectId;
                 selectExistingRoute(objectId);
-                
+
                 mapView.graphics.removeAll();
 
                 $("#route-name")[0].value = "";
