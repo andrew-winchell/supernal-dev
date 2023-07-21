@@ -1562,7 +1562,6 @@ require([
       }
     );
     
-    /*
     supernalRoutesLyr.on("apply-edits", () => {
         mapView.ui.remove(editor);
         editor.viewModel.cancelWorkflow();
@@ -1576,7 +1575,6 @@ require([
             populateExistingRoutes();
         }, 1000);
     });
-    */
 
     /********** Elevation Profile Widget **********/
 
