@@ -1562,7 +1562,8 @@ require([
       }
     );
     
-    supernalRoutesLyr.on("apply-edits", () => {
+    supernalRoutesLyr.on("apply-edits", (evt) => {
+        console.log(evt);
         mapView.ui.remove(editor);
         editor.viewModel.cancelWorkflow();
         drawPath(selectedFeature.geometry.paths);
