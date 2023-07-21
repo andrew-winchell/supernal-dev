@@ -731,11 +731,9 @@ require([
     });
 
     $("#waypoint-table").on("input", (evt) => {
-        console.log(evt);
-
         // Check if cell values are decimals
         // true = green & false = red
-        if (parseFloat(evt.target.innerHTML)) {
+        if (parseFloat(evt.target.innerHTML) >=0 ) {
             evt.target.bgColor = "#C6EFCE";
         } else {
             evt.target.bgColor = "#FFC7CE";
