@@ -1078,6 +1078,24 @@ require([
         }
     
         multipointVertices = newVertices;
+
+        let polyline = new Polyline ({
+            hasZ: true,
+            spatialReference: mapView.spatialReference,
+            paths: multipointVertices
+        });
+    
+        const graphic = new Graphic ({
+            geometry: polyline,
+            symbol: {
+                type: "simple-line",
+                color: "#008b8b",
+                width: "3",
+                style: "short-dash"
+            }
+        });
+
+        elevationProfile.input = graphic;
     });
 
     function createTableRow (vertice) {
