@@ -1531,7 +1531,12 @@ require([
     
     // If popup is closed via X button
     reactiveUtils.when(
-        () => !mapView.popup?.visible,
+        () => mapView.popup,
+        "trigger-action",
+        (event) => {
+            console.log(event);
+        }
+        /*() => !mapView.popup?.visible,
         () => {
             // Hide any routes
             supernalRoutesLyr.definitionExpression = "1=0";
@@ -1544,7 +1549,7 @@ require([
             elevationProfile.input = null;
             // Close Vertices Table
             $("#waypoint-list").css("display", "none");
-        }
+        }*/
     );
     
     supernalRoutesLyr.on("apply-edits", () => {
