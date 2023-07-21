@@ -875,6 +875,7 @@ require([
         supernalRoutesLyr
             .applyEdits(edits)
             .then((results) => {
+                console.log(results);
                 mapView.graphics.removeAll();
 
                 $("#route-name")[0].value = "";
