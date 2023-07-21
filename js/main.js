@@ -649,271 +649,6 @@ require([
         });
 
         //mapView.ui.add(sketch, { position: "top-right" });
-    })
-
-    /********** Route Creation Tool **********/
-
-    // Drawing variables
-    let multipointVertices = [];
-
-    const pointSketchViewModel = new SketchViewModel ({
-        layer: pntGraphicsLyr,
-        view: mapView,
-        pointSymbol: {
-            type: "simple-marker",
-            style: "circle",
-            color: "blue",
-            size: "8px"
-        },
-        snappingOptions: {
-            enabled: true,
-            featureSources: [
-                {
-                    layer: navaidsLyr,
-                    enabled: true
-                },
-                {
-                    layer: desPointsLyr,
-                    enabled: true
-                },
-                {
-                    layer: airportsLyr,
-                    enabled: true
-                },
-                {
-                    layer: vertiportsLyr,
-                    enabled: true
-                }
-            ]
-        },
-        labelOptions: { enabled: true },
-        tooltipOptions: { enabled: true }
-    });
-
-    // Open Creator Toolbar
-    $("#create-route").on("click", () => {
-        $("#route-toolbar").css("display", "block");
-        $("#add-route-vertices")[0].disabled = false;
-    });
-
-    $("#add-route-vertices").on("click", () => {
-        mapView.focus();
-        pointSketchViewModel.create("multipoint", {hasZ: true});
-        $("#add-route-vertices")[0].disabled = true;
-    });
-
-    pointSketchViewModel.on("create", (evt) => {
-        if (evt.state == "complete") {
-            console.log("complete feature");
-        } else if (evt.state == "start") {
-            $("#waypoint-table tbody tr").remove();
-
-            let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
-            createTableRow([coords]);
-            multipointVertices.push(coords);
-            $("#waypoint-list").css("display", "block");
-
-        } else if (evt.state == "active") {
-            if (evt.toolEventInfo.type == "vertex-add") {
-                let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
-
-                createTableRow([coords]);
-                multipointVertices.push(coords);
-                drawPath(multipointVertices);
-
-                if (multipointVertices.length > 1) {
-                    $("#complete-route")[0].disabled = false;
-                }
-                //$("#edit-vertices")[0].disabled = false;
-                $("#cancel-vertices")[0].disabled = false;
-            }
-        }
-    });
-
-    $("#waypoint-table").on("input", (evt) => {
-        // Check if cell values are decimals
-        // true = green & false = red
-        if (parseFloat(evt.target.innerHTML) >=0 ) {
-            evt.target.bgColor = "#C6EFCE";
-        } else {
-            evt.target.bgColor = "#FFC7CE";
-        }
-
-        let table = document.getElementById('waypoint-table'),
-            rows = table.getElementsByTagName("tr"),
-            newVertices = [],
-            i, j, cells;
-
-        for (i=0, j=rows.length; i<j; ++i) {
-            cells = rows[i].getElementsByTagName("td");
-            if (!cells.length) {
-                continue;
-            }
-            
-            let long = cells[1].innerHTML,
-                lat = cells[2].innerHTML,
-                alt = cells[3].innerHTML;
-            
-            let point = new Point ({
-                latitude: lat,
-                longitude: long,
-                z: alt/3.281,
-                spatialReference: 3857
-            });
-
-            let coord = [point.x, point.y, point.z];
-
-            newVertices.push(coord);
-        }
-    
-        multipointVertices = newVertices;
-    });
-
-    function createTableRow (vertice) {
-        let multipoint = new Multipoint ({
-            points: vertice,
-            spatialReference: mapView.spatialReference
-        });
-
-        let mapPt = multipoint.getPoint(0);
-
-        let nextRow = $("#waypoint-table tbody")[0].insertRow(-1);
-        let nextVert = nextRow.insertCell(0);
-        let nextX = nextRow.insertCell(1);
-        let nextY = nextRow.insertCell(2);
-        let nextZ = nextRow.insertCell(3);
-
-        nextVert.innerHTML = nextRow.rowIndex
-        nextX.innerHTML = mapPt.longitude.toFixed(4);
-        nextY.innerHTML = mapPt.latitude.toFixed(4);
-        nextZ.innerHTML = (mapPt.z * 3.281).toFixed(0);
-        nextZ.setAttribute("contentEditable", "true");
-    }
-
-    function drawPath (vertices) {
-        mapView.graphics.removeAll();
-
-        let polyline = new Polyline ({
-            hasZ: true,
-            spatialReference: mapView.spatialReference,
-            paths: vertices
-        });
-    
-        const graphic = new Graphic ({
-            geometry: polyline,
-            symbol: {
-                type: "simple-line",
-                color: "#008b8b",
-                width: "3",
-                style: "short-dash"
-            }
-        });
-
-        mapView.graphics.add(graphic);
-        elevationProfile.input = graphic;
-    } 
-
-    $("#complete-route").on("click", (evt) => {
-        evt.currentTarget.disabled = true;
-        pointSketchViewModel.complete();
-        $("#save")[0].disabled = false;
-        $("#edit-vertices")[0].disabled = true;
-        $("#cancel-vertices")[0].disabled = true;
-    });
-
-    // Open Save Route modal to enter attributes and push route to layer
-    $("#save").on("click", (evt) => {
-        $("#route-save-modal")[0].open = true;
-    });
-
-    $("#route-save").on("click", (evt) => {
-        // Delete the current list of existing routes
-        $("#existing-routes").empty();
-
-        // Get the user entered values for the route attributes
-        let rName = $("#route-name")[0].value;
-        let rArrival = $("#route-arr")[0].value;
-        let rDepart = $("#route-dep")[0].value;
-
-        let path = [];
-
-        let multipoint = new Multipoint ({
-            points: multipointVertices,
-            spatialReference: mapView.spatialReference
-        });
-
-        for (let i=0; i<multipoint.points.length; i++) {
-            let mapPt = multipoint.getPoint(i);
-            let coords = [mapPt.longitude, mapPt.latitude, mapPt.z];
-            path.push(coords);
-        }
-
-        let polyline = {
-            type: "polyline",
-            paths: path
-        };
-
-        let polylineGraphic = new Graphic ({
-            geometry: polyline,
-            attributes: {
-                "route_name": rName,
-                "departing_fac": rDepart,
-                "arriving_facility": rArrival
-            }
-        });
-
-        let rDistance = geometryEngine.geodesicLength(polylineGraphic.geometry, "nautical-miles");
-
-        polylineGraphic.attributes["route_distance"] = rDistance
-
-        const edits = {
-            addFeatures: [polylineGraphic]
-        };
-
-        supernalRoutesLyr
-            .applyEdits(edits)
-            .then((results) => {
-                objectId = results.addFeatureResults[0].objectId;
-                selectExistingRoute(objectId);
-
-                mapView.graphics.removeAll();
-
-                $("#route-name")[0].value = "";
-                $("#route-arr")[0].value = "";
-                $("#route-dep")[0].value = "";
-                
-                // Close modal
-                // Reset vertices, sketch, table
-                $("#route-save-modal")[0].open = false;
-                $("#waypoint-table tbody tr").remove();
-                $("#waypoint-list").css("display", "none");
-                $("#save")[0].disabled = true;
-                $("#route-toolbar").css("display", "none");
-                multipointVertices = [];
-                pntGraphicsLyr.removeAll();
-                pointSketchViewModel.cancel();
-
-                // Repopulate existing routes list with new values after 1 second delay
-                setTimeout(()=> {
-                    populateExistingRoutes();
-                }, 1000);
-            });
-    });
-
-    // Cancel Create Route
-    $("#cancel-vertices").on("click", (evt) => {
-        pointSketchViewModel.cancel();
-        multipointVertices = [];
-        $("#waypoint-table tbody tr").remove(); // remove table rows
-        $("#waypoint-list").css("display", "none"); // hide table
-        // reset route toolbar buttons
-        $("#save")[0].disabled = true;
-        $("#complete-route")[0].disabled = true;
-        $("#edit-vertices")[0].disabled = true;
-        $("#cancel-vertices")[0].disabled = true;
-        $("#add-route-vertices")[0].disabled = false;
-        mapView.graphics.removeAll(); // remove incomplete route
-        elevationProfile.input = null; // clear elevation profile graphic
     });
 
     /********** Layer Filtering Capabilities **********/
@@ -1225,6 +960,271 @@ require([
                 }
             })
         }
+    });
+    
+    /********** Route Creation Tool **********/
+
+    // Drawing variables
+    let multipointVertices = [];
+
+    const pointSketchViewModel = new SketchViewModel ({
+        layer: pntGraphicsLyr,
+        view: mapView,
+        pointSymbol: {
+            type: "simple-marker",
+            style: "circle",
+            color: "blue",
+            size: "8px"
+        },
+        snappingOptions: {
+            enabled: true,
+            featureSources: [
+                {
+                    layer: navaidsLyr,
+                    enabled: true
+                },
+                {
+                    layer: desPointsLyr,
+                    enabled: true
+                },
+                {
+                    layer: airportsLyr,
+                    enabled: true
+                },
+                {
+                    layer: vertiportsLyr,
+                    enabled: true
+                }
+            ]
+        },
+        labelOptions: { enabled: true },
+        tooltipOptions: { enabled: true }
+    });
+
+    // Open Creator Toolbar
+    $("#create-route").on("click", () => {
+        $("#route-toolbar").css("display", "block");
+        $("#add-route-vertices")[0].disabled = false;
+    });
+
+    $("#add-route-vertices").on("click", () => {
+        mapView.focus();
+        pointSketchViewModel.create("multipoint", {hasZ: true});
+        $("#add-route-vertices")[0].disabled = true;
+    });
+
+    pointSketchViewModel.on("create", (evt) => {
+        if (evt.state == "complete") {
+            console.log("complete feature");
+        } else if (evt.state == "start") {
+            $("#waypoint-table tbody tr").remove();
+
+            let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
+            createTableRow([coords]);
+            multipointVertices.push(coords);
+            $("#waypoint-list").css("display", "block");
+
+        } else if (evt.state == "active") {
+            if (evt.toolEventInfo.type == "vertex-add") {
+                let coords = [evt.toolEventInfo.added[0][0], evt.toolEventInfo.added[0][1], 0];
+
+                createTableRow([coords]);
+                multipointVertices.push(coords);
+                drawPath(multipointVertices);
+
+                if (multipointVertices.length > 1) {
+                    $("#complete-route")[0].disabled = false;
+                }
+                //$("#edit-vertices")[0].disabled = false;
+                $("#cancel-vertices")[0].disabled = false;
+            }
+        }
+    });
+
+    $("#waypoint-table").on("input", (evt) => {
+        // Check if cell values are decimals
+        // true = green & false = red
+        if (parseFloat(evt.target.innerHTML) >=0 ) {
+            evt.target.bgColor = "#C6EFCE";
+        } else {
+            evt.target.bgColor = "#FFC7CE";
+        }
+
+        let table = document.getElementById('waypoint-table'),
+            rows = table.getElementsByTagName("tr"),
+            newVertices = [],
+            i, j, cells;
+
+        for (i=0, j=rows.length; i<j; ++i) {
+            cells = rows[i].getElementsByTagName("td");
+            if (!cells.length) {
+                continue;
+            }
+            
+            let long = cells[1].innerHTML,
+                lat = cells[2].innerHTML,
+                alt = cells[3].innerHTML;
+            
+            let point = new Point ({
+                latitude: lat,
+                longitude: long,
+                z: alt/3.281,
+                spatialReference: 3857
+            });
+
+            let coord = [point.x, point.y, point.z];
+
+            newVertices.push(coord);
+        }
+    
+        multipointVertices = newVertices;
+    });
+
+    function createTableRow (vertice) {
+        let multipoint = new Multipoint ({
+            points: vertice,
+            spatialReference: mapView.spatialReference
+        });
+
+        let mapPt = multipoint.getPoint(0);
+
+        let nextRow = $("#waypoint-table tbody")[0].insertRow(-1);
+        let nextVert = nextRow.insertCell(0);
+        let nextX = nextRow.insertCell(1);
+        let nextY = nextRow.insertCell(2);
+        let nextZ = nextRow.insertCell(3);
+
+        nextVert.innerHTML = nextRow.rowIndex
+        nextX.innerHTML = mapPt.longitude.toFixed(4);
+        nextY.innerHTML = mapPt.latitude.toFixed(4);
+        nextZ.innerHTML = (mapPt.z * 3.281).toFixed(0);
+        nextZ.setAttribute("contentEditable", "true");
+    }
+
+    function drawPath (vertices) {
+        mapView.graphics.removeAll();
+
+        let polyline = new Polyline ({
+            hasZ: true,
+            spatialReference: mapView.spatialReference,
+            paths: vertices
+        });
+    
+        const graphic = new Graphic ({
+            geometry: polyline,
+            symbol: {
+                type: "simple-line",
+                color: "#008b8b",
+                width: "3",
+                style: "short-dash"
+            }
+        });
+
+        mapView.graphics.add(graphic);
+        elevationProfile.input = graphic;
+    } 
+
+    $("#complete-route").on("click", (evt) => {
+        evt.currentTarget.disabled = true;
+        pointSketchViewModel.complete();
+        $("#save")[0].disabled = false;
+        $("#edit-vertices")[0].disabled = true;
+        $("#cancel-vertices")[0].disabled = true;
+    });
+
+    // Open Save Route modal to enter attributes and push route to layer
+    $("#save").on("click", (evt) => {
+        $("#route-save-modal")[0].open = true;
+    });
+
+    $("#route-save").on("click", (evt) => {
+        // Delete the current list of existing routes
+        $("#existing-routes").empty();
+
+        // Get the user entered values for the route attributes
+        let rName = $("#route-name")[0].value;
+        let rArrival = $("#route-arr")[0].value;
+        let rDepart = $("#route-dep")[0].value;
+
+        let path = [];
+
+        let multipoint = new Multipoint ({
+            points: multipointVertices,
+            spatialReference: mapView.spatialReference
+        });
+
+        for (let i=0; i<multipoint.points.length; i++) {
+            let mapPt = multipoint.getPoint(i);
+            let coords = [mapPt.longitude, mapPt.latitude, mapPt.z];
+            path.push(coords);
+        }
+
+        let polyline = {
+            type: "polyline",
+            paths: path
+        };
+
+        let polylineGraphic = new Graphic ({
+            geometry: polyline,
+            attributes: {
+                "route_name": rName,
+                "departing_fac": rDepart,
+                "arriving_facility": rArrival
+            }
+        });
+
+        let rDistance = geometryEngine.geodesicLength(polylineGraphic.geometry, "nautical-miles");
+
+        polylineGraphic.attributes["route_distance"] = rDistance
+
+        const edits = {
+            addFeatures: [polylineGraphic]
+        };
+
+        supernalRoutesLyr
+            .applyEdits(edits)
+            .then((results) => {
+                objectId = results.addFeatureResults[0].objectId;
+                selectExistingRoute(objectId);
+
+                mapView.graphics.removeAll();
+
+                $("#route-name")[0].value = "";
+                $("#route-arr")[0].value = "";
+                $("#route-dep")[0].value = "";
+                
+                // Close modal
+                // Reset vertices, sketch, table
+                $("#route-save-modal")[0].open = false;
+                $("#waypoint-table tbody tr").remove();
+                $("#waypoint-list").css("display", "none");
+                $("#save")[0].disabled = true;
+                $("#route-toolbar").css("display", "none");
+                multipointVertices = [];
+                pntGraphicsLyr.removeAll();
+                pointSketchViewModel.cancel();
+
+                // Repopulate existing routes list with new values after 1 second delay
+                setTimeout(()=> {
+                    populateExistingRoutes();
+                }, 1000);
+            });
+    });
+
+    // Cancel Create Route
+    $("#cancel-vertices").on("click", (evt) => {
+        pointSketchViewModel.cancel();
+        multipointVertices = [];
+        $("#waypoint-table tbody tr").remove(); // remove table rows
+        $("#waypoint-list").css("display", "none"); // hide table
+        // reset route toolbar buttons
+        $("#save")[0].disabled = true;
+        $("#complete-route")[0].disabled = true;
+        $("#edit-vertices")[0].disabled = true;
+        $("#cancel-vertices")[0].disabled = true;
+        $("#add-route-vertices")[0].disabled = false;
+        mapView.graphics.removeAll(); // remove incomplete route
+        elevationProfile.input = null; // clear elevation profile graphic
     });
 
     /********** Pointer Hover X/Y/Z Coordinates **********/
