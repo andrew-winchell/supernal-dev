@@ -1213,6 +1213,10 @@ require([
 
     // Cancel Create Route
     $("#cancel-vertices").on("click", (evt) => {
+        cancelRouteCreation();
+    });
+
+    function cancelRouteCreation () {
         pointSketchViewModel.cancel();
         multipointVertices = [];
         $("#waypoint-table tbody tr").remove(); // remove table rows
@@ -1225,7 +1229,7 @@ require([
         $("#add-route-vertices")[0].disabled = false;
         mapView.graphics.removeAll(); // remove incomplete route
         elevationProfile.input = null; // clear elevation profile graphic
-    });
+    }
 
     /********** Pointer Hover X/Y/Z Coordinates **********/
 
@@ -1314,6 +1318,7 @@ require([
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
         if (editor.viewModel.state !== "editing-existing-feature") {
             objectId = evt.target.value;
+            cancelRouteCreation();
             selectExistingRoute(objectId);
         }
     });
