@@ -1221,7 +1221,8 @@ require([
         multipointVertices = [];
         $("#waypoint-table tbody tr").remove(); // remove table rows
         $("#waypoint-list").css("display", "none"); // hide table
-        // reset route toolbar buttons
+        // reset route toolbar buttons and hide
+        $("#route-toolbar").css("display", "none");
         $("#save")[0].disabled = true;
         $("#complete-route")[0].disabled = true;
         $("#edit-vertices")[0].disabled = true;
