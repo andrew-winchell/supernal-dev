@@ -875,7 +875,9 @@ require([
         supernalRoutesLyr
             .applyEdits(edits)
             .then((results) => {
-                console.log(results);
+                objectId = results.addFeatureResults[0].objectId;
+                selectExistingRoute(objectId);
+                
                 mapView.graphics.removeAll();
 
                 $("#route-name")[0].value = "";
@@ -1275,42 +1277,46 @@ require([
 
     let objectId;
 
+    function selectExistingRoute (objectId) {
+        const query = {
+            where: "OBJECTID = " + objectId,
+            outFields: ["*"],
+            returnGeometry: true,
+            returnZ: true
+        };
+
+        supernalRoutesLyr.queryFeatures(query)
+            .then((results) => {
+                selectedFeature = results.features[0];
+                mapView
+                    .goTo(selectedFeature.geometry.extent.expand(2))
+                    .then(() => {
+                        supernalRoutesLyr.definitionExpression = "OBJECTID = " + objectId;
+                        $("#waypoint-list").css("display", "block");
+                        selectedFeatureTable(selectedFeature.geometry.paths);
+                        selectedFeatureProfile(selectedFeature.geometry.paths);
+                        mapView.popup.dockEnabled = true;
+                        mapView.popup.set("dockOptions", {
+                            position: "bottom-right",
+                            buttonEnabled: false
+                        });
+                        mapView.popup.open({
+                            features: [selectedFeature]
+                        });
+                    })
+                    .catch((error) => {
+                        if (error.name != "AbortError") {
+                            console.log(error);
+                        }
+                    });
+            });
+
+    }
+
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
         if (editor.viewModel.state !== "editing-existing-feature") {
             objectId = evt.target.value;
-
-            const query = {
-                where: "OBJECTID = " + objectId,
-                outFields: ["*"],
-                returnGeometry: true,
-                returnZ: true
-            };
-
-            supernalRoutesLyr.queryFeatures(query)
-                .then((results) => {
-                    selectedFeature = results.features[0];
-                    mapView
-                        .goTo(selectedFeature.geometry.extent.expand(2))
-                        .then(() => {
-                            supernalRoutesLyr.definitionExpression = "OBJECTID = " + objectId;
-                            $("#waypoint-list").css("display", "block");
-                            selectedFeatureTable(selectedFeature.geometry.paths);
-                            selectedFeatureProfile(selectedFeature.geometry.paths);
-                            mapView.popup.dockEnabled = true;
-                            mapView.popup.set("dockOptions", {
-                                position: "bottom-right",
-                                buttonEnabled: false
-                            });
-                            mapView.popup.open({
-                                features: [selectedFeature]
-                            });
-                        })
-                        .catch((error) => {
-                            if (error.name != "AbortError") {
-                                console.log(error);
-                            }
-                        });
-                });
+            selectExistingRoute(objectId);
         }
     });
 
