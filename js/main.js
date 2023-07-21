@@ -1529,7 +1529,7 @@ require([
       }
     );
     
-    when(
+    reactiveUtils.when(
         () => !mapView.popup?.visible,
         () => {
             supernalRoutesLyr.definitionExpression = "1=0";
