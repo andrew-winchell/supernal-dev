@@ -828,9 +828,7 @@ require([
         $("#route-save-modal")[0].open = true;
     });
 
-    $("#route-save").on("click", (evt) => {
-        // Delete the current list of existing routes
-        $("#existing-routes").empty();
+    $("#route-save").on("click", (evt) => {v
 
         // Get the user entered values for the route attributes
         let rName = $("#route-name")[0].value;
@@ -1534,6 +1532,9 @@ require([
         drawPath(selectedFeature.geometry.paths);
         selectedFeatureTable(selectedFeature.geometry.paths)
 
+        // Delete the current list of existing routes
+        $("#existing-routes").empty();
+        
         // Repopulate existing routes list with new values after 1 second delay
         setTimeout(()=> {
             populateExistingRoutes();
