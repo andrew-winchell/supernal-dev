@@ -1014,7 +1014,7 @@ require([
     });
 
     $("#edit-vertices").on("click", (evt) => {
-        pointSketchViewModel.update(newRouteGraphic);
+        pointSketchViewModel.update(pntGraphicsLyr.graphics);
     })
 
     pointSketchViewModel.on("create", (evt) => {
@@ -1123,8 +1123,6 @@ require([
         nextZ.setAttribute("contentEditable", "true");
     }
 
-    let newRouteGraphic;
-
     function drawPath (vertices) {
         mapView.graphics.removeAll();
 
@@ -1134,7 +1132,7 @@ require([
             paths: vertices
         });
     
-        newRouteGraphic = new Graphic ({
+        const graphic = new Graphic ({
             geometry: polyline,
             symbol: {
                 type: "simple-line",
@@ -1144,8 +1142,8 @@ require([
             }
         });
 
-        mapView.graphics.add(newRouteGraphic);
-        elevationProfile.input = newRouteGraphic;
+        mapView.graphics.add(graphic);
+        elevationProfile.input = graphic;
     } 
 
     $("#complete-route").on("click", (evt) => {
