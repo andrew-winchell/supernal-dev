@@ -1529,14 +1529,21 @@ require([
       }
     );
     
+    // If popup is closed via X button
     reactiveUtils.when(
         () => !mapView.popup?.visible,
         () => {
+            // Hide any routes
             supernalRoutesLyr.definitionExpression = "1=0";
+            // Zoom to US center
             mapView.goTo({
                 center: [-98.583333 ,39.833333],
                 scale: 50000000
             });
+            // Close Elevation Profile
+            elevationProfile.input = null;
+            // Close Vertices Table
+            $("#waypoint-list").css("display", "none");
         }
     );
     
