@@ -1529,6 +1529,15 @@ require([
       }
     );
     
+    when(
+        () => !mapView.popup?.visible,
+        () => {
+            supernalRoutesLyr.definitionExpression = "1=0";
+            mapView.goTo({
+                center: [-103.771556 ,44.967243]
+            });
+        }
+    );
     
     supernalRoutesLyr.on("apply-edits", () => {
         mapView.ui.remove(editor);
