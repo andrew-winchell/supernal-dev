@@ -908,7 +908,7 @@ require([
         $("#cancel-vertices")[0].disabled = true;
         $("#add-route-vertices")[0].disabled = false;
         mapView.graphics.removeAll();
-        elevationProfile.input = "";
+        elevationProfile.input = null;
     })
 
     /********** Layer Filtering Capabilities **********/
