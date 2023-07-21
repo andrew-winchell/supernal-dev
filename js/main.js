@@ -875,41 +875,41 @@ require([
         supernalRoutesLyr
             .applyEdits(edits)
             .then((results) => {
-                console.log(results)
+                mapView.graphics.removeAll();
+                
+                // Close modal
+                // Reset vertices, sketch, table
+                $("#route-save-modal")[0].open = false;
+                $("#waypoint-table tbody tr").remove();
+                $("#waypoint-list").css("display", "none");
+                $("#save")[0].disabled = true;
+                $("#route-toolbar").css("display", "none");
+                multipointVertices = [];
+                pntGraphicsLyr.removeAll();
+                pointSketchViewModel.cancel();
+
+                // Repopulate existing routes list with new values after 1 second delay
+                setTimeout(()=> {
+                    populateExistingRoutes();
+                }, 1000);
             });
-
-        mapView.graphics.removeAll();
-        
-        // Close modal
-        // Reset vertices, sketch, table
-        $("#route-save-modal")[0].open = false;
-        $("#waypoint-table tbody tr").remove();
-        $("#waypoint-list").css("display", "none");
-        $("#save")[0].disabled = true;
-        $("#route-toolbar").css("display", "none");
-        multipointVertices = [];
-        pntGraphicsLyr.removeAll();
-        pointSketchViewModel.cancel();
-
-        // Repopulate existing routes list with new values after 1 second delay
-        setTimeout(()=> {
-            populateExistingRoutes();
-        }, 1000);
     });
 
+    // Cancel Create Route
     $("#cancel-vertices").on("click", (evt) => {
         pointSketchViewModel.cancel();
         multipointVertices = [];
-        $("#waypoint-table tbody tr").remove();
-        $("#waypoint-list").css("display", "none");
+        $("#waypoint-table tbody tr").remove(); // remove table rows
+        $("#waypoint-list").css("display", "none"); // hide table
+        // reset route toolbar buttons
         $("#save")[0].disabled = true;
         $("#complete-route")[0].disabled = true;
         $("#edit-vertices")[0].disabled = true;
         $("#cancel-vertices")[0].disabled = true;
         $("#add-route-vertices")[0].disabled = false;
-        mapView.graphics.removeAll();
-        elevationProfile.input = null;
-    })
+        mapView.graphics.removeAll(); // remove incomplete route
+        elevationProfile.input = null; // clear elevation profile graphic
+    });
 
     /********** Layer Filtering Capabilities **********/
 
