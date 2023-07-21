@@ -1590,7 +1590,7 @@ require([
             // Repopulate existing routes list with new values after 1 second delay
             setTimeout(()=> {
                 populateExistingRoutes();
-            }, 10
+            }, 10);
         }
     });
 
