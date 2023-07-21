@@ -876,6 +876,10 @@ require([
             .applyEdits(edits)
             .then((results) => {
                 mapView.graphics.removeAll();
+
+                $("#route-name")[0].value = "";
+                $("#route-arr")[0].value = "";
+                $("#route-dep")[0].value = "";
                 
                 // Close modal
                 // Reset vertices, sketch, table
