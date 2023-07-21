@@ -1534,7 +1534,8 @@ require([
         () => {
             supernalRoutesLyr.definitionExpression = "1=0";
             mapView.goTo({
-                center: [-103.771556 ,44.967243]
+                center: [-103.771556 ,44.967243],
+                scale: 24000
             });
         }
     );
