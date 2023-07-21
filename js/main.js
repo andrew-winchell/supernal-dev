@@ -1145,7 +1145,7 @@ require([
         });
 
         mapView.graphics.add(newRouteGraphic);
-        elevationProfile.input = graphic;
+        elevationProfile.input = newRouteGraphic;
     } 
 
     $("#complete-route").on("click", (evt) => {
