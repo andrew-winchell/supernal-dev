@@ -1008,6 +1008,7 @@ require([
         $("#add-route-vertices")[0].disabled = false;
         supernalRoutesLyr.definitionExpression = "1=0";
         multipointVertices = [];
+        elevationProfile.input = null;
     });
 
     $("#add-route-vertices").on("click", () => {
