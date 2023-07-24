@@ -1559,8 +1559,6 @@ require([
     );
     
     supernalRoutesLyr.on("apply-edits", (evt) => {
-        editor.viewModel.cancelWorkflow();
-
         if (evt.edits.addFeatures) {
             // Delete the current list of existing routes
             $("#existing-routes").empty();
@@ -1571,12 +1569,6 @@ require([
         } else if (evt.edits.updateFeatures) {
             drawPath(selectedFeature.geometry.paths);
             selectedFeatureTable(selectedFeature.geometry.paths);
-            // Delete the current list of existing routes
-            $("#existing-routes").empty();
-            // Repopulate existing routes list with new values after 1 second delay
-            setTimeout(()=> {
-                populateExistingRoutes();
-            }, 10);
         } else if (evt.edits.deleteFeatures) {
             mapView.ui.remove(editor);
             // Delete the current list of existing routes
