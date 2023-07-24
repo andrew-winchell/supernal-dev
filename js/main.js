@@ -557,6 +557,11 @@ require([
                     item.actionsSections = [
                         [
                             {
+                                title: "Layer Filter",
+                                className: "esri-icon-description",
+                                id: "layer-filter"
+                            },
+                            {
                                 title: "Item Details",
                                 className: "esri-icon-description",
                                 id: "item-details"
@@ -1582,8 +1587,7 @@ require([
             setTimeout(()=> {
                 populateExistingRoutes();
             }, 10);
-        } else {
-            console.log(evt);
+        } else if (evt.edits.deleteFeatures) {
             mapView.ui.remove(editor);
             // Delete the current list of existing routes
             $("#existing-routes").empty();
