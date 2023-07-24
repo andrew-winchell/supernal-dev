@@ -1459,10 +1459,7 @@ require([
                                 }
                             });
                     });
-            });
-        
-        $("#confirm-route").css("display", "none");
-        
+            });        
     });
 
     function selectedFeatureProfile (vertices) {
@@ -1542,7 +1539,7 @@ require([
         "trigger-action",
         (event) => {
             if (event.action.id === "edit-attributes") {
-                $("#confirm-route").css("display", "block");
+                $("#save-altitudes").css("display", "block");
                 editRouteAttributes();
                 editRoutePath();
             }
