@@ -1007,6 +1007,7 @@ require([
         $("#route-toolbar").css("display", "block");
         $("#add-route-vertices")[0].disabled = false;
         supernalRoutesLyr.definitionExpression = "1=0";
+        multipointVertices = [];
     });
 
     $("#add-route-vertices").on("click", () => {
