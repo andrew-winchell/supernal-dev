@@ -1006,6 +1006,7 @@ require([
     $("#create-route").on("click", () => {
         $("#route-toolbar").css("display", "block");
         $("#add-route-vertices")[0].disabled = false;
+        supernalRoutesLyr.definitionExpression = "1=0";
     });
 
     $("#add-route-vertices").on("click", () => {
