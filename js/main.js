@@ -1528,6 +1528,7 @@ require([
                     features: [selectedFeature],
                     shouldFocus: true
                 });
+                $("#save-altitudes").css("display", "none");
 
             }
         );
