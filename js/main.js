@@ -1010,6 +1010,7 @@ require([
         multipointVertices = [];
         elevationProfile.input = null;
         $("#waypoint-list").css("display", "none");
+        mapView.popup.close();
     });
 
     $("#add-route-vertices").on("click", () => {
