@@ -1375,7 +1375,7 @@ require([
         })
     });
 
-    $("#confirm-route").on("click", (evt) => {        
+    $("#save-altitudes").on("click", (evt) => {        
         let table = document.getElementById('waypoint-table'),
             rows = table.getElementsByTagName("tr"),
             newVertices = [],
