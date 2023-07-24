@@ -1161,8 +1161,6 @@ require([
     });
 
     $("#route-save").on("click", (evt) => {
-        // Delete the current list of existing routes
-        $("#existing-routes").empty();
 
         // Get the user entered values for the route attributes
         let rName = $("#route-name")[0].value;
@@ -1207,6 +1205,8 @@ require([
         supernalRoutesLyr
             .applyEdits(edits)
             .then((results) => {
+                // Delete the current list of existing routes
+                $("#existing-routes").empty();
                 objectId = results.addFeatureResults[0].objectId;
                 selectExistingRoute(objectId);
 
