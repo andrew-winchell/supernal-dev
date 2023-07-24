@@ -1009,6 +1009,7 @@ require([
         supernalRoutesLyr.definitionExpression = "1=0";
         multipointVertices = [];
         elevationProfile.input = null;
+        $("#waypoint-list").css("display", "none");
     });
 
     $("#add-route-vertices").on("click", () => {
