@@ -557,11 +557,6 @@ require([
                     item.actionsSections = [
                         [
                             {
-                                title: "Layer Filter",
-                                className: "esri-icon-description",
-                                id: "layer-filter"
-                            },
-                            {
                                 title: "Item Details",
                                 className: "esri-icon-description",
                                 id: "item-details"
@@ -581,6 +576,7 @@ require([
         });
 
         layerList.on("trigger-action", (event) => {
+            console.log(event);
             const id = event.action.id;
             if (id === "item-details") {
                 window.open(event.item.layer.url);
