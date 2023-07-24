@@ -1567,8 +1567,8 @@ require([
             drawPath(selectedFeature.geometry.paths);
             selectedFeatureTable(selectedFeature.geometry.paths);
         } else if (evt.edits.deleteFeatures) {
-            editor.viewModel.cancelWorkflow();
-            mapView.ui.remove(editor);
+            //editor.viewModel.cancelWorkflow();
+            //mapView.ui.remove(editor);
             // Delete the current list of existing routes
             $("#existing-routes").empty();
             // Repopulate existing routes list with new values after 1 second delay
