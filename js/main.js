@@ -1203,8 +1203,6 @@ require([
         supernalRoutesLyr
             .applyEdits(edits)
             .then((results) => {
-                // Delete the current list of existing routes
-                $("#existing-routes").empty();
                 objectId = results.addFeatureResults[0].objectId;
                 selectExistingRoute(objectId);
 
@@ -1224,11 +1222,6 @@ require([
                 multipointVertices = [];
                 pntGraphicsLyr.removeAll();
                 pointSketchViewModel.cancel();
-
-                // Repopulate existing routes list with new values after 1 second delay
-                setTimeout(()=> {
-                    populateExistingRoutes();
-                }, 1000);
             });
     });
 
@@ -1576,7 +1569,6 @@ require([
                 populateExistingRoutes();
             }, 1000);
         } else if (evt.edits.updateFeatures) {
-            mapView.ui.remove(editor);
             drawPath(selectedFeature.geometry.paths);
             selectedFeatureTable(selectedFeature.geometry.paths);
             // Delete the current list of existing routes
