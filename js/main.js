@@ -1101,6 +1101,8 @@ require([
             }
         });
 
+        drawPath(multipointVertices);
+
         elevationProfile.input = graphic;
     });
 
