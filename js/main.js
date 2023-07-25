@@ -1049,12 +1049,15 @@ require([
 
     $("#waypoint-table").on("input", (evt) => {
         console.log(evt)
-        // Check if z-values are non-negative numbers
-        // true = green & false = red
-        if (isNaN(evt.target.innerHTML) && parseFloat(evt.target.innerHTML) >=0 ) {
-            evt.target.bgColor = "#C6EFCE";
-        } else {
-            evt.target.bgColor = "#FFC7CE";
+
+        if (evt.target.cellIndex = 3) {
+            // Check if z-values are non-negative numbers
+            // true = green & false = red
+            if (!isNaN(evt.target.innerHTML) && parseFloat(evt.target.innerHTML) >=0 ) {
+                evt.target.bgColor = "#C6EFCE";
+            } else {
+                evt.target.bgColor = "#FFC7CE";
+            }
         }
 
         let table = document.getElementById('waypoint-table'),
