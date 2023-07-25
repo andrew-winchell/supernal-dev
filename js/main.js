@@ -1050,7 +1050,7 @@ require([
     $("#waypoint-table").on("input", (evt) => {
         console.log(evt)
 
-        if (evt.target.cellIndex = 3) {
+        if (evt.target.cellIndex == 3) {
             // Check if z-values are non-negative numbers
             // true = green & false = red
             if (!isNaN(evt.target.innerHTML) && parseFloat(evt.target.innerHTML) >=0 ) {
