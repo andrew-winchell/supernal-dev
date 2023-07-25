@@ -1061,7 +1061,7 @@ require([
         } else if (evt.target.cellIndex == 2) {
             // Check if y-values are numbers between -90 and 90
             // true = green & false = red
-            if (!isNaN(evt.target.innerHTML) && (parseFloat(evt.target.innerHTML) >= -90 || parseFloat(evt.target.innerHTML) <= 90)) {
+            if (!isNaN(evt.target.innerHTML) && (parseFloat(evt.target.innerHTML) >= -90 && parseFloat(evt.target.innerHTML) <= 90)) {
                 evt.target.bgColor = "#C6EFCE";
             } else {
                 evt.target.bgColor = "#FFC7CE";
@@ -1069,7 +1069,7 @@ require([
         } else if (evt.target.cellIndex == 1) {
             // Check if x-values are numbers between -180 and 180
             // true = green & false = red
-            if (!isNaN(evt.target.innerHTML) && (parseFloat(evt.target.innerHTML) >= -180 || parseFloat(evt.target.innerHTML) <= 180)) {
+            if (!isNaN(evt.target.innerHTML) && (parseFloat(evt.target.innerHTML) >= -180 && parseFloat(evt.target.innerHTML) <= 180)) {
                 evt.target.bgColor = "#C6EFCE";
             } else {
                 evt.target.bgColor = "#FFC7CE";
