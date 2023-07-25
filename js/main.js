@@ -1120,7 +1120,9 @@ require([
 
         nextVert.innerHTML = nextRow.rowIndex
         nextX.innerHTML = mapPt.longitude.toFixed(4);
+        nextX.setAttribute("contentEditable", "true");
         nextY.innerHTML = mapPt.latitude.toFixed(4);
+        nextY.setAttribute("contentEditable", "true");
         nextZ.innerHTML = (mapPt.z * 3.281).toFixed(0);
         nextZ.setAttribute("contentEditable", "true");
     }
@@ -1378,7 +1380,7 @@ require([
         })
     });
 
-    $("#save-altitudes").on("click", (evt) => {        
+    $("#save-vertices").on("click", (evt) => {        
         let table = document.getElementById('waypoint-table'),
             rows = table.getElementsByTagName("tr"),
             newVertices = [],
@@ -1545,7 +1547,7 @@ require([
         "trigger-action",
         (event) => {
             if (event.action.id === "edit-attributes") {
-                $("#save-altitudes").css("display", "block");
+                $("#save-vertices").css("display", "block");
                 editRouteAttributes();
                 editRoutePath();
             }
