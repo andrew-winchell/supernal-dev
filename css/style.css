@@ -118,7 +118,7 @@ html, body, #view-div {
   border-collapse: collapse;
 }
 
-#save-altitudes {
+#save-vertices {
   display: none;
   padding: 10px;
 }
