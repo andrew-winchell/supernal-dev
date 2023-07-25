@@ -1058,6 +1058,14 @@ require([
             } else {
                 evt.target.bgColor = "#FFC7CE";
             }
+        } else {
+            // Check if z-values are non-negative numbers
+            // true = green & false = red
+            if (!isNaN(evt.target.innerHTML)) {
+                evt.target.bgColor = "#C6EFCE";
+            } else {
+                evt.target.bgColor = "#FFC7CE";
+            }
         }
 
         let table = document.getElementById('waypoint-table'),
