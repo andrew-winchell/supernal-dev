@@ -1048,6 +1048,7 @@ require([
     });
 
     $("#waypoint-table").on("input", (evt) => {
+        console.log(evt);
         // Check if cell values are decimals
         // true = green & false = red
         if (parseFloat(evt.target.innerHTML) >=0 ) {
