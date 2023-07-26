@@ -4,6 +4,7 @@ require([
     "esri/identity/IdentityManager",
     "esri/portal/PortalQueryParams",
     "esri/views/SceneView",
+    "esri/WebScene",
     "esri/Map",
     "esri/views/MapView",
     "esri/Graphic",
@@ -28,7 +29,7 @@ require([
     "esri/widgets/ElevationProfile",
     "esri/core/reactiveUtils"
 ], (
-        Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, Map, MapView, Graphic, GraphicsLayer,
+        Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, WebScene, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
         BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, Point,
         geometryEngine, ElevationProfile, reactiveUtils
@@ -516,10 +517,10 @@ require([
         ]
     });
 
-    const map3D = new Map ({
-        basemap: "arcgis-imagery",
-        ground: "world-elevation",
-        layers: []
+    const scene = new WebScene ({
+        portalItem: {
+            id: "7e4b2a879c37418b8cccedc9181009d3"
+        }
     });
     
     const mapView = new MapView ({
@@ -530,7 +531,7 @@ require([
     });
 
     const sceneView = new SceneView ({
-        map: map2D,
+        map: scene,
         container: "inset-div"
     });
 
