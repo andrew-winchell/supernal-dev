@@ -971,6 +971,7 @@ require([
         userLineColor = $("#color-picker")[0].value;
     
     $("#color-picker").on("calciteColorPickChange", (evt) => {
+        console.log(evt)
         userLineColor = evt.currentTarget.value;
     });
 
