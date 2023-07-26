@@ -1431,7 +1431,8 @@ require([
 
         let polyline = {
             type: "polyline",
-            paths: newVertices
+            paths: newVertices,
+            hasZ: true
         };
 
         let polylineGraphic = new Graphic ({
