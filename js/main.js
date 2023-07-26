@@ -1012,6 +1012,7 @@ require([
     // Open Creator Toolbar
     $("#create-route").on("click", () => {
         $("#route-toolbar").css("display", "block");
+        $("#color-picker").css("display", "block");
         $("#add-route-vertices")[0].disabled = false;
         supernalRoutesLyr.definitionExpression = "1=0";
         multipointVertices = [];
@@ -1252,6 +1253,7 @@ require([
                 $("#waypoint-list").css("display", "none");
                 $("#save")[0].disabled = true;
                 $("#route-toolbar").css("display", "none");
+                $("#color-picker").css("display", "none");
                 multipointVertices = [];
                 pntGraphicsLyr.removeAll();
                 pointSketchViewModel.cancel();
@@ -1270,6 +1272,7 @@ require([
         $("#waypoint-list").css("display", "none"); // hide table
         // reset route toolbar buttons and hide
         $("#route-toolbar").css("display", "none");
+        $("#color-picker").css("display", "none");
         $("#save")[0].disabled = true;
         $("#complete-route")[0].disabled = true;
         $("#edit-vertices")[0].disabled = true;
