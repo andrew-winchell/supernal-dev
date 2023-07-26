@@ -968,7 +968,7 @@ require([
 
     // Drawing variables
     let multipointVertices = [],
-        userLineColor;
+        userLineColor = $("#color-picker")[0].value;
     
     console.log($("#color-picker"));
 
