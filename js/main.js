@@ -973,7 +973,7 @@ require([
     let graphic = new Graphic ({
         symbol: {
             type: "simple-line",
-            color: userLineColor,
+            color: $("#color-picker")[0].value,
             width: "3",
             style: "short-dash"
         }
@@ -983,7 +983,7 @@ require([
     
     $("#color-picker").on("calciteColorPickerChange", (evt) => {
         console.log(evt);
-        userLineColor = evt.currentTarget.value;
+        graphic.symbol.color = evt.currentTarget.value;
     });
 
 
