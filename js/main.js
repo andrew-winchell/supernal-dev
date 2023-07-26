@@ -1168,7 +1168,7 @@ require([
             geometry: polyline,
             symbol: {
                 type: "simple-line",
-                color: "#008b8b",
+                color: userLineColor,
                 width: "3",
                 style: "short-dash"
             }
