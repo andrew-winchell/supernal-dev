@@ -50,6 +50,13 @@ html, body, #view-div {
   top: 15px;
 }
 
+#color-picker {
+  display: none;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
 #waypoint-list {
   display: none;
   background-color: white;
