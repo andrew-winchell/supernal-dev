@@ -1048,7 +1048,6 @@ require([
     });
 
     $("#waypoint-table").on("input", (evt) => {
-        console.log(evt)
 
         if (evt.target.cellIndex == 3) {
             // Check if z-values are non-negative numbers
@@ -1141,9 +1140,9 @@ require([
         let nextZ = nextRow.insertCell(3);
 
         nextVert.innerHTML = nextRow.rowIndex
-        nextX.innerHTML = mapPt.longitude.toFixed(4);
+        nextX.innerHTML = mapPt.longitude.toFixed(6);
         nextX.setAttribute("contentEditable", "true");
-        nextY.innerHTML = mapPt.latitude.toFixed(4);
+        nextY.innerHTML = mapPt.latitude.toFixed(6);
         nextY.setAttribute("contentEditable", "true");
         nextZ.innerHTML = (mapPt.z * 3.281).toFixed(0);
         nextZ.setAttribute("contentEditable", "true");
@@ -1528,9 +1527,9 @@ require([
             let nextZ = nextRow.insertCell(3);
     
             nextVert.innerHTML = nextRow.rowIndex
-            nextX.innerHTML = point.longitude.toFixed(4);
+            nextX.innerHTML = point.longitude.toFixed(6);
             nextX.setAttribute("contentEditable", "true");
-            nextY.innerHTML = point.latitude.toFixed(4);
+            nextY.innerHTML = point.latitude.toFixed(6);
             nextY.setAttribute("contentEditable", "true");
             nextZ.innerHTML = (point.z * 3.281).toFixed(0);
             nextZ.setAttribute("contentEditable", "true");
