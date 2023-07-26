@@ -970,7 +970,9 @@ require([
     let multipointVertices = [],
         userLineColor = $("#color-picker")[0].value;
     
-    console.log($("#color-picker"));
+    $("#color-picker").on("calciteColorPickChange", (evt) => {
+        userLineColor = evt.currentTarget.value;
+    });
 
     const pointSketchViewModel = new SketchViewModel ({
         layer: pntGraphicsLyr,
