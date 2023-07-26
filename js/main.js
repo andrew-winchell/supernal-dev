@@ -978,6 +978,8 @@ require([
             style: "short-dash"
         }
     });
+
+    mapView.graphics.add(graphic);
     
     $("#color-picker").on("calciteColorPickerChange", (evt) => {
         console.log(evt);
@@ -1159,7 +1161,6 @@ require([
     }
 
     function drawPath (vertices) {
-        mapView.graphics.removeAll();
 
         let polyline = new Polyline ({
             hasZ: true,
@@ -1169,7 +1170,6 @@ require([
     
         graphic.geometry = polyline;
 
-        mapView.graphics.add(graphic);
         elevationProfile.input = graphic;
     } 
 
