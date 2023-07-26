@@ -970,10 +970,20 @@ require([
     let multipointVertices = [],
         userLineColor = $("#color-picker")[0].value;
     
+    let graphic = new Graphic ({
+        symbol: {
+            type: "simple-line",
+            color: userLineColor,
+            width: "3",
+            style: "short-dash"
+        }
+    });
+    
     $("#color-picker").on("calciteColorPickerChange", (evt) => {
         console.log(evt);
         userLineColor = evt.currentTarget.value;
     });
+
 
     const pointSketchViewModel = new SketchViewModel ({
         layer: pntGraphicsLyr,
@@ -1118,15 +1128,7 @@ require([
             paths: multipointVertices
         });
     
-        const graphic = new Graphic ({
-            geometry: polyline,
-            symbol: {
-                type: "simple-line",
-                color: userLineColor,
-                width: "3",
-                style: "short-dash"
-            }
-        });
+        graphic.geometry = polyline;
 
         drawPath(multipointVertices);
 
@@ -1165,15 +1167,7 @@ require([
             paths: vertices
         });
     
-        const graphic = new Graphic ({
-            geometry: polyline,
-            symbol: {
-                type: "simple-line",
-                color: userLineColor,
-                width: "3",
-                style: "short-dash"
-            }
-        });
+        graphic.geometry = polyline;
 
         mapView.graphics.add(graphic);
         elevationProfile.input = graphic;
