@@ -27,12 +27,13 @@ require([
     "esri/geometry/Point",
     "esri/geometry/geometryEngine",
     "esri/widgets/ElevationProfile",
-    "esri/core/reactiveUtils"
+    "esri/core/reactiveUtils",
+    "esri/geometry/support/geodesicUtils"
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, WebScene, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
         BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, Point,
-        geometryEngine, ElevationProfile, reactiveUtils
+        geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils
     ) => {
 
     /********** ESRI ArcGIS Online User Authentication **********/
@@ -1186,7 +1187,8 @@ require([
         }).then((elevation) => {
             elevation.createElevationSampler(mapView.extent)
                 .then((sampler) => {
-                    let coordinates = sampler.queryElevation(polyline)
+                    let densifiedPolyline = geodesicUtils.geodesicDensify(polyline, 1);
+                    let coordinates = sampler.queryElevation(densifiedPolyline)
                     console.log(coordinates)
                 })
         });
