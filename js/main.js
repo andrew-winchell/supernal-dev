@@ -1178,20 +1178,6 @@ require([
 
         mapView.graphics.add(graphic);
         elevationProfile.input = graphic;
-        
-        mapView.when(() => {
-            const elevation = new ElevationLayer({
-                url: "http://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer"
-            });
-            return elevation.load();
-        }).then((elevation) => {
-            elevation.createElevationSampler(mapView.extent)
-                .then((sampler) => {
-                    let densifiedPolyline = geodesicUtils.geodesicDensify(polyline, 1);
-                    let coordinates = sampler.queryElevation(densifiedPolyline)
-                    console.log(coordinates)
-                })
-        });
     } 
 
     $("#complete-route").on("click", (evt) => {
