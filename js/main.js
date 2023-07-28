@@ -1351,10 +1351,6 @@ require([
                         selectedFeatureTable(selectedFeature.geometry.paths);
                         selectedFeatureProfile(selectedFeature.geometry.paths);
                         mapView.popup.dockEnabled = true;
-                        mapView.popup.set("dockOptions", {
-                            position: "bottom-right",
-                            buttonEnabled: false
-                        });
                         mapView.popup.open({
                             features: [selectedFeature]
                         });
@@ -1367,6 +1363,15 @@ require([
             });
 
     }
+
+    $("#existing-routes").on("calciteListItemSelect", (evt) => {
+        console.log(evt)
+        if (editor.viewModel.state !== "editing-existing-feature") {
+            objectId = evt.target.value;
+            cancelRouteCreation();
+            selectExistingRoute(objectId);
+        }
+    });
 
     $("#existing-routes").on("calciteListChange", (evt) => {
         console.log(evt);
