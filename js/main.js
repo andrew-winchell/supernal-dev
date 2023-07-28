@@ -453,39 +453,6 @@ require([
                 width: "3px",
             }
         },
-        popupTemplate: {
-            title: "{route_name}",
-            content: [
-                {
-                    type: "fields",
-                    fieldInfos: [
-                        {
-                            fieldName: "route_name",
-                            label: "Name"
-                        },
-                        {
-                            fieldName: "departing_fac",
-                            label: "Departure Facility"
-                        },
-                        {
-                            fieldName: "arriving_facility",
-                            label: "Arrival Facility"
-                        },
-                        {
-                            fieldName: "route_distance",
-                            label: "Distance"
-                        }
-                    ]
-                }
-            ],
-            actions: [
-                {
-                    title: "Edit Route",
-                    id: "edit-attributes",
-                    className: "esri-icon-edit"
-                }
-            ]
-        },
         definitionExpression: "1=0"
     });
 
