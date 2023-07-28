@@ -28,12 +28,13 @@ require([
     "esri/geometry/geometryEngine",
     "esri/widgets/ElevationProfile",
     "esri/core/reactiveUtils",
-    "esri/geometry/support/geodesicUtils"
+    "esri/geometry/support/geodesicUtils",
+    "esri/widget/Features"
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, WebScene, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
         BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, Point,
-        geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils
+        geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils, Features
     ) => {
 
     /********** ESRI ArcGIS Online User Authentication **********/
@@ -1704,4 +1705,26 @@ require([
         mapView.container = "inset-div";
         sceneView.container = "view-div";
     }
+
+    const features = new Features ({
+        container: "features-widget",
+        viewModel: {
+            view: mapView
+        }
+    });
+
+    // Open the Features widget with features fetched from
+    // the view click event location.
+    reactiveUtils.on(
+      () => mapView,
+      "click",
+      (event) => {
+        featuresWidget.open({
+          location: event.mapPoint,
+          fetchFeatures: true
+        });
+      }
+    );
+    
+    
 });
