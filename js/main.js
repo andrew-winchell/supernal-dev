@@ -1404,8 +1404,7 @@ require([
                 let selectedFeatures = results.features;
                 console.log(supernalRoutesLyr);
                 mapView
-                    .goTo
-                    .then(() => {
+                    .when(() => {
                         featuresWidget.features = selectedFeatures;
                         featuresWidget.open();
                     })
