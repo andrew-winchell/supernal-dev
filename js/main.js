@@ -1395,7 +1395,27 @@ require([
     }
 
     function addToFeaturesWidget (objectId) {
-        console.log(objectId);
+        const query = {
+            where: "OBJECTID in (" + objectIds + ")",
+            outFields: ["*"],
+            returnGeometry: true,
+            returnZ: true
+        };
+
+        supernalRoutesLyr.queryFeatures(query)
+            .then((results) => {
+                let selectedFeatures = results.features;
+                mapView
+                    .then(() => {
+                        featuresWidget.features = selectedFeatures;
+                        featuresWidget.open();
+                    })
+                    .catch((error) => {
+                        if (error.name != "AbortError") {
+                            console.log(error);
+                        }
+                    });
+            });
     }
 
     mapView.when(() => {
@@ -1735,6 +1755,7 @@ require([
         }
     });
 
+    /*
     // Open the Features widget with features fetched from
     // the view click event location.
     reactiveUtils.on(
@@ -1747,6 +1768,7 @@ require([
         });
       }
     );
+    */
     
     
 });
