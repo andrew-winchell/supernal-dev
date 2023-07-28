@@ -1368,7 +1368,7 @@ require([
 
     }
 
-    $("#existing-routes").on("calciteListItemSelect", (evt) => {
+    $("#existing-routes").on("calciteListChange", (evt) => {
         console.log(evt)
         let objectIds =  [];
         for (let listItem of evt.currentTarget.selectedItems) {
