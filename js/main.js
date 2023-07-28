@@ -1706,7 +1706,7 @@ require([
         sceneView.container = "view-div";
     }
 
-    const features = new Features ({
+    const featuresWidget = new Features ({
         container: "features-widget",
         viewModel: {
             view: mapView
