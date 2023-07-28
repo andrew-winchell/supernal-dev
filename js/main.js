@@ -1729,7 +1729,7 @@ require([
         container: "features-widget",
         content: "Select a route from the list to view its information",
         features: supernalRoutesLyr.queryFeatures()
-
+    })
     /*
     // Open the Features widget with features fetched from
     // the view click event location.
