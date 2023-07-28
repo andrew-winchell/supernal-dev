@@ -477,13 +477,6 @@ require([
                         }
                     ]
                 }
-            ],
-            actions: [
-                {
-                    title: "Edit Route",
-                    id: "edit-attributes",
-                    className: "esri-icon-edit"
-                }
             ]
         },
         definitionExpression: "1=0"
@@ -1727,7 +1720,6 @@ require([
 
     const featuresWidget = new Features ({
         container: "features-widget",
-        content: "Select a route from the list to view its information",
         features: supernalRoutesLyr.queryFeatures(),
         viewModel: {
           actions: [
