@@ -1372,9 +1372,11 @@ require([
         console.log(evt)
         let objectIds =  [];
         for (let listItem of evt.currentTarget.selectedItems) {
-            objectIds.push(listItem.value);
-            console.log(objectIds)
+            if (listItem.selected == true) {
+                objectIds.push(listItem.value);
+            }
         }
+        console.log(objectIds)
         if (editor.viewModel.state !== "editing-existing-feature") {
             objectId = evt.target.value;
             cancelRouteCreation();
