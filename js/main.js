@@ -1728,10 +1728,7 @@ require([
     const featuresWidget = new Features ({
         container: "features-widget",
         content: "Select a route from the list to view its information",
-        viewModel: {
-            view: mapView
-        }
-    });
+        features: supernalRoutesLyr.queryFeatures()
 
     /*
     // Open the Features widget with features fetched from
