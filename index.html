@@ -200,28 +200,28 @@
                     <calcite-block
                         heading="Select routes from list"
                     ></calcite-block>
+                    <div id="waypoint-list">
+                        <table id="waypoint-table" style="width: 100%;">
+                            <colgroup>
+                                <col span="1" style="width: 15%;">
+                                <col span="1" style="width: 30%;">
+                                <col span="1" style="width: 27.5%;">
+                                <col span="1" style="width: 27.5%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Vertice</th>
+                                    <th>X</th>
+                                    <th>Y</th>
+                                    <th>Z</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <calcite-button id="save-vertices">Save Vertices</calcite-button>
                     <div id="features-widget" class="calcite-match-height">
-                        <div id="waypoint-list">
-                            <table id="waypoint-table" style="width: 100%;">
-                                <colgroup>
-                                    <col span="1" style="width: 15%;">
-                                    <col span="1" style="width: 30%;">
-                                    <col span="1" style="width: 27.5%;">
-                                    <col span="1" style="width: 27.5%;">
-                                </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th>Vertice</th>
-                                        <th>X</th>
-                                        <th>Y</th>
-                                        <th>Z</th>
-                                    </tr>
-                                </thead>
-                                
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                        <calcite-button id="save-vertices">Save Vertices</calcite-button>
                     </div>
                 </calcite-panel>
             </calcite-shell-panel>
