@@ -1402,7 +1402,7 @@ require([
         supernalRoutesLyr.queryFeatures(query)
             .then((results) => {
                 let selectedFeatures = results.features;
-                console.log(supernalRoutesLyr);
+                console.log(selectedFeatures);
                 mapView
                     .when(() => {
                         featuresWidget.features = selectedFeatures;
