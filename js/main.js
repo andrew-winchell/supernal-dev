@@ -1378,11 +1378,15 @@ require([
         let objectIdSet = "'" + objectIds.join("','") + "'";
 
         toggleRouteVisibility(objectIdSet);
-        
-        if (editor.viewModel.state !== "editing-existing-feature") {
-            cancelRouteCreation();
+
+        //if (editor.viewModel.state !== "editing-existing-feature") {
+            //cancelRouteCreation();
             //selectExistingRoute(objectIdSet);
-        }
+        //}
+    });
+
+    $("#existing-routes").on("calciteListItemSelect", (evt) => {
+        console.log(evt);
     });
 
     function toggleRouteVisibility (objectIds) {
