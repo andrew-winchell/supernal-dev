@@ -1368,16 +1368,8 @@ require([
 
     }
 
-    $("#existing-routes").on("calciteListItemSelect", (evt) => {
-        if (editor.viewModel.state !== "editing-existing-feature") {
-            objectId = evt.target.value;
-            cancelRouteCreation();
-            selectExistingRoute(objectId);
-        }
-    });
-
     $("#existing-routes").on("calciteListChange", (evt) => {
-        console.log(evt.currentTarget.selectedItems);
+        console.log(evt);
     })
 
     mapView.when(() => {
