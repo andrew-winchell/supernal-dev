@@ -29,7 +29,7 @@ require([
     "esri/widgets/ElevationProfile",
     "esri/core/reactiveUtils",
     "esri/geometry/support/geodesicUtils",
-    "esri/widget/Features"
+    "esri/widgets/Features"
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, WebScene, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
