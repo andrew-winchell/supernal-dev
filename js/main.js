@@ -1380,7 +1380,7 @@ require([
         if (editor.viewModel.state !== "editing-existing-feature") {
             objectId = evt.target.value;
             cancelRouteCreation();
-            selectExistingRoute(objectId);
+            selectExistingRoute(objectIds);
         }
     });
 
