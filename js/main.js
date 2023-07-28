@@ -1406,7 +1406,9 @@ require([
                 mapView
                     .when(() => {
                         featuresWidget.features = selectedFeatures;
-                        featuresWidget.open();
+                        featuresWidget.open({
+                            fetchFeatures: true
+                        });
                     })
                     .catch((error) => {
                         if (error.name != "AbortError") {
