@@ -1733,18 +1733,9 @@ require([
           view: mapView
         }
     });
-
-    // Open the Features widget with features fetched from
-    // the view click event location.
-    reactiveUtils.on(
-      () => mapView,
-      "click",
-      (event) => {
-        featuresWidget.open({
-          location: event.mapPoint,
-          fetchFeatures: true
-        });
-      }
-    );
     
+    featuresWidget.open({
+        features: supernalRoutesLyr.queryFeatures();
+    });
+
 });
