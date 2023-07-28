@@ -478,7 +478,8 @@ require([
                     ]
                 }
             ]
-        }
+        },
+        definitionExpression: "1=0"
     });
 
     /********** Client-Side Graphics Layers for Drawing **********/
