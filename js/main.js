@@ -1351,10 +1351,10 @@ require([
                         selectedFeatureTable(selectedFeature.geometry.paths);
                         selectedFeatureProfile(selectedFeature.geometry.paths);
                         mapView.popup.dockEnabled = true;
-                        mapView.popup.set("dockOptions", {
-                            position: "bottom-right",
-                            buttonEnabled: false
-                        });
+                        //mapView.popup.set("dockOptions", {
+                        //    position: "bottom-right",
+                        //    buttonEnabled: false
+                        //});
                         mapView.popup.open({
                             features: [selectedFeature]
                         });
@@ -1373,7 +1373,7 @@ require([
         for (let listItem of evt.currentTarget.selectedItems) {
             objectIds.push(listItem.value);
         }
-        console.log(evt.currentTarget.selectedItems)
+        console.log(ev)
         console.log(objectIds)
         if (editor.viewModel.state !== "editing-existing-feature") {
             objectId = evt.target.value;
