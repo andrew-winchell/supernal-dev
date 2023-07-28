@@ -1728,7 +1728,18 @@ require([
     const featuresWidget = new Features ({
         container: "features-widget",
         content: "Select a route from the list to view its information",
-        features: supernalRoutesLyr.queryFeatures()
+        features: supernalRoutesLyr.queryFeatures(),
+        viewModel: {
+          actions: [
+            {
+              type: "button",
+              title: "Edit Route",
+              id: "edit-route",
+              icon: "information-letter"
+            }
+          ],
+          view: mapView
+        }
     })
 
     featuresWidget.open();
