@@ -1368,7 +1368,7 @@ require([
 
     }
 
-    $("#existing-routes").on("click", (evt) => {
+    $("#existing-routes").on("calciteListChange", (evt) => {
         console.log(evt)
         let objectIds =  [];
         for (let listItem of evt.currentTarget.selectedItems) {
@@ -1380,7 +1380,7 @@ require([
         if (editor.viewModel.state !== "editing-existing-feature") {
             objectId = evt.target.value;
             cancelRouteCreation();
-            selectExistingRoute(objectIds);
+            selectExistingRoute(objectId);
         }
     });
 
