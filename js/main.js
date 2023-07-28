@@ -1376,6 +1376,10 @@ require([
         }
     });
 
+    $("#existing-routes").on("calciteListChange", (evt) => {
+        console.log(evt.currentTarget.selectedItems);
+    })
+
     mapView.when(() => {
         editor = new Editor ({
             view: mapView,
