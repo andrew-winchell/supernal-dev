@@ -1387,10 +1387,15 @@ require([
 
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
         console.log(evt);
+        addToFeaturesWidget(evt.target.value);
     });
 
     function toggleRouteVisibility (objectIds) {
         supernalRoutesLyr.definitionExpression = "OBJECTID in (" + objectIds + ")";
+    }
+
+    function addToFeaturesWidget (objectId) {
+        console.log(objectId);
     }
 
     mapView.when(() => {
