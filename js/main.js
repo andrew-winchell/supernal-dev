@@ -1735,7 +1735,7 @@ require([
     });
     
     featuresWidget.open({
-        features: supernalRoutesLyr.queryFeatures();
+        features: supernalRoutesLyr.queryFeatures()
     });
 
 });
