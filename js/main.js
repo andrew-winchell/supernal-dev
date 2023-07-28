@@ -1379,22 +1379,19 @@ require([
 
         toggleRouteVisibility(objectIdSet);
 
+        selectedFeaturesWidget(objectIdSet);
+
         //if (editor.viewModel.state !== "editing-existing-feature") {
             //cancelRouteCreation();
             //selectExistingRoute(objectIdSet);
         //}
     });
 
-    $("#existing-routes").on("calciteListItemSelect", (evt) => {
-        console.log(evt);
-        addToFeaturesWidget(evt.target.value);
-    });
-
     function toggleRouteVisibility (objectIds) {
         supernalRoutesLyr.definitionExpression = "OBJECTID in (" + objectIds + ")";
     }
 
-    function addToFeaturesWidget (objectId) {
+    function selectedFeaturesWidget (objectIds) {
         const query = {
             where: "OBJECTID in (" + objectIds + ")",
             outFields: ["*"],
