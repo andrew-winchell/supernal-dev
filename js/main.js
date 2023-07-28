@@ -1379,31 +1379,20 @@ require([
 
         toggleRouteVisibility(objectIdSet);
 
-        selectedFeaturesWidget(objectIdSet);
-
         //if (editor.viewModel.state !== "editing-existing-feature") {
             //cancelRouteCreation();
             //selectExistingRoute(objectIdSet);
         //}
     });
 
+    $("#existing-routes").on("calciteListItemSelect", (evt) => {
+        if (evt.target.selected == true) {
+            console.log(evt);
+        }
+    })
+
     function toggleRouteVisibility (objectIds) {
         supernalRoutesLyr.definitionExpression = "OBJECTID in (" + objectIds + ")";
-    }
-
-    function selectedFeaturesWidget (objectIds) {
-        const query = {
-            where: "OBJECTID in (" + objectIds + ")",
-            outFields: ["*"],
-            returnGeometry: true,
-            returnZ: true
-        };
-
-        supernalRoutesLyr.queryFeatures(query)
-            .then((results) => {
-                let selectedFeatures = results.features;
-                console.log(results);
-            });
     }
 
     mapView.when(() => {
