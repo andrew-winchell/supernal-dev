@@ -1740,10 +1740,8 @@ require([
           ],
           view: mapView
         }
-    })
+    });
 
-    featuresWidget.open();
-    /*
     // Open the Features widget with features fetched from
     // the view click event location.
     reactiveUtils.on(
@@ -1756,7 +1754,5 @@ require([
         });
       }
     );
-    */
-    
     
 });
