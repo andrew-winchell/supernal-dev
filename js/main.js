@@ -1332,9 +1332,9 @@ require([
 
     let objectId;
 
-    function selectExistingRoute (objectId) {
+    function selectExistingRoute (objectIds) {
         const query = {
-            where: "OBJECTID = " + objectId,
+            where: "OBJECTID in (" + objectIds + ")",
             outFields: ["*"],
             returnGeometry: true,
             returnZ: true
@@ -1346,7 +1346,7 @@ require([
                 mapView
                     .goTo(selectedFeature.geometry.extent.expand(2))
                     .then(() => {
-                        supernalRoutesLyr.definitionExpression = "OBJECTID = " + objectId;
+                        supernalRoutesLyr.definitionExpression = "OBJECTID = " + objectIds;
                         $("#waypoint-list").css("display", "block");
                         selectedFeatureTable(selectedFeature.geometry.paths);
                         selectedFeatureProfile(selectedFeature.geometry.paths);
@@ -1373,6 +1373,7 @@ require([
         for (let listItem of evt.currentTarget.selectedItems) {
             objectIds.push(listItem.value);
         }
+        console.log(evt.currentTarget.selectedItems)
         console.log(objectIds)
         if (editor.viewModel.state !== "editing-existing-feature") {
             objectId = evt.target.value;
