@@ -1370,11 +1370,6 @@ require([
 
     $("#existing-routes").on("click", (evt) => {
         console.log(evt)
-    })
-
-    /*
-    $("#existing-routes").on("calciteListChange", (evt) => {
-        console.log(evt)
         let objectIds =  [];
         for (let listItem of evt.currentTarget.selectedItems) {
             if (listItem.selected == true) {
@@ -1388,7 +1383,6 @@ require([
             selectExistingRoute(objectId);
         }
     });
-    */
 
     mapView.when(() => {
         editor = new Editor ({
