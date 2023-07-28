@@ -1369,7 +1369,6 @@ require([
     }
 
     $("#existing-routes").on("calciteListChange", (evt) => {
-        console.log(evt)
         let objectIds =  [];
         for (let listItem of evt.currentTarget.selectedItems) {
             if (listItem.selected == true) {
@@ -1377,12 +1376,18 @@ require([
             }
         }
         let objectIdSet = "'" + objectIds.join("','") + "'";
-        console.log(objectIdSet)
+
+        toggleRouteVisibility(objectIdSet);
+        
         if (editor.viewModel.state !== "editing-existing-feature") {
             cancelRouteCreation();
-            selectExistingRoute(objectIdSet);
+            //selectExistingRoute(objectIdSet);
         }
     });
+
+    function toggleRouteVisibility (objectIds) {
+        supernalRoutesLyr.definitionExpression = "OBJECTID in (" + objectIds + ")";
+    }
 
     mapView.when(() => {
         editor = new Editor ({
