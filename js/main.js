@@ -1376,11 +1376,11 @@ require([
                 objectIds.push(listItem.value);
             }
         }
-        console.log(objectIds)
+        let objectIdSet = "'" + objectIds.join("','") + "'";
+        console.log(objectIdSet)
         if (editor.viewModel.state !== "editing-existing-feature") {
-            objectId = evt.target.value;
             cancelRouteCreation();
-            selectExistingRoute(objectId);
+            selectExistingRoute(objectIdSet);
         }
     });
 
