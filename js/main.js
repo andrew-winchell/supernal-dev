@@ -29,12 +29,13 @@ require([
     "esri/widgets/ElevationProfile",
     "esri/core/reactiveUtils",
     "esri/geometry/support/geodesicUtils",
-    "esri/widgets/Features"
+    "esri/widgets/Features",
+    "esri/PopupTemplate"
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, WebScene, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
         BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, Point,
-        geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils, Features
+        geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils, Features, PopupTemplate
     ) => {
 
     /********** ESRI ArcGIS Online User Authentication **********/
