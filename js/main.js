@@ -1755,7 +1755,8 @@ require([
         "click",
         (event) => {
             console.log(mapView.hitTest(event, { include: supernalRoutesLyr }).then((response) => {
-                console.log(response)
+                featuresWidget.features = response.results;
+                featuresWidget.open();
             }));
         }
     )
