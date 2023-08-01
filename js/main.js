@@ -1727,7 +1727,7 @@ require([
               type: "button",
               title: "Edit Route",
               id: "edit-route",
-              icon: "information-letter"
+              icon: "edit-attributes"
             }
           ],
           view: mapView
