@@ -1735,14 +1735,7 @@ require([
     });
     
     featuresWidget.open({
-        features: supernalRoutesLyr.queryFeatures({
-            query: {
-                where: "1=1",
-                outFields: ["*"],
-                returnGeometry: true,
-                returnZ: true
-            }
-        })
+        features: supernalRoutesLyr.queryFeatures()
     });
 
 });
