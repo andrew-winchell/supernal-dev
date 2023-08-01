@@ -1720,7 +1720,6 @@ require([
 
     const featuresWidget = new Features ({
         container: "features-widget",
-        features: supernalRoutesLyr.queryFeatures(),
         viewModel: {
           actions: [
             {
@@ -1734,8 +1733,6 @@ require([
         }
     });
     
-    featuresWidget.open({
-        features: supernalRoutesLyr.queryFeatures()
-    });
+    featuresWidget.open();
 
 });
