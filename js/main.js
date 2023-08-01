@@ -1372,6 +1372,8 @@ require([
 
         toggleRouteVisibility(objectIdSet);
 
+        loadFeaturesWidget();
+
         //if (editor.viewModel.state !== "editing-existing-feature") {
             //cancelRouteCreation();
             //selectExistingRoute(objectIdSet);
@@ -1383,6 +1385,10 @@ require([
             console.log(evt);
         }
     })
+
+    function loadFeaturesWidget() {
+        return 0;
+    }
 
     function toggleRouteVisibility (objectIds) {
         supernalRoutesLyr.definitionExpression = "OBJECTID in (" + objectIds + ")";
@@ -1743,6 +1749,14 @@ require([
             closeButton: false
         }]
     });
+
+    reactiveUtils.on(
+        () => view,
+        "click",
+        (event) => {
+            console.log(event)
+        }
+    )
     
 
 });
