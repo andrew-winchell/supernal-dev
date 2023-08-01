@@ -1755,7 +1755,15 @@ require([
         "click",
         (event) => {
             console.log(mapView.hitTest(event, { include: supernalRoutesLyr }).then((response) => {
-                featuresWidget.features = response;
+                let graphics = [];
+                for (let graphic in response.results) {
+                    graphic.popupTemplate = new PopupTemplate ({
+                        title: "{route_name}",
+                        content: "{departing_fac}"
+                    });
+                    graphics.push(graphic);
+                };
+                featuresWidget.features = graphics;
                 featuresWidget.open();
             }));
         }
