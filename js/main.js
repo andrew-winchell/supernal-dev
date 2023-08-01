@@ -29,12 +29,12 @@ require([
     "esri/widgets/ElevationProfile",
     "esri/core/reactiveUtils",
     "esri/geometry/support/geodesicUtils",
-    "esri/widgets/Features"
+    "esri/widgets/Feature"
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, WebScene, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
         BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, Point,
-        geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils, Features
+        geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils, Feature
     ) => {
 
     /********** ESRI ArcGIS Online User Authentication **********/
@@ -1386,7 +1386,7 @@ require([
 
     function toggleRouteVisibility (objectIds) {
         supernalRoutesLyr.definitionExpression = "OBJECTID in (" + objectIds + ")";
-        supernalRoutesLyr
+        supernalRoutesLyr // zoom to visible feature extent
             .when(() => {
                 return supernalRoutesLyr.queryExtent();
             })
@@ -1725,23 +1725,8 @@ require([
         sceneView.container = "view-div";
     }
 
-    const featuresWidget = new Features ({
-        container: "features-widget",
-        viewModel: {
-          actions: [
-            {
-              type: "button",
-              title: "Edit Route",
-              id: "edit-route",
-              icon: "edit-attributes"
-            }
-          ],
-          view: mapView
-        },
-        visible: true,
-        visibleElements: [{
-            closeButton: false
-        }]
+    const featuresWidget = new Feature ({
+        container: "features-widget"
     });
     
 
