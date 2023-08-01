@@ -1732,9 +1732,9 @@ require([
           view: mapView
         },
         visible: true,
-        visibleElements: [
-            closeButton = false
-        ]
+        visibleElements: [{
+            closeButton: false
+        }]
     });
     
 
