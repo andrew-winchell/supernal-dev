@@ -1754,10 +1754,9 @@ require([
         () => mapView,
         "click",
         (event) => {
-            console.log(event)
-            mapView.popup.fetchFeatures(event).then((response) => {
-                console.log(response);
-            })
+            console.log(mapView.hitTest(event.screenPoint),then((response) => {
+                console.log(response)
+            }));
         }
     )
     
