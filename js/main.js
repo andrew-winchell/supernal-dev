@@ -1730,9 +1730,12 @@ require([
             }
           ],
           view: mapView
-        }
+        },
+        visible: true,
+        visibleElements: [
+            closeButton = false
+        ]
     });
     
-    featuresWidget.open();
 
 });
