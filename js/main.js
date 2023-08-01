@@ -1386,6 +1386,13 @@ require([
 
     function toggleRouteVisibility (objectIds) {
         supernalRoutesLyr.definitionExpression = "OBJECTID in (" + objectIds + ")";
+        supernalRoutesLyr
+            .when(() => {
+                return supernalRoutesLyr.queryExtent();
+            })
+            .then((response) => {
+                mapView.goTo(response.extent);
+            })
     }
 
     mapView.when(() => {
