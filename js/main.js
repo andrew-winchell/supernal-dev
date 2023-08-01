@@ -1720,7 +1720,14 @@ require([
 
     const featuresWidget = new Features ({
         container: "features-widget",
-        features: supernalRoutesLyr.queryFeatures(),
+        features: supernalRoutesLyr.queryFeatures({
+            query: {
+                where: "1=1",
+                outFields: ["*"],
+                returnGeometry: true,
+                returnZ: true
+            }
+        }),
         viewModel: {
           actions: [
             {
