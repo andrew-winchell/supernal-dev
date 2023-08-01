@@ -1751,7 +1751,7 @@ require([
     });
 
     reactiveUtils.on(
-        () => view,
+        () => mapView,
         "click",
         (event) => {
             console.log(event)
