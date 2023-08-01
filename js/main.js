@@ -1754,7 +1754,7 @@ require([
         () => mapView,
         "click",
         (event) => {
-            console.log(mapView.hitTest(event.screenPoint),then((response) => {
+            console.log(mapView.hitTest(event).then((response) => {
                 console.log(response)
             }));
         }
