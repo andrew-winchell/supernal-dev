@@ -28,14 +28,12 @@ require([
     "esri/geometry/geometryEngine",
     "esri/widgets/ElevationProfile",
     "esri/core/reactiveUtils",
-    "esri/geometry/support/geodesicUtils",
-    "esri/widgets/Features",
-    "esri/PopupTemplate"
+    "esri/geometry/support/geodesicUtils"
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, WebScene, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
         BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, Point,
-        geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils, Features, PopupTemplate
+        geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils
     ) => {
 
     /********** ESRI ArcGIS Online User Authentication **********/
@@ -477,6 +475,13 @@ require([
                             label: "Distance"
                         }
                     ]
+                }
+            ],
+            actions: [
+                {
+                    title: "Edit Route",
+                    id: "edit-attributes",
+                    className: "esri-icon-edit"
                 }
             ]
         },
@@ -1326,9 +1331,9 @@ require([
 
     let objectId;
 
-    function selectExistingRoute (objectIds) {
+    function selectExistingRoute (objectId) {
         const query = {
-            where: "OBJECTID in (" + objectIds + ")",
+            where: "OBJECTID = " + objectId,
             outFields: ["*"],
             returnGeometry: true,
             returnZ: true
@@ -1340,15 +1345,15 @@ require([
                 mapView
                     .goTo(selectedFeature.geometry.extent.expand(2))
                     .then(() => {
-                        supernalRoutesLyr.definitionExpression = "OBJECTID in (" + objectIds + ")";
+                        supernalRoutesLyr.definitionExpression = "OBJECTID = " + objectId;
                         $("#waypoint-list").css("display", "block");
                         selectedFeatureTable(selectedFeature.geometry.paths);
                         selectedFeatureProfile(selectedFeature.geometry.paths);
                         mapView.popup.dockEnabled = true;
-                        //mapView.popup.set("dockOptions", {
-                        //    position: "bottom-right",
-                        //    buttonEnabled: false
-                        //});
+                        mapView.popup.set("dockOptions", {
+                            position: "bottom-right",
+                            buttonEnabled: false
+                        });
                         mapView.popup.open({
                             features: [selectedFeature]
                         });
@@ -1362,45 +1367,13 @@ require([
 
     }
 
-    $("#existing-routes").on("calciteListChange", (evt) => {
-        let objectIds =  [];
-        for (let listItem of evt.currentTarget.selectedItems) {
-            if (listItem.selected == true) {
-                objectIds.push(listItem.value);
-            }
-        }
-        let objectIdSet = "'" + objectIds.join("','") + "'";
-
-        toggleRouteVisibility(objectIdSet);
-
-        loadFeaturesWidget();
-
-        //if (editor.viewModel.state !== "editing-existing-feature") {
-            //cancelRouteCreation();
-            //selectExistingRoute(objectIdSet);
-        //}
-    });
-
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
-        if (evt.target.selected == true) {
-            console.log(evt);
+        if (editor.viewModel.state !== "editing-existing-feature") {
+            objectId = evt.target.value;
+            cancelRouteCreation();
+            selectExistingRoute(objectId);
         }
-    })
-
-    function loadFeaturesWidget() {
-        return 0;
-    }
-
-    function toggleRouteVisibility (objectIds) {
-        supernalRoutesLyr.definitionExpression = "OBJECTID in (" + objectIds + ")";
-        supernalRoutesLyr // zoom to visible feature extent
-            .when(() => {
-                return supernalRoutesLyr.queryExtent();
-            })
-            .then((response) => {
-                mapView.goTo(response.extent);
-            })
-    }
+    });
 
     mapView.when(() => {
         editor = new Editor ({
@@ -1731,44 +1704,4 @@ require([
         mapView.container = "inset-div";
         sceneView.container = "view-div";
     }
-
-    const featuresWidget = new Features ({
-        container: "features-widget",
-        viewModel: {
-          actions: [
-            {
-              type: "button",
-              title: "Edit Route",
-              id: "edit-route",
-              icon: "edit-attributes"
-            }
-          ],
-          view: mapView
-        },
-        visible: true,
-        visibleElements: [{
-            closeButton: false
-        }]
-    });
-
-    reactiveUtils.on(
-        () => mapView,
-        "click",
-        (event) => {
-            console.log(mapView.hitTest(event, { include: supernalRoutesLyr }).then((response) => {
-                let graphics = [];
-                for (let graphic in response.results) {
-                    graphic.popupTemplate = new PopupTemplate ({
-                        title: "{route_name}",
-                        content: "{departing_fac}"
-                    });
-                    graphics.push(graphic);
-                };
-                featuresWidget.features = graphics;
-                featuresWidget.open();
-            }));
-        }
-    )
-    
-
 });
