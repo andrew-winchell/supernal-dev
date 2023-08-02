@@ -528,7 +528,13 @@ require([
         map: map2D,
         container: "view-div",
         zoom: 3,
-        center: [-97, 39]
+        center: [-97, 39],
+        popup: {
+            dockEnabled: true,
+            dockOptions: {
+                position: "bottom-right"
+            }
+        }
     });
 
     const sceneView = new SceneView ({
