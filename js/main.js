@@ -1358,9 +1358,13 @@ require([
                         mapView.popup.dockEnabled = true;
                         mapView.popup.dockOptions = {
                             position: "bottom-right",
+                            breakPoint: {
+                                width: 5000,
+                                height: 5000
+                            },
                             buttonEnabled: false
                         };
-                        mapView.popup.open({
+                        mapView.openPopup({
                             features: [selectedFeature]
                         });
                     })
