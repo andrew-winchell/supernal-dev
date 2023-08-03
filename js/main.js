@@ -529,7 +529,7 @@ require([
         container: "view-div",
         zoom: 3,
         center: [-97, 39],
-        popupEnabled: false;
+        popupEnabled: false
     });
 
     const sceneView = new SceneView ({
