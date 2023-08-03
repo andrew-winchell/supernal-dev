@@ -529,12 +529,7 @@ require([
         container: "view-div",
         zoom: 3,
         center: [-97, 39],
-        popup: {
-            dockEnabled: true,
-            dockOptions: {
-                position: "bottom-right"
-            }
-        }
+        popupEnabled: false;
     });
 
     const sceneView = new SceneView ({
@@ -1363,6 +1358,11 @@ require([
                         $("#waypoint-list").css("display", "block");
                         selectedFeatureTable(selectedFeature.geometry.paths);
                         selectedFeatureProfile(selectedFeature.geometry.paths);
+                        mapView.popup.dockEnabled = true;
+                        mapView.popup.dockOptions = {
+                            position: "bottom-right",
+                            buttonEnabled: false
+                        };
                         mapView.openPopup({
                             features: [selectedFeature]
                         });
