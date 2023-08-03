@@ -1473,7 +1473,9 @@ require([
 
         supernalRoutesLyr
             .applyEdits(edits)
-            .then(() => {
+            .then(() => { 
+                drawPath(selectedFeature.geometry.paths);
+
                 const query = {
                     where: "OBJECTID = " + objectId,
                     outFields: ["*"],
@@ -1607,13 +1609,6 @@ require([
     
     /*
     supernalRoutesLyr.on("apply-edits", (evt) => {
-        if (evt.edits.addFeatures) {
-            // Delete the current list of existing routes
-            $("#existing-routes").empty();
-            // Repopulate existing routes list with new values after 1 second delay
-            setTimeout(()=> {
-                populateExistingRoutes();
-            }, 1000);
         } else if (evt.edits.updateFeatures) {
             drawPath(selectedFeature.geometry.paths);
             selectedFeatureTable(selectedFeature.geometry.paths);
