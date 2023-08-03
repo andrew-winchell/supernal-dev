@@ -1600,6 +1600,7 @@ require([
     );
     
     supernalRoutesLyr.on("apply-edits", (evt) => {
+        console.log(evt)
         if (evt.edits.addFeatures) {
             // Delete the current list of existing routes
             $("#existing-routes").empty();
