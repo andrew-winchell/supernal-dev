@@ -533,7 +533,7 @@ require([
         popup: {
             dockEnabled: true,
             dockOptions: {
-                position: "top-left",
+                position: "bottom-right",
                 breakpoint: false
             }
         }
