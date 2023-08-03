@@ -530,7 +530,7 @@ require([
         zoom: 3,
         center: [-97, 39],
         popupEnabled: true,
-        popup: {
+        popup: { // popup options when any layer feature is clicked on the map
             dockEnabled: true,
             dockOptions: {
                 position: "bottom-right",
@@ -1365,11 +1365,6 @@ require([
                         $("#waypoint-list").css("display", "block");
                         selectedFeatureTable(selectedFeature.geometry.paths);
                         selectedFeatureProfile(selectedFeature.geometry.paths);
-                        mapView.popup.dockEnabled = true;
-                        mapView.popup.dockOptions = {
-                            position: "bottom-right",
-                            buttonEnabled: false
-                        };
                         mapView.openPopup({
                             features: [selectedFeature]
                         });
