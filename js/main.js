@@ -582,6 +582,8 @@ require([
                     };
                 }
 
+                console.log(item.children.length, item.parent)
+
             }
         });
 
