@@ -1600,6 +1600,7 @@ require([
       }
     );
     
+    /*
     supernalRoutesLyr.on("apply-edits", (evt) => {
         if (evt.edits.addFeatures) {
             // Delete the current list of existing routes
@@ -1622,6 +1623,7 @@ require([
             }, 10);
         }
     });
+    */
 
 
     /********** Elevation Profile Widget **********/
