@@ -1352,11 +1352,6 @@ require([
             returnGeometry: true,
             returnZ: true
         };
-        mapView.popup.dockEnabled = true;
-        mapView.popup.dockOptions = {
-            position: "bottom-right",
-            buttonEnabled: false
-        };
 
         supernalRoutesLyr.queryFeatures(query)
             .then((results) => {
