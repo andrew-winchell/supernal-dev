@@ -1337,12 +1337,25 @@ require([
 
     let objectId;
 
+    $("#existing-routes").on("calciteListItemSelect", (evt) => {
+        if (editor.viewModel.state !== "editing-existing-feature") {
+            objectId = evt.target.value;
+            cancelRouteCreation();
+            selectExistingRoute(objectId);
+        }
+    });
+
     function selectExistingRoute (objectId) {
         const query = {
             where: "OBJECTID = " + objectId,
             outFields: ["*"],
             returnGeometry: true,
             returnZ: true
+        };
+        mapView.popup.dockEnabled = true;
+        mapView.popup.dockOptions = {
+            position: "bottom-right",
+            buttonEnabled: false
         };
 
         supernalRoutesLyr.queryFeatures(query)
@@ -1355,15 +1368,6 @@ require([
                         $("#waypoint-list").css("display", "block");
                         selectedFeatureTable(selectedFeature.geometry.paths);
                         selectedFeatureProfile(selectedFeature.geometry.paths);
-                        mapView.popup.dockEnabled = true;
-                        mapView.popup.dockOptions = {
-                            position: "bottom-right",
-                            breakPoint: {
-                                width: 5000,
-                                height: 5000
-                            },
-                            buttonEnabled: false
-                        };
                         mapView.openPopup({
                             features: [selectedFeature]
                         });
@@ -1376,14 +1380,6 @@ require([
             });
 
     }
-
-    $("#existing-routes").on("calciteListItemSelect", (evt) => {
-        if (editor.viewModel.state !== "editing-existing-feature") {
-            objectId = evt.target.value;
-            cancelRouteCreation();
-            selectExistingRoute(objectId);
-        }
-    });
 
     mapView.when(() => {
         editor = new Editor ({
