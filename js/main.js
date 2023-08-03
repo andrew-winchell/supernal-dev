@@ -1246,7 +1246,12 @@ require([
         supernalRoutesLyr
             .applyEdits(edits)
             .then((results) => {
-                console.log(results);
+                // Delete the current list of existing routes
+                $("#existing-routes").empty();
+                // Repopulate existing routes list with new values after 1 second delay
+                setTimeout(()=> {
+                    populateExistingRoutes();
+                }, 1000);
                 objectId = results.addFeatureResults[0].objectId;
                 selectExistingRoute(objectId);
 
