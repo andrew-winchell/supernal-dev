@@ -529,7 +529,14 @@ require([
         container: "view-div",
         zoom: 3,
         center: [-97, 39],
-        popupEnabled: false
+        popupEnabled: true,
+        popup: {
+            dockEnabled: true,
+            dockOptions: {
+                position: "top-left",
+                breakpoint: false
+            }
+        }
     });
 
     const sceneView = new SceneView ({
