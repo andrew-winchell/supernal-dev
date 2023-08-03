@@ -1246,6 +1246,7 @@ require([
         supernalRoutesLyr
             .applyEdits(edits)
             .then((results) => {
+                console.log(results);
                 objectId = results.addFeatureResults[0].objectId;
                 selectExistingRoute(objectId);
 
@@ -1600,7 +1601,6 @@ require([
     );
     
     supernalRoutesLyr.on("apply-edits", (evt) => {
-        console.log(evt)
         if (evt.edits.addFeatures) {
             // Delete the current list of existing routes
             $("#existing-routes").empty();
