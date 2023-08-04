@@ -786,10 +786,10 @@ require([
         }
     });
 
-    $("#navaids-filter-value").on("calciteComboboxChange", (selection) => {
+    navaidsFilterValue.addEventListener("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#navaids-field-select")[0]
         let field = fieldSelect.value;
-        let value = selection.currentTarget.value;
+        let value = selection.target.value;
         let valueList = [];
         if (Array.isArray(value)) {
             for (let v of value) {
