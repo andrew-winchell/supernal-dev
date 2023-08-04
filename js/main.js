@@ -695,14 +695,13 @@ require([
             }
         } else {
             value = "'" + value + "'";
-            valueList.push(value)
+            valueList.push(value);
         }
         if (airspaceSwitch.checked == true) {
             mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
                 layerView.filter = {
                     where: field + " IN (" + valueList + ")"
                 }
-                console.log(layerView.filter.where)
             })
         }
     });
@@ -717,7 +716,7 @@ require([
             }
         } else {
             value = "'" + value + "'";
-            valueList.push(value)
+            valueList.push(value);
         }
         if (toggle.target.checked == true) {
             mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
