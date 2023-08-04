@@ -582,11 +582,41 @@ require([
                     };
                 }
 
-                if (event.item.title == "NAVAIDS") {
+                if (event.item.title == "Existing Routes") {
                     item.panel = {
+                        className: "esri-icon-filter",
+                        content: "Routes Panel"
+                    }
+                } else if (event.item.title == "Vertiports") {
+                    item.panel = {
+                        className: "esri-icon-filter",
+                        content: "Vertiports Panel"
+                    }
+                } else if (event.item.title == "Class Airspace") {
+                    item.panel = {
+                        className: "esri-icon-filter",
+                        content: "Airspace Panel"
+                    }
+                } else if (event.item.title == "Airports") {
+                    item.panel = {
+                        className: "esri-icon-filter",
+                        content: "Airports Panel"
+                    }
+                } else if (event.item.title == "Designated Points") {
+                    item.panel = {
+                        className: "esri-icon-filter",
+                        content: "Fixes Panel"
+                    }
+                } else if (event.item.title == "Obstacles") {
+                    item.panel = {
+                        className: "esri-icon-filter",
+                        content: "Obstacles Panel"
+                    }
+                } else if (event.item.title == "NAVAIDS") {
+                    item.panel = {
+                        className: "esri-icon-filter",
                         content: "NAVAIDS Panel"
                     }
-
                 }
 
             }
