@@ -582,6 +582,8 @@ require([
                     };
                 }
 
+                console.log(event);
+
                 item.panel = {
                     content: "Test panel"
                 }
