@@ -554,8 +554,9 @@ require([
 
     /********** Map Widgets **********/
 
+    // Existing Route Filter
     let routeSelection = document.createElement("calcite-combobox");
-    routeSelection.id = "route-filter-value";
+    routeSelection.setAttribute("id", "route-filter-value");
     routeSelection.setAttribute("placeholder", "Filter Value");
     routeSelection.setAttribute("max-items", "5");
     let routeSwitchLabel = document.createElement("calcite-label");
@@ -565,6 +566,19 @@ require([
     routeSwitch.setAttribute("id", "route-filter-switch");
     routeSwitchLabel.appendChild(routeSwitch);
     let routeFilterNode = [routeSelection, routeSwitchLabel]
+
+    // Airports Filter
+    let airportFieldSelect = document.createElement("calcite-combobox");
+    airportFieldSelect.setAttribute("id", "airport-field-select");
+    airportFieldSelect.setAttribute("placeholder", "Select a field");
+    airportFieldSelect.setAttribute("selection-mode", "single");
+    let airportFieldType = document.createElement("calcite-combobox-item");
+    let airportFieldState = document.createElement("calcite-combobox-item");
+    let airportFieldMil = document.createElement("calcite-combobox-item");
+    airportFieldSelect.appendChild(airportFieldType);
+    airportFieldSelect.appendChild(airportFieldState);
+    airportFieldSelect.appendChild(airportFieldMil);
+    let airportFilterNode = [airportFieldSelect];
 
 
     // After map load, create a customized Layer List widget
@@ -616,7 +630,7 @@ require([
                 } else if (event.item.title == "Airports") {
                     item.panel = {
                         className: "esri-icon-filter",
-                        content: "Airports Panel",
+                        content: airportFilterNode,
                         open: false
                     }
                 } else if (event.item.title == "Designated Points") {
