@@ -921,7 +921,7 @@ require([
                 event.item.panel.content = "legend"
                 event.item.panel.className = "esri-icon-legend"
             } else if (id === "item-filter") {
-                event.item.panel.classname = "esri-icon-filter"
+                event.item.panel.className = "esri-icon-filter"
                 if (event.item.title == "Existing Routes") {
                     event.item.panel.content = routeFilterNode;
                 } else if (event.item.title == "Class Airspace") {
