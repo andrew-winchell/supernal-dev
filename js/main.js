@@ -561,6 +561,8 @@ require([
     let routeSwitchLabel = document.createElement("calcite-label");
     routeSwitchLabel.setAttribute("layout", "inline");
     let routeSwitch = document.createElement("calcite-switch");
+    routeSwitch.setAttribute("class", "filter-switch");
+    routeSwitch.setAttribute("id", "route-filter-switch");
     routeSwitchLabel.appendChild(routeSwitch);
     let routeFilterNode = [routeSelection, routeSwitchLabel]
 
