@@ -621,6 +621,28 @@ require([
             });
     });
 
+    airportFilterValue.addEventListener("calciteComboboxChange", (selection) => {
+        let fieldSelect = $("#airport-field-select")[0]
+        let field = fieldSelect.value;
+        let value = selection.target.value;
+        let valueList = [];
+        if (Array.isArray(value)) {
+            for (let v of value) {
+                valueList.push("'" + v + "'");
+            }
+        } else {
+            value = "'" + value + "'";
+            valueList.push(value)
+        }
+        if (airportSwitch.checked == true) {
+            mapView.whenLayerView(airportsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " IN (" + valueList + ")"
+                }
+            })
+        }
+    });
+
     airportSwitch.addEventListener("calciteSwitchChange", (toggle) => {
         let field = $("#airport-field-select")[0].value;
         let value = $("#airport-filter-value")[0].value;
@@ -988,28 +1010,6 @@ require([
     });
 
     /********** Layer Filtering Capabilities **********/
-
-    $("#airport-filter-value").on("calciteComboboxChange", (selection) => {
-        let fieldSelect = $("#airport-field-select")[0]
-        let field = fieldSelect.value;
-        let value = selection.currentTarget.value;
-        let valueList = [];
-        if (Array.isArray(value)) {
-            for (let v of value) {
-                valueList.push("'" + v + "'");
-            }
-        } else {
-            value = "'" + value + "'";
-            valueList.push(value)
-        }
-        if ($("#airport-filter-switch")[0].checked == true) {
-            mapView.whenLayerView(airportsLyr).then((layerView) => {
-                layerView.filter = {
-                    where: field + " IN (" + valueList + ")"
-                }
-            })
-        }
-    });
 
     $("#fixes-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
         let field = $("#fixes-field-select")[0].value;
