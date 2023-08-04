@@ -559,6 +559,7 @@ require([
     routeSelection.setAttribute("id", "route-filter-value");
     routeSelection.setAttribute("placeholder", "Filter Value");
     routeSelection.setAttribute("max-items", "5");
+    routeSelection.setAttribute("scale", "s");
     let routeSwitchLabel = document.createElement("calcite-label");
     routeSwitchLabel.setAttribute("layout", "inline");
     let routeSwitch = document.createElement("calcite-switch");
