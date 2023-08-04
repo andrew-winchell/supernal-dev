@@ -909,45 +909,6 @@ require([
                         open: true
                     };
                 }
-
-                if (item.title == "Existing Routes") {
-                    item.panel = {
-                        className: "esri-icon-filter",
-                        content: routeFilterNode,
-                        open: false
-                    }
-                } else if (item.title == "Vertiports") {
-                    item.panel = {
-                        className: "esri-icon-filter",
-                        content: "Vertiports Panel",
-                        open: false
-                    }
-                } else if (item.title == "Class Airspace") {
-                    item.panel = {
-                        className: "esri-icon-filter",
-                        content: airspaceFilterNode,
-                        open: false
-                    }
-                } else if (item.title == "Airports") {
-                    item.panel = {
-                        className: "esri-icon-filter",
-                        content: airportFilterNode,
-                        open: false
-                    }
-                } else if (item.title == "Designated Points") {
-                    item.panel = {
-                        className: "esri-icon-filter",
-                        content: fixesFilterNode,
-                        open: false
-                    }
-                } else if (item.title == "NAVAIDS") {
-                    item.panel = {
-                        className: "esri-icon-filter",
-                        content: navaidsFilterNode,
-                        open: false
-                    }
-                }
-
             }
         });
 
@@ -958,6 +919,20 @@ require([
                 window.open(event.item.layer.url);
             } else if (id === "item-legend") {
                 event.item.panel.content = "legend"
+                event.item.panel.className = "esri-icon-legend"
+            } else if (id === "item-filter") {
+                event.item.panel.classname = "esri-icon-filter"
+                if (item.title == "Existing Routes") {
+                    item.panel.content = routeFilterNode;
+                } else if (item.title == "Class Airspace") {
+                    item.panel.content = airspaceFilterNode;
+                } else if (item.title == "Airports") {
+                    item.panel.content = airportFilterNode;
+                } else if (item.title == "Designated Points") {
+                    item.panel.content = fixesFilterNode;
+                } else if (item.title == "NAVAIDS") {
+                    item.panel.content = navaidsFilterNode;
+                } 
             }
         })
     })
