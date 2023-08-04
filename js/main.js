@@ -886,8 +886,13 @@ require([
                         [
                             {
                                 title: "Legend",
-                                className: "esri-icon-description",
+                                className: "esri-icon-legend",
                                 id: "item-legend"
+                            },
+                            {
+                                title: "Filter",
+                                className: "esri-icon-filter",
+                                id: "item-details"
                             },
                             {
                                 title: "Item Details",
@@ -905,37 +910,37 @@ require([
                     };
                 }
 
-                if (event.item.title == "Existing Routes") {
+                if (item.title == "Existing Routes") {
                     item.panel = {
                         className: "esri-icon-filter",
                         content: routeFilterNode,
                         open: false
                     }
-                } else if (event.item.title == "Vertiports") {
+                } else if (item.title == "Vertiports") {
                     item.panel = {
                         className: "esri-icon-filter",
                         content: "Vertiports Panel",
                         open: false
                     }
-                } else if (event.item.title == "Class Airspace") {
+                } else if (item.title == "Class Airspace") {
                     item.panel = {
                         className: "esri-icon-filter",
                         content: airspaceFilterNode,
                         open: false
                     }
-                } else if (event.item.title == "Airports") {
+                } else if (item.title == "Airports") {
                     item.panel = {
                         className: "esri-icon-filter",
                         content: airportFilterNode,
                         open: false
                     }
-                } else if (event.item.title == "Designated Points") {
+                } else if (item.title == "Designated Points") {
                     item.panel = {
                         className: "esri-icon-filter",
                         content: fixesFilterNode,
                         open: false
                     }
-                } else if (event.item.title == "NAVAIDS") {
+                } else if (item.title == "NAVAIDS") {
                     item.panel = {
                         className: "esri-icon-filter",
                         content: navaidsFilterNode,
@@ -951,6 +956,8 @@ require([
             const id = event.action.id;
             if (id === "item-details") {
                 window.open(event.item.layer.url);
+            } else if (id === "Legend") {
+                event.item.panel.content = "legend"
             }
         })
     })
