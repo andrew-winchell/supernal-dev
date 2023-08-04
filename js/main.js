@@ -600,8 +600,9 @@ require([
     airportSwitchLabel.appendChild(airportSwitch);
     let airportFilterNode = [airportFieldSelect, airportFilterValue, airportSwitchLabel];
 
-    console.log(airportFieldSelect)
-
+    airportFieldSelect.on("click", (event) => {
+        console.log(event)
+    })
 
     // After map load, create a customized Layer List widget
     // Place in left pane layer-list div
