@@ -885,6 +885,11 @@ require([
                     item.actionsSections = [
                         [
                             {
+                                title: "Legend",
+                                className: "esri-icon-description",
+                                id: "item-legend"
+                            },
+                            {
                                 title: "Item Details",
                                 className: "esri-icon-description",
                                 id: "item-details"
