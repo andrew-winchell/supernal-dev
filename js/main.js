@@ -852,15 +852,6 @@ require([
 
     mapView.ui.add(bgExpand, { position: "bottom-left" });
 
-    const filterDiv = $("#filter-container")[0];
-
-    const filterExpand = new Expand ({
-        content: filterDiv,
-        expandIconClass: "esri-icon-filter"
-    });
-
-    mapView.ui.add(filterExpand, { position: "bottom-left" });
-
     const switchBtn = $("#switch-btn")[0];
 
     mapView.ui.add(switchBtn, { position: "bottom-left" });
