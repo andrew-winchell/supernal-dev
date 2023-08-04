@@ -554,6 +554,17 @@ require([
 
     /********** Map Widgets **********/
 
+    let routeSelection = document.createElement("calcite-combobox");
+    routeSelection.id = "route-filter-value";
+    routeSelection.setAttribute("placeholder", "Filter Value");
+    routeSelection.setAttribute("max-items", "5");
+    let routeSwitchLabel = document.createElement("calcite-label");
+    routeSwitchLabel.setAttribute("layout", "inline");
+    let routeSwitch = document.createElement("calcite-switch");
+    routeSwitchLabel.appendChild(routeSwitch);
+    let routeFilterNode = [routeSelection, routeSwitchLabel]
+
+
     // After map load, create a customized Layer List widget
     // Place in left pane layer-list div
     // Add custom actions for legend and item details
@@ -585,7 +596,7 @@ require([
                 if (event.item.title == "Existing Routes") {
                     item.panel = {
                         className: "esri-icon-filter",
-                        content: document.createElement("calcite-combobox"),
+                        content: routeFilterNode,
                         open: false
                     }
                 } else if (event.item.title == "Vertiports") {
