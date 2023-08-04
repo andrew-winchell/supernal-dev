@@ -646,9 +646,10 @@ require([
     airspaceFieldSelect.setAttribute("placeholder", "Select a field");
     airspaceFieldSelect.setAttribute("selection-mode", "single");
     airspaceFieldSelect.setAttribute("max-items", "3");
-    let airspaceFieldType = document.createElement("calcite-combobox-item");
-    airspaceFieldType.setAttribute("value", "CLASS");
-    airspaceFieldType.setAttribute("text-label", "Class");
+    let airspaceFieldClass = document.createElement("calcite-combobox-item");
+    airspaceFieldClass.setAttribute("value", "CLASS");
+    airspaceFieldClass.setAttribute("text-label", "Class");
+    airportFieldSelect.appendChild(airspaceFieldClass)
     let airspaceFilterValue = document.createElement("calcite-combobox");
     airspaceFilterValue.setAttribute("id", "airspace-filter-value");
     airspaceFilterValue.setAttribute("scale", "s");
