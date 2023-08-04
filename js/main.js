@@ -573,7 +573,7 @@ require([
     airportFieldSelect.setAttribute("class", "filter-field-dropdown");
     airportFieldSelect.setAttribute("placeholder", "Select a field");
     airportFieldSelect.setAttribute("selection-mode", "single");
-    airportFieldSelect.setAttribute("max-items", "2");
+    airportFieldSelect.setAttribute("max-items", "3");
     let airportFieldType = document.createElement("calcite-combobox-item");
     airportFieldType.setAttribute("value", "TYPE_CODE");
     airportFieldType.setAttribute("text-label", "Type");
@@ -589,7 +589,7 @@ require([
     let airportFilterValue = document.createElement("calcite-combobox");
     airportFilterValue.setAttribute("id", "airport-filter-value");
     airportFilterValue.setAttribute("placeholder", "Filter Value");
-    airportFilterValue.setAttribute("max-items", "2");
+    airportFilterValue.setAttribute("max-items", "3");
     let airportSwitchLabel = document.createElement("calcite-label");
     airportSwitchLabel.setAttribute("layout", "inline");
     let airportSwitch = document.createElement("calcite-switch");
