@@ -718,9 +718,35 @@ require([
     fixesSwitchLabel.setAttribute("layout", "inline");
     let fixesSwitch = document.createElement("calcite-switch");
     fixesSwitch.setAttribute("class", "filter-switch");
-    fixesSwitch.setAttribute("id", "airspace-filter-switch");
+    fixesSwitch.setAttribute("id", "fixes-filter-switch");
     fixesSwitchLabel.appendChild(fixesSwitch);
-    let fixesFilterNode = [fixesFieldSelect, fixesFilterValue, fixesSwitch];
+    let fixesFilterNode = [fixesFieldSelect, fixesFilterValue, fixesSwitchLabel];
+
+    // NAVAIDS Filter
+    let navaidsFieldSelect = document.createElement("calcite-combobox");
+    navaidsFieldSelect.setAttribute("id", "navaids-field-select");
+    navaidsFieldSelect.setAttribute("class", "filter-field-dropdown");
+    navaidsFieldSelect.setAttribute("scale", "s");
+    navaidsFieldSelect.setAttribute("placeholder", "Select a field");
+    navaidsFieldSelect.setAttribute("selection-mode", "single");
+    navaidsFieldSelect.setAttribute("max-items", "3");
+    let navaidsFieldClass = document.createElement("calcite-combobox-item");
+    navaidsFieldClass.setAttribute("value", "CLASS_TXT");
+    navaidsFieldClass.setAttribute("text-label", "Class");
+    navaidsFieldClass.appendChild(navaidsFieldClass)
+    let navaidsFilterValue = document.createElement("calcite-combobox");
+    navaidsFilterValue.setAttribute("id", "navaids-filter-value");
+    navaidsFilterValue.setAttribute("scale", "s");
+    navaidsFilterValue.setAttribute("placeholder", "Filter Value");
+    navaidsFilterValue.setAttribute("max-items", "3");
+    let navaidsSwitchLabel = document.createElement("calcite-label");
+    navaidsSwitchLabel.setAttribute("layout", "inline");
+    let navaidsSwitch = document.createElement("calcite-switch");
+    navaidsSwitch.setAttribute("class", "filter-switch");
+    navaidsSwitch.setAttribute("id", "navaids-filter-switch");
+    navaidsSwitchLabel.appendChild(navaidsSwitch);
+    let navaidsFilterNode = [navaidsFieldSelect, navaidsFilterValue, fixesSwitchLabel];
+
 
     /********** Map Widgets **********/
 
@@ -791,7 +817,7 @@ require([
                 } else if (event.item.title == "NAVAIDS") {
                     item.panel = {
                         className: "esri-icon-filter",
-                        content: "NAVAIDS Panel",
+                        content: navaidsFilterNode,
                         open: false
                     }
                 }
