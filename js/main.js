@@ -892,7 +892,7 @@ require([
                             {
                                 title: "Filter",
                                 className: "esri-icon-filter",
-                                id: "item-details"
+                                id: "item-filter"
                             },
                             {
                                 title: "Item Details",
@@ -956,7 +956,7 @@ require([
             const id = event.action.id;
             if (id === "item-details") {
                 window.open(event.item.layer.url);
-            } else if (id === "Legend") {
+            } else if (id === "item-legend") {
                 event.item.panel.content = "legend"
             }
         })
