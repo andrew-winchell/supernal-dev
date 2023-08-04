@@ -687,21 +687,40 @@ require([
         let field = $("#airspace-field-select")[0].value;
         let value = $("#airspace-filter-value")[0].value;
         if (toggle.target.checked == true) {
-            $("#airspace-filter-icon")[0].icon = "filter";
             mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
                 layerView.filter = {
                     where: field + " = '" + value + "'"
                 }
             });
         } else if (toggle.target.checked == false) {
-            $("#airspace-filter-icon")[0].icon = " ";
             mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
                 layerView.filter = {
                     where: "1=1"
                 }
             });
         }
-    })
+    });
+
+    // Fixes Filter
+    let fixesFieldSelect = document.createElement("calcite-combobox");
+    fixesFieldSelect.setAttribute("id", "fixes-field-select");
+    fixesFieldSelect.setAttribute("class", "filter-field-dropdown");
+    fixesFieldSelect.setAttribute("scale", "s");
+    fixesFieldSelect.setAttribute("placeholder", "Select a field");
+    fixesFieldSelect.setAttribute("selection-mode", "single");
+    fixesFieldSelect.setAttribute("max-items", "3");
+    let fixesFilterValue = document.createElement("calcite-combobox");
+    fixesFilterValue.setAttribute("id", "fixes-filter-value");
+    fixesFilterValue.setAttribute("scale", "s");
+    fixesFilterValue.setAttribute("placeholder", "Filter Value");
+    fixesFilterValue.setAttribute("max-items", "3");
+    let fixesSwitchLabel = document.createElement("calcite-label");
+    fixesSwitchLabel.setAttribute("layout", "inline");
+    let fixesSwitch = document.createElement("calcite-switch");
+    fixesSwitch.setAttribute("class", "filter-switch");
+    fixesSwitch.setAttribute("id", "airspace-filter-switch");
+    fixesSwitchLabel.appendChild(fixesSwitch);
+    let fixesFilterNode = [fixesFieldSelect, fixesFilterValue, fixesSwitch];
 
     /********** Map Widgets **********/
 
@@ -760,7 +779,7 @@ require([
                 } else if (event.item.title == "Designated Points") {
                     item.panel = {
                         className: "esri-icon-filter",
-                        content: "Fixes Panel",
+                        content: fixesFilterNode,
                         open: false
                     }
                 } else if (event.item.title == "Obstacles") {
