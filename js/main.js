@@ -684,6 +684,29 @@ require([
         });
     });
 
+    airspaceFilterValue.addEventListener("calciteComboboxChange", (selection) => {
+        let fieldSelect = $("#airspace-field-select")[0]
+        let field = fieldSelect.value;
+        let value = selection.target.value;
+        let valueList = [];
+        if (Array.isArray(value)) {
+            for (let v of value) {
+                valueList.push("'" + v + "'");
+            }
+        } else {
+            value = "'" + value + "'";
+            valueList.push(value)
+        }
+        if (airspaceSwitch.checked == true) {
+            mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " IN (" + valueList + ")"
+                }
+                console.log(layerView.filter.where)
+            })
+        }
+    });
+
     airspaceSwitch.addEventListener("calciteSwitchChange", (toggle) => {
         let field = $("#airspace-field-select")[0].value;
         let value = $("#airspace-filter-value")[0].value;
@@ -781,7 +804,6 @@ require([
             value = "'" + value + "'";
             valueList.push(value)
         }
-        console.log(navaidsSwitch.checked);
         if (navaidsSwitch.checked == true) {
             mapView.whenLayerView(navaidsLyr).then((layerView) => {
                 layerView.filter = {
@@ -950,47 +972,6 @@ require([
 
     /********** Layer Filtering Capabilities **********/
 
-    mapView.when(() => {
-        $("#fixes-field-select").on("calciteComboboxChange", (change) => {
-            $("#fixes-filter-value").empty();
-            let field = change.currentTarget.value;
-            uniqueValues({
-                layer: desPointsLyr,
-                field: field
-            }).then((response) => {
-                let unique = [];
-                response.uniqueValueInfos.forEach((val) => {
-                    unique.push(val.value);
-                });
-                unique.sort();
-                for (let item of unique) {
-                    $("#fixes-filter-value").append(
-                        "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
-                    );
-                }
-            });
-        });
-        $("#obstacles-field-select").on("calciteComboboxChange", (change) => {
-            $("#obstacles-filter-value").empty();
-            let field = change.currentTarget.value;
-            uniqueValues({
-                layer: obstaclesLyr,
-                field: field
-            }).then((response) => {
-                let unique = [];
-                response.uniqueValueInfos.forEach((val) => {
-                    unique.push(val.value);
-                });
-                unique.sort();
-                for (let item of unique) {
-                    $("#obstacles-filter-value").append(
-                        "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
-                    );
-                }
-            });
-        });
-    });
-
     $("#airport-filter-value").on("calciteComboboxChange", (selection) => {
         let fieldSelect = $("#airport-field-select")[0]
         let field = fieldSelect.value;
@@ -1009,29 +990,6 @@ require([
                 layerView.filter = {
                     where: field + " IN (" + valueList + ")"
                 }
-            })
-        }
-    });
-
-    $("#airspace-filter-value").on("calciteComboboxChange", (selection) => {
-        let fieldSelect = $("#airspace-field-select")[0]
-        let field = fieldSelect.value;
-        let value = selection.currentTarget.value;
-        let valueList = [];
-        if (Array.isArray(value)) {
-            for (let v of value) {
-                valueList.push("'" + v + "'");
-            }
-        } else {
-            value = "'" + value + "'";
-            valueList.push(value)
-        }
-        if ($("#airspace-filter-switch")[0].checked == true) {
-            mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
-                layerView.filter = {
-                    where: field + " IN (" + valueList + ")"
-                }
-                console.log(layerView.filter.where)
             })
         }
     });
