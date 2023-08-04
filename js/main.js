@@ -582,10 +582,11 @@ require([
                     };
                 }
 
-                console.log(event);
+                if (event.item.title == "NAVAIDS") {
+                    item.panel = {
+                        content: "NAVAIDS Panel"
+                    }
 
-                item.panel = {
-                    content: "Test panel"
                 }
 
             }
