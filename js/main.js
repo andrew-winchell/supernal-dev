@@ -710,6 +710,7 @@ require([
     airspaceSwitch.addEventListener("calciteSwitchChange", (toggle) => {
         let field = $("#airspace-field-select")[0].value;
         let value = $("#airspace-filter-value")[0].value;
+        console.log(value);
         if (toggle.target.checked == true) {
             mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
                 layerView.filter = {
