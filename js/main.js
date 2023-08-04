@@ -733,7 +733,7 @@ require([
     let navaidsFieldClass = document.createElement("calcite-combobox-item");
     navaidsFieldClass.setAttribute("value", "CLASS_TXT");
     navaidsFieldClass.setAttribute("text-label", "Class");
-    navaidsFieldClass.appendChild(navaidsFieldSelect)
+    navaidsFieldSelect.appendChild(navaidsFieldClass)
     let navaidsFilterValue = document.createElement("calcite-combobox");
     navaidsFilterValue.setAttribute("id", "navaids-filter-value");
     navaidsFilterValue.setAttribute("scale", "s");
