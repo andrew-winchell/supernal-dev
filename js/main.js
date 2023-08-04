@@ -733,7 +733,7 @@ require([
     let navaidsFieldClass = document.createElement("calcite-combobox-item");
     navaidsFieldClass.setAttribute("value", "CLASS_TXT");
     navaidsFieldClass.setAttribute("text-label", "Class");
-    navaidsFieldClass.appendChild(navaidsFieldClass)
+    navaidsFieldClass.appendChild(navaidsFieldSelect)
     let navaidsFilterValue = document.createElement("calcite-combobox");
     navaidsFilterValue.setAttribute("id", "navaids-filter-value");
     navaidsFilterValue.setAttribute("scale", "s");
@@ -806,12 +806,6 @@ require([
                     item.panel = {
                         className: "esri-icon-filter",
                         content: fixesFilterNode,
-                        open: false
-                    }
-                } else if (event.item.title == "Obstacles") {
-                    item.panel = {
-                        className: "esri-icon-filter",
-                        content: "Obstacles Panel",
                         open: false
                     }
                 } else if (event.item.title == "NAVAIDS") {
