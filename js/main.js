@@ -768,6 +768,29 @@ require([
         });
     });
 
+    navaidsFilterValue.addEventListener("calciteComboboxChange", (selection) => {
+        let fieldSelect = $("#navaids-field-select")[0]
+        let field = fieldSelect.value;
+        let value = selection.target.value;
+        let valueList = [];
+        if (Array.isArray(value)) {
+            for (let v of value) {
+                valueList.push("'" + v + "'");
+            }
+        } else {
+            value = "'" + value + "'";
+            valueList.push(value)
+        }
+        console.log(navaidsSwitch.checked);
+        if (navaidsSwitch.checked == true) {
+            mapView.whenLayerView(navaidsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " IN (" + valueList + ")"
+                }
+            })
+        }
+    });
+
     navaidsSwitch.addEventListener("calciteSwitchChange", (toggle) => {
         let field = $("#navaids-field-select")[0].value;
         let value = $("#navaids-filter-value")[0].value;
@@ -783,28 +806,6 @@ require([
                     where: "1=1"
                 }
             });
-        }
-    });
-
-    navaidsFilterValue.addEventListener("calciteComboboxChange", (selection) => {
-        let fieldSelect = $("#navaids-field-select")[0]
-        let field = fieldSelect.value;
-        let value = selection.target.value;
-        let valueList = [];
-        if (Array.isArray(value)) {
-            for (let v of value) {
-                valueList.push("'" + v + "'");
-            }
-        } else {
-            value = "'" + value + "'";
-            valueList.push(value)
-        }
-        if (navaidsSwitch.checked == true) {
-            mapView.whenLayerView(navaidsLyr).then((layerView) => {
-                layerView.filter = {
-                    where: field + " IN (" + valueList + ")"
-                }
-            })
         }
     });
 
@@ -948,6 +949,7 @@ require([
     });
 
     /********** Layer Filtering Capabilities **********/
+
     mapView.when(() => {
         $("#fixes-field-select").on("calciteComboboxChange", (change) => {
             $("#fixes-filter-value").empty();
