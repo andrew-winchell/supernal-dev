@@ -663,6 +663,46 @@ require([
     airspaceSwitchLabel.appendChild(airspaceSwitch);
     let airspaceFilterNode = [airspaceFieldSelect, airspaceFilterValue, airspaceSwitchLabel];
 
+    airspaceFieldSelect.addEventListener("calciteComboboxChange", (change) => {
+        $("#airspace-filter-value").empty();
+        let field = change.target.value;
+        uniqueValues({
+            layer: classAirspaceLyr,
+            field: field
+        }).then((response) => {
+            let unique = [];
+            response.uniqueValueInfos.forEach((val) => {
+                unique.push(val.value);
+            });
+            unique.sort();
+            for (let item of unique) {
+                $("#airspace-filter-value").append(
+                    "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
+                );
+            }
+        });
+    });
+
+    airspaceSwitch.addEventListener("calciteSwitchChange", (toggle) => {
+        let field = $("#airspace-field-select")[0].value;
+        let value = $("#airspace-filter-value")[0].value;
+        if (toggle.target.checked == true) {
+            $("#airspace-filter-icon")[0].icon = "filter";
+            mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            });
+        } else if (toggle.target.checked == false) {
+            $("#airspace-filter-icon")[0].icon = " ";
+            mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
+                layerView.filter = {
+                    where: "1=1"
+                }
+            });
+        }
+    })
+
     /********** Map Widgets **********/
 
     // After map load, create a customized Layer List widget
@@ -819,44 +859,6 @@ require([
 
     /********** Layer Filtering Capabilities **********/
     mapView.when(() => {
-        $("#airport-field-select").on("calciteComboboxChange", (change) => {
-            $("#airport-filter-value").empty();
-            let field = change.currentTarget.value;
-            uniqueValues({
-                layer: airportsLyr,
-                field: field
-            }).then((response) => {
-                let unique = [];
-                response.uniqueValueInfos.forEach((val) => {
-                    unique.push(val.value);
-                });
-                unique.sort();
-                for (let item of unique) {
-                    $("#airport-filter-value").append(
-                        "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
-                    );
-                }
-            });
-        });
-        $("#airspace-field-select").on("calciteComboboxChange", (change) => {
-            $("#airspace-filter-value").empty();
-            let field = change.currentTarget.value;
-            uniqueValues({
-                layer: classAirspaceLyr,
-                field: field
-            }).then((response) => {
-                let unique = [];
-                response.uniqueValueInfos.forEach((val) => {
-                    unique.push(val.value);
-                });
-                unique.sort();
-                for (let item of unique) {
-                    $("#airspace-filter-value").append(
-                        "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
-                    );
-                }
-            });
-        });
         $("#fixes-field-select").on("calciteComboboxChange", (change) => {
             $("#fixes-filter-value").empty();
             let field = change.currentTarget.value;
@@ -935,26 +937,6 @@ require([
                     where: field + " IN (" + valueList + ")"
                 }
             })
-        }
-    });
-
-    $("#airspace-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        let field = $("#airspace-field-select")[0].value;
-        let value = $("#airspace-filter-value")[0].value;
-        if (evtSwitch.currentTarget.checked == true) {
-            $("#airspace-filter-icon")[0].icon = "filter";
-            mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
-                layerView.filter = {
-                    where: field + " = '" + value + "'"
-                }
-            });
-        } else if (evtSwitch.currentTarget.checked == false) {
-            $("#airspace-filter-icon")[0].icon = " ";
-            mapView.whenLayerView(classAirspaceLyr).then((layerView) => {
-                layerView.filter = {
-                    where: "1=1"
-                }
-            });
         }
     });
 
