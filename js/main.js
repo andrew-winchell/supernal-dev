@@ -810,7 +810,7 @@ require([
             }
         } else {
             value = "'" + value + "'";
-            valueList.push(value)
+            valueList.push(value);
         }
         if (navaidsSwitch.checked == true) {
             mapView.whenLayerView(navaidsLyr).then((layerView) => {
@@ -824,10 +824,19 @@ require([
     navaidsSwitch.addEventListener("calciteSwitchChange", (toggle) => {
         let field = $("#navaids-field-select")[0].value;
         let value = $("#navaids-filter-value")[0].value;
+        let valueList = [];
+        if (Array.isArray(value)) {
+            for (let v of value) {
+                valueList.push("'" + v + "'");
+            }
+        } else {
+            value = "'" + value + "'";
+            valueList.push(value);
+        }
         if (toggle.target.checked == true) {
             mapView.whenLayerView(navaidsLyr).then((layerView) => {
                 layerView.filter = {
-                    where: field + " = '" + value + "'"
+                    where: field + " IN (" + valueList + ")"
                 }
             });
         } else if (toggle.target.checked == false) {
