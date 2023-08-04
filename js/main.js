@@ -748,6 +748,65 @@ require([
     navaidsSwitchLabel.appendChild(navaidsSwitch);
     let navaidsFilterNode = [navaidsFieldSelect, navaidsFilterValue, fixesSwitchLabel];
 
+    navaidsFieldSelect.addEventListener("calciteComboboxChange", (change) => {
+        $("#navaids-filter-value").empty();
+        let field = change.target.value;
+        uniqueValues({
+            layer: navaidsLyr,
+            field: field
+        }).then((response) => {
+            let unique = [];
+            response.uniqueValueInfos.forEach((val) => {
+                unique.push(val.value);
+            });
+            unique.sort();
+            for (let item of unique) {
+                $("#navaids-filter-value").append(
+                    "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
+                );
+            }
+        });
+    });
+
+    navaidsSwitch.addEventListener("calciteSwitchChange", (toggle) => {
+        let field = $("#navaids-field-select")[0].value;
+        let value = $("#navaids-filter-value")[0].value;
+        if (toggle.target.checked == true) {
+            mapView.whenLayerView(navaidsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            });
+        } else if (toggle.target.checked == false) {
+            mapView.whenLayerView(navaidsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: "1=1"
+                }
+            });
+        }
+    });
+
+    $("#navaids-filter-value").on("calciteComboboxChange", (selection) => {
+        let fieldSelect = $("#navaids-field-select")[0]
+        let field = fieldSelect.value;
+        let value = selection.currentTarget.value;
+        let valueList = [];
+        if (Array.isArray(value)) {
+            for (let v of value) {
+                valueList.push("'" + v + "'");
+            }
+        } else {
+            value = "'" + value + "'";
+            valueList.push(value)
+        }
+        if ($("#navaids-filter-switch")[0].checked == true) {
+            mapView.whenLayerView(navaidsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " IN (" + valueList + ")"
+                }
+            })
+        }
+    });
 
     /********** Map Widgets **********/
 
@@ -909,25 +968,6 @@ require([
                 }
             });
         });
-        $("#navaids-field-select").on("calciteComboboxChange", (change) => {
-            $("#navaids-filter-value").empty();
-            let field = change.currentTarget.value;
-            uniqueValues({
-                layer: navaidsLyr,
-                field: field
-            }).then((response) => {
-                let unique = [];
-                response.uniqueValueInfos.forEach((val) => {
-                    unique.push(val.value);
-                });
-                unique.sort();
-                for (let item of unique) {
-                    $("#navaids-filter-value").append(
-                        "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
-                    );
-                }
-            });
-        });
         $("#obstacles-field-select").on("calciteComboboxChange", (change) => {
             $("#obstacles-filter-value").empty();
             let field = change.currentTarget.value;
@@ -1029,48 +1069,6 @@ require([
         }
         if ($("#fixes-filter-switch")[0].checked == true) {
             mapView.whenLayerView(desPointsLyr).then((layerView) => {
-                layerView.filter = {
-                    where: field + " IN (" + valueList + ")"
-                }
-            })
-        }
-    });
-
-    $("#navaids-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        let field = $("#navaids-field-select")[0].value;
-        let value = $("#navaids-filter-value")[0].value;
-        if (evtSwitch.currentTarget.checked == true) {
-            $("#navaids-filter-icon")[0].icon = "filter";
-            mapView.whenLayerView(navaidsLyr).then((layerView) => {
-                layerView.filter = {
-                    where: field + " = '" + value + "'"
-                }
-            });
-        } else if (evtSwitch.currentTarget.checked == false) {
-            $("#navaids-filter-icon")[0].icon = " ";
-            mapView.whenLayerView(navaidsLyr).then((layerView) => {
-                layerView.filter = {
-                    where: "1=1"
-                }
-            });
-        }
-    });
-
-    $("#navaids-filter-value").on("calciteComboboxChange", (selection) => {
-        let fieldSelect = $("#navaids-field-select")[0]
-        let field = fieldSelect.value;
-        let value = selection.currentTarget.value;
-        let valueList = [];
-        if (Array.isArray(value)) {
-            for (let v of value) {
-                valueList.push("'" + v + "'");
-            }
-        } else {
-            value = "'" + value + "'";
-            valueList.push(value)
-        }
-        if ($("#navaids-filter-switch")[0].checked == true) {
-            mapView.whenLayerView(navaidsLyr).then((layerView) => {
                 layerView.filter = {
                     where: field + " IN (" + valueList + ")"
                 }
