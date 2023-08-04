@@ -571,6 +571,7 @@ require([
     let airportFieldSelect = document.createElement("calcite-combobox");
     airportFieldSelect.setAttribute("id", "airport-field-select");
     airportFieldSelect.setAttribute("class", "filter-field-dropdown");
+    airportFieldSelect.setAttribute("scale", "s");
     airportFieldSelect.setAttribute("placeholder", "Select a field");
     airportFieldSelect.setAttribute("selection-mode", "single");
     airportFieldSelect.setAttribute("max-items", "3");
@@ -588,6 +589,7 @@ require([
     airportFieldSelect.appendChild(airportFieldMil);
     let airportFilterValue = document.createElement("calcite-combobox");
     airportFilterValue.setAttribute("id", "airport-filter-value");
+    airportFilterValue.setAttribute("scale", "s");
     airportFilterValue.setAttribute("placeholder", "Filter Value");
     airportFilterValue.setAttribute("max-items", "3");
     let airportSwitchLabel = document.createElement("calcite-label");
