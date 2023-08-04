@@ -585,7 +585,7 @@ require([
                 if (event.item.title == "Existing Routes") {
                     item.panel = {
                         className: "esri-icon-filter",
-                        content: "<calcite-combobox placeholder='Select a field' id='airport-field-select' selection-mode='single'></calcite-select>",
+                        content: "<calcite-combobox placeholder='Select a field' id='airport-field-select' selection-mode='single'></calcite-combobox>",
                         open: false
                     }
                 } else if (event.item.title == "Vertiports") {
