@@ -573,8 +573,14 @@ require([
     airportFieldSelect.setAttribute("placeholder", "Select a field");
     airportFieldSelect.setAttribute("selection-mode", "single");
     let airportFieldType = document.createElement("calcite-combobox-item");
+    airportFieldType.setAttribute("value", "TYPE_CODE");
+    airportFieldType.setAttribute("text-label", "Type");
     let airportFieldState = document.createElement("calcite-combobox-item");
+    airportFieldState.setAttribute("value", "STATE");
+    airportFieldState.setAttribute("text-label", "State");
     let airportFieldMil = document.createElement("calcite-combobox-item");
+    airportFieldMil.setAttribute("value", "MIL_CODE");
+    airportFieldMil.setAttribute("text-label", "Military Use");
     airportFieldSelect.appendChild(airportFieldType);
     airportFieldSelect.appendChild(airportFieldState);
     airportFieldSelect.appendChild(airportFieldMil);
