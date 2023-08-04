@@ -600,7 +600,7 @@ require([
     airportSwitchLabel.appendChild(airportSwitch);
     let airportFilterNode = [airportFieldSelect, airportFilterValue, airportSwitchLabel];
 
-    airportFieldSelect.addEventListener("click", (event) => {
+    airportFieldSelect.addEventListener("calciteComboboxChange", (event) => {
         console.log(event)
     })
 
