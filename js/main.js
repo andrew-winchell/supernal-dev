@@ -660,7 +660,7 @@ require([
     let airspaceSwitch = document.createElement("calcite-switch");
     airspaceSwitch.setAttribute("class", "filter-switch");
     airspaceSwitch.setAttribute("id", "airspace-filter-switch");
-    airspaceSwitchLabel.appendChild(airportSwitch);
+    airspaceSwitchLabel.appendChild(airspaceSwitch);
     let airspaceFilterNode = [airspaceFieldSelect, airspaceFilterValue, airspaceSwitchLabel];
 
     /********** Map Widgets **********/
