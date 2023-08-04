@@ -905,6 +905,7 @@ require([
 
                 if (item.layer.type != "group") {
                     item.panel = {
+                        className: "esri-icon-legend",
                         content: "legend",
                         open: true
                     };
