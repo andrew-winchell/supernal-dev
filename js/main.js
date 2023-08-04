@@ -584,7 +584,17 @@ require([
     airportFieldSelect.appendChild(airportFieldType);
     airportFieldSelect.appendChild(airportFieldState);
     airportFieldSelect.appendChild(airportFieldMil);
-    let airportFilterNode = [airportFieldSelect];
+    let airportFilterValue = document.createElement("calcite-combobox");
+    airportFilterValue.setAttribute("id", "airport-filter-value");
+    airportFilterValue.setAttribute("placeholder", "Filter Value");
+    airportFilterValue.setAttribute("max-items", "5");
+    let airportSwitchLabel = document.createElement("calcite-label");
+    airportSwitchLabel.setAttribute("layout", "inline");
+    let airportSwitch = document.createElement("calcite-switch");
+    airportSwitch.setAttribute("class", "filter-switch");
+    airportSwitch.setAttribute("id", "airport-filter-switch");
+    airportSwitchLabel.appendChild(airportSwitch);
+    let airportFilterNode = [airportFieldSelect, airportFilterValue, airportSwitchLabel];
 
 
     // After map load, create a customized Layer List widget
