@@ -618,7 +618,25 @@ require([
                     );
                 }
             });
-    })
+    });
+
+    airportSwitch.addEventListener("calciteSwitchChange", (toggle) => {
+        let field = $("#airport-field-select")[0].value;
+        let value = $("#airport-filter-value")[0].value;
+        if (toggle.target.checked == true) {
+            mapView.whenLayerView(airportsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: field + " = '" + value + "'"
+                }
+            });
+        } else if (toggle.target.checked == false) {
+            mapView.whenLayerView(airportsLyr).then((layerView) => {
+                layerView.filter = {
+                    where: "1=1"
+                }
+            });
+        }
+    });
 
     // After map load, create a customized Layer List widget
     // Place in left pane layer-list div
@@ -869,26 +887,6 @@ require([
                 }
             });
         });
-    });
-
-    $("#airport-filter-switch").on("calciteSwitchChange", (evtSwitch) => {
-        let field = $("#airport-field-select")[0].value;
-        let value = $("#airport-filter-value")[0].value;
-        if (evtSwitch.currentTarget.checked == true) {
-            $("#airport-filter-icon")[0].icon = "filter";
-            mapView.whenLayerView(airportsLyr).then((layerView) => {
-                layerView.filter = {
-                    where: field + " = '" + value + "'"
-                }
-            });
-        } else if (evtSwitch.currentTarget.checked == false) {
-            $("#airport-filter-icon")[0].icon = " ";
-            mapView.whenLayerView(airportsLyr).then((layerView) => {
-                layerView.filter = {
-                    where: "1=1"
-                }
-            });
-        }
     });
 
     $("#airport-filter-value").on("calciteComboboxChange", (selection) => {
