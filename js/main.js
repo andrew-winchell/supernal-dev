@@ -585,37 +585,44 @@ require([
                 if (event.item.title == "Existing Routes") {
                     item.panel = {
                         className: "esri-icon-filter",
-                        content: "Routes Panel"
+                        content: "Routes Panel",
+                        open: false
                     }
                 } else if (event.item.title == "Vertiports") {
                     item.panel = {
                         className: "esri-icon-filter",
-                        content: "Vertiports Panel"
+                        content: "Vertiports Panel",
+                        open: false
                     }
                 } else if (event.item.title == "Class Airspace") {
                     item.panel = {
                         className: "esri-icon-filter",
-                        content: "Airspace Panel"
+                        content: "Airspace Panel",
+                        open: false
                     }
                 } else if (event.item.title == "Airports") {
                     item.panel = {
                         className: "esri-icon-filter",
-                        content: "Airports Panel"
+                        content: "Airports Panel",
+                        open: false
                     }
                 } else if (event.item.title == "Designated Points") {
                     item.panel = {
                         className: "esri-icon-filter",
-                        content: "Fixes Panel"
+                        content: "Fixes Panel",
+                        open: false
                     }
                 } else if (event.item.title == "Obstacles") {
                     item.panel = {
                         className: "esri-icon-filter",
-                        content: "Obstacles Panel"
+                        content: "Obstacles Panel",
+                        open: false
                     }
                 } else if (event.item.title == "NAVAIDS") {
                     item.panel = {
                         className: "esri-icon-filter",
-                        content: "NAVAIDS Panel"
+                        content: "NAVAIDS Panel",
+                        open: false
                     }
                 }
 
