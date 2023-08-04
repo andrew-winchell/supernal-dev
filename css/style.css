@@ -100,6 +100,10 @@ html, body, #view-div {
   width: max-content;
 }
 
+.filter-field-dropdown {
+  margin-bottom: 5px;
+}
+
 .filter-switch {
   margin-right:0px;
   margin-left:auto;
