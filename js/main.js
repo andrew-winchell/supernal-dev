@@ -600,6 +600,10 @@ require([
     airportSwitchLabel.appendChild(airportSwitch);
     let airportFilterNode = [airportFieldSelect, airportFilterValue, airportSwitchLabel];
 
+    $("#airport-field-select").on("click", (change) => {
+        console.log(change);
+    });
+
 
     // After map load, create a customized Layer List widget
     // Place in left pane layer-list div
@@ -754,9 +758,6 @@ require([
     });
 
     /********** Layer Filtering Capabilities **********/
-    $("#airport-field-select").on("calciteComboboxChange", (change) => {
-        console.log(change);
-    });
     mapView.when(() => {
         $("#airport-field-select").on("calciteComboboxChange", (change) => {
             $("#airport-filter-value").empty();
