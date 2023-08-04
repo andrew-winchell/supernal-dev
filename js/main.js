@@ -552,7 +552,7 @@ require([
     };
     appConfig.activeView = appConfig.mapView;
 
-    /********** Map Widgets **********/
+    /********** Layer Filtering Capabilities **********/
 
     // Existing Route Filter
     let routeSelection = document.createElement("calcite-combobox");
@@ -638,6 +638,32 @@ require([
         }
     });
 
+    // Airspace Filter
+    let airspaceFieldSelect = document.createElement("calcite-combobox");
+    airspaceFieldSelect.setAttribute("id", "airspace-field-select");
+    airspaceFieldSelect.setAttribute("class", "filter-field-dropdown");
+    airspaceFieldSelect.setAttribute("scale", "s");
+    airspaceFieldSelect.setAttribute("placeholder", "Select a field");
+    airspaceFieldSelect.setAttribute("selection-mode", "single");
+    airspaceFieldSelect.setAttribute("max-items", "3");
+    let airspaceFieldType = document.createElement("calcite-combobox-item");
+    airspaceFieldType.setAttribute("value", "CLASS");
+    airspaceFieldType.setAttribute("text-label", "Class");
+    let airspaceFilterValue = document.createElement("calcite-combobox");
+    airspaceFilterValue.setAttribute("id", "airspace-filter-value");
+    airspaceFilterValue.setAttribute("scale", "s");
+    airspaceFilterValue.setAttribute("placeholder", "Filter Value");
+    airspaceFilterValue.setAttribute("max-items", "3");
+    let airspaceSwitchLabel = document.createElement("calcite-label");
+    airspaceSwitchLabel.setAttribute("layout", "inline");
+    let airspaceSwitch = document.createElement("calcite-switch");
+    airspaceSwitch.setAttribute("class", "filter-switch");
+    airspaceSwitch.setAttribute("id", "airspace-filter-switch");
+    airspaceSwitchLabel.appendChild(airportSwitch);
+    let airspaceFilterNode = [airspaceFieldSelect, airspaceFilterValue, airspaceSwitchLabel];
+
+    /********** Map Widgets **********/
+
     // After map load, create a customized Layer List widget
     // Place in left pane layer-list div
     // Add custom actions for legend and item details
@@ -681,7 +707,7 @@ require([
                 } else if (event.item.title == "Class Airspace") {
                     item.panel = {
                         className: "esri-icon-filter",
-                        content: "Airspace Panel",
+                        content: airspaceFilterNode,
                         open: false
                     }
                 } else if (event.item.title == "Airports") {
