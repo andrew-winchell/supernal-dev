@@ -754,7 +754,9 @@ require([
     });
 
     /********** Layer Filtering Capabilities **********/
-
+    $("#airport-field-select").on("calciteComboboxChange", (change) => {
+        console.log(change);
+    });
     mapView.when(() => {
         $("#airport-field-select").on("calciteComboboxChange", (change) => {
             $("#airport-filter-value").empty();
