@@ -600,7 +600,7 @@ require([
     airportSwitchLabel.appendChild(airportSwitch);
     let airportFilterNode = [airportFieldSelect, airportFilterValue, airportSwitchLabel];
 
-    airportFieldSelect.on("click", (event) => {
+    airportFieldSelect.addEventListener("click", (event) => {
         console.log(event)
     })
 
