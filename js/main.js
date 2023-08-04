@@ -583,7 +583,7 @@ require([
                 }
 
                 item.panel = {
-                    content: "<calcite-combobox placeholder='Select a field' id='airport-field-select' selection-mode='single'><calcite-combobox-item value='TYPE_CODE' text-label='Type'></calcite-combobox-item><calcite-combobox-item value='STATE' text-label='State'></calcite-combobox-item><calcite-combobox-item value='MIL_CODE' text-label='Military Use'></calcite-combobox-item></calcite-select>"
+                    content: "Test panel"
                 }
 
             }
