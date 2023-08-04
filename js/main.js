@@ -746,7 +746,7 @@ require([
     navaidsSwitch.setAttribute("class", "filter-switch");
     navaidsSwitch.setAttribute("id", "navaids-filter-switch");
     navaidsSwitchLabel.appendChild(navaidsSwitch);
-    let navaidsFilterNode = [navaidsFieldSelect, navaidsFilterValue, fixesSwitchLabel];
+    let navaidsFilterNode = [navaidsFieldSelect, navaidsFilterValue, navaidsSwitchLabel];
 
     navaidsFieldSelect.addEventListener("calciteComboboxChange", (change) => {
         $("#navaids-filter-value").empty();
