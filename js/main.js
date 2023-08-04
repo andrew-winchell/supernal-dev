@@ -573,6 +573,7 @@ require([
     airportFieldSelect.setAttribute("class", "filter-field-dropdown");
     airportFieldSelect.setAttribute("placeholder", "Select a field");
     airportFieldSelect.setAttribute("selection-mode", "single");
+    airportFieldSelect.setAttribute("max-items", "5");
     let airportFieldType = document.createElement("calcite-combobox-item");
     airportFieldType.setAttribute("value", "TYPE_CODE");
     airportFieldType.setAttribute("text-label", "Type");
