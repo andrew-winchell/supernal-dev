@@ -799,7 +799,7 @@ require([
             value = "'" + value + "'";
             valueList.push(value)
         }
-        if ($("#navaids-filter-switch")[0].checked == true) {
+        if (navaidsSwitch.checked == true) {
             mapView.whenLayerView(navaidsLyr).then((layerView) => {
                 layerView.filter = {
                     where: field + " IN (" + valueList + ")"
