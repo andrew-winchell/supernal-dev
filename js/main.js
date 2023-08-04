@@ -600,8 +600,24 @@ require([
     airportSwitchLabel.appendChild(airportSwitch);
     let airportFilterNode = [airportFieldSelect, airportFilterValue, airportSwitchLabel];
 
-    airportFieldSelect.addEventListener("calciteComboboxChange", (event) => {
-        console.log(event)
+    airportFieldSelect.addEventListener("calciteComboboxChange", (change) => {
+        $("#airport-filter-value").empty();
+            let field = change.target.value;
+            uniqueValues({
+                layer: airportsLyr,
+                field: field
+            }).then((response) => {
+                let unique = [];
+                response.uniqueValueInfos.forEach((val) => {
+                    unique.push(val.value);
+                });
+                unique.sort();
+                for (let item of unique) {
+                    $("#airport-filter-value").append(
+                        "<calcite-combobox-item value='" + item + "' text-label='" + item + "'></calcite-combobox-item>"
+                    );
+                }
+            });
     })
 
     // After map load, create a customized Layer List widget
