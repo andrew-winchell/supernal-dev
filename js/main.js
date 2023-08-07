@@ -503,7 +503,7 @@ require([
     /********** 2D and 3D Map View Configurations **********/
 
     const map2D = new Map ({
-        basemap: "topo-vector",
+        basemap: "gray-vector",
         ground: "world-elevation",
         layers: [
             navaidsLyr,
@@ -935,8 +935,8 @@ require([
                     event.item.panel.content = navaidsFilterNode;
                 } 
             }
-        })
-    })
+        });
+    });
 
     const compass = new Compass ({
         view: mapView
