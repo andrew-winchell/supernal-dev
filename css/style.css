@@ -133,3 +133,7 @@ html, body, #view-div {
   display: none;
   padding: 10px;
 }
+
+.esri-widget {
+  background-color: lightgray !important;
+}
