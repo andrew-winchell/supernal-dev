@@ -519,7 +519,11 @@ require([
     });
 
     const map3D = new Map ({
-        basemap: "topographic",
+        basemap: {
+            portalItem: {
+                id: "0560e29930dc4d5ebeb58c635c0909c9"
+            }
+        },
         ground: "world-elevation",
         layers: [
             navaidsLyr,
