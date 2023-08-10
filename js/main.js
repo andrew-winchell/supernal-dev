@@ -518,10 +518,9 @@ require([
         ]
     });
 
-    const scene = new WebScene ({
-        portalItem: {
-            id: "7e4b2a879c37418b8cccedc9181009d3"
-        }
+    const map3D = new Map ({
+        basemap: "",
+        ground: "world-elevation"
     });
     
     const mapView = new MapView ({
@@ -540,7 +539,7 @@ require([
     });
 
     const sceneView = new SceneView ({
-        map: scene,
+        map: map2D,
         container: "inset-div"
     });
 
