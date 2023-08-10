@@ -519,8 +519,19 @@ require([
     });
 
     const map3D = new Map ({
-        basemap: "",
-        ground: "world-elevation"
+        basemap: "topographic",
+        ground: "world-elevation",
+        layers: [
+            navaidsLyr,
+            obstaclesLyr,
+            desPointsLyr,
+            airportsLyr,
+            classAirspaceLyr,
+            lineGraphicsLyr,
+            pntGraphicsLyr,
+            vertiportsLyr,
+            supernalRoutesLyr
+        ]
     });
     
     const mapView = new MapView ({
@@ -539,7 +550,7 @@ require([
     });
 
     const sceneView = new SceneView ({
-        map: map2D,
+        map: map3D,
         container: "inset-div"
     });
 
