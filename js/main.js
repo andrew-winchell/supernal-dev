@@ -1770,14 +1770,14 @@ require([
 
     $("#btn2d").on("click", () => {
         switchView();
-        $("#layer-list2d").css("dispay", "block");
-        $("#layer-list3d").css("dispay", "none");
+        $("#layer-list2d").css("display", "block");
+        $("#layer-list3d").css("display", "none");
     });
 
     $("#btn3d").on("click", () => {
         switchView();
-        $("#layer-list3d").css("dispay", "block");
-        $("#layer-list2d").css("dispay", "none");
+        $("#layer-list3d").css("display", "block");
+        $("#layer-list2d").css("display", "none");
     });
 
     function switchView () {
