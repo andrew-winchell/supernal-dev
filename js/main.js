@@ -933,7 +933,7 @@ require([
     
     sceneView.when(() => {
         const layerList = new LayerList({
-            view: mapView,
+            view: sceneView,
             container: "layer-list",
             listItemCreatedFunction: (event) => {
                 const item = event.item;
