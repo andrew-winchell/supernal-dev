@@ -1709,17 +1709,27 @@ require([
 
     /********** Conversion From 2D & 3D **********/
 
-    $("#2D-btn").on("click", () => { to2DView() });
+    $("#2D-btn").on("click", () => { switchView() });
 
-    $("#3D-btn").on("click", () => { to3DView() });
+    $("#3D-btn").on("click", () => { switchView() });
 
-    function to2DView () {
-        mapView.container = "view-div";
-        sceneView.container = "inset-div";
-    }
-
-    function to3DView () {
-        mapView.container = "inset-div";
-        sceneView.container = "view-div";
-    }
+    function switchView () {
+        const is3D = appConfig.activeView.type === "3d";
+      
+        // remove the reference to the container for the previous view
+        appConfig.activeView.container = null;
+      
+        if (is3D) {
+          // if the input view is a SceneView, set the viewpoint on the
+          // mapView instance. Set the container on the mapView and flag
+          // it as the active view
+          appConfig.mapView.viewpoint = appConfig.activeView.viewpoint.clone();
+          appConfig.mapView.container = appConfig.container;
+          appConfig.activeView = appConfig.mapView;
+        } else {
+          appConfig.sceneView.viewpoint = appConfig.activeView.viewpoint.clone();
+          appConfig.sceneView.container = appConfig.container;
+          appConfig.activeView = appConfig.sceneView;
+        }
+      }
 });
