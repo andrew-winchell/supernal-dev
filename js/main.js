@@ -958,6 +958,7 @@ require([
     const switchBtn = $("#switch-btn")[0];
 
     mapView.ui.add(switchBtn, { position: "bottom-left" });
+    sceneView.ui.add(switchBtn, { position: "bottom-left" });
 
     mapView.when(() => {
         const sketch = new Sketch ({
