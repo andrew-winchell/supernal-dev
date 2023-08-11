@@ -954,7 +954,6 @@ require([
     });
 
     mapView.ui.add(bgExpand, { position: "bottom-left" });
-    sceneView.ui.add(bgExpand, { position: "bottom-left" });
 
     const switchBtn = $("#switch-btn")[0];
 
