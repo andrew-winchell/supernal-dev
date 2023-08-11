@@ -502,28 +502,8 @@ require([
 
     /********** 2D and 3D Map View Configurations **********/
 
-    const map2D = new Map ({
+    const map = new Map ({
         basemap: "gray-vector",
-        ground: "world-elevation",
-        layers: [
-            navaidsLyr,
-            obstaclesLyr,
-            desPointsLyr,
-            airportsLyr,
-            classAirspaceLyr,
-            lineGraphicsLyr,
-            pntGraphicsLyr,
-            vertiportsLyr,
-            supernalRoutesLyr
-        ]
-    });
-
-    const map3D = new Map ({
-        basemap: {
-            portalItem: {
-                id: "0560e29930dc4d5ebeb58c635c0909c9"
-            }
-        },
         ground: "world-elevation",
         layers: [
             navaidsLyr,
@@ -539,7 +519,7 @@ require([
     });
     
     const mapView = new MapView ({
-        map: map2D,
+        map: map,
         container: "view-div",
         zoom: 3,
         center: [-97, 39],
@@ -554,7 +534,7 @@ require([
     });
 
     const sceneView = new SceneView ({
-        map: map3D,
+        map: map,
         container: "inset-div"
     });
 
@@ -1738,6 +1718,24 @@ require([
             evt.currentTarget.value = "3D";
         }
     });
+
+    function switchView () {
+        const is3D = appConfig.activeView.type === "3d";
+
+        appConfig.activeView.container = null;
+
+        if (is3D) {
+            appConfig.mapView.viewpoint = appConfig.activeView.viewpoint.clone();
+            appConfig.mapView.container = appConfig.container;
+            appConfig.activeView = appConfig.mapView;
+            $("#switch-btn")[0].value = "3D";
+        } else {
+            appConfig.sceneView.viewpoint = appConfig.activeView.viewpoint.clone();
+            appConfig.sceneView.container = appConfig.container;
+            appConfig.activeView = appConfig.sceneView;
+            $("#switch-btn")[0].value = "2D";            
+        }
+    }
 
     function to2DView () {
         mapView.container = "view-div";
