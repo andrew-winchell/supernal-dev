@@ -1768,9 +1768,17 @@ require([
 
     /********** Conversion From 2D & 3D **********/
 
-    $("#btn2d").on("click", () => { switchView() });
+    $("#btn2d").on("click", () => {
+        switchView();
+        $("#layer-list2d").css("dispay", "block");
+        $("#layer-list3d").css("dispay", "none");
+    });
 
-    $("#btn3d").on("click", () => { switchView() });
+    $("#btn3d").on("click", () => {
+        switchView();
+        $("#layer-list3d").css("dispay", "block");
+        $("#layer-list2d").css("dispay", "none");
+    });
 
     function switchView () {
         const is3D = appConfig.activeView.type === "3d";
