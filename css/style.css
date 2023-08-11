@@ -70,8 +70,13 @@ html, body, #view-div, #inset-div {
   font-size: 9pt;
 }
 
-#layer-list {
+#layer-list2d {
   padding: 0px !important;
+}
+
+#layer-list3d {
+  padding: 0px !important;
+  display: none;
 }
 
 .esri-layer-list__item-container {

@@ -869,9 +869,9 @@ require([
     // Place in left pane layer-list div
     // Add custom actions for legend and item details
     mapView.when(() => {
-        const layerList = new LayerList({
+        const layerList2d = new LayerList({
             view: mapView,
-            container: "layer-list",
+            container: "layer-list2d",
             listItemCreatedFunction: (event) => {
                 const item = event.item;
                 if (item.layer.url != null) {
@@ -906,7 +906,7 @@ require([
             }
         });
 
-        layerList.on("trigger-action", (event) => {
+        layerList2d.on("trigger-action", (event) => {
             console.log(event);
             const id = event.action.id;
             if (id === "item-details") {
@@ -929,12 +929,9 @@ require([
                 } 
             }
         });
-    });
-    
-    sceneView.when(() => {
-        const layerList = new LayerList({
+        const layerList3d = new LayerList({
             view: sceneView,
-            container: "layer-list",
+            container: "layer-list3d",
             listItemCreatedFunction: (event) => {
                 const item = event.item;
                 if (item.layer.url != null) {
@@ -969,7 +966,7 @@ require([
             }
         });
 
-        layerList.on("trigger-action", (event) => {
+        layerList3d.on("trigger-action", (event) => {
             console.log(event);
             const id = event.action.id;
             if (id === "item-details") {
