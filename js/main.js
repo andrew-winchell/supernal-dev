@@ -955,8 +955,8 @@ require([
 
     mapView.ui.add(bgExpand, { position: "bottom-left" });
 
-    const btn2d = $("#2D-btn")[0];
-    const btn3d = $("#3D-btn")[0];
+    const btn2d = $("#btn2d")[0];
+    const btn3d = $("#btn3d")[0];
 
     mapView.ui.add(btn3d, { position: "bottom-left" });
     sceneView.ui.add(btn2d, { position: "bottom-left" });
@@ -1709,9 +1709,9 @@ require([
 
     /********** Conversion From 2D & 3D **********/
 
-    $("#2D-btn").on("click", () => { switchView() });
+    $("#btn2d").on("click", () => { switchView() });
 
-    $("#3D-btn").on("click", () => { switchView() });
+    $("#btn3d").on("click", () => { switchView() });
 
     function switchView () {
         const is3D = appConfig.activeView.type === "3d";
