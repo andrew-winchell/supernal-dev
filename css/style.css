@@ -1,4 +1,4 @@
-html, body, #view-div {
+html, body, #view-div, #inset-div {
     padding: 0;
     margin: 0;
     height: 100%;
@@ -7,14 +7,6 @@ html, body, #view-div {
 
 #inset-div {
   display: none;
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 400px;
-  height: 266.667px;
-  border: 1px solid black;
-  z-index: 1;
-  overflow: hidden;
 }
 
 #header-title {
