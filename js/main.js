@@ -958,8 +958,8 @@ require([
     const btn2d = $("#2D-btn")[0];
     const btn3d = $("#3D-btn")[0];
 
-    mapView.ui.add(btn2d, { position: "bottom-left" });
-    sceneView.ui.add(btn3d, { position: "bottom-left" });
+    mapView.ui.add(btn3d, { position: "bottom-left" });
+    sceneView.ui.add(btn2d, { position: "bottom-left" });
 
     mapView.when(() => {
         const sketch = new Sketch ({
