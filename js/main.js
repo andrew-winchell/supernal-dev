@@ -876,7 +876,7 @@ require([
     function createListWidget (dimensions) {
         let view, container;
 
-        if (dimensions == "2d") {
+        if (dimensions == "2D") {
             view = mapView;
             container = "layer-list2d"
         } else if (dimensions == "3D") {
