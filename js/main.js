@@ -955,10 +955,11 @@ require([
 
     mapView.ui.add(bgExpand, { position: "bottom-left" });
 
-    const switchBtn = $("#switch-btn")[0];
+    const btn2d = $("#2D-btn")[0];
+    const btn3d = $("#3D-btn")[0];
 
-    mapView.ui.add(switchBtn, { position: "bottom-left" });
-    sceneView.ui.add(switchBtn, { position: "bottom-left" });
+    mapView.ui.add(btn2d, { position: "bottom-left" });
+    sceneView.ui.add(btn3d, { position: "bottom-left" });
 
     mapView.when(() => {
         const sketch = new Sketch ({
@@ -1708,35 +1709,9 @@ require([
 
     /********** Conversion From 2D & 3D **********/
 
-    $("#switch-btn").on("click", (evt) => {
-        let active = mapView.container.id;
-        console.log(evt)
-        if (active == "view-div") {
-            to3DView();
-            evt.currentTarget.value = "2D";
-        } else {
-            to2DView();
-            evt.currentTarget.value = "3D";
-        }
-    });
+    $("#2D-btn").on("click", () => { to2DView() });
 
-    function switchView () {
-        const is3D = appConfig.activeView.type === "3d";
-
-        appConfig.activeView.container = null;
-
-        if (is3D) {
-            appConfig.mapView.viewpoint = appConfig.activeView.viewpoint.clone();
-            appConfig.mapView.container = appConfig.container;
-            appConfig.activeView = appConfig.mapView;
-            $("#switch-btn")[0].value = "3D";
-        } else {
-            appConfig.sceneView.viewpoint = appConfig.activeView.viewpoint.clone();
-            appConfig.sceneView.container = appConfig.container;
-            appConfig.activeView = appConfig.sceneView;
-            $("#switch-btn")[0].value = "2D";            
-        }
-    }
+    $("#3D-btn").on("click", () => { to3DView() });
 
     function to2DView () {
         mapView.container = "view-div";
