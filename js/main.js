@@ -869,127 +869,82 @@ require([
     // Place in left pane layer-list div
     // Add custom actions for legend and item details
     mapView.when(() => {
-        const layerList2d = new LayerList({
-            view: mapView,
-            container: "layer-list2d",
-            listItemCreatedFunction: (event) => {
-                const item = event.item;
-                if (item.layer.url != null) {
-                    item.actionsSections = [
-                        [
-                            {
-                                title: "Legend",
-                                className: "esri-icon-legend",
-                                id: "item-legend"
-                            },
-                            {
-                                title: "Filter",
-                                className: "esri-icon-filter",
-                                id: "item-filter"
-                            },
-                            {
-                                title: "Item Details",
-                                className: "esri-icon-description",
-                                id: "item-details"
-                            }
-                        ]
-                    ]
-                };
-
-                if (item.layer.type != "group") {
-                    item.panel = {
-                        className: "esri-icon-legend",
-                        content: "legend",
-                        open: true
-                    };
-                }
-            }
-        });
-
-        layerList2d.on("trigger-action", (event) => {
-            console.log(event);
-            const id = event.action.id;
-            if (id === "item-details") {
-                window.open(event.item.layer.url);
-            } else if (id === "item-legend") {
-                event.item.panel.content = "legend"
-                event.item.panel.className = "esri-icon-legend"
-            } else if (id === "item-filter") {
-                event.item.panel.className = "esri-icon-filter"
-                if (event.item.title == "Existing Routes") {
-                    event.item.panel.content = routeFilterNode;
-                } else if (event.item.title == "Class Airspace") {
-                    event.item.panel.content = airspaceFilterNode;
-                } else if (event.item.title == "Airports") {
-                    event.item.panel.content = airportFilterNode;
-                } else if (event.item.title == "Designated Points") {
-                    event.item.panel.content = fixesFilterNode;
-                } else if (event.item.title == "NAVAIDS") {
-                    event.item.panel.content = navaidsFilterNode;
-                } 
-            }
-        });
-        const layerList3d = new LayerList({
-            view: sceneView,
-            container: "layer-list3d",
-            listItemCreatedFunction: (event) => {
-                const item = event.item;
-                if (item.layer.url != null) {
-                    item.actionsSections = [
-                        [
-                            {
-                                title: "Legend",
-                                className: "esri-icon-legend",
-                                id: "item-legend"
-                            },
-                            {
-                                title: "Filter",
-                                className: "esri-icon-filter",
-                                id: "item-filter"
-                            },
-                            {
-                                title: "Item Details",
-                                className: "esri-icon-description",
-                                id: "item-details"
-                            }
-                        ]
-                    ]
-                };
-
-                if (item.layer.type != "group") {
-                    item.panel = {
-                        className: "esri-icon-legend",
-                        content: "legend",
-                        open: true
-                    };
-                }
-            }
-        });
-
-        layerList3d.on("trigger-action", (event) => {
-            console.log(event);
-            const id = event.action.id;
-            if (id === "item-details") {
-                window.open(event.item.layer.url);
-            } else if (id === "item-legend") {
-                event.item.panel.content = "legend"
-                event.item.panel.className = "esri-icon-legend"
-            } else if (id === "item-filter") {
-                event.item.panel.className = "esri-icon-filter"
-                if (event.item.title == "Existing Routes") {
-                    event.item.panel.content = routeFilterNode;
-                } else if (event.item.title == "Class Airspace") {
-                    event.item.panel.content = airspaceFilterNode;
-                } else if (event.item.title == "Airports") {
-                    event.item.panel.content = airportFilterNode;
-                } else if (event.item.title == "Designated Points") {
-                    event.item.panel.content = fixesFilterNode;
-                } else if (event.item.title == "NAVAIDS") {
-                    event.item.panel.content = navaidsFilterNode;
-                } 
-            }
-        });
+        createListWidget("2D");
+        createListWidget("3D");
     });
+
+    function createListWidget (dimensions) {
+        let view, container;
+
+        if (dimensions == "2d") {
+            view = mapView;
+            container = "layer-list2d"
+        } else if (dimensions == "3D") {
+            view = sceneView;
+            container = "layer-list3d"
+        }
+
+        const layerList = new LayerList({
+            view: view,
+            container: container,
+            listItemCreatedFunction: (event) => {
+                const item = event.item;
+                if (item.layer.url != null) {
+                    item.actionsSections = [
+                        [
+                            {
+                                title: "Legend",
+                                className: "esri-icon-legend",
+                                id: "item-legend"
+                            },
+                            {
+                                title: "Filter",
+                                className: "esri-icon-filter",
+                                id: "item-filter"
+                            },
+                            {
+                                title: "Item Details",
+                                className: "esri-icon-description",
+                                id: "item-details"
+                            }
+                        ]
+                    ]
+                };
+
+                if (item.layer.type != "group") {
+                    item.panel = {
+                        className: "esri-icon-legend",
+                        content: "legend",
+                        open: true
+                    };
+                }
+            }
+        });
+
+        layerList.on("trigger-action", (event) => {
+            console.log(event, "test");
+            const id = event.action.id;
+            if (id === "item-details") {
+                window.open(event.item.layer.url);
+            } else if (id === "item-legend") {
+                event.item.panel.content = "legend"
+                event.item.panel.className = "esri-icon-legend"
+            } else if (id === "item-filter") {
+                event.item.panel.className = "esri-icon-filter"
+                if (event.item.title == "Existing Routes") {
+                    event.item.panel.content = routeFilterNode;
+                } else if (event.item.title == "Class Airspace") {
+                    event.item.panel.content = airspaceFilterNode;
+                } else if (event.item.title == "Airports") {
+                    event.item.panel.content = airportFilterNode;
+                } else if (event.item.title == "Designated Points") {
+                    event.item.panel.content = fixesFilterNode;
+                } else if (event.item.title == "NAVAIDS") {
+                    event.item.panel.content = navaidsFilterNode;
+                } 
+            }
+        });
+    }
 
     const compass = new Compass ({
         view: mapView
