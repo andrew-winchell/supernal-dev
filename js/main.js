@@ -922,7 +922,6 @@ require([
         });
 
         layerList.on("trigger-action", (event) => {
-            console.log(event, "test");
             const id = event.action.id;
             if (id === "item-details") {
                 window.open(event.item.layer.url);
