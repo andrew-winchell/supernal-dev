@@ -956,6 +956,12 @@ require([
         container: "search-div"
     });
 
+    const btn2d = $("#btn2d")[0];
+    const btn3d = $("#btn3d")[0];
+
+    mapView.ui.add(btn3d, { position: "bottom-left" });
+    sceneView.ui.add(btn2d, { position: "bottom-left" });
+
     const basemapGallery = new BasemapGallery ({
         view: mapView
     });
@@ -967,12 +973,6 @@ require([
     });
 
     mapView.ui.add(bgExpand, { position: "bottom-left" });
-
-    const btn2d = $("#btn2d")[0];
-    const btn3d = $("#btn3d")[0];
-
-    mapView.ui.add(btn3d, { position: "bottom-left" });
-    sceneView.ui.add(btn2d, { position: "bottom-left" });
 
     mapView.when(() => {
         const sketch = new Sketch ({
