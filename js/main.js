@@ -871,7 +871,7 @@ require([
     mapView.when(() => {
         const layerList2d = new LayerList({
             view: mapView,
-            container: "layer-list2d",
+            container: "layer-list",
             listItemCreatedFunction: (event) => {
                 const item = event.item;
                 if (item.layer.url != null) {
@@ -907,67 +907,6 @@ require([
         });
 
         layerList2d.on("trigger-action", (event) => {
-            console.log(event);
-            const id = event.action.id;
-            if (id === "item-details") {
-                window.open(event.item.layer.url);
-            } else if (id === "item-legend") {
-                event.item.panel.content = "legend"
-                event.item.panel.className = "esri-icon-legend"
-            } else if (id === "item-filter") {
-                event.item.panel.className = "esri-icon-filter"
-                if (event.item.title == "Existing Routes") {
-                    event.item.panel.content = routeFilterNode;
-                } else if (event.item.title == "Class Airspace") {
-                    event.item.panel.content = airspaceFilterNode;
-                } else if (event.item.title == "Airports") {
-                    event.item.panel.content = airportFilterNode;
-                } else if (event.item.title == "Designated Points") {
-                    event.item.panel.content = fixesFilterNode;
-                } else if (event.item.title == "NAVAIDS") {
-                    event.item.panel.content = navaidsFilterNode;
-                } 
-            }
-        });
-
-        const layerList3d = new LayerList({
-            view: sceneView,
-            container: "layer-list3d",
-            listItemCreatedFunction: (event) => {
-                const item = event.item;
-                if (item.layer.url != null) {
-                    item.actionsSections = [
-                        [
-                            {
-                                title: "Legend",
-                                className: "esri-icon-legend",
-                                id: "item-legend"
-                            },
-                            {
-                                title: "Filter",
-                                className: "esri-icon-filter",
-                                id: "item-filter"
-                            },
-                            {
-                                title: "Item Details",
-                                className: "esri-icon-description",
-                                id: "item-details"
-                            }
-                        ]
-                    ]
-                };
-
-                if (item.layer.type != "group") {
-                    item.panel = {
-                        className: "esri-icon-legend",
-                        content: "legend",
-                        open: true
-                    };
-                }
-            }
-        });
-
-        layerList3d.on("trigger-action", (event) => {
             console.log(event);
             const id = event.action.id;
             if (id === "item-details") {
@@ -1769,17 +1708,9 @@ require([
 
     /********** Conversion From 2D & 3D **********/
 
-    $("#btn2d").on("click", () => {
-        switchView();
-        $("#layer-list2d").css("display", "block");
-        $("#layer-list3d").css("display", "none");
-    });
+    $("#btn2d").on("click", () => { switchView() });
 
-    $("#btn3d").on("click", () => {
-        switchView();
-        $("#layer-list3d").css("display", "block");
-        $("#layer-list2d").css("display", "none");
-    });
+    $("#btn3d").on("click", () => { switchView() });
 
     function switchView () {
         const is3D = appConfig.activeView.type === "3d";
