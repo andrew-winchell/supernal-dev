@@ -869,7 +869,7 @@ require([
     // Place in left pane layer-list div
     // Add custom actions for legend and item details
     mapView.when(() => {
-        const layerList2d = new LayerList({
+        const layerList = new LayerList({
             view: mapView,
             container: "layer-list",
             listItemCreatedFunction: (event) => {
@@ -906,7 +906,7 @@ require([
             }
         });
 
-        layerList2d.on("trigger-action", (event) => {
+        layerList.on("trigger-action", (event) => {
             console.log(event);
             const id = event.action.id;
             if (id === "item-details") {
