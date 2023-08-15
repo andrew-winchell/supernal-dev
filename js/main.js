@@ -1741,11 +1741,16 @@ require([
         if (is3D) {
           appConfig.mapView.viewpoint = activeViewpoint;
           appConfig.mapView.container = appConfig.container;
-          map.basemap = "topo-vector";
+          map.basemap = "gray-vector";
           appConfig.activeView = appConfig.mapView;
         } else {
           appConfig.sceneView.viewpoint = activeViewpoint;
           appConfig.sceneView.container = appConfig.container;
+          map.basemap = {
+            portalItem: {
+                id: "0560e29930dc4d5ebeb58c635c0909c9"
+            }
+          };
           appConfig.activeView = appConfig.sceneView;
         }
       }
