@@ -1369,6 +1369,7 @@ require([
             objectId = evt.target.value;
             cancelRouteCreation();
             selectExistingRoute(objectId);
+            console.log(appConfig.activeView);
         }
     });
 
