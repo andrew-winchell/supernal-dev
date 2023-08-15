@@ -1736,15 +1736,12 @@ require([
         const is3D = appConfig.activeView.type === "3d";
         const activeViewpoint = appConfig.activeView.viewpoint.clone();
       
-        // remove the reference to the container for the previous view
         appConfig.activeView.container = null;
       
         if (is3D) {
-          // if the input view is a SceneView, set the viewpoint on the
-          // mapView instance. Set the container on the mapView and flag
-          // it as the active view
           appConfig.mapView.viewpoint = activeViewpoint;
           appConfig.mapView.container = appConfig.container;
+          map.basemap = "topo-vector";
           appConfig.activeView = appConfig.mapView;
         } else {
           appConfig.sceneView.viewpoint = activeViewpoint;
