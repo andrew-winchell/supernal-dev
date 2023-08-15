@@ -1368,12 +1368,12 @@ require([
         if (editor.viewModel.state !== "editing-existing-feature") {
             objectId = evt.target.value;
             cancelRouteCreation();
-            selectExistingRoute(objectId);
+            selectExistingRoute(objectId, appConfig.activeView.type);
             console.log(appConfig.activeView.type);
         }
     });
 
-    function selectExistingRoute (objectId) {
+    function selectExistingRoute (objectId, dimensions) {
         const query = {
             where: "OBJECTID = " + objectId,
             outFields: ["*"],
@@ -1384,22 +1384,41 @@ require([
         supernalRoutesLyr.queryFeatures(query)
             .then((results) => {
                 selectedFeature = results.features[0];
-                mapView
-                    .goTo(selectedFeature.geometry.extent.expand(2))
-                    .then(() => {
-                        supernalRoutesLyr.definitionExpression = "OBJECTID = " + objectId;
-                        $("#waypoint-list").css("display", "block");
-                        selectedFeatureTable(selectedFeature.geometry.paths);
-                        selectedFeatureProfile(selectedFeature.geometry.paths);
-                        mapView.openPopup({
-                            features: [selectedFeature]
+                if (dimensions == "2d") {
+                    mapView
+                        .goTo(selectedFeature.geometry.extent.expand(2))
+                        .then(() => {
+                            supernalRoutesLyr.definitionExpression = "OBJECTID = " + objectId;
+                            $("#waypoint-list").css("display", "block");
+                            selectedFeatureTable(selectedFeature.geometry.paths);
+                            selectedFeatureProfile(selectedFeature.geometry.paths);
+                            mapView.openPopup({
+                                features: [selectedFeature]
+                            });
+                        })
+                        .catch((error) => {
+                            if (error.name != "AbortError") {
+                                console.log(error);
+                            }
                         });
-                    })
-                    .catch((error) => {
-                        if (error.name != "AbortError") {
-                            console.log(error);
-                        }
-                    });
+                } else if (dimensions == "3d") {
+                    sceneView
+                        .goTo(selectedFeature.geometry.extent.expand(2))
+                        .then(() => {
+                            supernalRoutesLyr.definitionExpression = "OBJECTID = " + objectId;
+                            $("#waypoint-list").css("display", "block");
+                            selectedFeatureTable(selectedFeature.geometry.paths);
+                            selectedFeatureProfile(selectedFeature.geometry.paths);
+                            mapView.openPopup({
+                                features: [selectedFeature]
+                            });
+                        })
+                        .catch((error) => {
+                            if (error.name != "AbortError") {
+                                console.log(error);
+                            }
+                        });
+                }
             });
 
     }
