@@ -1370,7 +1370,6 @@ require([
             objectId = evt.target.value;
             cancelRouteCreation();
             selectExistingRoute(objectId, appConfig.activeView.type);
-            console.log(appConfig.activeView.type);
         }
     });
 
