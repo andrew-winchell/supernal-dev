@@ -28,12 +28,13 @@ require([
     "esri/geometry/geometryEngine",
     "esri/widgets/ElevationProfile",
     "esri/core/reactiveUtils",
-    "esri/geometry/support/geodesicUtils"
+    "esri/geometry/support/geodesicUtils",
+    "esri/Basemap"
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, WebScene, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
         BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, Point,
-        geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils
+        geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils, Basemap
     ) => {
 
     /********** ESRI ArcGIS Online User Authentication **********/
@@ -1746,11 +1747,11 @@ require([
         } else {
           appConfig.sceneView.viewpoint = activeViewpoint;
           appConfig.sceneView.container = appConfig.container;
-          map.basemap = {
+          map.basemap = new Basemap({
             portalItem: {
                 id: "0560e29930dc4d5ebeb58c635c0909c9"
             }
-          };
+          });
           appConfig.activeView = appConfig.sceneView;
         }
       }
