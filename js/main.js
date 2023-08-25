@@ -1825,7 +1825,7 @@ require([
                     profile: "quad",
                     width: 50,
                     height: 400,
-                    material: { color: [0, 255, 0, 0.25] }
+                    material: { color: [0, 0, 255, 0.25] }
                 }]
             }
         };
@@ -1838,7 +1838,7 @@ require([
                     profile: "quad",
                     width: 50,
                     height: 400,
-                    material: { color: [0, 0, 255, 0.25] }
+                    material: { color: [0, 255, 0, 0.25] }
                 }]
             }
         };
