@@ -442,6 +442,54 @@ require([
         minScale: 2500000 
     });
 
+    const fiveDegRingLyr = new FeatureLayer ({
+        url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Rings/FeatureServer/0",
+        title: "5 Degree Ring",
+        renderer: {
+            type: "simple",
+            symbol: {
+                type: "simple-fill",
+                style: "none",
+                outline: {
+                    color: "red",
+                    width: 1
+                }
+            }
+        }
+    })
+
+    const eightDegRingLyr = new FeatureLayer ({
+        url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Rings/FeatureServer/1",
+        title: "8 Degree Ring",
+        renderer: {
+            type: "simple",
+            symbol: {
+                type: "simple-fill",
+                style: "none",
+                outline: {
+                    color: "blue",
+                    width: 1
+                }
+            }
+        }
+    })
+
+    const twelveDegRingLyr = new FeatureLayer ({
+        url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Rings/FeatureServer/2",
+        title: "12 Degree Ring",
+        renderer: {
+            type: "simple",
+            symbol: {
+                type: "simple-fill",
+                style: "none",
+                outline: {
+                    color: "green",
+                    width: 1
+                }
+            }
+        }
+    })
+
     const supernalRoutesLyr = new FeatureLayer ({
         url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Supernal_Routes/FeatureServer/0",
         title: "Existing Routes",
@@ -515,6 +563,9 @@ require([
             lineGraphicsLyr,
             pntGraphicsLyr,
             vertiportsLyr,
+            fiveDegRingLyr,
+            eightDegRingLyr,
+            twelveDegRingLyr,
             supernalRoutesLyr
         ]
     });
