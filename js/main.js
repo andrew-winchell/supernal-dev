@@ -1816,7 +1816,11 @@ require([
                 symbolLayers: [{
                     type: "extrude",
                     size: 100,
-                    material : { color: [0,0,0,0] }
+                    material : { color: [0,0,0,0] },
+                    edges: {
+                        type: "solid",
+                        color: "red"
+                    }
                 }]
             }
         };
@@ -1827,7 +1831,11 @@ require([
                 symbolLayers: [{
                     type: "extrude",
                     size: 100,
-                    material : { color: "blue" }
+                    material : { color: [0,0,0,0] },
+                    edges: {
+                        type: "solid",
+                        color: "blue"
+                    }
                 }]
             }
         };
@@ -1838,7 +1846,11 @@ require([
                 symbolLayers: [{
                     type: "extrude",
                     size: 100,
-                    material : { color: "green" }
+                    material : { color: [0,0,0,0] },
+                    edges: {
+                        type: "solid",
+                        color: "green"
+                    }
                 }]
             }
         };
