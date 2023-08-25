@@ -456,7 +456,7 @@ require([
                 }
             }
         }
-    })
+    });
 
     const eightDegRingLyr = new FeatureLayer ({
         url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Rings/FeatureServer/1",
@@ -472,7 +472,7 @@ require([
                 }
             }
         }
-    })
+    });
 
     const twelveDegRingLyr = new FeatureLayer ({
         url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Rings/FeatureServer/2",
@@ -488,7 +488,7 @@ require([
                 }
             }
         }
-    })
+    });
 
     const supernalRoutesLyr = new FeatureLayer ({
         url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Supernal_Routes/FeatureServer/0",
