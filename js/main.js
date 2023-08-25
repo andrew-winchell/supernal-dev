@@ -1802,7 +1802,12 @@ require([
                 id: "0560e29930dc4d5ebeb58c635c0909c9"
             }
           });
+          to3DSymbology();
           appConfig.activeView = appConfig.sceneView;
         }
-      }
+    }
+
+    function to3DSymbology () {
+        classAirspaceLyr.renderer = null;
+    }
 });
