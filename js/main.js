@@ -1810,28 +1810,37 @@ require([
     function to3DSymbology () {
         classAirspaceLyr.renderer = null;
         fiveDegRingLyr.renderer = {
-            type: "polygon-3d",
-            symbolLayers: [{
-                type: "extrude",
-                size: 100,
-                material : { color: "red" }
-            }]
+            type: "simple",
+            symbol: {
+                type: "polygon-3d",
+                symbolLayers: [{
+                    type: "extrude",
+                    size: 100,
+                    material : { color: "red" }
+                }]
+            }
         };
         eightDegRingLyr.renderer = {
-            type: "polygon-3d",
-            symbolLayers: [{
-                type: "extrude",
-                size: 100,
-                material : { color: "blue" }
-            }]
+            type: "simple",
+            symbol: {
+                type: "polygon-3d",
+                symbolLayers: [{
+                    type: "extrude",
+                    size: 100,
+                    material : { color: "blue" }
+                }]
+            }
         };
         twelveDegRingLyr.renderer = {
-            type: "polygon-3d",
-            symbolLayers: [{
-                type: "extrude",
-                size: 100,
-                material : { color: "green" }
-            }]
+            type: "simple",
+            symbol: {
+                type: "polygon-3d",
+                symbolLayers: [{
+                    type: "extrude",
+                    size: 100,
+                    material : { color: "green" }
+                }]
+            }
         };
     }
 });
