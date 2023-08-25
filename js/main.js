@@ -1816,7 +1816,7 @@ require([
                 symbolLayers: [{
                     type: "extrude",
                     size: 100,
-                    material : { color: "red" }
+                    material : { color: [0,0,0,0] }
                 }]
             }
         };
