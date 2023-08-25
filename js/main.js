@@ -1810,9 +1810,9 @@ require([
                 symbolLayers: [{
                     type: "path",
                     profile: "quad",
-                    width: 20,
-                    height: 200,
-                    material: { color: "red" }
+                    width: 50,
+                    height: 400,
+                    material: { color: [255, 0, 0, 0.25] }
                 }]
             }
         };
@@ -1823,9 +1823,9 @@ require([
                 symbolLayers: [{
                     type: "path",
                     profile: "quad",
-                    width: 20,
-                    height: 200,
-                    material: { color: "blue" }
+                    width: 50,
+                    height: 400,
+                    material: { color: [0, 255, 0, 0.25] }
                 }]
             }
         };
@@ -1836,9 +1836,9 @@ require([
                 symbolLayers: [{
                     type: "path",
                     profile: "quad",
-                    width: 20,
-                    height: 200,
-                    material: { color: "green" }
+                    width: 50,
+                    height: 400,
+                    material: { color: [0, 0, 255, 0.25] }
                 }]
             }
         };
