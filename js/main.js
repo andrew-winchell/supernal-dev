@@ -443,49 +443,43 @@ require([
     });
 
     const fiveDegRingLyr = new FeatureLayer ({
-        url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Rings/FeatureServer/0",
+        url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Rings/FeatureServer/3",
         title: "5 Degree Ring",
         renderer: {
             type: "simple",
             symbol: {
-                type: "simple-fill",
-                style: "none",
-                outline: {
-                    color: "red",
-                    width: 1
-                }
+                type: "simple-line",
+                color: "red",
+                width: "2px",
+                style: "solid"
             }
         }
     });
 
     const eightDegRingLyr = new FeatureLayer ({
-        url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Rings/FeatureServer/1",
+        url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Rings/FeatureServer/5",
         title: "8 Degree Ring",
         renderer: {
             type: "simple",
             symbol: {
-                type: "simple-fill",
-                style: "none",
-                outline: {
-                    color: "blue",
-                    width: 1
-                }
+                type: "simple-line",
+                color: "blue",
+                width: "2px",
+                style: "solid"
             }
         }
     });
 
     const twelveDegRingLyr = new FeatureLayer ({
-        url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Rings/FeatureServer/2",
+        url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Rings/FeatureServer/4",
         title: "12 Degree Ring",
         renderer: {
             type: "simple",
             symbol: {
-                type: "simple-fill",
-                style: "none",
-                outline: {
-                    color: "green",
-                    width: 1
-                }
+                type: "simple-line",
+                color: "green",
+                width: "2px",
+                style: "solid"
             }
         }
     });
