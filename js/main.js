@@ -1806,45 +1806,39 @@ require([
         fiveDegRingLyr.renderer = {
             type: "simple",
             symbol: {
-                type: "polygon-3d",
+                type: "line-3d",
                 symbolLayers: [{
-                    type: "extrude",
-                    size: 100,
-                    material : { color: [0,0,0,0] },
-                    edges: {
-                        type: "solid",
-                        color: "red"
-                    }
+                    type: "path",
+                    profile: "quad",
+                    width: 20,
+                    height: 200,
+                    material: { color: "red" }
                 }]
             }
         };
         eightDegRingLyr.renderer = {
             type: "simple",
             symbol: {
-                type: "polygon-3d",
+                type: "line-3d",
                 symbolLayers: [{
-                    type: "extrude",
-                    size: 100,
-                    material : { color: [0,0,0,0] },
-                    edges: {
-                        type: "solid",
-                        color: "blue"
-                    }
+                    type: "path",
+                    profile: "quad",
+                    width: 20,
+                    height: 200,
+                    material: { color: "blue" }
                 }]
             }
         };
         twelveDegRingLyr.renderer = {
             type: "simple",
             symbol: {
-                type: "polygon-3d",
+                type: "line-3d",
                 symbolLayers: [{
-                    type: "extrude",
-                    size: 100,
-                    material : { color: [0,0,0,0] },
-                    edges: {
-                        type: "solid",
-                        color: "green"
-                    }
+                    type: "path",
+                    profile: "quad",
+                    width: 20,
+                    height: 200,
+                    material: { color: "green" }
                 }]
             }
         };
