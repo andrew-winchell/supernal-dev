@@ -1805,7 +1805,7 @@ require([
           to2DSymbology();
           appConfig.activeView = appConfig.mapView;
           elevationProfile.container = "elevation-profile";
-          elevationProfile3D.container = null;
+          elevationProfile3D.container = "";
         } else {
           appConfig.sceneView.viewpoint = activeViewpoint;
           appConfig.sceneView.container = appConfig.container;
@@ -1816,7 +1816,7 @@ require([
           });
           to3DSymbology();
           appConfig.activeView = appConfig.sceneView;
-          elevationProfile.container = null;
+          elevationProfile.container = "";
           elevationProfile3D.container = "elevation-profile";
         }
     }
