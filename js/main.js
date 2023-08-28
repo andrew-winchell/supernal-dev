@@ -1788,6 +1788,7 @@ require([
           appConfig.mapView.container = appConfig.container;
           map.basemap = "gray-vector";
           appConfig.activeView = appConfig.mapView;
+          to2DSymbology();
         } else {
           appConfig.sceneView.viewpoint = activeViewpoint;
           appConfig.sceneView.container = appConfig.container;
@@ -1799,6 +1800,38 @@ require([
           to3DSymbology();
           appConfig.activeView = appConfig.sceneView;
         }
+    }
+
+    function to2DSymbology () {
+        fiveDegRingLyr.renderer = {
+            type: "simple",
+            symbol: {
+                type: "simple-line",
+                color: "red",
+                width: "2px",
+                style: "solid"
+            }
+        };
+        
+        eightDegRingLyr.renderer = {
+            type: "simple",
+            symbol: {
+                type: "simple-line",
+                color: "blue",
+                width: "2px",
+                style: "solid"
+            }
+        };
+
+        twelveDegRingLyr.renderer = {
+            type: "simple",
+            symbol: {
+                type: "simple-line",
+                color: "green",
+                width: "2px",
+                style: "solid"
+            }
+        };
     }
 
     function to3DSymbology () {
