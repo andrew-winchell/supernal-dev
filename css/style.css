@@ -116,6 +116,12 @@ html, body, #view-div, #inset-div {
   width: -webkit-fill-available;
 }
 
+#elevation-profile3d {
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
+  display: none;
+}
+
 #waypoint-table td {
   text-align: center;
   border: 1px solid black;
