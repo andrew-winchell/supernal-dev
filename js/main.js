@@ -1845,6 +1845,25 @@ require([
             unit: "us-feet"
         };
 
+        classAirspaceLyr.renderer = {
+            type: "simple",
+            symbol: {
+                type: "polygon-3d",
+                symbolLayers: [{
+                    type: "extrude",
+                    size: "",
+                    material: { color: [0, 0, 0, 0.25] }
+                }]
+            },
+            visualVariables: [
+                {
+                    type: "size",
+                    valueExpression: "Number($feature.UPPER_VAL) - Number($feature.LOWER_VAL)",
+                    units: "feet"
+                }
+            ]
+        };
+
         fiveDegRingLyr.renderer = {
             type: "simple",
             symbol: {
