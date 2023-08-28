@@ -1615,6 +1615,7 @@ require([
         });
         
         elevationProfile.input = graphic;
+        elevationProfile3D.input = graphic;
     }
 
     function selectedFeatureTable (vertices) {
