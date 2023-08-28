@@ -1485,7 +1485,7 @@ require([
                         geometry: buffer02,
                         symbol: {
                             type: "simple-fill",
-                            color: [100, 100, 100, 0.25],
+                            color: [255, 20, 20, 0.25],
                             outline: {
                                 color: [0, 0, 0, 0.25],
                                 width: 1
@@ -1497,6 +1497,26 @@ require([
                     const graphic = routeBuffer02.graphics.getItemAt(0);
                     graphic.geometry = buffer02;
                   }
+
+                  const buffer05 = geometryEngine.buffer(selectedFeature.geometry, 0.5, "nautical-miles");
+                  if (routeBuffer05.graphics.length === 0) {
+                      routeBuffer05.add(
+                        new Graphic({
+                          geometry: buffer05,
+                          symbol: {
+                              type: "simple-fill",
+                              color: [255, 180, 20, 0.25],
+                              outline: {
+                                  color: [0, 0, 0, 0.25],
+                                  width: 1
+                              }
+                          }
+                        })
+                      );
+                    } else {
+                      const graphic = routeBuffer05.graphics.getItemAt(0);
+                      graphic.geometry = buffer05;
+                    }
             });
 
     }
