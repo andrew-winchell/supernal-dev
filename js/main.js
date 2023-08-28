@@ -1937,5 +1937,19 @@ require([
                 }]
             }
         };
+
+        supernalRoutesLyr.renderer = {
+            type: "simple",
+            symbol: {
+                type: "line-3d",
+                symbolLayers: [{
+                    type: "path",
+                    profile: "quad",
+                    width: 5,
+                    height: 5,
+                    material: { color: [0,128,0,0.25] }
+                }]
+            }
+        };
     }
 });
