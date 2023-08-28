@@ -1478,6 +1478,25 @@ require([
                             }
                         });
                 }
+                const buffer02 = geometryEngine.buffer(selectedFeature.geometry, 0.2, "nautical-miles");
+                if (routeBuffer02.graphics.length === 0) {
+                    routeBuffer02.add(
+                      new Graphic({
+                        geometry: buffer02,
+                        symbol: {
+                            type: "simple-fill",
+                            color: [100, 100, 100, 0.25],
+                            outline: {
+                                color: [0, 0, 0, 0.25],
+                                width: 1
+                            }
+                        }
+                      })
+                    );
+                  } else {
+                    const graphic = routeBuffer02.graphics.getItemAt(0);
+                    graphic.geometry = buffer02;
+                  }
             });
 
     }
