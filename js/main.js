@@ -1742,8 +1742,21 @@ require([
         profiles: [
           {
             type: "ground"
+          },
+          {
+            type: "input",
+            title: "Flight Plan"
           }
-        ]
+        ],
+        visibleElements: {
+            legend: false,
+            clearButton: false,
+            settingsButton: false,
+            sketchButton: false,
+            selectButton: false,
+            uniformChartScalingToggle: false
+        },
+        unit: "imperial"
     });
 
     /********** Synchronize 2D & 3D Views **********/
@@ -1789,8 +1802,10 @@ require([
           appConfig.mapView.viewpoint = activeViewpoint;
           appConfig.mapView.container = appConfig.container;
           map.basemap = "gray-vector";
-          appConfig.activeView = appConfig.mapView;
           to2DSymbology();
+          appConfig.activeView = appConfig.mapView;
+          elevationProfile.container = "elevation-profile";
+          elevationProfile3D.container = null;
         } else {
           appConfig.sceneView.viewpoint = activeViewpoint;
           appConfig.sceneView.container = appConfig.container;
@@ -1801,6 +1816,8 @@ require([
           });
           to3DSymbology();
           appConfig.activeView = appConfig.sceneView;
+          elevationProfile.container = null;
+          elevationProfile3D.container = "elevation-profile";
         }
     }
 
