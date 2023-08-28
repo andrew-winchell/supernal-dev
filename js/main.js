@@ -1756,6 +1756,7 @@ require([
             selectButton: false,
             uniformChartScalingToggle: false
         },
+        container: "elevation-profile3d",
         unit: "imperial"
     });
 
@@ -1804,8 +1805,6 @@ require([
           map.basemap = "gray-vector";
           to2DSymbology();
           appConfig.activeView = appConfig.mapView;
-          elevationProfile.container = "elevation-profile";
-          elevationProfile3D.container = "";
         } else {
           appConfig.sceneView.viewpoint = activeViewpoint;
           appConfig.sceneView.container = appConfig.container;
@@ -1816,8 +1815,6 @@ require([
           });
           to3DSymbology();
           appConfig.activeView = appConfig.sceneView;
-          elevationProfile.container = "";
-          elevationProfile3D.container = "elevation-profile";
         }
     }
 
