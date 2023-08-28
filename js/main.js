@@ -1851,7 +1851,7 @@ require([
                 type: "polygon-3d",
                 symbolLayers: [{
                     type: "extrude",
-                    material: { color: [0, 0, 0, 0.25] }
+                    material: { color: [0, 0, 0, 0.10] }
                 }]
             },
             visualVariables: [
