@@ -1808,6 +1808,7 @@ require([
           appConfig.activeView = appConfig.mapView;
           $("#elevation-profile").css("display", "block");
           $("#elevation-profile3d").css("display", "none");
+          $("#create-route").css("display", "block")
         } else {
           appConfig.sceneView.viewpoint = activeViewpoint;
           appConfig.sceneView.container = appConfig.container;
@@ -1820,6 +1821,7 @@ require([
           appConfig.activeView = appConfig.sceneView;
           $("#elevation-profile").css("display", "none");
           $("#elevation-profile3d").css("display", "block");
+          $("#create-route").css("display", "none")
         }
     }
 
