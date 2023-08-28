@@ -29,12 +29,14 @@ require([
     "esri/widgets/ElevationProfile",
     "esri/core/reactiveUtils",
     "esri/geometry/support/geodesicUtils",
-    "esri/Basemap"
+    "esri/Basemap",
+    "esri/rest/support/BufferParameters",
+    "esri/rest/geometryService"
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, WebScene, Map, MapView, Graphic, GraphicsLayer,
         FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
         BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, Point,
-        geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils, Basemap
+        geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils, Basemap, BufferParameters, geometryService
     ) => {
 
     /********** ESRI ArcGIS Online User Authentication **********/
@@ -545,6 +547,16 @@ require([
         graphics: []
     });
 
+    const routeBuffer02 = new GraphicsLayer ({
+        title: ".4nm Route Buffer",
+        graphics: []
+    });
+
+    const routeBuffer05 = new GraphicsLayer ({
+        title: "1nm Route Buffer",
+        graphics: []
+    });
+
     /********** 2D and 3D Map View Configurations **********/
 
     const map = new Map ({
@@ -556,13 +568,13 @@ require([
             desPointsLyr,
             airportsLyr,
             classAirspaceLyr,
-            lineGraphicsLyr,
-            pntGraphicsLyr,
             vertiportsLyr,
             fiveDegRingLyr,
             eightDegRingLyr,
             twelveDegRingLyr,
-            supernalRoutesLyr
+            supernalRoutesLyr,
+            routeBuffer02,
+            routeBuffer05
         ]
     });
     
@@ -1934,20 +1946,6 @@ require([
                     width: 50,
                     height: 400,
                     material: { color: [0, 255, 0, 0.25] }
-                }]
-            }
-        };
-
-        supernalRoutesLyr.renderer = {
-            type: "simple",
-            symbol: {
-                type: "line-3d",
-                symbolLayers: [{
-                    type: "path",
-                    profile: "quad",
-                    width: 5,
-                    height: 5,
-                    material: { color: [0,128,0,0.25] }
                 }]
             }
         };
