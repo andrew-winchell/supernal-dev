@@ -1805,6 +1805,18 @@ require([
     }
 
     function to2DSymbology () {
+        classAirspaceLyr.renderer = {
+            type: "simple",
+            symbol: {
+                type: "simple-fill",
+                style: "none",
+                outline: {
+                    color: [0,0,0,1],
+                    width: "1px"
+                }
+            }
+        };
+
         fiveDegRingLyr.renderer = {
             type: "simple",
             symbol: {
