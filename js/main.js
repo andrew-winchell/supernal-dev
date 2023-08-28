@@ -180,7 +180,9 @@ require([
             "NAME",
             "TYPE_CODE",
             "CLASS",
-            "LOCAL_TYPE"
+            "LOCAL_TYPE",
+            "LOWER_VAL",
+            "UPPER_VAL"
         ],
         popupTemplate: {
             title: "Class Airspace",
