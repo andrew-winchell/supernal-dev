@@ -1835,7 +1835,14 @@ require([
     }
 
     function to3DSymbology () {
-        classAirspaceLyr.renderer = null;
+        classAirspaceLyr.elevationInfo = {
+            mode: "relative-to-ground",
+            featureExpressionInfo: {
+                expression: ""
+            },
+            unit: "us-feet"
+        };
+
         fiveDegRingLyr.renderer = {
             type: "simple",
             symbol: {
