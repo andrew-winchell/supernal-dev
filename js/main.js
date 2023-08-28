@@ -1838,7 +1838,7 @@ require([
         classAirspaceLyr.elevationInfo = {
             mode: "relative-to-ground",
             featureExpressionInfo: {
-                expression: ""
+                expression: "$feature.LOWER_VAL"
             },
             unit: "us-feet"
         };
