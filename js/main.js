@@ -1806,6 +1806,8 @@ require([
           map.basemap = "gray-vector";
           to2DSymbology();
           appConfig.activeView = appConfig.mapView;
+          $("#elevation-profile").css("display", "block");
+          $("#elevation-profile3d").css("display", "none");
         } else {
           appConfig.sceneView.viewpoint = activeViewpoint;
           appConfig.sceneView.container = appConfig.container;
@@ -1816,6 +1818,8 @@ require([
           });
           to3DSymbology();
           appConfig.activeView = appConfig.sceneView;
+          $("#elevation-profile").css("display", "none");
+          $("#elevation-profile3d").css("display", "block");
         }
     }
 
@@ -1903,6 +1907,7 @@ require([
                 }]
             }
         };
+
         eightDegRingLyr.renderer = {
             type: "simple",
             symbol: {
@@ -1916,6 +1921,7 @@ require([
                 }]
             }
         };
+
         twelveDegRingLyr.renderer = {
             type: "simple",
             symbol: {
