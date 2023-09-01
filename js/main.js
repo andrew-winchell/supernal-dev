@@ -1518,7 +1518,6 @@ require([
                       graphic.geometry = buffer05;
                     }
             });
-
     }
 
     mapView.when(() => {
