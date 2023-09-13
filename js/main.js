@@ -1790,7 +1790,7 @@ require([
             uniformChartScalingToggle: false
         },
         container: "elevation-profile",
-        unit: "imperial"
+        unit: "nautical-miles"
     });
 
     const elevationProfile3D = new ElevationProfile({
