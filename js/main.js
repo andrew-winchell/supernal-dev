@@ -211,7 +211,8 @@ require([
                     ]
                 }
             ]
-        }
+        },
+        visible: false
     });
 
     const desPointsLyr = new FeatureLayer ({
@@ -413,7 +414,8 @@ require([
                 expression: "$feature.AMSL + TextFormatting.NewLine + '(' + $feature.AGL + ')'"
             }
         },
-        minScale: 500000 
+        minScale: 500000,
+        visible: false 
     });
 
     const vertiportsLyr = new FeatureLayer ({
@@ -457,7 +459,8 @@ require([
                 width: "2px",
                 style: "solid"
             }
-        }
+        },
+        visible: false
     });
 
     const eightDegRingLyr = new FeatureLayer ({
@@ -471,7 +474,8 @@ require([
                 width: "2px",
                 style: "solid"
             }
-        }
+        },
+        visible: false
     });
 
     const twelveDegRingLyr = new FeatureLayer ({
@@ -485,7 +489,8 @@ require([
                 width: "2px",
                 style: "solid"
             }
-        }
+        },
+        visible: false
     });
 
     const supernalRoutesLyr = new FeatureLayer ({
