@@ -1792,7 +1792,6 @@ require([
         container: "elevation-profile",
         unit: "nautical-miles"
     });
-
     elevationProfile.viewModel.effectiveUnits.elevation = "feet";
 
     const elevationProfile3D = new ElevationProfile({
@@ -1817,6 +1816,7 @@ require([
         container: "elevation-profile3d",
         unit: "nautical-miles"
     });
+    elevationProfile3D.viewModel.effectiveUnits.elevation = "feet";
 
     /********** Synchronize 2D & 3D Views **********/
 
