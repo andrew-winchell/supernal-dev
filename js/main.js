@@ -1813,7 +1813,7 @@ require([
             uniformChartScalingToggle: false
         },
         container: "elevation-profile3d",
-        unit: "imperial"
+        unit: "nautical-miles"
     });
 
     /********** Synchronize 2D & 3D Views **********/
