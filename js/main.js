@@ -1793,7 +1793,7 @@ require([
         unit: "nautical-miles"
     });
     elevationProfile.viewModel.effectiveUnits.elevation = "feet";
-    elevationProfile.viewModel.chartData.dynamicElevationRange = true;
+    elevationProfile.viewModel.uniformChartScaling = false;
 
     console.log(elevationProfile)
 
