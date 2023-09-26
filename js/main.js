@@ -215,21 +215,21 @@ require([
         visible: false
     });
 
-    const desPointsLyr = new FeatureLayer ({
-        url: "https://services6.arcgis.com/ssFJjBXIUyZDrSYZ/arcgis/rest/services/DesignatedPoints/FeatureServer/0",
-        title: "Designated Points",
+    const fixesLyr = new FeatureLayer ({
+        url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/FIX_BASE/FeatureServer/0",
+        title: "Fixes",
         popupTemplate: {
-            title: "Designated Points",
+            title: "Fixes",
             content: [
                 {
                     type: "fields",
                     fieldInfos: [
                         {
-                            fieldName: "IDENT",
+                            fieldName: "FIX_ID",
                             label: "Identifier"
                         },
                         {
-                            fieldName: "TYPE_CODE",
+                            fieldName: "FIX_USE_CODE",
                             label: "Type"
                         },
                         {
@@ -250,7 +250,7 @@ require([
             uniqueValueInfos: [
                 {
                     label: "Regular Public Transport",
-                    value: "RPT",
+                    value: "RP",
                     symbol: {
                         type: "simple-marker",
                         size: 4,
@@ -259,7 +259,7 @@ require([
                 },
                 {
                     label: "Waypoint",
-                    value: "WPT",
+                    value: "WP",
                     symbol: {
                         type: "simple-marker",
                         size: 4,
@@ -267,8 +267,8 @@ require([
                     }
                 },
                 {
-                    label: "Other",
-                    value: "OTHER",
+                    label: "MR",
+                    value: "MR",
                     symbol: {
                         type: "simple-marker",
                         size: 4,
@@ -285,8 +285,8 @@ require([
                     }
                 },
                 {
-                    label: "Area Navigation",
-                    value: "RNAV",
+                    label: "MW",
+                    value: "MW",
                     symbol: {
                         type: "simple-marker",
                         size: 4,
@@ -295,7 +295,7 @@ require([
                 },
                 {
                     label: "Computer Navigation Fix",
-                    value: "CNF",
+                    value: "CN",
                     symbol: {
                         type: "simple-marker",
                         size: 4,
@@ -303,8 +303,8 @@ require([
                     }
                 },
                 {
-                    label: "Ground Movement Control",
-                    value: "GND",
+                    label: "RADAR",
+                    value: "RADAR",
                     symbol: {
                         type: "simple-marker",
                         size: 4,
@@ -312,7 +312,8 @@ require([
                     }
                 },
                 {
-                    value: "MRPT",
+                    label: "VFR",
+                    value: "VFR",
                     symbol: {
                         type: "simple-marker",
                         size: 4,
@@ -570,7 +571,7 @@ require([
         layers: [
             navaidsLyr,
             obstaclesLyr,
-            desPointsLyr,
+            fixesLyr,
             airportsLyr,
             classAirspaceLyr,
             vertiportsLyr,
@@ -1039,7 +1040,7 @@ require([
                         enabled: true
                     },
                     {
-                        layer: desPointsLyr,
+                        layer: fixesLyr,
                         enabled: true
                     },
                     {
@@ -1085,7 +1086,7 @@ require([
                     enabled: true
                 },
                 {
-                    layer: desPointsLyr,
+                    layer: fixesLyr,
                     enabled: true
                 },
                 {
