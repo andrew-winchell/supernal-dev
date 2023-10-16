@@ -1085,7 +1085,7 @@ require([
 
         /********** Existing Route Visibility **********/
 
-        $(".route-list-item").on("onCalciteListItemSelect"), (select) => {
+        $("#existing-routes").on("calciteListItemSelect"), (select) => {
             routeSelect(select);
         }
 
