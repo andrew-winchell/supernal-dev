@@ -1107,7 +1107,7 @@ require([
                             {
                                 type: "Feature",
                                 geometry: {
-                                    type: "Polygon",
+                                    type: "Polyline",
                                     coordinates: geometry.paths
                                 }
                             }
