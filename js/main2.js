@@ -537,7 +537,7 @@ require([
                     }
                 ]
             },
-            definitionExpression: "1=1"
+            definitionExpression: "1=0"
         });
 
         /********** Clinet-Side Graphics for Drawing **********/
@@ -1082,7 +1082,12 @@ require([
                     });
             });
         }
-    
 
+        /********** Existing Route Visibility **********/
+
+        $("#existing-routes").on("calciteListItemSelect"), (select) => {
+            console.log(select);
+        }
+    
     }
 )
