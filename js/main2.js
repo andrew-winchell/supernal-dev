@@ -1086,10 +1086,10 @@ require([
         /********** Existing Route Visibility **********/
 
         $(".route-list-item").on("calciteListItemSelect"), (select) => {
-            routeSelection(select);
+            routeSelect(select);
         }
 
-        function routeSelection(select) {
+        function routeSelect(select) {
             console.log(select)
         }
     
