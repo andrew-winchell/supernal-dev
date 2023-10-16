@@ -10,6 +10,7 @@ require([
     "esri/Graphic",
     "esri/layers/GraphicsLayer",
     "esri/layers/FeatureLayer",
+    "esri/layers/GeoJSONLayer",
     "esri/smartMapping/statistics/uniqueValues",
     "esri/layers/ElevationLayer",
     "esri/views/draw/Draw",
@@ -34,7 +35,7 @@ require([
     "esri/rest/geometryService"
 ], (
         Portal, OAuthInfo, esriId, PortalQueryParams, SceneView, WebScene, Map, MapView, Graphic, GraphicsLayer,
-        FeatureLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
+        FeatureLayer, GeoJSONLayer, uniqueValues, ElevationLayer, Draw, LayerList, Sketch, SketchViewModel, Search,
         BasemapGallery, Expand, Editor, webMercatorUtils, Compass, Multipoint, Polyline, Point,
         geometryEngine, ElevationProfile, reactiveUtils, geodesicUtils, Basemap, BufferParameters, geometryService
     ) => {
@@ -1098,13 +1099,38 @@ require([
                     }
                 ).then((results) => {
                     console.log(results);
-                    let geometry = results.geometry;
+                    let geometry = results.features[0].geometry;
+
+                    const geojson = {
+                        type: "FeatureCollection",
+                        features: [
+                            {
+                                type: "Feature",
+                                geometry: {
+                                    type: "Polygon",
+                                    coordinates: geometry.paths
+                                }
+                            }
+                        ]
+                    };
+
+                    const blob = new Blob([JSON.stringify(geojson)], {
+                        type: "application/json"
+                    });
+
+                    const url = URL.createObjectURL(blob);
+
+                    const geoJSONLayer = new GeoJSONLayer({
+                        url: url
+                    });
+
+                    map.add(geoJSONLayer)
                 });
             }
 
             let itemsString = selectedItems.join(",");
 
-            supernalRoutesLyr.definitionExpression = "OBJECTID in (" + itemsString + ")";
+            //supernalRoutesLyr.definitionExpression = "OBJECTID in (" + itemsString + ")";
         });
     
     }
