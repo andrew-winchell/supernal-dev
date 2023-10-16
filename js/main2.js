@@ -1087,7 +1087,8 @@ require([
 
         $("#existing-routes").on("calciteListItemSelect", (select) => {
             console.log(select);
-            console.log($("#existing-routes").selectedItems);
+            let selected = $("#existing-routes").selectedItems;
+            console.log(selected)
         });
     
     }
