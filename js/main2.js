@@ -1088,8 +1088,18 @@ require([
         $("#existing-routes").on("calciteListItemSelect", (select) => {
             let selectedItems = [];
             
-            for (let item of $("#existing-routes")[0].selectedItems) {
-                selectedItems.push(item.value);
+            for (let item of $("#existing-routes")[0].selectedItems) { // turn into a function
+                supernalRoutesLyr.queryFeatures(
+                    {
+                        where: "OBJECTID = " + item.value,
+                        outFields: ["*"],
+                        returnGeometry: true,
+                        returnZ: true
+                    }
+                ).then((results) => {
+                    console.log(results);
+                    let geometry = results.geometry;
+                });
             }
 
             let itemsString = selectedItems.join(",");
