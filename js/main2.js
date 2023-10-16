@@ -1086,9 +1086,15 @@ require([
         /********** Existing Route Visibility **********/
 
         $("#existing-routes").on("calciteListItemSelect", (select) => {
-            console.log(select);
-            let selected = $("#existing-routes")[0].selectedItems;
-            console.log(selected)
+            let selectedItems = [];
+            
+            for (let item of $("#existing-routes")[0].selectedItems) {
+                selectedItems.push(item.value);
+            }
+
+            let itemsString = selectedItems.join(",");
+
+            supernalRoutesLyr.definitionExpression = "OBJECTID in (" + itemsString + ")";
         });
     
     }
