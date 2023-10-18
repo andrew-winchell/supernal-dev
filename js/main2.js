@@ -1089,7 +1089,9 @@ require([
         $("#existing-routes").on("calciteListItemSelect", (select) => {
             let selectedItems = [];
             
-            for (let item of $("#existing-routes")[0].selectedItems) { // turn into a function
+            for (let item of $("#existing-routes")[0].selectedItems) {
+                selectedItems.push(item.value); // turn into a function
+                
                 supernalRoutesLyr.queryFeatures(
                     {
                         where: "OBJECTID = " + item.value,
@@ -1125,7 +1127,6 @@ require([
                     });
 
                     //map.add(geoJSONLayer)
-                    selectedItems.push(item.value);
                 });
             }
 
