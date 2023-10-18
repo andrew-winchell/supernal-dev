@@ -1091,7 +1091,7 @@ require([
             
             for (let item of $("#existing-routes")[0].selectedItems) {
                 selectedItems.push(item.value); // turn into a function
-                
+
                 supernalRoutesLyr.queryFeatures(
                     {
                         where: "OBJECTID = " + item.value,
@@ -1130,7 +1130,8 @@ require([
                 });
             }
 
-            let itemsString = selectedItems.join(",");
+            let wrappedInQuotes = selectedItems.map((oid) => `'${oid}'`);
+            let itemsString = wrappedInQuotes.join(",");
 
             supernalRoutesLyr.definitionExpression = "OBJECTID in (" + itemsString + ")";
             console.log(supernalRoutesLyr.definitionExpression);
