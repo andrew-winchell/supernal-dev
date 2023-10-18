@@ -1099,6 +1099,18 @@ require([
             supernalRoutesLyr.definitionExpression = "OBJECTID in (" + itemsString + ")";
         });
 
+        /********** Edit Existing Route **********/
+
+        reactiveUtils.on(
+            () => mapView.popup,
+            "trigger-action",
+            (event) => {
+                if (event.action.id === "edit-attributes") {
+                    console.log("edit")
+                }
+            }
+        )
+
         /********** Elevation Profile Widget **********/
 
         const elevationProfile = new ElevationProfile({
