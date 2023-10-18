@@ -1125,13 +1125,14 @@ require([
                     });
 
                     //map.add(geoJSONLayer)
-                    
-                    let itemsString = selectedItems.join(",");
-
-                    supernalRoutesLyr.definitionExpression = "OBJECTID in (" + itemsString + ")";
-                    console.log(supernalRoutesLyr.definitionExpression)
+                    selectedItems.push(item.value);
                 });
             }
+
+            let itemsString = selectedItems.join(",");
+
+            supernalRoutesLyr.definitionExpression = "OBJECTID in (" + itemsString + ")";
+            console.log(supernalRoutesLyr.definitionExpression);
         });
     
     }
