@@ -1091,51 +1091,244 @@ require([
             
             for (let item of $("#existing-routes")[0].selectedItems) {
                 selectedItems.push(item.value); // turn into a function
-
-                supernalRoutesLyr.queryFeatures(
-                    {
-                        where: "OBJECTID = " + item.value,
-                        outFields: ["*"],
-                        returnGeometry: true,
-                        returnZ: true
-                    }
-                ).then((results) => {
-                    console.log(results);
-                    let geometry = results.features[0].geometry;
-
-                    const geojson = {
-                        type: "FeatureCollection",
-                        features: [
-                            {
-                                type: "Feature",
-                                geometry: {
-                                    type: "Polyline",
-                                    coordinates: geometry.paths
-                                }
-                            }
-                        ]
-                    };
-
-                    const blob = new Blob([JSON.stringify(geojson)], {
-                        type: "application/json"
-                    });
-
-                    const url = URL.createObjectURL(blob);
-
-                    const geoJSONLayer = new GeoJSONLayer({
-                        url: url
-                    });
-
-                    //map.add(geoJSONLayer)
-                });
             }
 
             let wrappedInQuotes = selectedItems.map((oid) => `'${oid}'`);
             let itemsString = wrappedInQuotes.join(",");
 
             supernalRoutesLyr.definitionExpression = "OBJECTID in (" + itemsString + ")";
-            console.log(supernalRoutesLyr.definitionExpression);
         });
+
+        /********** Elevation Profile Widget **********/
+
+        const elevationProfile = new ElevationProfile({
+            view: mapView,
+            profiles: [
+            {
+                type: "ground"
+            },
+            {
+                type: "input",
+                title: "Flight Plan"
+            }
+            ],
+            visibleElements: {
+                legend: false,
+                clearButton: false,
+                settingsButton: false,
+                sketchButton: false,
+                selectButton: false,
+                uniformChartScalingToggle: false
+            },
+            container: "elevation-profile",
+            unit: "nautical-miles"
+        });
+        elevationProfile.viewModel.effectiveUnits.elevation = "feet";
+        elevationProfile.viewModel.uniformChartScaling = false;
+
+        console.log(elevationProfile)
+
+        const elevationProfile3D = new ElevationProfile({
+            view: sceneView,
+            profiles: [
+            {
+                type: "ground"
+            },
+            {
+                type: "input",
+                title: "Flight Plan"
+            }
+            ],
+            visibleElements: {
+                legend: false,
+                clearButton: false,
+                settingsButton: false,
+                sketchButton: false,
+                selectButton: false,
+                uniformChartScalingToggle: false
+            },
+            container: "elevation-profile3d",
+            unit: "nautical-miles"
+        });
+        elevationProfile3D.viewModel.effectiveUnits.elevation = "feet";
+
+        /********** Synchronize 2D & 3D Views **********/
+
+        const views = [mapView, sceneView];
+        let activeView;
+
+        const sync = (source) => {
+            if (!activeView || !activeView.viewpoint || activeView !== source) {
+                return;
+            }
+
+            for (const view of views) {
+                if (view !== activeView) {
+                    view.viewpoint = activeView.viewpoint;
+                }
+            }
+        };
+
+        for (const view of views) {
+            view.watch(["interacting", "animation"],
+            () => {
+                activeView = view;
+                sync(activeView);
+            });
+
+            view.watch("viewpoint", () => sync(view));
+        }
+
+        /********** Conversion From 2D & 3D **********/
+
+        $("#btn2d").on("click", () => { switchView() });
+
+        $("#btn3d").on("click", () => { switchView() });
+
+        function switchView () {
+            const is3D = appConfig.activeView.type === "3d";
+            const activeViewpoint = appConfig.activeView.viewpoint.clone();
+        
+            appConfig.activeView.container = null;
+        
+            if (is3D) {
+            appConfig.mapView.viewpoint = activeViewpoint;
+            appConfig.mapView.container = appConfig.container;
+            map.basemap = "gray-vector";
+            to2DSymbology();
+            appConfig.activeView = appConfig.mapView;
+            $("#elevation-profile").css("display", "block");
+            $("#elevation-profile3d").css("display", "none");
+            $("#create-route").css("display", "block")
+            } else {
+            appConfig.sceneView.viewpoint = activeViewpoint;
+            appConfig.sceneView.container = appConfig.container;
+            map.basemap = new Basemap({
+                portalItem: {
+                    id: "0560e29930dc4d5ebeb58c635c0909c9"
+                }
+            });
+            to3DSymbology();
+            appConfig.activeView = appConfig.sceneView;
+            $("#elevation-profile").css("display", "none");
+            $("#elevation-profile3d").css("display", "block");
+            $("#create-route").css("display", "none")
+            }
+        }
+
+        function to2DSymbology () {
+            airspaceLyr.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "simple-fill",
+                    style: "none",
+                    outline: {
+                        color: [0,0,0,1],
+                        width: "1px"
+                    }
+                }
+            };
+
+            fiveDegRingLyr.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "simple-line",
+                    color: "red",
+                    width: "2px",
+                    style: "solid"
+                }
+            };
+            
+            eightDegRingLyr.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "simple-line",
+                    color: "blue",
+                    width: "2px",
+                    style: "solid"
+                }
+            };
+
+            twelveDegRingLyr.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "simple-line",
+                    color: "green",
+                    width: "2px",
+                    style: "solid"
+                }
+            };
+        }
+
+        function to3DSymbology () {
+            airspaceLyr.elevationInfo = {
+                mode: "relative-to-ground",
+                featureExpressionInfo: {
+                    expression: "Number($feature.LOWER_VAL)"
+                },
+                unit: "us-feet"
+            };
+
+            airspaceLyr.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        material: { color: [0, 0, 0, 0.10] }
+                    }]
+                },
+                visualVariables: [
+                    {
+                        type: "size",
+                        valueExpression: "Number($feature.UPPER_VAL) - Number($feature.LOWER_VAL)",
+                        units: "feet"
+                    }
+                ]
+            };
+
+            fiveDegRingLyr.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "line-3d",
+                    symbolLayers: [{
+                        type: "path",
+                        profile: "quad",
+                        width: 50,
+                        height: 400,
+                        material: { color: [255, 0, 0, 0.25] }
+                    }]
+                }
+            };
+
+            eightDegRingLyr.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "line-3d",
+                    symbolLayers: [{
+                        type: "path",
+                        profile: "quad",
+                        width: 50,
+                        height: 400,
+                        material: { color: [0, 0, 255, 0.25] }
+                    }]
+                }
+            };
+
+            twelveDegRingLyr.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "line-3d",
+                    symbolLayers: [{
+                        type: "path",
+                        profile: "quad",
+                        width: 50,
+                        height: 400,
+                        material: { color: [0, 255, 0, 0.25] }
+                    }]
+                }
+            };
+        }
     
     }
 )
