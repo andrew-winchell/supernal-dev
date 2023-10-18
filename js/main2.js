@@ -1131,7 +1131,7 @@ require([
             let itemsString = selectedItems.join(",");
 
             supernalRoutesLyr.definitionExpression = "OBJECTID in (" + itemsString + ")";
-            console.log(supernalRoutesLyr)
+            console.log(supernalRoutesLyr.definitionExpression)
         });
     
     }
