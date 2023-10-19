@@ -1113,7 +1113,7 @@ require([
                    });
 
                    $("#color-picker-panel").css("display", "none");
-                }
+                })
             } else if (select.target.selected == false) {
                     supernalRoutesLyr.renderer.removeUniqueValueInfo(itemId);
             }
