@@ -1096,6 +1096,7 @@ require([
                     symbol: {
                         type: "simple-line",  // autocasts as new SimpleFillSymbol()
                         color: "blue"
+                    }
                 }
             )
 
