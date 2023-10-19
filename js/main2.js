@@ -1106,6 +1106,7 @@ require([
         });
 
         function updateRenderer(renderer, selectedItems) {
+            console.log("test")
             let selectedItemsArr = [];
             
             for (let item of selectedItems) {
