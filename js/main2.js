@@ -1106,7 +1106,6 @@ require([
         });
 
         function updateRenderer(renderer, selectedItems) {
-            console.log("test")
             let selectedItemsArr = [];
             
             for (let item of selectedItems) {
@@ -1115,6 +1114,7 @@ require([
 
             let wrappedInQuotes = selectedItemsArr.map((oid) => `'${oid}'`);
             let itemsString = wrappedInQuotes.join(",");
+            console.log("test")
 
             supernalRoutesLyr.definitionExpression = "OBJECTID in (" + itemsString + ")";
         }
