@@ -498,12 +498,14 @@ require([
             url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Supernal_Routes/FeatureServer/0",
             title: "Existing Routes",
             renderer: {
-                type: "simple",
-                symbol: {
+                type: "unique-value",
+                field: "OBJECTID",
+                defaultSymbol: {
                     type: "simple-line",
-                    color: "green",
-                    width: "3px",
-                }
+                    color: "gray",
+                    width: "3px"
+                },
+                uniqueValueInfos: []
             },
             popupTemplate: {
                 title: "{route_name}",
