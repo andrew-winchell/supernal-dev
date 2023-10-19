@@ -1089,6 +1089,7 @@ require([
         /********** Existing Route Visibility **********/
 
         $("#existing-routes").on("calciteListItemSelect", (select) => {
+            console.log(select);
             let itemId = parseInt(select.target.value);
 
             // Add or remove unique value info depending on the selection of a value
