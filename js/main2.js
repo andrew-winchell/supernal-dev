@@ -1090,16 +1090,14 @@ require([
 
         $("#existing-routes").on("calciteListItemSelect", (select) => {
             let itemId = select.target.value;
-            supernalRoutesLyr.renderer.uniqueValueInfos.push(
-                {
-                    value: itemId,
-                    symbol: {
-                        type: "simple-line",  // autocasts as new SimpleFillSymbol()
-                        color: "blue",
-                        size: "3px"
-                    }
+            supernalRoutesLyr.renderer.uniqueValueInfos += {
+                value: itemId,
+                symbol: {
+                    type: "simple-line",
+                    color: "blue",
+                    size: "3px"
                 }
-            )
+            }
 
             let selectedItems = [];
             
