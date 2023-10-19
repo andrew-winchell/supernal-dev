@@ -506,7 +506,7 @@ require([
                     width: "3px"
                 },
                 uniqueValueInfos: [{
-                    value: parseInt(itemId),
+                    value: 157,
                     symbol: {
                         type: "simple-line",
                         color: "blue",
