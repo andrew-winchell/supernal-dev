@@ -1089,43 +1089,48 @@ require([
         /********** Existing Route Visibility **********/
 
         $("#existing-routes").on("calciteListItemSelect", (select) => {
-            console.log(select);
+            let itemSelect = select.target.selected;
             let itemId = parseInt(select.target.value);
 
-            // Add or remove unique value info depending on the selection of a value
-            if (select.target.selected == true) {
-                 $("#color-picker-panel").css("display", "grid");
+            updateRendererInfos(itemSelect, itemId);
+            updateRouteVisibility();
+        });
 
-                 $("#confirm-color").on("click", () => {
-                    let lineColor = $("#color-picker")[0].value;
-                    
-                    supernalRoutesLyr.renderer.addUniqueValueInfo({
-                        value: itemId,
-                        symbol: {
-                            type: "simple-line",
-                            color: lineColor,
-                            width: 2
-                        }
-                    });
+        function updateRendererInfos (itemSelect, itemId) {
+            if (itemSelect == true) {
+                $("#color-picker-panel").css("display", "grid");
 
-                    $("#color-picker-panel").css("display", "none");
-                 });
+                $("#confirm-color").on("click", () => {
+                   let lineColor = $("#color-picker")[0].value;
+                   
+                   supernalRoutesLyr.renderer.addUniqueValueInfo({
+                       value: itemId,
+                       symbol: {
+                           type: "simple-line",
+                           color: lineColor,
+                           width: 2
+                       }
+                   });
+
+                   $("#color-picker-panel").css("display", "none");
+                }
             } else if (select.target.selected == false) {
-                supernalRoutesLyr.renderer.removeUniqueValueInfo(itemId);
+                    supernalRoutesLyr.renderer.removeUniqueValueInfo(itemId);
             }
-            console.log(supernalRoutesLyr.renderer)
+        }
 
+        function updateRouteVisibility () {
             let selectedItems = [];
             
             for (let item of $("#existing-routes")[0].selectedItems) {
-                selectedItems.push(item.value); // turn into a function
+                selectedItems.push(item.value);
             }
 
             let wrappedInQuotes = selectedItems.map((oid) => `'${oid}'`);
             let itemsString = wrappedInQuotes.join(",");
 
             supernalRoutesLyr.definitionExpression = "OBJECTID in (" + itemsString + ")";
-        });
+        }
 
         /********** Edit Existing Route **********/
 
@@ -1165,8 +1170,6 @@ require([
         });
         elevationProfile.viewModel.effectiveUnits.elevation = "feet";
         elevationProfile.viewModel.uniformChartScaling = false;
-
-        console.log(elevationProfile)
 
         const elevationProfile3D = new ElevationProfile({
             view: sceneView,
