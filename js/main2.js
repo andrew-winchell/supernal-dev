@@ -1096,17 +1096,22 @@ require([
         /********** Existing Route Visibility **********/
 
         $("#existing-routes").on("calciteListItemSelect", (select) => {
-            console.log(select);
-            let itemId = select.target.value;
-            supernalRoutesLyr.renderer.addUniqueValueInfo({
-                value: parseInt(itemId),
-                symbol: {
-                    type: "simple-line",
-                    color: "blue",
-                    width: 2
-                }
-            });
-            console.log(supernalRoutesLyr.renderer)
+            let itemId = parseInt(select.target.value);
+
+            // Add or remove unique value info depending on the selection of a value
+            if (select.target.selected == true) {
+                 $("#color-picker").css("display", "block");
+                supernalRoutesLyr.renderer.addUniqueValueInfo({
+                    value: itemId,
+                    symbol: {
+                        type: "simple-line",
+                        color: "blue",
+                        width: 2
+                    }
+                });
+            } else if (select.target.selected == false) {
+                supernalRoutesLyr.renderer.removeUniqueValueInfo(itemId);
+            }
 
             let selectedItems = [];
             
