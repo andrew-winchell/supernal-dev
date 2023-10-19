@@ -1113,6 +1113,7 @@ require([
                             width: 2
                         }
                     });
+                    console.log(supernalRoutesLyr.renderer)
 
                     $("#color-picker-panel").css("display", "none");
                  });
