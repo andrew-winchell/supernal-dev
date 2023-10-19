@@ -505,14 +505,7 @@ require([
                     color: "gray",
                     width: 2
                 },
-                uniqueValueInfos: [{
-                    value: 157,
-                    symbol: {
-                        type: "simple-line",
-                        color: "blue",
-                        width: 2
-                    }
-                }]
+                uniqueValueInfos: []
             },
             popupTemplate: {
                 title: "{route_name}",
