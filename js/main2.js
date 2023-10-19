@@ -1100,7 +1100,7 @@ require([
 
             // Add or remove unique value info depending on the selection of a value
             if (select.target.selected == true) {
-                 $("#color-picker").css("display", "block");
+                 $("#color-picker-panel").css("display", "block");
                 supernalRoutesLyr.renderer.addUniqueValueInfo({
                     value: itemId,
                     symbol: {
