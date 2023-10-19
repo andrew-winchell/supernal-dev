@@ -1106,13 +1106,13 @@ require([
                             width: 2
                         }
                     });
-                    console.log(supernalRoutesLyr.renderer)
 
                     $("#color-picker-panel").css("display", "none");
                  });
             } else if (select.target.selected == false) {
                 supernalRoutesLyr.renderer.removeUniqueValueInfo(itemId);
             }
+            console.log(supernalRoutesLyr.renderer)
 
             let selectedItems = [];
             
