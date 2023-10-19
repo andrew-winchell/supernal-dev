@@ -1096,6 +1096,7 @@ require([
         /********** Existing Route Visibility **********/
 
         $("#existing-routes").on("calciteListItemSelect", (select) => {
+            console.log(select);
             let itemId = select.target.value;
             supernalRoutesLyr.renderer.addUniqueValueInfo({
                 value: parseInt(itemId),
