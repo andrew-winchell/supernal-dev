@@ -1095,7 +1095,8 @@ require([
                     value: itemId,
                     symbol: {
                         type: "simple-line",  // autocasts as new SimpleFillSymbol()
-                        color: "blue"
+                        color: "blue",
+                        size: "3px"
                     }
                 }
             )
