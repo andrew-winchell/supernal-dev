@@ -1097,12 +1097,18 @@ require([
                     color: "blue",
                     size: "3px"
                 }
-            })
+            });
             console.log(supernalRoutesLyr.renderer)
 
+            updateRenderer(supernalRoutesLyr.renderer, $("#existing-routes")[0].selectedItems)
+
+            
+        });
+
+        function updateRenderer(renderer, selectedItems) {
             let selectedItems = [];
             
-            for (let item of $("#existing-routes")[0].selectedItems) {
+            for (let item of selectedItems) {
                 selectedItems.push(item.value); // turn into a function
             }
 
@@ -1110,7 +1116,7 @@ require([
             let itemsString = wrappedInQuotes.join(",");
 
             supernalRoutesLyr.definitionExpression = "OBJECTID in (" + itemsString + ")";
-        });
+        }
 
         /********** Edit Existing Route **********/
 
