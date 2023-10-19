@@ -503,14 +503,14 @@ require([
                 defaultSymbol: {
                     type: "simple-line",
                     color: "gray",
-                    width: "3px"
+                    width: 2
                 },
                 uniqueValueInfos: [{
                     value: 157,
                     symbol: {
                         type: "simple-line",
                         color: "blue",
-                        size: "3px"
+                        width: 2
                     }
                 }]
             },
@@ -1097,14 +1097,14 @@ require([
 
         $("#existing-routes").on("calciteListItemSelect", (select) => {
             let itemId = select.target.value;
-            /*supernalRoutesLyr.renderer.uniqueValueInfos.push({
+            supernalRoutesLyr.renderer.uniqueValueInfos.push({
                 value: parseInt(itemId),
                 symbol: {
                     type: "simple-line",
                     color: "blue",
-                    size: "3px"
+                    width: 2
                 }
-            });*/
+            });
             console.log(supernalRoutesLyr.renderer)
 
             let selectedItems = [];
