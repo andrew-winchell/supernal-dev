@@ -1100,24 +1100,17 @@ require([
             });
             console.log(supernalRoutesLyr.renderer)
 
-            updateRenderer(supernalRoutesLyr.renderer, $("#existing-routes")[0].selectedItems)
-
+            let selectedItems = [];
             
-        });
-
-        function updateRenderer(renderer, selectedItems) {
-            let selectedItemsArr = [];
-            
-            for (let item of selectedItems) {
-                selectedItemsArr.push(item.value); // turn into a function
+            for (let item of $("#existing-routes")[0].selectedItems) {
+                selectedItems.push(item.value); // turn into a function
             }
 
-            let wrappedInQuotes = selectedItemsArr.map((oid) => `'${oid}'`);
+            let wrappedInQuotes = selectedItems.map((oid) => `'${oid}'`);
             let itemsString = wrappedInQuotes.join(",");
-            console.log("test")
 
             supernalRoutesLyr.definitionExpression = "OBJECTID in (" + itemsString + ")";
-        }
+        });
 
         /********** Edit Existing Route **********/
 
