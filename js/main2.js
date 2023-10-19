@@ -1097,7 +1097,7 @@ require([
 
         $("#existing-routes").on("calciteListItemSelect", (select) => {
             let itemId = select.target.value;
-            supernalRoutesLyr.renderer.addUniqueValueInfos({
+            supernalRoutesLyr.renderer.addUniqueValueInfo({
                 value: parseInt(itemId),
                 symbol: {
                     type: "simple-line",
