@@ -1091,6 +1091,7 @@ require([
         $("#existing-routes").on("calciteListItemSelect", (select) => {
             let itemSelect = select.target.selected;
             let itemId = parseInt(select.target.value);
+            console.log("test")
 
             updateRendererInfos(itemSelect, itemId);
         });
@@ -1123,8 +1124,6 @@ require([
         }
 
         function updateRouteVisibility () {
-            console.log(supernalRoutesLyr.renderer);
-
             let selectedItems = [];
             
             for (let item of $("#existing-routes")[0].selectedItems) {
