@@ -1093,12 +1093,9 @@ require([
             let itemId = parseInt(select.target.value);
 
             updateRendererInfos(itemSelect, itemId);
-
-            console.log(itemSelect, itemId);
         });
 
         function updateRendererInfos (itemSelect, itemId) {
-            console.log(itemSelect, itemId)
             if (itemSelect == true) {
                 $("#color-picker-panel").css("display", "grid");
 
@@ -1119,13 +1116,15 @@ require([
                    updateRouteVisibility();
                 })
             } else if (itemSelect == false) {
-                    supernalRoutesLyr.renderer.removeUniqueValueInfo(itemId);
+                supernalRoutesLyr.renderer.removeUniqueValueInfo(itemId);
                     
                 updateRouteVisibility();
             }
         }
 
         function updateRouteVisibility () {
+            console.log(supernalRoutesLyr.renderer);
+
             let selectedItems = [];
             
             for (let item of $("#existing-routes")[0].selectedItems) {
