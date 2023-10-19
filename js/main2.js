@@ -1101,14 +1101,23 @@ require([
             // Add or remove unique value info depending on the selection of a value
             if (select.target.selected == true) {
                  $("#color-picker-panel").css("display", "grid");
-                supernalRoutesLyr.renderer.addUniqueValueInfo({
-                    value: itemId,
-                    symbol: {
-                        type: "simple-line",
-                        color: "blue",
-                        width: 2
-                    }
-                });
+
+                 let lineColor;
+
+                 $("#confirm-color").on("click", () => {
+                    lineColor = $("#color-picker")[0].value;
+                    
+                    supernalRoutesLyr.renderer.addUniqueValueInfo({
+                        value: itemId,
+                        symbol: {
+                            type: "simple-line",
+                            color: lineColor,
+                            width: 2
+                        }
+                    });
+
+                    $("#color-picker-panel").css("display", "none");
+                 });
             } else if (select.target.selected == false) {
                 supernalRoutesLyr.renderer.removeUniqueValueInfo(itemId);
             }
