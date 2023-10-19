@@ -1102,10 +1102,8 @@ require([
             if (select.target.selected == true) {
                  $("#color-picker-panel").css("display", "grid");
 
-                 let lineColor;
-
                  $("#confirm-color").on("click", () => {
-                    lineColor = $("#color-picker")[0].value;
+                    let lineColor = $("#color-picker")[0].value;
                     
                     supernalRoutesLyr.renderer.addUniqueValueInfo({
                         value: itemId,
