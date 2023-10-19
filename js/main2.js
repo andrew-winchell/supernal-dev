@@ -1089,12 +1089,10 @@ require([
         /********** Existing Route Visibility **********/
 
         $("#existing-routes").on("calciteListItemSelect", (select) => {
-            console.log(select);
             let itemSelect = select.target.selected;
             let itemId = parseInt(select.target.value);
 
             updateRendererInfos(itemSelect, itemId);
-            updateRouteVisibility();
 
             console.log(itemSelect, itemId);
         });
@@ -1117,9 +1115,13 @@ require([
                    });
 
                    $("#color-picker-panel").css("display", "none");
+
+                   updateRouteVisibility();
                 })
             } else if (itemSelect == false) {
                     supernalRoutesLyr.renderer.removeUniqueValueInfo(itemId);
+                    
+                updateRouteVisibility();
             }
         }
 
