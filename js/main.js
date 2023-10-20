@@ -1431,13 +1431,22 @@ require([
 
     /********** Editing Existing Routes **********/
 
-    let objectId;
+    let oid;
 
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
-        console.log(evt);
+        let oid = parseInt(evt.target.value);
+
+        supernalRoutesLyr.queryFeatures(
+            {
+                where: "OBJECTID = " + oid,
+                outFields: ["display_color"]
+            }
+        ).then((results) => {
+            console.log(results)
+        })
         supernalRoutesLyr.renderer.addUniqueValueInfo(
             {
-                value: parseInt(evt.target.value),
+                value: oid,
                 symbol: {
                     type: "simple-line",
                     color: "teal",
@@ -1446,7 +1455,7 @@ require([
             }
         )
         if (editor.viewModel.state !== "editing-existing-feature") {
-            objectId = evt.target.value;
+            oid = evt.target.value;
             cancelRouteCreation();
             selectExistingRoute(objectId, appConfig.activeView.type);
         }
