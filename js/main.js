@@ -498,12 +498,14 @@ require([
         url: "https://services3.arcgis.com/rKjecbIat1XHvd9J/arcgis/rest/services/Supernal_Routes/FeatureServer/0",
         title: "Existing Routes",
         renderer: {
-            type: "simple",
-            symbol: {
+            type: "unique-value",
+            field: "OBJECTID",
+            defaultSymbol: {
                 type: "simple-line",
-                color: "green",
-                width: "3px",
-            }
+                color: "gray",
+                width: 2
+            },
+            uniqueValueInfos: []
         },
         popupTemplate: {
             title: "{route_name}",
@@ -1432,6 +1434,17 @@ require([
     let objectId;
 
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
+        console.log(evt);
+        supernalRoutesLyr.renderer.addUniqueValueInfo(
+            {
+                value: parseInt(evt.target.value),
+                symbol: {
+                    type: "simple-line",
+                    color: "teal",
+                    width: 2
+                }                
+            }
+        )
         if (editor.viewModel.state !== "editing-existing-feature") {
             objectId = evt.target.value;
             cancelRouteCreation();
