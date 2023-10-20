@@ -1062,7 +1062,7 @@ require([
 
     // Drawing variables
     let multipointVertices = [],
-        userLineColor = $("#color-picker")[0].value;
+        userLineColor;
     
     $("#color-picker").on("calciteColorPickerChange", (evt) => {
         console.log(evt);
@@ -1106,7 +1106,7 @@ require([
     // Open Creator Toolbar
     $("#create-route").on("click", () => {
         $("#route-toolbar").css("display", "block");
-        $("#color-picker").css("display", "block");
+        $("#color-picker-panel").css("display", "grid");
         $("#add-route-vertices")[0].disabled = false;
         supernalRoutesLyr.definitionExpression = "1=0";
         multipointVertices = [];
@@ -1114,6 +1114,12 @@ require([
         $("#waypoint-list").css("display", "none");
         mapView.popup.close();
     });
+
+    $("#confirm-color").on("click", () => {
+        $("#add-route-vertices")[0].disabled = false;
+        userLineColor = $("#color-picker")[0].value;
+        
+    })
 
     $("#add-route-vertices").on("click", () => {
         mapView.focus();
