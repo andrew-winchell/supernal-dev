@@ -1063,11 +1063,6 @@ require([
     // Drawing variables
     let multipointVertices = [],
         userLineColor;
-    
-    $("#color-picker").on("calciteColorPickerChange", (evt) => {
-        console.log(evt);
-        userLineColor = evt.currentTarget.value;
-    });
 
     const pointSketchViewModel = new SketchViewModel ({
         layer: pntGraphicsLyr,
@@ -1117,6 +1112,7 @@ require([
     $("#confirm-color").on("click", () => {
         $("#add-route-vertices")[0].disabled = false;
         userLineColor = $("#color-picker")[0].value;
+        $("#color-picker-panel").css("display", "none");
         
     })
 
@@ -1358,7 +1354,6 @@ require([
                 $("#waypoint-list").css("display", "none");
                 $("#save")[0].disabled = true;
                 $("#route-toolbar").css("display", "none");
-                $("#color-picker").css("display", "none");
                 multipointVertices = [];
                 pntGraphicsLyr.removeAll();
                 pointSketchViewModel.cancel();
@@ -1377,7 +1372,7 @@ require([
         $("#waypoint-list").css("display", "none"); // hide table
         // reset route toolbar buttons and hide
         $("#route-toolbar").css("display", "none");
-        $("#color-picker").css("display", "none");
+        $("#color-picker-panel").css("display", "none");
         $("#save")[0].disabled = true;
         $("#complete-route")[0].disabled = true;
         $("#edit-vertices")[0].disabled = true;
