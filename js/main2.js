@@ -1091,7 +1091,6 @@ require([
         $("#existing-routes").on("calciteListItemSelect", (select) => {
             let itemSelect = select.target.selected;
             let itemId = parseInt(select.target.value);
-            console.log("test")
 
             updateRendererInfos(itemSelect, itemId);
         });
@@ -1103,14 +1102,6 @@ require([
                 $("#confirm-color").on("click", () => {
                    let lineColor = $("#color-picker")[0].value;
                    
-                   supernalRoutesLyr.renderer.addUniqueValueInfo({
-                       value: itemId,
-                       symbol: {
-                           type: "simple-line",
-                           color: lineColor,
-                           width: 2
-                       }
-                   });
 
                    $("#color-picker-panel").css("display", "none");
 
