@@ -1102,6 +1102,14 @@ require([
                 $("#confirm-color").on("click", () => {
                    let lineColor = $("#color-picker")[0].value;
                    
+                   supernalRoutesLyr.renderer.addUniqueValueInfo({
+                       value: itemId,
+                       symbol: {
+                           type: "simple-line",
+                           color: lineColor,
+                           width: 2
+                       }
+                   });
 
                    $("#color-picker-panel").css("display", "none");
 
