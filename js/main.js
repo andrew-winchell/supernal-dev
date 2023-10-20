@@ -1444,17 +1444,19 @@ require([
             }
         ).then((results) => {
             routeColor = results.features[0].attributes.display_color;
+        }).then(() => {
+            console.log(routeColor);
+            supernalRoutesLyr.renderer.addUniqueValueInfo(
+                {
+                    value: oid,
+                    symbol: {
+                        type: "simple-line",
+                        color: routeColor,
+                        width: 2
+                    }                
+                }
+            )
         })
-        supernalRoutesLyr.renderer.addUniqueValueInfo(
-            {
-                value: oid,
-                symbol: {
-                    type: "simple-line",
-                    color: routeColor,
-                    width: 2
-                }                
-            }
-        )
         if (editor.viewModel.state !== "editing-existing-feature") {
             oid = evt.target.value;
             cancelRouteCreation();
