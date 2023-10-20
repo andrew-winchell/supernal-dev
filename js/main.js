@@ -1107,7 +1107,6 @@ require([
     $("#create-route").on("click", () => {
         $("#route-toolbar").css("display", "block");
         $("#color-picker-panel").css("display", "grid");
-        $("#add-route-vertices")[0].disabled = false;
         supernalRoutesLyr.definitionExpression = "1=0";
         multipointVertices = [];
         elevationProfile.input = null;
