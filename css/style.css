@@ -42,7 +42,7 @@ html, body, #view-div, #inset-div {
   top: 15px;
 }
 
-#color-picker-panel {
+#color-picker {
   display: none;
   position: absolute;
   right: 15px;
