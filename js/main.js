@@ -1317,7 +1317,8 @@ require([
             attributes: {
                 "route_name": rName,
                 "departing_fac": rDepart,
-                "arriving_facility": rArrival
+                "arriving_facility": rArrival,
+                "display_color": userLineColor
             }
         });
 
