@@ -1463,6 +1463,7 @@ require([
     });
 
     function selectExistingRoute (objectId, dimensions) {
+        console.log(supernalRoutesLyr.renderer)
         const query = {
             where: "OBJECTID = " + objectId,
             outFields: ["*"],
