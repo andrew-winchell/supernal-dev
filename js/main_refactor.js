@@ -1738,7 +1738,7 @@ require([
                 .then((response) => {
                     if (response.results.length) {
                         console.log(response);
-                        selectExistingRoute(results[0].graphic.attributes.OBJECTID, dimensions);
+                        selectExistingRoute(response.results[0].graphic.attributes.OBJECTID, dimensions);
                     }
                 });
         });
