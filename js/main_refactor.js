@@ -1688,8 +1688,7 @@ require([
             let oid = parseInt(evt.target.value);
             let routeColor;
             let routeSelected = evt.target.selected;
-
-            console.log(evt)
+            let selectedArr = [];
     
             supernalRoutesLyr.queryFeatures(
                 {
@@ -1715,6 +1714,17 @@ require([
                     supernalRoutesLyr.renderer.removeUniqueValueInfo(oid);
                 }
             });
+
+            console.log(evt.currentTarget.selectedItems)
+            for (let item of evt.currentTarget.selectedItems) {
+                selectedArr.push(item.value);
+            }
+
+            let wrappedInQuotes = selectedArr.map((oid) => `'${oid}'`);
+            let itemsString = wrappedInQuotes.join(",");
+
+            supernalRoutesLyr.definitionExpression = "OBJECTID IN (" + itemsString + ")";
+            
 
             //if (editor.viewModel.state !== "editing-existing-feature") {
             //    oid = evt.target.value;
