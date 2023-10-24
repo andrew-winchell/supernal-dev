@@ -1680,15 +1680,14 @@ require([
 
         //#endregion
 
-        //#region Edit Existing Routes
+        //#region Select Routes for Visibility
 
         let oid;
 
         $("#existing-routes").on("calciteListItemSelect", (evt) => {
             let oid = parseInt(evt.target.value);
             let routeColor;
-            let onOff = evt.target.selected;
-            console.log(onOff);
+            let routeSelected = evt.target.selected;
     
             supernalRoutesLyr.queryFeatures(
                 {
@@ -1699,23 +1698,32 @@ require([
                 routeColor = results.features[0].attributes.display_color;
             }).then(() => {
                 console.log(routeColor);
-                supernalRoutesLyr.renderer.addUniqueValueInfo(
-                    {
-                        value: oid,
-                        symbol: {
-                            type: "simple-line",
-                            color: routeColor,
-                            width: 2
-                        }                
-                    }
-                )
-            })
-            if (editor.viewModel.state !== "editing-existing-feature") {
-                oid = evt.target.value;
-                cancelRouteCreation();
-                selectExistingRoute(oid, appConfig.activeView.type);
-            }
+                if (routeSelected == true) {
+                    supernalRoutesLyr.renderer.addUniqueValueInfo(
+                        {
+                            value: oid,
+                            symbol: {
+                                type: "simple-line",
+                                color: routeColor,
+                                width: 2
+                            }                
+                        }
+                    )
+                } else {
+                    supernalRoutesLyr.renderer.removeUniqueValueInfo(oid);
+                }
+            });
+
+            //if (editor.viewModel.state !== "editing-existing-feature") {
+            //    oid = evt.target.value;
+            //    cancelRouteCreation();
+            //    selectExistingRoute(oid, appConfig.activeView.type);
+            //}
         });
+
+        //#endregion
+
+        //#region Edit Existing Routes
 
 
 
