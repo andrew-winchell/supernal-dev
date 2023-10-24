@@ -1435,6 +1435,8 @@ require([
     $("#existing-routes").on("calciteListItemSelect", (evt) => {
         let oid = parseInt(evt.target.value);
         let routeColor;
+        let onOff = evt.target.selected;
+        console.log(onOff);
 
         supernalRoutesLyr.queryFeatures(
             {
