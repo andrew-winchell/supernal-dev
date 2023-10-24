@@ -1115,7 +1115,6 @@ require([
         $("#add-route-vertices")[0].disabled = false;
         userLineColor = $("#color-picker")[0].value;
         $("#color-picker-panel").css("display", "none");
-        
     })
 
     $("#add-route-vertices").on("click", () => {
@@ -1341,8 +1340,8 @@ require([
                 setTimeout(()=> {
                     populateExistingRoutes();
                 }, 1000);
-                objectId = results.addFeatureResults[0].objectId;
-                selectExistingRoute(objectId);
+                oid = results.addFeatureResults[0].objectId;
+                selectExistingRoute(oid);
 
                 mapView.graphics.removeAll();
 
