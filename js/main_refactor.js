@@ -1688,6 +1688,8 @@ require([
             let oid = parseInt(evt.target.value);
             let routeColor;
             let routeSelected = evt.target.selected;
+
+            console.log(evt)
     
             supernalRoutesLyr.queryFeatures(
                 {
