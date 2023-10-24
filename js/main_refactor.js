@@ -1715,7 +1715,6 @@ require([
                 }
             });
 
-            console.log(evt.currentTarget.selectedItems)
             for (let item of evt.currentTarget.selectedItems) {
                 selectedArr.push(item.value);
             }
@@ -1724,21 +1723,24 @@ require([
             let itemsString = wrappedInQuotes.join(",");
 
             supernalRoutesLyr.definitionExpression = "OBJECTID IN (" + itemsString + ")";
-            
-
-            //if (editor.viewModel.state !== "editing-existing-feature") {
-            //    oid = evt.target.value;
-            //    cancelRouteCreation();
-            //    selectExistingRoute(oid, appConfig.activeView.type);
-            //}
         });
 
         //#endregion
 
         //#region Edit Existing Routes
+        
+        mapView.on("click", (evt) => {
+            const opts = {
+                include: supernalRoutesLyr
+            };
 
-
-
+            mapView.hitTest(evt, opts)
+                .then((response) => {
+                    if (response.results.length) {
+                        console.log(response);
+                    }
+                });
+        });
     
         function selectExistingRoute (objectId, dimensions) {
             console.log(supernalRoutesLyr.renderer)
