@@ -1683,6 +1683,7 @@ require([
             let routeColor;
             let routeSelected = evt.target.selected;
             let selectedArr = [];
+            let geom;
     
             supernalRoutesLyr.queryFeatures(
                 {
@@ -1691,7 +1692,8 @@ require([
                 }
             ).then((results) => {
                 routeColor = results.features[0].attributes.display_color;
-            }).then((results) => {
+                console.log(results);
+            }).then(() => {
                 console.log(routeColor);
                 if (routeSelected == true) {
                     supernalRoutesLyr.renderer.addUniqueValueInfo(
@@ -1705,7 +1707,6 @@ require([
                         }
                     );
 
-                    console.log(results)
                     const buffer = geometryEngine.buffer(geom, 0.3, "nautical-miles");
                 } else {
                     supernalRoutesLyr.renderer.removeUniqueValueInfo(oid);
