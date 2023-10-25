@@ -1688,11 +1688,12 @@ require([
             supernalRoutesLyr.queryFeatures(
                 {
                     where: "OBJECTID = " + oid,
-                    outFields: ["display_color"]
+                    outFields: ["display_color"],
+                    returnGeometry: true
                 }
             ).then((results) => {
                 routeColor = results.features[0].attributes.display_color;
-                console.log(results);
+                geom = results.features[0].geometry;
             }).then(() => {
                 console.log(routeColor);
                 if (routeSelected == true) {
@@ -1708,6 +1709,21 @@ require([
                     );
 
                     const buffer = geometryEngine.buffer(geom, 0.3, "nautical-miles");
+                    if (routeBuffer03.graphics.length === 0 || routeBuffer03.graphics.length !== 0) {
+                        routeBuffer03.add(
+                            new Graphic ({
+                                geometry: buffer,
+                                symbol: {
+                                    type: "simple-fill",
+                                    color: [255, 20, 20, 0.25],
+                                    outline: {
+                                        color: [0, 0, 0, 0,25],
+                                        width: 1
+                                    }
+                                }
+                            })
+                        )
+                    }
                 } else {
                     supernalRoutesLyr.renderer.removeUniqueValueInfo(oid);
                 }
