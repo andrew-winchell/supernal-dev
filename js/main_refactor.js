@@ -558,13 +558,8 @@ require([
             graphics: []
         });
     
-        const routeBuffer02 = new GraphicsLayer ({
-            title: ".4nm Route Buffer",
-            graphics: []
-        });
-    
-        const routeBuffer05 = new GraphicsLayer ({
-            title: "1nm Route Buffer",
+        const routeBuffer03 = new GraphicsLayer ({
+            title: "0.6 nm Route Protection",
             graphics: []
         });
 
@@ -586,8 +581,7 @@ require([
                 eightDegRingLyr,
                 twelveDegRingLyr,
                 supernalRoutesLyr,
-                routeBuffer02,
-                routeBuffer05
+                routeBuffer03
             ]
         });
         
@@ -1709,7 +1703,10 @@ require([
                                 width: 2
                             }                
                         }
-                    )
+                    );
+
+                    console.log(results)
+                    const buffer = geometryEngine.buffer(geom, 0.3, "nautical-miles");
                 } else {
                     supernalRoutesLyr.renderer.removeUniqueValueInfo(oid);
                 }
