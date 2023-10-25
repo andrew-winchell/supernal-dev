@@ -1691,7 +1691,7 @@ require([
                 }
             ).then((results) => {
                 routeColor = results.features[0].attributes.display_color;
-            }).then(() => {
+            }).then((results) => {
                 console.log(routeColor);
                 if (routeSelected == true) {
                     supernalRoutesLyr.renderer.addUniqueValueInfo(
