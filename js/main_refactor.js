@@ -1679,24 +1679,28 @@ require([
         let oid;
 
         $("#existing-routes").on("calciteListItemSelect", (evt) => {
-            let oid = parseInt(evt.target.value);
+            oid = parseInt(evt.target.value);
             let routeColor, geom, routeBufferName;
             let routeSelected = evt.target.selected;
             let selectedArr = [];
     
+            // Query supernal routes for the matching ObjectID
             supernalRoutesLyr.queryFeatures(
                 {
                     where: "OBJECTID = " + oid,
                     outFields: ["*"],
                     returnGeometry: true
                 }
+
             ).then((results) => {
+
+                // Set variables from the queried feature
                 routeColor = results.features[0].attributes.display_color;
                 geom = results.features[0].geometry;
-                console.log(results);
                 routeBufferName = results.features[0].attributes.route_name;
+
             }).then(() => {
-                console.log(routeColor);
+
                 if (routeSelected == true) {
                     supernalRoutesLyr.renderer.addUniqueValueInfo(
                         {
@@ -1709,6 +1713,7 @@ require([
                         }
                     );
 
+                    // Create a 0.6nm protection buffer around the selected route
                     const buffer = geometryEngine.buffer(geom, 0.3, "nautical-miles");
                     routeBuffer03.add(
                         new Graphic ({
@@ -1727,12 +1732,16 @@ require([
                         })
                     )
                 } else {
+                    // Remove the Unique Renderer Info for the deselected ObjectID
                     supernalRoutesLyr.renderer.removeUniqueValueInfo(oid);
+
+                    // Find the graphic for the route that was deselected and remove the corresponding buffer
                     let removeGraphic = routeBuffer03.graphics.find((graphic) => {
                         return graphic.attributes.route === routeBufferName;
                     });
                     routeBuffer03.remove(removeGraphic);
                 }
+
             });
 
             for (let item of evt.currentTarget.selectedItems) {
