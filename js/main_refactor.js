@@ -1694,7 +1694,7 @@ require([
                 routeColor = results.features[0].attributes.display_color;
                 geom = results.features[0].geometry;
                 console.log(results);
-                //routeBufferName = results.features[0].attributes;
+                routeBufferName = results.features[0].attributes.route_name;
             }).then(() => {
                 console.log(routeColor);
                 if (routeSelected == true) {
@@ -1728,6 +1728,8 @@ require([
                     )
                 } else {
                     supernalRoutesLyr.renderer.removeUniqueValueInfo(oid);
+                    let removeGraphic = routeBuffer03.graphics.find(routeBufferName);
+                    console.log(removeGraphic);
                 }
             });
 
