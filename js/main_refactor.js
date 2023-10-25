@@ -1731,7 +1731,7 @@ require([
                     let removeGraphic = routeBuffer03.graphics.find((graphic) => {
                         return graphic.attributes.route === routeBufferName;
                     });
-                    console.log(removeGraphic);
+                    routeBuffer03.remove(removeGraphic);
                 }
             });
 
