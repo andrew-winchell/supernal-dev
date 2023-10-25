@@ -1892,7 +1892,7 @@ require([
             let polylineGraphic = new Graphic ({
                 geometry: polyline,
                 attributes: {
-                    "OBJECTID": objectId
+                    "OBJECTID": oid
                 }
             });
     
