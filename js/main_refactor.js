@@ -1687,7 +1687,7 @@ require([
             supernalRoutesLyr.queryFeatures(
                 {
                     where: "OBJECTID = " + oid,
-                    outFields: ["display_color"],
+                    outFields: ["*"],
                     returnGeometry: true
                 }
             ).then((results) => {
