@@ -1728,7 +1728,9 @@ require([
                     )
                 } else {
                     supernalRoutesLyr.renderer.removeUniqueValueInfo(oid);
-                    let removeGraphic = routeBuffer03.graphics.find(routeBufferName);
+                    let removeGraphic = routeBuffer03.graphics.find((layer) => {
+                        return layer.route === routeBufferName;
+                    });
                     console.log(removeGraphic);
                 }
             });
