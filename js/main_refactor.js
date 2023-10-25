@@ -1766,14 +1766,12 @@ require([
             mapView.hitTest(evt, opts)
                 .then((response) => {
                     if (response.results.length) {
-                        console.log(response);
                         selectExistingRoute(response.results[0].graphic.attributes.OBJECTID, appConfig.activeView.type);
                     }
                 });
         });
     
         function selectExistingRoute (objectId, dimensions) {
-            console.log(supernalRoutesLyr.renderer)
             const query = {
                 where: "OBJECTID = " + objectId,
                 outFields: ["*"],
@@ -1805,7 +1803,6 @@ require([
                         sceneView
                             .goTo(selectedFeature.geometry.extent.expand(2))
                             .then(() => {
-                                supernalRoutesLyr.definitionExpression = "OBJECTID = " + objectId;
                                 $("#waypoint-list").css("display", "block");
                                 selectedFeatureTable(selectedFeature.geometry.paths);
                                 selectedFeatureProfile(selectedFeature.geometry.paths);
