@@ -1680,10 +1680,9 @@ require([
 
         $("#existing-routes").on("calciteListItemSelect", (evt) => {
             let oid = parseInt(evt.target.value);
-            let routeColor;
+            let routeColor, geom, routeBufferName;
             let routeSelected = evt.target.selected;
             let selectedArr = [];
-            let geom;
     
             supernalRoutesLyr.queryFeatures(
                 {
@@ -1694,6 +1693,8 @@ require([
             ).then((results) => {
                 routeColor = results.features[0].attributes.display_color;
                 geom = results.features[0].geometry;
+                console.log(results);
+                //routeBufferName = results.features[0].attributes;
             }).then(() => {
                 console.log(routeColor);
                 if (routeSelected == true) {
@@ -1709,21 +1710,22 @@ require([
                     );
 
                     const buffer = geometryEngine.buffer(geom, 0.3, "nautical-miles");
-                    if (routeBuffer03.graphics.length === 0 || routeBuffer03.graphics.length !== 0) {
-                        routeBuffer03.add(
-                            new Graphic ({
-                                geometry: buffer,
-                                symbol: {
-                                    type: "simple-fill",
-                                    color: [255, 20, 20, 0.25],
-                                    outline: {
-                                        color: [0, 0, 0, 0,25],
-                                        width: 1
-                                    }
+                    routeBuffer03.add(
+                        new Graphic ({
+                            geometry: buffer,
+                            symbol: {
+                                type: "simple-fill",
+                                color: [255, 20, 20, 0.25],
+                                outline: {
+                                    color: [0, 0, 0, 0.25],
+                                    width: 1
                                 }
-                            })
-                        )
-                    }
+                            },
+                            attributes: {
+                                "route": routeBufferName
+                            }
+                        })
+                    )
                 } else {
                     supernalRoutesLyr.renderer.removeUniqueValueInfo(oid);
                 }
