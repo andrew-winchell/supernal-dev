@@ -239,7 +239,7 @@ require([
             },
             renderer: {
                 type: "unique-value",
-                field: "Type",
+                field: "FIX_USE_CODE",
                 defaultSymbol: {
                     type: "simple-marker",
                     size: 4,
@@ -256,7 +256,7 @@ require([
                         }
                     },
                     {
-                        label: "WP",
+                        label: "Waypoint",
                         value: "WP",
                         symbol: {
                             type: "simple-marker",
