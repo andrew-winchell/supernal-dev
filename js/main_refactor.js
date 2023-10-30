@@ -232,14 +232,6 @@ require([
                             {
                                 fieldName: "FIX_USE_CODE",
                                 label: "Type"
-                            },
-                            {
-                                fieldName: "MIL_CODE",
-                                label: "Military Code"
-                            },
-                            {
-                                fieldName: "NOTES_ID",
-                                label: "Notes ID"
                             }
                         ]
                     }
