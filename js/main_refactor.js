@@ -247,7 +247,7 @@ require([
             },
             renderer: {
                 type: "unique-value",
-                field: "TYPE_CODE",
+                field: "FIX_USE_CODE",
                 uniqueValueInfos: [
                     {
                         label: "Regular Public Transport",
