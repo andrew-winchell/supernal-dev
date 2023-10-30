@@ -577,9 +577,9 @@ require([
                 airportsLyr,
                 classAirspaceLyr,
                 vertiportsLyr,
-                fiveDegRingLyr,
-                eightDegRingLyr,
-                twelveDegRingLyr,
+                //fiveDegRingLyr,
+                //eightDegRingLyr,
+                //twelveDegRingLyr,
                 supernalRoutesLyr,
                 routeBuffer03
             ]
