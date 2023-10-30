@@ -240,6 +240,7 @@ require([
             renderer: {
                 type: "unique-value",
                 field: "FIX_USE_CODE",
+                defaultSymbol: { type: "simple-marker" },
                 uniqueValueInfos: [
                     {
                         label: "Regular Public Transport",
