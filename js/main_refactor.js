@@ -239,7 +239,7 @@ require([
             },
             renderer: {
                 type: "unique-value",
-                field: "FIX_USE_CODE",
+                field: "Type",
                 defaultSymbol: {
                     type: "simple-marker",
                     size: 4,
