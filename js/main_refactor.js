@@ -1911,7 +1911,7 @@ require([
                     drawPath(selectedFeature.geometry.paths);
     
                     const query = {
-                        where: "OBJECTID = " + objectId,
+                        where: "OBJECTID = " + oid,
                         outFields: ["*"],
                         returnGeometry: true,
                         returnZ: true
@@ -1923,7 +1923,7 @@ require([
                             mapView
                                 .goTo(selectedFeature.geometry.extent.expand(2))
                                 .then(() => {
-                                    supernalRoutesLyr.definitionExpression = "OBJECTID = " + objectId;
+                                    supernalRoutesLyr.definitionExpression = "OBJECTID = " + oid;
                                     $("#waypoint-list").css("display", "block");
                                     selectedFeatureTable(selectedFeature.geometry.paths);
                                     selectedFeatureProfile(selectedFeature.geometry.paths);
