@@ -256,7 +256,7 @@ require([
                         }
                     },
                     {
-                        label: "Waypoint",
+                        label: "WP",
                         value: "WP",
                         symbol: {
                             type: "simple-marker",
