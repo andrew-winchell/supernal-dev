@@ -1647,7 +1647,7 @@ require([
                 drawPath(selectedFeature.geometry.paths);
 
                 const query = {
-                    where: "OBJECTID = " + objectId,
+                    where: "OBJECTID = " + oid,
                     outFields: ["*"],
                     returnGeometry: true,
                     returnZ: true
